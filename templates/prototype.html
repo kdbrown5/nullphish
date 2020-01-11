@@ -1,0 +1,326 @@
+<html>
+
+<head>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="http:///ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <link href="/docs/4.0/assets/css/docs.min.css" rel="stylesheet">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext);
+
+body{
+  font:300 20px 'Open Sans', sans-serif;
+  color:#666;
+  background-color:#bdc3c7;
+}
+
+article{
+  width:815px;
+  background-color:white;
+  margin:50px auto;
+  padding:5px 30px;
+  border-radius:15px;
+}
+
+article h1{
+  color:#3498db; 
+  padding-bottom:15px;
+  border-bottom:1px dashed #bdc3c7;
+}
+
+article a,article span{
+  color:#3498db;
+  text-decoration:none;
+}
+
+article .buton{
+  color:white;
+  position:relative;
+  font-size:14px;
+  left:10px;
+  top:-5px;
+  background-color:#3498db;
+  text-decoration:none;
+  padding:3px 6px;
+}
+
+article .buton:hover{
+  background-color:#2980b9;
+}
+
+.tooltips {
+  position: relative;
+  display: inline;
+}
+
+.tooltips span {
+  font:300 12px 'Open Sans', sans-serif;
+  position: absolute;
+  color: #FFFFFF;
+  background: #000000;
+  padding:5px 10px;
+  width:140px;
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transition: transform .3s, opacity .6s, margin-left .2s, margin-top .2s;
+}
+
+.tooltips > span img{max-width:140px;}
+
+.tooltips[tooltip-position="top"] span{
+  margin-left:10px;
+  -ms-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.tooltips[tooltip-position="bottom"] span{
+  -ms-transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+
+.tooltips[tooltip-position="left"] span{
+  margin-top:30px;
+  -ms-transform: rotate(-30deg);
+  -webkit-transform: rotate(-30deg);
+  transform: rotate(-30deg);
+}
+
+.tooltips[tooltip-position="right"] span{
+  margin-top:30px;
+  -ms-transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.tooltips span:after {
+  content: '';
+  position: absolute;
+  width: 0; height: 0;
+}
+
+.tooltips[tooltip-position="top"] span:after{
+  top: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-top: 8px solid black;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+
+.tooltips[tooltip-position="bottom"] span:after{
+  bottom: 100%;
+  left: 50%;
+  margin-left: -8px;
+  border-bottom: 8px solid black;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+}
+
+.tooltips[tooltip-position="left"] span:after{
+  top: 50%;
+  left: 100%;
+  margin-top: -8px;
+  border-left: 8px solid black;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.tooltips[tooltip-position="right"] span:after{
+  top: 50%;
+  right: 100%;
+  margin-top: -8px;
+  border-right: 8px solid black;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.tooltips:hover span {
+  visibility: visible;
+  opacity: 1;
+  z-index: 999;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  filter: alpha(opacity=100);
+}
+
+.tooltips[tooltip-position="top"]:hover span{
+  bottom: 30px;
+  left: 50%;
+  margin-left: -76px;
+}
+
+.tooltips[tooltip-position="bottom"]:hover span{
+  top: 30px;
+  left: 50%;
+  margin-left: -76px;
+}
+
+.tooltips[tooltip-position="left"]:hover span{
+  right: 100%;
+  top: 50%;
+  margin-top: -15px;
+  margin-right: 15px;
+}
+
+.tooltips[tooltip-position="right"]:hover span{
+  left: 100%;
+  top: 50%;
+  margin-top: -15px;
+  margin-left: 15px;
+}
+
+.tooltips[tooltip-type="primary"] > span {
+  background-color:#2980b9;
+}
+
+.tooltips[tooltip-type="primary"][tooltip-position="top"] > span:after{
+  border-top: 8px solid #2980b9;
+}
+
+.tooltips[tooltip-type="primary"][tooltip-position="bottom"] > span:after{
+  border-bottom: 8px solid #2980b9;
+}
+
+.tooltips[tooltip-type="primary"][tooltip-position="left"] > span:after{
+  border-left: 8px solid #2980b9;
+}
+
+.tooltips[tooltip-type="primary"][tooltip-position="right"] > span:after{
+  border-right: 8px solid #2980b9;
+}
+
+.tooltips[tooltip-type="success"] > span {
+  background-color:#27ae60;
+}
+
+.tooltips[tooltip-type="success"][tooltip-position="top"] > span:after{
+  border-top: 8px solid #27ae60;
+}
+
+.tooltips[tooltip-type="success"][tooltip-position="bottom"] > span:after{
+  border-bottom: 8px solid #27ae60;
+}
+
+.tooltips[tooltip-type="success"][tooltip-position="left"] > span:after{
+  border-left: 8px solid #27ae60;
+}
+
+.tooltips[tooltip-type="success"][tooltip-position="right"] > span:after{
+  border-right: 8px solid #27ae60;
+}
+
+.tooltips[tooltip-type="warning"] > span {
+  background-color:#f39c12;
+}
+
+.tooltips[tooltip-type="warning"][tooltip-position="top"] > span:after{
+  border-top: 8px solid #f39c12;
+}
+
+.tooltips[tooltip-type="warning"][tooltip-position="bottom"] > span:after{
+  border-bottom: 8px solid #f39c12;
+}
+
+.tooltips[tooltip-type="warning"][tooltip-position="left"] > span:after{
+  border-left: 8px solid #f39c12;
+}
+
+.tooltips[tooltip-type="warning"][tooltip-position="right"] > span:after{
+  border-right: 8px solid #f39c12;
+}
+
+.tooltips[tooltip-type="danger"] > span {
+  background-color:#c0392b;
+}
+
+.tooltips[tooltip-type="danger"][tooltip-position="top"] > span:after{
+  border-top: 8px solid #c0392b;
+}
+
+.tooltips[tooltip-type="danger"][tooltip-position="bottom"] > span:after{
+  border-bottom: 8px solid #c0392b;
+}
+
+.tooltips[tooltip-type="danger"][tooltip-position="left"] > span:after{
+  border-left: 8px solid #c0392b;
+}
+
+.tooltips[tooltip-type="danger"][tooltip-position="right"] > span:after{
+  border-right: 8px solid #c0392b;
+}
+
+
+    div.ex2 {
+      max-width:500px;
+      margin: auto;
+      }
+    </style>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</head>
+
+<body>
+  <center>
+<article>
+Example one:
+</article>
+<hr>
+</center>
+
+
+<article>
+<table><tbody><tr><td>
+<p ><strong>From</strong>:  <span class="tooltips" tooltip="Be very cautious if the sender is not someone you know. Even if the sender is someone you know, be cautious and only accept if they notify you that they sent you something. It is possible that someone you know has been victim to a Phishing attack and had their accounts compromised." tooltip-position="right">"Sass, Bradley"  </span> 
+
+  
+<a href="mailto:sass@tamhsc.edu" rel="noreferrer"></a>  <span class="tooltips" tooltip="The email should be sent from an account related to the website domain. Any address not including @dropbox.com should be dealt with caution." tooltip-position="top"> &lt; sass@tamhsc.edu &gt; </span>  <br><strong>Subject</strong>:  Your Dropbox File<br><strong>Date</strong>:  Mon, 10 Jan 2020</p >
+<p><span class="tooltips" tooltip="Most phishing attempts will use legitimate and familiar icons or images to deceive you." tooltip-position="right"><img alt="Dropbox logo" src="https://security.berkeley.edu/sites/default/files/styles/width_100/public/glyph_342x_0.png?itok=gW9ShD4e&amp;c=7d72319ece4d25d48f54bc41e937ab03&amp;timestamp=1485971483"></span></p>
+<div><br>Hello,</div>
+<div> </div>
+<div>You just received a file through Dropbox Share Application.</div>
+<div>Please click below and log in to view file.</div>
+<div> </div>
+<div>
+  <a href="http://fakedropbox.net" title="http://fakedropbox"><span class="tooltips" tooltip="<img src='https://gokdb.com/public/images/phishing/fakedropboxurl.jpg' width='100'><br/>Verify that the URL shown in your browser directs to the website that you are expecting (dropbox.com)" tooltip-position="right">View file</span></a><br>
+
+</div>
+<div> </div>
+<div>Every time a friend installs Dropbox, we'll give both of you 1 GB of</div>
+<div>space for free! Need even more space? Upgrade your Dropbox and get 1 TB</div>
+<div>(1,000 GB) of space.</div>
+<div> </div>
+<div>Happy Dropboxing.</div>
+<div> </div>
+<div>- The Dropbox Team</div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div> </div>
+<div>Dropbox, Inc., PO Box 77767, San Francisco, CA 94107 © 2017 Dropbox</div>
+</td>
+</tr></tbody></table><p></p>
+<p></p>
+</article>
+
+<script>
+  $('.tooltips').append("<span></span>");
+  $('.tooltips:not([tooltip-position])').attr('tooltip-position','bottom');
+  
+  
+  $(".tooltips").mouseenter(function(){
+   $(this).find('span').empty().append($(this).attr('tooltip'));
+  });
+  </script>
+</body>
+
+</html>
