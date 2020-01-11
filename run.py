@@ -2,9 +2,9 @@ import os
 from os import path, walk
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
-from flask_sqlalchemy import SQLAlchemy    
+from flask_sqlalchemy import SQLAlchemy 
 
-extra_dirs = ['templates/', ]
+extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
 for extra_dir in extra_dirs:
     for dirname, dirs, files in walk(extra_dir):
@@ -15,14 +15,14 @@ for extra_dir in extra_dirs:
 
 app = Flask(__name__, static_url_path='', static_folder="static", template_folder="templates")
 app.secret_key = 'Slskdjf2iu3#1!'
-app.config['SQLALCHEMY_ECHO'] = True
-db = SQLAlchemy()
-routes = Blueprint('routes', __name__)
+app.config['SQLALCHEMY_ECHO'] = True  ## show sql for debugging
+#db = SQLAlchemy() ## may not be needed
+routes = Blueprint('routes', __name__) # support for addtl py pages
 
-def check_password(hashed_password, user_password):
+def check_password(hashed_password, user_password): # currently md5, will change to sha256 later
     return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
 
-def validate(username, password):
+def validate(username, password): # validate username, pw from database
     con = sqlite3.connect('static/User.db')
     completion = False
     with con:
@@ -36,11 +36,11 @@ def validate(username, password):
                 completion = check_password(dbPass, password)
     return completion
 
-@app.errorhandler(404)
+@app.errorhandler(404) # redirect to main page if not found
 def page_not_found(e):
     return redirect("/")
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST']) # 
 def logina():
     if session.get('logged_in'):
         return redirect("/main")
@@ -59,22 +59,22 @@ def logina():
         session['orderstatus'] = False
         return render_template('login.html', error=error)
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST']) # redirect to registration if not logged in
 def beginr():
     if session.get('logged_in'):
         return redirect('/main')
     else:
         return registration()
 
-@app.route('/logout', methods=['GET', 'POST'])
+@app.route('/logout', methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
     return logoutuser()
 
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/main', methods=['GET', 'POST']) # main page
 def main():    
     return render_template('intro.html')
 
 
 if __name__ == '__main__':
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True #reload html templates when saved, while app is running
     app.run(host='0.0.0.0', debug=True)
