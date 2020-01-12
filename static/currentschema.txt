@@ -2,6 +2,6 @@ CREATE TABLE users (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 username TEXT,
 password TEXT,
-fullname TEXT,
+firstname TEXT, lastname TEXT,
 business TEXT
 );
