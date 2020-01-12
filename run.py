@@ -3,6 +3,7 @@ from os import path, walk
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
 from flask_sqlalchemy import SQLAlchemy 
+from register import *
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -65,6 +66,7 @@ def beginr():
         return redirect('/main')
     else:
         return registration()
+
 
 @app.route('/logout', methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
