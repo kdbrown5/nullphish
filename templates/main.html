@@ -42,6 +42,7 @@ body {
 }
 
 #hero-text > div {
+    padding: 5;
   background: rgba(0, 0, 0, 0.8);
   padding: 50px;
   font-weight: 500;
@@ -50,25 +51,28 @@ body {
   font-size: 3rem;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
 }
-
+.topnav {
+    overflow: hidden;
+    z-index: 21;
+}
 </style>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark topnav">
 
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
+  <div class="collapse navbar-collapse topnav" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="http://google.com">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Profile</a>
+        <a class="nav-link" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Education</a>
+        <a class="nav-link" href="/education">Education</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="http://google.com">Tests</a>
+        <a class="nav-link" href="/tests">Tests</a>
       </li>
     </ul>
   </div>
