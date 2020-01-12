@@ -3,8 +3,10 @@ from os import path, walk
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
 from flask_sqlalchemy import SQLAlchemy 
-from register import *
 import sqlite3
+from register import *
+from logout import *
+
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
