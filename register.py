@@ -10,7 +10,7 @@ from flask import Flask, flash, session, render_template, render_template_string
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import gc
-
+import sqlite3
 
 db = SQLAlchemy()
 
@@ -20,7 +20,8 @@ register = Blueprint('register', __name__, url_prefix='/register', template_fold
 def registration():
     try:
         if request.method == "POST":
-            fullname = request.form.to_dict()['fullname']
+            firstname = request.form.to_dict()['firstname']
+            lastname = request.form.to_dict()['lastname']
             username = request.form.to_dict()['email']
             business = request.form.to_dict()['business']
             session['username'] = username
@@ -53,7 +54,7 @@ def registration():
 
             if result == None:
                 cur = con.cursor()
-                cur.execute("INSERT INTO users (username, password, fullname, business) VALUES (?, ?, ?, ?);", (username, password, fullname, business,))
+                cur.execute("INSERT INTO users (username, password, firstname, lastname, business) VALUES (?, ?, ?, ?, ?);", (username, password, firstname, lastname, business,))
                 con.commit()
                 con.close()
                 gc.collect()

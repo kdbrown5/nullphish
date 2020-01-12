@@ -4,6 +4,7 @@ from flask import Flask, flash, session, render_template, render_template_string
     Response, g, Markup, Blueprint, make_response
 from flask_sqlalchemy import SQLAlchemy 
 from register import *
+import sqlite3
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
