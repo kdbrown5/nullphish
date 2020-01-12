@@ -75,7 +75,7 @@ def beginlogout():
 
 @app.route('/main', methods=['GET', 'POST']) # main page
 def main():    
-    return render_template('intro.html')
+    return render_template('main.html')
 
 
 if __name__ == '__main__':
