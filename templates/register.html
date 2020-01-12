@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>Registration</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<style>
+  body {background-image: url(https://gokdb.com/public/loginlibrary.jpg);
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-color: black}
+
+</style>
+  </head>
+<div class="container" style="max-width: 600px;">
+<hr>
+    <h4  style="color: white" class="card-title mt-3 text-center">Create Account</h4>
+    <p style="color: white" class="text-center">*Beta* - Completely <b>Free</b> !</p>
+    <p style="color: white" class="text-center">Let's get started!</p>
+    <p style="color: white" class="text-center">Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
+    
+    <center>
+        <h1 style="color: white">{% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <ul class=flashes>
+                  {% for message in messages %}
+                    {{ message }}
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+              {% endwith %}</h1>
+            </center>
+            <br>
+	<p>
+	<form method="POST">
+            <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fas fa-key"></i> </span>
+                     </div>
+                    <input name="code" class="form-control" placeholder="Beta registration code:" type="text">
+                </div> <!-- form-group// -->
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="fullname" class="form-control" placeholder="Full name:" type="text">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input name="email" class="form-control" placeholder="Email address:" type="email">
+    </div> <!-- form-group// -->
+
+    <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+            </div>
+            
+            <input name="business" class="form-control" placeholder="Business:" type="text">
+        </div> <!-- form-group// -->
+
+
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+
+        <input name="password" class="form-control" placeholder="Create password:" type="password">
+    </div> <!-- form-group// -->
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
+    </div> <!-- form-group// -->                                      
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+    </div> <!-- form-group// -->      
+    <p  style="color: white" class="text-center">Have an account? <a href="/"><b>Log In</b></a> </p>                                                                 
+</form>
+</article>
+
+</div> 
+<!--container end.//-->
+
+<br><br>
