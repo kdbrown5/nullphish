@@ -24,7 +24,7 @@ def check_password(hashed_password, user_password): # currently md5, will change
     return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
 
 def validate(username, password): # validate username, pw from database
-    con = sqlite3.connect('static/User.db')
+    con = sqlite3.connect('static/db1.db')
     completion = False
     with con:
         cur = con.cursor()

@@ -36,7 +36,7 @@ def registration():
             if repeat != password:
                 flash('Your passwords do not match.  Please try again.')
                 return render_template("register.html")
-            con = sqlite3.connect('static/User.db')
+            con = sqlite3.connect('static/db1.db')
 
             if code != 'tron':
                 if code != 'tran':
