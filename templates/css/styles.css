@@ -1,0 +1,76 @@
+/*
+CSS Color Palette:
+Grey (Light):       #CCC
+Grey (Dark):        #333
+Blue (Regular):     #2464a6
+Blue (Dark):        #0e2841
+Blue (Light):       #4d9cec
+Gold:               #ffc800
+*/
+
+/*Fonts:*/
+@font-face {
+    font-family: BonveniCF;
+    src: url(fonts/BonvenoCF-Light-webfont.woff);
+}
+
+@font-face {
+    font-family: Colab;
+    src: url(fonts/ColabReg-webfont.woff);
+}
+
+@font-face {
+    font-family: Colab;
+    src: url(fonts/ColabBol-webfont.woff);
+    font-weight: bold;
+}
+
+/*Global Styles:*/
+
+body{
+    background-color: #CCC;
+    color: #333;
+    font-family: "Colab";
+}
+
+nav{
+    height: 55px;
+    line-height:55px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    margin: 0px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color: #0e2841;
+    color: #ffc800;
+    position: fixed;
+    z-index: 998;
+    font-family: "Colab";
+    font-size: x-large;
+}
+
+/*ID Styles:*/
+
+#nav-logo{
+    margin: 0px; 
+    height: 45px;
+    width: auto;
+    z-index: 999;
+    top:5px;
+    left:10px;
+    position: fixed;
+}
+
+/*Class Styles:*/
+.nav-link{
+    color: #ffc800;
+    text-decoration: none;
+}
+
+.nav-link:hover{
+    color: #4d9cec;
+    text-decoration: none;
+}
