@@ -28,14 +28,13 @@ Gold:               #ffc800
 /*Global Styles:*/
 
 body{
-    background-color: #CCC;
-    color: #333;
+    background-color: #000;
+    color: #fff;
     font-family: "Colab";
 }
 
 nav{
-    height: 55px;
-    line-height:55px;
+    height: 90px;
     top: 0px;
     left: 0px;
     width: 100%;
@@ -44,33 +43,42 @@ nav{
     padding-right: 60px;
     padding-top: 0px;
     padding-bottom: 0px;
-    background-color: #0e2841;
-    color: #ffc800;
+    color: #fff;
     position: fixed;
     z-index: 998;
     font-family: "Colab";
-    font-size: x-large;
+    font-size: xx-large;
+    vertical-align: middle;
+    text-align: center;
 }
 
 /*ID Styles:*/
 
 #nav-logo{
     margin: 0px; 
-    height: 45px;
+    height: 90px;
     width: auto;
     z-index: 999;
-    top:5px;
-    left:10px;
-    position: fixed;
 }
 
 /*Class Styles:*/
+
 .nav-link{
+    color: #fff;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nav-link:hover{
     color: #ffc800;
     text-decoration: none;
 }
 
-.nav-link:hover{
-    color: #4d9cec;
-    text-decoration: none;
+.slide{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
 }
