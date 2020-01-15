@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3
 from register import *
 from logout import *
-from logging import log
+#from lumberjack import *
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
