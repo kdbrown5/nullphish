@@ -1,7 +1,7 @@
 /*
 CSS Color Palette:
-Grey (Light):       #CCC
-Grey (Dark):        #333
+Grey (Light):       #CCCCFF
+Grey (Dark):        #222266
 Blue (Regular):     #2464a6
 Blue (Dark):        #0e2841
 Blue (Light):       #4d9cec
@@ -28,46 +28,57 @@ Gold:               #ffc800
 /*Global Styles:*/
 
 body{
-    background-color: #000;
+    background-color: #0e2841;
     color: #fff;
     font-family: "Colab";
+    padding: 0px;
+    margin: 0px;
 }
 
-nav{
-    height: 90px;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    margin: 0px;
-    padding-left: 60px;
-    padding-right: 60px;
-    padding-top: 0px;
-    padding-bottom: 0px;
-    color: #fff;
-    position: fixed;
-    z-index: 998;
-    font-family: "Colab";
-    font-size: xx-large;
-    vertical-align: middle;
-    text-align: center;
+hr{
+    color: #4d9cec
 }
 
 /*ID Styles:*/
 
-#nav-logo{
-    margin: 0px; 
-    height: 90px;
-    width: auto;
-    z-index: 999;
+#topbar{
+    height: 60px;
+    width: 70%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px;
+    top: 0px;
+    vertical-align: middle;
 }
 
 /*Class Styles:*/
+
+.topbar-ent{
+    height: 60px;
+    top: 0px;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    width: 15%;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
 
 .nav-link{
     color: #fff;
     text-decoration: none;
     padding-left: 10px;
     padding-right: 10px;
+    margin: 0px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    height: 60px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 60px;
 }
 
 .nav-link:hover{
