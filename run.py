@@ -4,8 +4,9 @@ from flask import Flask, flash, session, render_template, render_template_string
     Response, g, Markup, Blueprint, make_response
 from flask_sqlalchemy import SQLAlchemy 
 import sqlite3
-from register import *
-from logout import *
+from register import registration, register
+from logout import logoutuser, logout
+from login import loginpage, login
 #from lumberjack import *
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
@@ -21,82 +22,40 @@ app = Flask(__name__, static_url_path='', static_folder="static", template_folde
 app.secret_key = 'Slskdjf2iu3#1!'
 app.config['SQLALCHEMY_ECHO'] = True  ## show sql for debugging
 #db = SQLAlchemy() ## may not be needed
+
+app.register_blueprint(login)
+app.register_blueprint(register)
+
 routes = Blueprint('routes', __name__) # support for addtl py pages
-
-def check_password(hashed_password, user_password): # currently md5, will change to sha256 later
-    return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
-
-def validate(username, password): # validate username, pw from database
-    con = sqlite3.connect('static/db1.db')
-    completion = False
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT * FROM users")
-        rows = cur.fetchall()
-        for row in rows:
-            dbUser = row[1]
-            dbPass = row[2]
-            if dbUser == username:
-                completion = check_password(dbPass, password)
-    return completion
-
-def setrole(username):
-    con = sqlite3.connect('static/db1.db')
-    role = None
-    with con:
-        cur = con.cursor()
-        cur.execute("SELECT role FROM users where username = (?);", (username,))
-        loadrole = cur.fetchall()
-        loadrole = str(loadrole)
-        loadrole = loadrole.replace(',', '')
-        loadrole = loadrole.replace("'", '')
-        loadrole = loadrole.replace('(', '')
-        loadrole = loadrole.replace(')', '')
-    return str(loadrole)
 
 @app.errorhandler(404) # redirect to main page if not found
 def page_not_found(e):
     return redirect("/")
 
-@app.route('/', methods=['GET', 'POST']) # 
+@app.route('/', methods=['GET', 'POST']) # main page route
 def logina():
-    if session.get('logged_in'):
-        return redirect("/main")
+    if session.get('logged_in') == True:
+        return render_template('main.html')
     else:
-        error = None
-        if request.method == 'POST':
-            username = request.form.to_dict()['username']
-            password = request.form.to_dict()['password']
-            completion = validate(username, password)
-            if completion == False:
-                error = 'Invalid Credentials. Please try again.'
-            else:
-                session['username'] = (username)
-                session['logged_in'] = True
-                role = setrole(username)
-                session['role'] = str(role)
-                print(session['role'])
-                return redirect(url_for('main'))
+        return loginpage()
 
-        session['orderstatus'] = False
-        return render_template('login.html', error=error)
+@app.route('/login', methods=['GET', 'POST']) # redirect to main if logged in
+def loggedin():
+    if session.get('logged_in') == True: # 
+        return redirect('/')
+    else:
+        return loginpage() # else redirect to login page
 
-@app.route('/register', methods=['GET', 'POST']) # redirect to registration if not logged in
+@app.route('/register', methods=['GET', 'POST']) # redirect to main page if already logged in
 def beginr():
-    if session.get('logged_in'):
-        return redirect('/main')
+    if session.get('logged_in') == True:
+        return redirect('/')
     else:
         return registration()
-
 
 @app.route('/logout', methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
     return logoutuser()
-
-@app.route('/main', methods=['GET', 'POST']) # main page
-def main():    
-    return render_template('main.html')
-
 
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True #reload html templates when saved, while app is running

@@ -6,4 +6,4 @@ logout = Blueprint('logout', __name__, url_prefix='/logout', template_folder='te
 
 def logoutuser():
     session['logged_in'] = False
-    return redirect("/")
+    return redirect("/login")

@@ -1,9 +1,7 @@
 import requests
 import sqlalchemy
-#import sqlite3
 import hashlib
 from sqlalchemy.engine import Engine
-#from sqlite3 import Connection as SQLite3Connection
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
