@@ -48,6 +48,20 @@ def loginpage():
             loadrole = loadrole.replace(')', '')
         return str(loadrole)
 
+    def setbusiness(username):
+        con = sqlite3.connect('static/db1.db')
+        role = None
+        with con:
+            cur = con.cursor()
+            cur.execute("SELECT business FROM users where username = (?);", (username,))
+            loadbusiness = cur.fetchall()
+            loadbusiness = str(loadbusiness)
+            loadbusiness = loadbusiness.replace(',', '')
+            loadbusiness = loadbusiness.replace("'", '')
+            loadbusiness = loadbusiness.replace('(', '')
+            loadbusiness = loadbusiness.replace(')', '')
+        return str(loadbusiness)
+
     error = None
     if request.method == 'POST':
         username = request.form.to_dict()['username']
@@ -60,7 +74,8 @@ def loginpage():
             session['logged_in'] = True
             role = setrole(username)
             session['role'] = str(role)
-            print(session['role'])
+            business = setbusiness(username)
+            session['business'] = str(business)
             return redirect('/')
 
     return render_template("login.html", error=error)
