@@ -52,12 +52,12 @@ def registration():
 
             if result == None:
                 cur = con.cursor()
-                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role) VALUES (?, ?, ?, ?, ?, 'user');", (username, password, firstname, lastname, business,))
-                cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'user', 0, 0, 0, 0);", (username,))
+                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role) VALUES (?, ?, ?, ?, ?, 'admin');", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'admin', 1, 1, 1, 1);", (username,))
                 con.commit()
                 con.close()
                 gc.collect()
-                session['role'] = 'user'
+                session['role'] = 'admin'
                 session['logged_in'] = True
                 session['username'] = username
                 return redirect('/profile')
