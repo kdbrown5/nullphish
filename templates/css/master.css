@@ -1,0 +1,22 @@
+/*
+Color Palette Hex Codes:
+  Deep Sea: #010418
+  Burnt Orange: #BF6800
+  Nurgle Green: #008053
+*/
+
+/* Font Declarations */
+@font-face {
+    font-family: 'Existence';
+    src:  url('fonts/Existence-Light-webfont.woff') format('woff');
+  }
+
+/* Global Styles: */
+body {
+      margin: 0;
+      overflow-x: hidden;
+      background-color: #010418;
+      font-family: Existence;
+      color: #BF6800;
+      text-align: center;
+    }
