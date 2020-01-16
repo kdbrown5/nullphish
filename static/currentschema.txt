@@ -3,5 +3,17 @@ id INTEGER PRIMARY KEY AUTOINCREMENT,
 username TEXT,
 password TEXT,
 firstname TEXT, lastname TEXT,
-business TEXT
+business TEXT,
+role TEXT,
+trial integer
+);
+
+CREATE TABLE userperm (
+id integer primary key autoincrement,
+username text,
+role text,
+enroll integer,
+view integer,
+remove integer,
+email integer
 );
