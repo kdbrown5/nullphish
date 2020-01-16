@@ -40,6 +40,20 @@ def validate(username, password): # validate username, pw from database
                 completion = check_password(dbPass, password)
     return completion
 
+def setrole(username):
+    con = sqlite3.connect('static/db1.db')
+    role = None
+    with con:
+        cur = con.cursor()
+        cur.execute("SELECT role FROM users where username = (?);", (username,))
+        loadrole = cur.fetchall()
+        loadrole = str(loadrole)
+        loadrole = loadrole.replace(',', '')
+        loadrole = loadrole.replace("'", '')
+        loadrole = loadrole.replace('(', '')
+        loadrole = loadrole.replace(')', '')
+    return str(loadrole)
+
 @app.errorhandler(404) # redirect to main page if not found
 def page_not_found(e):
     return redirect("/")
@@ -59,7 +73,11 @@ def logina():
             else:
                 session['username'] = (username)
                 session['logged_in'] = True
+                role = setrole(username)
+                session['role'] = str(role)
+                print(session['role'])
                 return redirect(url_for('main'))
+
         session['orderstatus'] = False
         return render_template('login.html', error=error)
 
