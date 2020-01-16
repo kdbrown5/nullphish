@@ -39,13 +39,13 @@ def registration():
                 return render_template("register.html")
             con = sqlite3.connect('static/db1.db')
 
-            if code != 'tron':
-                if code != 'tran':
-                    if code != 'kdb':
-                        flash('Incorrect registration code')
-                        return render_template("register.html")
+            if code != 'goat':
+                if code != 'kdb':
+                    flash('Incorrect registration code')
+                    return render_template("register.html")
                 else:
                     pass
+            
 
             with con:
                 cur = con.cursor()
@@ -54,14 +54,15 @@ def registration():
 
             if result == None:
                 cur = con.cursor()
-                cur.execute("INSERT INTO users (username, password, firstname, lastname, business) VALUES (?, ?, ?, ?, ?);", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role) VALUES (?, ?, ?, ?, ?, 'user');", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'user', 0, 0, 0, 0);", (username,))
                 con.commit()
                 con.close()
                 gc.collect()
+                session['role'] = 'user'
                 session['logged_in'] = True
                 session['username'] = username
                 return redirect('/profile')
-
 
 
             if result != None:
