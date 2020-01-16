@@ -7,6 +7,7 @@ import sqlite3
 from register import registration, register
 from logout import logoutuser, logout
 from login import loginpage, login
+from stats import stat, stats
 #from lumberjack import *
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
@@ -25,6 +26,8 @@ app.config['SQLALCHEMY_ECHO'] = True  ## show sql for debugging
 
 app.register_blueprint(login)
 app.register_blueprint(register)
+app.register_blueprint(stats)
+app.register_blueprint(logout)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -56,6 +59,13 @@ def beginr():
 @app.route('/logout', methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
     return logoutuser()
+
+@app.route('/stats', methods=['GET', 'POST'])
+def beginst():
+    if session.get('logged_in'):
+        return stat()
+    else:
+        return redirect("/")
 
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True #reload html templates when saved, while app is running
