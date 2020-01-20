@@ -5,7 +5,7 @@ from flask import Flask, flash, session, render_template, render_template_string
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
 import sqlite3 as sql
-
+from lumberjack import log
 
 stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templates')
 @stats.route("/stats", methods=['GET', 'POST'])

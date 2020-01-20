@@ -8,7 +8,7 @@ from register import registration, register
 from logout import logoutuser, logout
 from login import loginpage, login
 from stats import stat, stats
-from lumberjack import *
+from lumberjack import log
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]

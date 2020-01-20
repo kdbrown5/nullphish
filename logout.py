@@ -1,5 +1,6 @@
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
+from lumberjack import log
 
 logout = Blueprint('logout', __name__, url_prefix='/logout', template_folder='templates')
 @logout.route("/logout", methods=['GET', 'POST'])

@@ -1,6 +1,8 @@
 import os.path
 import datetime
 
+logname = str('log/log-%s.txt'%datetime.datetime.now().strftime('%m-%d-%Y-%I-%M-%S'))
+
 def log(inx):
     #Generate log header based on date/time
     mmt = datetime.datetime.now()
@@ -30,14 +32,15 @@ def log(inx):
 
     #Finalize entry beginning
     ent = yr + mt + dy + "." + hr + ":" + mn + ":" + sc + ":" + ms + ": " + str(inx) + "\n"
-
+    
+    print(logname)
     #Check if log file already exists
-    if os.path.isfile('log.txt'):
+    if os.path.isfile(logname):
         #Log file exists
-        fx = open("log.txt", "a")
+        fx = open(logname, "a")
     else:
         #Need to create log file
-        fx = open("log.txt", "x")
+        fx = open(logname, "x")
 
     #Write to the file
     try:

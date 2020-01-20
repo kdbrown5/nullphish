@@ -9,6 +9,7 @@ from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import gc
 import sqlite3
+from lumberjack import log
 
 db = SQLAlchemy()
 
