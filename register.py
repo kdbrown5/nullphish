@@ -1,9 +1,7 @@
 import requests
 import sqlalchemy
-#import sqlite3
 import hashlib
 from sqlalchemy.engine import Engine
-#from sqlite3 import Connection as SQLite3Connection
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
@@ -11,6 +9,7 @@ from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import gc
 import sqlite3
+from lumberjack import log
 
 db = SQLAlchemy()
 
@@ -39,11 +38,10 @@ def registration():
                 return render_template("register.html")
             con = sqlite3.connect('static/db1.db')
 
-            if code != 'tron':
-                if code != 'tran':
-                    if code != 'kdb':
-                        flash('Incorrect registration code')
-                        return render_template("register.html")
+            if code != 'goat':
+                if code != 'kdb':
+                    flash('Incorrect registration code')
+                    return render_template("register.html")
                 else:
                     pass
 
@@ -54,15 +52,15 @@ def registration():
 
             if result == None:
                 cur = con.cursor()
-                cur.execute("INSERT INTO users (username, password, firstname, lastname, business) VALUES (?, ?, ?, ?, ?);", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role) VALUES (?, ?, ?, ?, ?, 'admin');", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'admin', 1, 1, 1, 1);", (username,))
                 con.commit()
                 con.close()
                 gc.collect()
+                session['role'] = 'admin'
                 session['logged_in'] = True
                 session['username'] = username
                 return redirect('/profile')
-
-
 
             if result != None:
                 flash("An account with that email address is taken, please choose another")
@@ -74,14 +72,3 @@ def registration():
         return(str(e))
     
     return render_template("register.html")
-
-
-
-
-
-
-
-
-
-
-    
