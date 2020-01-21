@@ -44,6 +44,7 @@ def registration():
                     return render_template("register.html")
                 else:
                     pass
+            
 
             with con:
                 cur = con.cursor()
@@ -62,6 +63,7 @@ def registration():
                 session['username'] = username
                 return redirect('/profile')
 
+
             if result != None:
                 flash("An account with that email address is taken, please choose another")
                 return render_template('register.html')
@@ -72,3 +74,14 @@ def registration():
         return(str(e))
     
     return render_template("register.html")
+
+
+
+
+
+
+
+
+
+
+    
