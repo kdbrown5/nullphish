@@ -54,7 +54,7 @@ def loginb():
     if session.get('logged_in') == True:
         return render_template('main.html')
     else:
-        return render_template('public.html')
+        return loginpage()
 
 @app.route('/login', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loggedin():
