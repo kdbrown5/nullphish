@@ -19,7 +19,10 @@ for extra_dir in extra_dirs:
             if path.isfile(filename):
                 extra_files.append(filename)
 
-app = Flask(__name__, static_url_path='', static_folder="static", template_folder="templates")
+app = Flask(__name__, static_url_path='', static_folder="static", template_folder="templates", subdomain_matching=True)
+
+app.config['SERVER_NAME'] = "nullphish.com"
+app.config['app'] = "app.nullphish.com"
 app.secret_key = 'Slskdjf2iu3#1!'
 app.config['SQLALCHEMY_ECHO'] = True  ## show sql for debugging
 #db = SQLAlchemy() ## may not be needed
@@ -31,36 +34,47 @@ app.register_blueprint(logout)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
+@app.route("/stat", subdomain="app")
+def member_index():
+    print('app login')
+    return stat()
+
+
 @app.errorhandler(404) # redirect to main page if not found
-def page_not_found(e):
+def page_not_found_public(e):
     return redirect("/")
 
 @app.route('/', methods=['GET', 'POST']) # main page route
 def logina():
+    return render_template('public.html')
+
+
+@app.route('/', subdomain="app", methods=['GET', 'POST']) # main page route
+def loginb():
     if session.get('logged_in') == True:
         return render_template('main.html')
     else:
-        return loginpage()
+        return render_template('public.html')
 
-@app.route('/login', methods=['GET', 'POST']) # redirect to main if logged in
+@app.route('/login', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loggedin():
     if session.get('logged_in') == True: # 
         return redirect('/')
     else:
         return loginpage() # else redirect to login page
 
-@app.route('/register', methods=['GET', 'POST']) # redirect to main page if already logged in
+@app.route('/register', subdomain="app", methods=['GET', 'POST']) # redirect to main page if already logged in
 def beginr():
     if session.get('logged_in') == True:
         return redirect('/')
     else:
         return registration()
 
-@app.route('/logout', methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
+@app.route('/logout', subdomain="app", methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
     return logoutuser()
 
-@app.route('/stats', methods=['GET', 'POST'])
+@app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
     if session.get('logged_in'):
         return stat()
