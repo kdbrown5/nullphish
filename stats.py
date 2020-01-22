@@ -13,19 +13,38 @@ stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templ
 def stat():
     def businesslookup():
         con = sqlite3.connect('static/db1.db')
-        username = session['username']
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
         with con:
             cur = con.cursor()
-            cur.execute('select * from tests where business LIKE (?);', (str(session['business']),))
-            businessquery2 = str(cur.fetchone())
-            businessquery = str(cur.fetchall())
-            print(businessquery2)
-            print(businessquery)
+            businessquery = []
+            for row in cur.execute('select DISTINCT * from tests where business LIKE (?);', (business,)):
+                businessquery.append(row[:])
         con.close()
+        businessdata = businessquery
+
         return businessquery
 
+    def userlookup():
+        con = sqlite3.connect('static/db1.db')
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
+        with con:
+            cur = con.cursor()
+            firstname = []
+            lastname = []
+            for row in cur.execute('select DISTINCT firstname from tests where business LIKE (?);', (business,)):
+                firstname.append(row[:])
+            for row in cur.execute('select DISTINCT lastname from tests where business LIKE (?);', (business,)):
+                lastname.append(row[:])            
+        con.close()
+        firstname = str(firstname)
+        return firstname, lastname
     businessdata = businesslookup()
-    print(businessdata)
+    firstname, lastname = userlookup()
+
 
     if 'main' in request.form:
         return redirect("/main")

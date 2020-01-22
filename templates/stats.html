@@ -73,12 +73,20 @@ body {
 
 
 <center>
-		<div class="buttonHolder">
-
-        <form method="post">
-        <h2 class="heade"> <input class="btn btn-secondary btn-lg" type="submit" name="main" value="Return to main page"></h2></form>
-
-
+	<form method='POST'>
+		<div class="ex2">
+			<div class="form-group">
+					<label for="exampleFormControlSelect1"></label>
+					<select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
+							<option>Select a user to remove test scores</option>
+									{% for row in userlist %}
+											<option>{{ row }}</option>
+									{% endfor %}
+							
+					</select>
+					<button class="btn btn-secondary btn-block">Remove</button>
+				  </div>
+				</div></form>
 
 
 </div>
@@ -97,26 +105,31 @@ body {
 		{% endwith %}</h1>
 			
 				{% if businessdata %}
-	<h1><u><b>Test Results</b></u></h1>
+	<h1><u><b>Business Exam Results</b></u></h1>
 <br>
 	<table class="table table-hover dataframe" align="center">
 		<thead>
 			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-			<td width="5%">Testnumber</td>
+			<td width="5%">Business</td>
 			<td>First</td>
 			<td>Last</td>
+			<td>Test</td>
 			<td>Correct</td>
 			<td>Incorrect</td>
+			<td>Pass/Fail</td>
+			<td>Notified</td>
 			<td>Date</td>
 		</tr>
 	{% for item in businessdata %}
 	<tr style="text-align:center;" class="border_bottom">
 			<td width="5%">{{item[1]}}</td>
-		<td>{{item[6]}}</td>
-		<td>{{item[7]}}</td>
 		<td>{{item[2]}}</td>
 		<td>{{item[3]}}</td>
 		<td>{{item[4]}}</td>
+		<td>{{item[5]}}</td>
+		<td>{{item[6]}}</td>
+		<td>{{item[7]|replace('1', 'Pass')|replace('0', 'Fail')}}</td>
+		<td>{{item[8]|replace('0', 'Not Sent')|replace('1', 'Sent') }}</td>
 	</tr>
 	{% endfor %}
 	</table>
