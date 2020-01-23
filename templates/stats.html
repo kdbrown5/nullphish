@@ -73,22 +73,38 @@ body {
 
 
 <center>
+	{% if firstlast %}
 	<form method='POST'>
 		<div class="ex2">
 			<div class="form-group">
 					<label for="exampleFormControlSelect1"></label>
-					<select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
-							<option>Select a user to remove test scores</option>
-									{% for row in userlist %}
+					<select name= 'modifyuser' class="form-control" id="modifyuser">
+							<option>Select a user to modify test scores</option>
+									{% for row in firstlast %}
 											<option>{{ row }}</option>
 									{% endfor %}
 							
 					</select>
-					<button class="btn btn-secondary btn-block">Remove</button>
+					<button class="btn btn-secondary btn-block">Modify</button>
 				  </div>
 				</div></form>
-
-
+				{% endif %}
+				
+				{% if usertests %}
+				<form method='POST'>
+					<div class="ex2">
+						<div class="form-group">
+								<label for="exampleFormControlSelect1"></label>
+								<select name= 'deleterecord' class="form-control" id="deleterecord">
+										<option>Delete Record</option>
+												{% for row in usertests %}
+														<option>{{ row }}</option>
+												{% endfor %}
+								</select>
+								<button class="btn btn-secondary btn-block">Delete Record</button>
+							  </div>
+							</div></form>
+{% endif %}
 </div>
 <br><br>
 </center>
