@@ -7,6 +7,9 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3 as sql
 from lumberjack import log
 
+########## using notify column in tests table - change column to view and update notify in stats to view ### 
+## purpose of this is to hide records instead of deleting
+
 stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templates')
 @stats.route("/stats", methods=['GET', 'POST'])
 
@@ -19,7 +22,7 @@ def stat():
         with con:
             cur = con.cursor()
             businessquery = []
-            for row in cur.execute('select DISTINCT * from tests where business LIKE (?);', (business,)):
+            for row in cur.execute('select DISTINCT * from tests where business LIKE (?) and notify = 1;', (business,)):
                 businessquery.append(row[:])
         con.close()
         businessdata = businessquery
@@ -35,13 +38,13 @@ def stat():
             cur = con.cursor()
             firstname = []
             lastname = []
-            for row in cur.execute('select DISTINCT firstname from tests where business LIKE (?);', (business,)):
+            for row in cur.execute('select DISTINCT firstname from tests where business LIKE (?) and notify = 1;', (business,)):
                 row = str(row).replace('(', '')
                 row = str(row).replace(')', '')
                 row = str(row).replace(',', '')
                 row = str(row).replace("'", '')
                 firstname.append(row[:])
-            for row in cur.execute('select DISTINCT lastname from tests where business LIKE (?);', (business,)):
+            for row in cur.execute('select DISTINCT lastname from tests where business LIKE (?) and notify = 1;', (business,)):
                 row = str(row).replace('(', '')
                 row = str(row).replace(')', '')
                 row = str(row).replace(',', '')
@@ -54,7 +57,7 @@ def stat():
         con = sqlite3.connect('static/db1.db')
         with con:
             cur = con.cursor()
-            cur.execute('select * from tests where firstname LIKE (?) and lastname LIKE (?);', (searchfirst, searchlast),)
+            cur.execute('select * from tests where firstname LIKE (?) and lastname LIKE (?) and notify = 1;', (searchfirst, searchlast),)
             usertests = cur.fetchall()
         con.close()
         return usertests
@@ -63,7 +66,7 @@ def stat():
         con = sqlite3.connect('static/db1.db')
         with con:
             cur = con.cursor()
-            cur.execute('delete from tests where id = (?);', (record),)
+            cur.execute('update tests set notify = 0 where id = (?);', (record),)
         con.close()
         return render_template('stats.html', businessdata=businessdata, firstlast=firstlast)
 
