@@ -77,7 +77,8 @@ def beginlogout():
 @app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
     if session.get('logged_in'):
-        return stat()
+        if session.get('role') == 'superadmin' or 'admin':
+            return stat()
     else:
         return redirect("/")
 
