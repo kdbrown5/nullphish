@@ -12,6 +12,30 @@ from lumberjack import log
 
 stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templates')
 
+@stats.route('/stats/mod', methods=['GET', 'POST'])
+def waitforrecdel1():
+    def businesslookup():
+        con = sqlite3.connect('static/db1.db')
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
+        with con:
+            cur = con.cursor()
+            businessquery = []
+            for row in cur.execute('select DISTINCT * from tests where business LIKE (?) and notify = 1;', (business,)):
+                businessquery.append(row[:])
+        con.close()
+        businessdata = businessquery
+        return businessquery
+        
+    businessdata = businesslookup()
+
+    if 'exitmodify' in request.form:
+        return redirect('/stats')
+
+    return render_template('stats-modify.html', businessdata=businessdata)    
+
+
 @stats.route('/stats/del', methods=['GET', 'POST'])
 def waitforrecdel():
     def businesslookup():
@@ -36,17 +60,17 @@ def waitforrecdel():
         con.close()
         #del delrec
         businessdata = businesslookup()
-        return redirect ('/stats/del')
         
     businessdata = businesslookup()
 
     if request.method == 'GET':
-        if request.args.get('rec'[0]) == None:
+        print(request.args.get('rec'[:]))
+        if request.args.get('rec'[:]) == None:
             return render_template('stats-modify.html', businessdata=businessdata)
         else:
             delrec = request.args.get('rec')
             deleterecord(delrec)
-            return redirect ('/stats/del')
+            return redirect('/stats/mod')
 
     if 'exitmodify' in request.form:
         return redirect('/stats')
@@ -70,23 +94,10 @@ def stat():
         businessdata = businessquery
         return businessquery
 
-    def deleterecord(record):
-        con = sqlite3.connect('static/db1.db')
-        with con:
-            cur = con.cursor()
-            cur.execute('update tests set notify = 0 where id = (?);', (record),)
-        con.close()
-        return render_template('stats.html', businessdata=businessdata)
-
     businessdata = businesslookup()
 
     if 'modifyrecord' in request.form:
         return render_template('stats-modify.html', businessdata=businessdata)
-
-    if 'deleterecord' in request.form:
-        record = (request.form['deleterecord'][1])
-        deleterecord(record)
-        return render_template('stats.html', businessdata=businessdata)
 
     if 'main' in request.form:
         return redirect("/main")
