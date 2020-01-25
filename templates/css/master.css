@@ -6,17 +6,26 @@ Color Palette Hex Codes:
 */
 
 /* Font Declarations */
-@font-face {
-    font-family: 'Existence';
-    src:  url('fonts/Existence-Light-webfont.woff') format('woff');
-  }
+@font-face{
+  font-family: 'Existence';
+  src:  url('fonts/Existence-Light-webfont.woff') format('woff');
+}
 
 /* Global Styles: */
-body {
-      margin: 0;
-      overflow-x: hidden;
-      background-color: #010418;
-      font-family: Existence;
-      color: #BF6800;
-      text-align: center;
-    }
+body{
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #010418;
+  font-family: Existence;
+  color: #BF6800;
+  text-align: center;
+}
+
+nav{
+  margin: 0;
+  z-index: 999;
+  height: 60px;
+  width: 100%;
+  background-color: #010418;
+  color: #BF6800
+}
