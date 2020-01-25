@@ -7,8 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3 as sql
 from lumberjack import log
 
-########## using notify column in tests table - change column to view and update notify in stats to view ### 
-## purpose of this is to hide records instead of deleting
 
 stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templates')
 
@@ -56,11 +54,13 @@ def waitforrecdel():
         con = sqlite3.connect('static/db1.db')
         with con:
             cur = con.cursor()
-            cur.execute('update tests set notify = 0 where id = (?);', (delrec,))
-        con.close()
-        #del delrec
-        businessdata = businesslookup()
-        
+            cur.execute('select business from tests where id = (?);', (delrec,))
+            businessverify = cur.fetchone()
+            if str(businessverify[0]) == str(session['business'][1:-1]):
+                cur.execute('update tests set notify = 0 where id = (?);', (delrec,))
+            else:
+                flash('Why are you trying to hack the gibson?', 'category2')
+
     businessdata = businesslookup()
 
     if request.method == 'GET':
