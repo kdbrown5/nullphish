@@ -7,7 +7,7 @@ firstname TEXT, lastname TEXT,
 business TEXT,
 role TEXT,
 trial integer
-);
+, department text);
 CREATE TABLE userperm (
 id integer primary key autoincrement,
 username text,
@@ -17,4 +17,11 @@ view integer,
 remove integer,
 email integer
 , business text);
-CREATE TABLE tests (id integer primary key autoincrement, business text, firstname text, lastname text, testname text, correct integer, incorrect integer, pass integer, notify integer);
+CREATE TABLE tests (id integer primary key autoincrement, business text, firstname text, lastname text, testname text, correct integer, incorrect integer, pass integer, notify integer, date text, department text);
+CREATE TABLE datetime_text(
+   d1 text,
+   d2 text
+);
+
+
+## change notify to view/hide
