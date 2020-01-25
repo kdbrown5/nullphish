@@ -7,7 +7,7 @@ import sqlite3
 from register import registration, register
 from logout import logoutuser, logout
 from login import loginpage, login
-from stats import stat, stats
+from stats import stat, stats, waitforrecdel
 from lumberjack import log
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
@@ -81,6 +81,10 @@ def beginst():
             return stat()
     else:
         return redirect("/")
+
+@app.route('/stats/del', methods=['GET', 'POST'])
+def beginstatdel():
+    return waitforrecdel()
 
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True #reload html templates when saved, while app is running

@@ -69,43 +69,12 @@ body {
 		</div></div>
 
 <br>
-<br><br><br>
+<br>
 
 
 <center>
-	{% if firstlast %}
-	<form method='POST'>
-		<div class="ex2">
-			<div class="form-group">
-					<label for="exampleFormControlSelect1"></label>
-					<select name= 'modifyuser' class="form-control" id="modifyuser">
-							<option>Select a user to modify test scores</option>
-									{% for row in firstlast %}
-											<option>{{ row }}</option>
-									{% endfor %}
-							
-					</select>
-					<button class="btn btn-secondary btn-block">Modify</button>
-				  </div>
-				</div></form>
-				{% endif %}
-				
-				{% if usertests %}
-				<form method='POST'>
-					<div class="ex2">
-						<div class="form-group">
-								<label for="exampleFormControlSelect1"></label>
-								<select name= 'deleterecord' class="form-control" id="deleterecord">
-										<option>Delete Record</option>
-												{% for row in usertests %}
-														<option>{{ row }}</option>
-												{% endfor %}
-								</select>
-								<button class="btn btn-secondary btn-block">Delete Record</button>
-							  </div>
-							</div></form>
-{% endif %}
-</div>
+	<form method="post">
+        <h2 class="heade"> <input class="btn btn-secondary btn-block" type="submit" name="modifyrecord" value="Modify Records"></h2></form>
 <br><br>
 </center>
 <center>
@@ -126,7 +95,7 @@ body {
 	<table class="table table-hover dataframe" align="center">
 		<thead>
 			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-			<td width="5%">Business</td>
+			<td width="5%">Department</td>
 			<td>First</td>
 			<td>Last</td>
 			<td>Test</td>
@@ -138,7 +107,7 @@ body {
 		</tr>
 	{% for item in businessdata %}
 	<tr style="text-align:center;" class="border_bottom">
-			<td width="5%">{{item[1]}}</td>
+			<td width="5%">{{item[10]}}</td>
 		<td>{{item[2]}}</td>
 		<td>{{item[3]}}</td>
 		<td>{{item[4]}}</td>
@@ -146,6 +115,7 @@ body {
 		<td>{{item[6]}}</td>
 		<td>{{item[7]|replace('1', 'Pass')|replace('0', 'Fail')}}</td>
 		<td>{{item[8]|replace('0', 'Not Sent')|replace('1', 'Sent') }}</td>
+		<td>{{item[9]}}</td>
 	</tr>
 	{% endfor %}
 	</table>
