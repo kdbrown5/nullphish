@@ -33,6 +33,7 @@ def loginpage():
                 dbPass = row[2]
                 if dbUser == username:
                     completion = check_password(dbPass, password)
+        con.close()
         return completion
 
     def setrole(username):
@@ -41,13 +42,10 @@ def loginpage():
         with con:
             cur = con.cursor()
             cur.execute("SELECT role FROM users where username = (?);", (username,))
-            loadrole = cur.fetchall()
-            loadrole = str(loadrole)
-            loadrole = loadrole.replace(',', '')
-            loadrole = loadrole.replace("'", '')
-            loadrole = loadrole.replace('(', '')
-            loadrole = loadrole.replace(')', '')
-        return str(loadrole)
+            loadrole = cur.fetchone()
+            loadrole = str(loadrole[0])
+        con.close()
+        return loadrole
 
     def setbusiness(username):
         con = sqlite3.connect('static/db1.db')
@@ -55,13 +53,10 @@ def loginpage():
         with con:
             cur = con.cursor()
             cur.execute("SELECT business FROM users where username = (?);", (username,))
-            loadbusiness = cur.fetchall()
-            loadbusiness = str(loadbusiness)
-            loadbusiness = loadbusiness.replace(',', '')
-            loadbusiness = loadbusiness.replace("'", '')
-            loadbusiness = loadbusiness.replace('(', '')
-            loadbusiness = loadbusiness.replace(')', '')
-        return str(loadbusiness)
+            loadbusiness = cur.fetchone()
+            loadbusiness = str(loadbusiness[0])
+        con.close()
+        return loadbusiness
 
     error = None
     if request.method == 'POST':
@@ -74,16 +69,9 @@ def loginpage():
             session['username'] = (username)
             session['logged_in'] = True
             role = setrole(username)
-            session['role'] = str(role)
+            session['role'] = role
             business = setbusiness(username)
-            session['business'] = str(business)
+            session['business'] = business
             return redirect('/')
 
     return render_template("login.html", error=error)
-
-
-
-
-
-
-
