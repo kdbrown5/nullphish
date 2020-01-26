@@ -9,6 +9,7 @@ from logout import logoutuser, logout
 from login import loginpage, login
 from stats import stat, stats, waitforrecdel, waitforrecdel1
 from lumberjack import log
+from profile import myprofile, profile
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -31,6 +32,7 @@ app.register_blueprint(login)
 app.register_blueprint(register)
 app.register_blueprint(stats)
 app.register_blueprint(logout)
+app.register_blueprint(profile)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -74,6 +76,13 @@ def beginr():
 def beginlogout():
     return logoutuser()
 
+@app.route('/profile', subdomain="app" methods=['GET', 'POST'])
+def beginp():
+    if session.get('logged_in'):
+        return myprofile()
+    else:
+        return redirect('/')
+
 @app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
     if session.get('logged_in'):
@@ -82,7 +91,7 @@ def beginst():
     else:
         return redirect("/")
 
-@app.route('/stats/del', methods=['GET', 'POST'])
+@app.route('/stats/del', subdomain="app" methods=['GET', 'POST'])
 def beginstatdel():
     return waitforrecdel()
 
