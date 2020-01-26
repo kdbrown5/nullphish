@@ -76,7 +76,7 @@ def beginr():
 def beginlogout():
     return logoutuser()
 
-@app.route('/profile', subdomain="app" methods=['GET', 'POST'])
+@app.route('/profile', subdomain="app", methods=['GET', 'POST'])
 def beginp():
     if session.get('logged_in'):
         return myprofile()
@@ -91,7 +91,7 @@ def beginst():
     else:
         return redirect("/")
 
-@app.route('/stats/del', subdomain="app" methods=['GET', 'POST'])
+@app.route('/stats/del', subdomain="app", methods=['GET', 'POST'])
 def beginstatdel():
     return waitforrecdel()
 
