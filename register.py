@@ -10,6 +10,7 @@ from passlib.hash import sha256_crypt
 import gc
 import sqlite3
 from lumberjack import log
+from flask_mail import Mail, Message
 
 db = SQLAlchemy()
 
@@ -17,6 +18,30 @@ register = Blueprint('register', __name__, url_prefix='/register', template_fold
 @register.route("/register", methods=['GET', 'POST'])
 
 def registration():
+    def regsend(emailrecip, link, firstname):
+        app = Flask(__name__)
+        app.config.update(
+            DEBUG=True,
+            #EMAIL SETTINGS
+            MAIL_SERVER='webmail.nullphish.com',
+            MAIL_PORT=465,
+            MAIL_USE_SSL=True,
+            MAIL_USERNAME = 'donotreply@nullphish.com',
+            MAIL_PASSWORD = 'rtatstfu18as#R654'
+            )
+        mail = Mail(app)
+        emailrecip=str(session['username'])
+        link='https://google.com'
+
+        msg = Message("Welcome! Please Complete Registration",
+        sender="donotreply@nullphish.com",
+        recipients=[emailrecip])
+        with app.app_context():
+            msg.body = 'Hello,+\n Please follow this link to complete registration for Nullphish.com:'+link+session['username']
+            msg.html=render_template('emailreg.html', firstname=firstname)
+            mail.send(msg)
+    
+    
     try:
         if request.method == "POST":
             firstname = request.form.to_dict()['firstname']
@@ -61,6 +86,9 @@ def registration():
                 session['role'] = 'admin'
                 session['logged_in'] = True
                 session['username'] = username
+                emailrecip = username
+                link = 'https://gokdb.com/'
+                regsend(emailrecip, link, firstname)
                 return redirect('/profile')
 
 

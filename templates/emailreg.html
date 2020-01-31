@@ -96,9 +96,10 @@ a[x-apple-data-detectors] {
                  <tr style="border-collapse:collapse;"> 
                   <td width="520" valign="top" align="center" style="padding:0;Margin:0;"> 
                    <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"> 
-                     <tr style="border-collapse:collapse;"> 
-                      <td align="center" style="padding:0;Margin:0;padding-bottom:10px;padding-top:40px;"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#FFFFFF;">WELCOME!</h1></td> 
-                     </tr> 
+                     <tr style="border-collapse:collapse;"> {% if firstname %}
+                      <td align="center" style="padding:0;Margin:0;padding-bottom:10px;padding-top:40px;"><h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:lato, 'helvetica neue', helvetica, arial, sans-serif;font-size:30px;font-style:normal;font-weight:bold;color:#FFFFFF;">Welcome {{ firstname }}!</h1></td> 
+                     {% endif %}
+                    </tr> 
                      <tr style="border-collapse:collapse;"> 
                       <td esdev-links-color="#757575" align="center" style="Margin:0;padding-top:10px;padding-bottom:20px;padding-left:30px;padding-right:30px;"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-size:15px;font-family:helvetica, 'helvetica neue', arial, verdana, sans-serif;line-height:23px;color:#F1490F;">Please click the link below to validate your account and get started!</p></td> 
                      </tr> 
