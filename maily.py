@@ -1,8 +1,6 @@
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
-    Response, g, Markup, Blueprint, make_response
 from bs4 import BeautifulSoup
 
 def sendphish(inserttemplate, receiveremail):
@@ -14,7 +12,6 @@ def sendphish(inserttemplate, receiveremail):
     message["Subject"] = "multipart test"
     message["From"] = sender_email
     message["To"] = receiver_email
-
 
     # Create the plain-text and HTML version of your message
     text = """\
