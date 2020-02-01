@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
 
-def sendphish(inserttemplate, receiveremail):
+def sendphish(inserttemplate, receiveremail, firstname, lastname):
     sender_email = "donotreply@nullphish.com"
     receiver_email = receiveremail
     password = "rtatstfu18as#R654"
@@ -13,13 +13,21 @@ def sendphish(inserttemplate, receiveremail):
     message["From"] = sender_email
     message["To"] = receiver_email
 
+    try:
+        myVar
+    except NameError:
+        myVar = None    
+
     # Create the plain-text and HTML version of your message
     text = """\
     """
 
-    with open(inserttemplate, "r") as f:
-        contents = f.read()
-        html = BeautifulSoup(contents, 'lxml')
+    changetemplate = open(inserttemplate, "rt")###  read template and replace name 
+    html = changetemplate.read()
+    html = html.replace('firstname', firstname)
+    html = html.replace('lastname', lastname)
+    html = html.replace('receiveremail', receiveremail)
+    changetemplate.close()
 
     # Turn these into plain/html MIMEText objects
     part1 = MIMEText(text, "plain")
