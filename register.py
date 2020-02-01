@@ -10,7 +10,10 @@ from passlib.hash import sha256_crypt
 import gc
 import sqlite3
 from lumberjack import log
-from flask_mail import Mail, Message
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from bs4 import BeautifulSoup
 
 db = SQLAlchemy()
 
@@ -18,30 +21,46 @@ register = Blueprint('register', __name__, url_prefix='/register', template_fold
 @register.route("/register", methods=['GET', 'POST'])
 
 def registration():
-    def regsend(emailrecip, link, firstname):
-        app = Flask(__name__)
-        app.config.update(
-            DEBUG=True,
-            #EMAIL SETTINGS
-            MAIL_SERVER='webmail.nullphish.com',
-            MAIL_PORT=465,
-            MAIL_USE_SSL=True,
-            MAIL_USERNAME = 'donotreply@nullphish.com',
-            MAIL_PASSWORD = 'rtatstfu18as#R654'
-            )
-        mail = Mail(app)
-        emailrecip=str(session['username'])
-        link='https://google.com'
 
-        msg = Message("Welcome! Please Complete Registration",
-        sender="donotreply@nullphish.com",
-        recipients=[emailrecip])
-        with app.app_context():
-            msg.body = 'Hello,+\n Please follow this link to complete registration for Nullphish.com:'+link+session['username']
-            msg.html=render_template('emailreg.html', firstname=firstname)
-            mail.send(msg)
-    
-    
+
+
+    def regsend(emailrecip, link, firstname):
+        sender_email = "donotreply@nullphish.com"
+        receiver_email = str(session['username'])
+        password = "rtatstfu18as#R654"
+
+        message = MIMEMultipart("alternative")
+        message["Subject"] = "Welcome! Please complete registration"
+        message["From"] = sender_email
+        message["To"] = receiver_email
+
+        # Create the plain-text and HTML version of your message
+        text = """\
+        """
+
+        changetemplate = open("templates/emailreg.html", "rt")###  read template and replace name 
+        html = changetemplate.read()
+        html = html.replace('username', firstname)
+        changetemplate.close()
+
+        # Turn these into plain/html MIMEText objects
+        part1 = MIMEText(text, "plain")
+        part2 = MIMEText(html, "html")
+
+        # Add HTML/plain-text parts to MIMEMultipart message
+        # The email client will try to render the last part first
+
+        message.attach(part1)
+        message.attach(part2)
+        # Create secure connection with server and send email
+        context = ssl.create_default_context()
+        
+        with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=context) as server:
+            server.login(sender_email, password)
+            server.sendmail(
+                sender_email, receiver_email, message.as_string()
+            )
+
     try:
         if request.method == "POST":
             firstname = request.form.to_dict()['firstname']
@@ -68,8 +87,7 @@ def registration():
                     flash('Incorrect registration code')
                     return render_template("register.html")
                 else:
-                    pass
-            
+                    pass     
 
             with con:
                 cur = con.cursor()
@@ -102,14 +120,3 @@ def registration():
         return(str(e))
     
     return render_template("register.html")
-
-
-
-
-
-
-
-
-
-
-    
