@@ -33,8 +33,10 @@ def loginpage():
                 dbPass = row[2]
                 if dbUser == username:
                     completion = check_password(dbPass, password)
+            cur.execute('select validated from users where username = (?)', (username,))
+            validated = cur.fetchone()
         con.close()
-        return completion
+        return completion, validated
 
     def setrole(username):
         con = sqlite3.connect('static/db1.db')
@@ -62,7 +64,8 @@ def loginpage():
     if request.method == 'POST':
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
-        completion = validate(username, password)
+        validated, completion = validate(username, password)
+        print(validated)
         if completion == False:
             error = 'Invalid Credentials. Please try again.'
         else:

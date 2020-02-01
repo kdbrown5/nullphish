@@ -14,6 +14,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
+from tokenizer import generate_confirmation_token, confirm_token
 
 db = SQLAlchemy()
 
@@ -21,9 +22,7 @@ register = Blueprint('register', __name__, url_prefix='/register', template_fold
 @register.route("/register", methods=['GET', 'POST'])
 
 def registration():
-
-
-
+        
     def regsend(emailrecip, link, firstname):
         sender_email = "donotreply@nullphish.com"
         receiver_email = str(session['username'])
@@ -41,6 +40,7 @@ def registration():
         changetemplate = open("templates/emailreg.html", "rt")###  read template and replace name 
         html = changetemplate.read()
         html = html.replace('username', firstname)
+        html = html.replace('replacelink', link)
         changetemplate.close()
 
         # Turn these into plain/html MIMEText objects
@@ -96,7 +96,7 @@ def registration():
 
             if result == None:
                 cur = con.cursor()
-                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role) VALUES (?, ?, ?, ?, ?, 'admin');", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role, validated) VALUES (?, ?, ?, ?, ?, 'admin', 0);", (username, password, firstname, lastname, business,))
                 cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'admin', 1, 1, 1, 1);", (username,))
                 con.commit()
                 con.close()
@@ -105,18 +105,37 @@ def registration():
                 session['logged_in'] = True
                 session['username'] = username
                 emailrecip = username
-                link = 'https://gokdb.com/'
+                email = username
+                newtoken = generate_confirmation_token(email)
+                print(newtoken)
+                link = 'http://localhost:5000/register?token='+newtoken
                 regsend(emailrecip, link, firstname)
-                return redirect('/profile')
-
-
-            if result != None:
-                flash("An account with that email address is taken, please choose another")
+                flash('Success!  Please check your email for a confirmation link.')
                 return render_template('register.html')
 
+        if request.method == 'GET':
+            if request.args.get('token'[:]) != None:
+                try:
+                    newtoken = request.args.get('token'[:])
+                    email = confirm_token(newtoken)
+                    if '@' in email:
+                        con = sqlite3.connect('static/db1.db')
+                        with con:
+                            cur = con.cursor()
+                            cur.execute('update users set validated = 1 where username = (?);', (email,))
+                        con.close()
+                        session['logged_in'] = True
+                        return redirect('/profile')
+                    else:
+                        flash('The confirmation link is invalid or has expired (60 minutes)')
+                        return render_template("register.html")
+                except:
+                    flash('The confirmation link is invalid or has expired (60 minutes)')
+                    return render_template("register.html")
         return render_template("register.html")
 
     except Exception as e:
         return(str(e))
-    
+
     return render_template("register.html")
+
