@@ -37,6 +37,7 @@ def gophish():
             receiveremail = request.form.get('email')
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
+            subject = firstname+', you have received a new document'
             sendphish(inserttemplate, receiveremail, firstname, lastname)
 
 

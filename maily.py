@@ -3,20 +3,15 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
 
-def sendphish(inserttemplate, receiveremail, firstname, lastname):
+def sendphish(inserttemplate, receiveremail, firstname, lastname, subject):
     sender_email = "donotreply@nullphish.com"
     receiver_email = receiveremail
     password = "rtatstfu18as#R654"
 
     message = MIMEMultipart("alternative")
-    message["Subject"] = "multipart test"
+    message["Subject"] = subject
     message["From"] = sender_email
     message["To"] = receiver_email
-
-    try:
-        myVar
-    except NameError:
-        myVar = None    
 
     # Create the plain-text and HTML version of your message
     text = """\
