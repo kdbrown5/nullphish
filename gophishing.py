@@ -24,7 +24,7 @@ def gophish():
         con.close()
         businessdata = businessquery
         return businessdata
-    availtemplates = ['emailreg', 'prototype', 'prototype2']
+    availtemplates = ['amazon', 'prototype2', 'starbucks']
     businessdata = businesslookup()
 
     if request.method == 'POST':
@@ -38,7 +38,7 @@ def gophish():
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
             subject = firstname+', you have received a new document'
-            sendphish(inserttemplate, receiveremail, firstname, lastname)
+            sendphish(inserttemplate, receiveremail, firstname, lastname, subject)
 
 
     if 'exitmodify' in request.form:
