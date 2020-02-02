@@ -99,6 +99,20 @@ def beginstatdel():
 def beginstatdel1():
     return waitforrecdel1()
 
+#### template iframe rendering for gophishing template preview
+@app.route('/templates/amazon.html', methods=['GET', 'POST']) 
+def amazontemplate():
+    return render_template('amazon.html')
+
+@app.route('/templates/prototype2.html', methods=['GET', 'POST']) 
+def prototype2template():
+    return render_template('prototype2.html')
+
+@app.route('/templates/starbucks.html', methods=['GET', 'POST']) 
+def starbuckstemplate():
+    return render_template('starbucks.html')
+######################## end template render
+
 if __name__ == '__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True #reload html templates when saved, while app is running
     app.run(host='0.0.0.0', debug=True)

@@ -28,6 +28,9 @@ def gophish():
     businessdata = businesslookup()
 
     if request.method == 'POST':
+        if request.form.get('templateview') != 'Templates':
+            templateview = request.form.get('templateview')
+            return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
         templatechoice = request.form.get('templates')
         templatechoice = 'templates/'+templatechoice+'.html'
         if '@' not in request.form.get('email'):
