@@ -34,9 +34,10 @@ def loginpage():
                 if dbUser == username:
                     completion = check_password(dbPass, password)
             cur.execute('select validated from users where username = (?)', (username,))
-            validated = cur.fetchone()
+            validated = cur.fetchone()[0]
+            session['validated'] = validated
         con.close()
-        return completion, validated
+        return completion
 
     def setrole(username):
         con = sqlite3.connect('static/db1.db')
@@ -64,9 +65,13 @@ def loginpage():
     if request.method == 'POST':
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
-        validated, completion = validate(username, password)
-        print(validated)
-        if completion == False:
+        completion = validate(username, password)
+        print(session['validated'])
+        if session['validated'] == 0:
+            error = 'It looks like your account is not yet activated. Please contact your administrator'
+        elif session['validated'] == 2:
+            error = 'It looks like your account has been suspended.  Please contact your administrator'
+        elif completion == False:
             error = 'Invalid Credentials. Please try again.'
         else:
             session['username'] = (username)
