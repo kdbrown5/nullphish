@@ -1,7 +1,6 @@
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from bs4 import BeautifulSoup
 
 def sendphish(inserttemplate, receiveremail, firstname, lastname, subject):
     sender_email = "donotreply@nullphish.com"
