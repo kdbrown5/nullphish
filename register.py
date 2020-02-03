@@ -107,7 +107,6 @@ def registration():
                 emailrecip = username
                 email = username
                 newtoken = generate_confirmation_token(email)
-                print(newtoken)
                 link = 'http://localhost:5000/register?token='+newtoken
                 regsend(emailrecip, link, firstname)
                 flash('Success!  Please check your email for a confirmation link.')
@@ -117,14 +116,18 @@ def registration():
             if request.args.get('token'[:]) != None:
                 try:
                     newtoken = request.args.get('token'[:])
-                    email = confirm_token(newtoken)
+                    email = str(confirm_token(newtoken))
                     if '@' in email:
                         con = sqlite3.connect('static/db1.db')
                         with con:
                             cur = con.cursor()
                             cur.execute('update users set validated = 1 where username = (?);', (email,))
+                            cur.execute('select business from users where username = (?);', (email,))
+                            business = cur.fetchone()[0]
                         con.close()
                         session['logged_in'] = True
+                        session['business'] = business
+                        session['username'] = email
                         return redirect('/profile')
                     else:
                         flash('The confirmation link is invalid or has expired (60 minutes)')

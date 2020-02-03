@@ -67,10 +67,7 @@ def loggedin():
 
 @app.route('/register', subdomain="app", methods=['GET', 'POST']) # redirect to main page if already logged in
 def beginr():
-    if session.get('logged_in') == True:
-        return redirect('/')
-    else:
-        return registration()
+    return registration()
 
 @app.route('/logout', subdomain="app", methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
