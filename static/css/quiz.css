@@ -3,93 +3,112 @@ Color Palette Hex Codes:
   Deep Sea: #010418
   Burnt Orange: #BF6800
   Uneasy Green: #008053
+  Not-Quite-Black: #222
+  Not-Quite-White: #EEE
+  Light Gray: #AAA
+  Dark Gray: #666
 */
+
+/* Font Declarations */
+@font-face{
+    font-family: 'existence';
+    src:  url('fonts/Existence-Light-webfont.woff') format('woff');
+}
+
+@font-face{
+    font-family: 'opensans';
+    src:  url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+    font-family: 'opensans';
+    src:  url('fonts/OpenSans-Bold-webfont.woff') format('woff');
+    font-weight: bold;
+}
+
+@font-face{
+  font-family: 'lanenar';
+  src:  url('fonts/lanenar.woff') format('woff');
+}
 
 body{
     font:300 20px 'Open Sans', sans-serif;
-    color:#666;
-    background-color:#bdc3c7;
+    color:#008053;
+    background-color:#010418;
     width:100%; 
+    overflow: hidden;
+    font-family: opensans;
 }
 
 article{
     width:50%;
-    background-color:white;
-    margin:50px auto;
     padding:5px 30px;
     border-radius:15px;
+    font-weight: bold;
+    font-size: xx-large;
+    color: #010418;
+    font-family: existence;
 }
 
-article h1{
-    color:#3498db; 
-    padding-bottom:15px;
-    border-bottom:1px dashed #bdc3c7;
+hr {
+    border-color: #000;
+    border-width: 1px;
+    border-style: solid;
+    width: 75%;
 }
 
-article a,article span{
-    color:#3498db;
-    text-decoration:none;
+strong {
+    font-weight: bold;
 }
 
-article .buton{
-    color:white;
-    position:relative;
-    font-size:14px;
-    left:10px;
-    top:-5px;
-    background-color:#3498db;
-    text-decoration:none;
-    padding:3px 6px;
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    top: 0px;
+    padding: 10px;
+    background-color: #AAA;
+    color: #222;
+    border-radius: 25px;
+    position: absolute;
+    left: 10%;
 }
 
-article .buton:hover{
-    background-color:#2980b9;
+.content{
+    padding: 25px;
 }
 
-div.ex2 {
-    max-width:500px;
-    margin: auto;
+.sect{
+    width: auto;
+    background-color: #FFF;
+    color: #000;
+    margin: 10px;
+    border-radius: 25px;
+    padding: 0px;
 }
 
-h1 { 
-    text-align:center; 
-    color:green; 
-} 
+.instructions{
+    font-weight: bold;
+}
 
-.container .box { 
-    width:100%; 
-    margin:05px; 
-    display:table; 
-    border-spacing: 100px;
-    
-} 
-
-.container .box .box-row { 
-    display:table-row; 
-    width:100%;
-} 
-
-.container .box .box-cell { 
-    display:table-cell; 
-    width:100%; 
-    padding:10px; 
+.submitbtn{
+    width: 50%;
+    height: 60px;
+    background-color: #EEE;
+    color: #222;
     border-radius: 15px;
-} 
+    border-width: 0px;
+    margin: auto;
+    font-weight: bold;
+    font-size: large;
+}
 
-.container .box .box-cell.box1 { 
-    background:white; 
-    color:black; 
-    text-align:justify; 
-    width: calc(100% / 2);
-} 
+.submitbtn:hover{
+    background-color: #FFF;
+}
 
-.container .box .box-cell.box2 { 
-    background:white; 
-    text-align:justify;
-    width: calc(100% / 2);
-} 
-
-#bottom { 
-    position:relative;                  
-    bottom:0;                                                  
-} 
+.submitbtn:active{
+    background-color: #FFF;
+    color: #EEE;
+}

@@ -1,0 +1,126 @@
+/*
+Color Palette Hex Codes:
+  Blue: #0D1126
+  Gold: #ECA400
+  Green: #49A355
+  Red: #721817
+  Platinum: #E0E0E0
+*/
+
+#nptitle{
+    text-decoration: none; 
+    border-top: 7px solid #49a355;
+    border-bottom: 7px solid #49a355; 
+    border-radius: 15px;
+    color: #E0E0E0;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+
+#slide1{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#slide1 .title{
+    font-size: 4vw;
+    vertical-align: middle;
+    top: 25%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+#slide2{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 100%;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#slide2 .title{
+    font-size: 60px;
+    padding-top: 40px;
+}
+
+#slide3{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 200%;
+    left: 0px;
+    height: 200%;
+    width: 100%;
+    overflow: hidden;
+}
+#slide3 .title{
+    font-size: 60px;
+    padding-top: 40px;
+}
+
+#slide4{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 300%;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#slide4 .title{
+    font-size: 60px;
+    padding-top: 40px;
+}
+
+#slide5{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    top: 400%;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#slide5 .title{
+    font-size: 60px;
+    padding-top: 40px;
+}
+
+/*
+Animation Code
+*/
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

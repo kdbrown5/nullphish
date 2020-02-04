@@ -1,24 +1,88 @@
 /*
 Color Palette Hex Codes:
-  Deep Sea: #010418
-  Burnt Orange: #BF6800
-  Uneasy Green: #008053
+  Blue: #0D1126
+  Gold: #ECA400
+  Green: #49A355
+  Red: #721817
+  Platinum: #E0E0E0
 */
 
 /* Font Declarations */
 @font-face{
-  font-family: 'Existence';
-  src:  url('fonts/Existence-Light-webfont.woff') format('woff');
+  font-family: 'opensans';
+  src:  url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'opensans';
+  src:  url('fonts/OpenSans-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: 'clearsans';
+  src:  url('fonts/ClearSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'clearsans';
+  src:  url('fonts/ClearSans-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+@font-face{
+  font-family: 'clearsans';
+  src:  url('fonts/ClearSans-Light-webfont.woff') format('woff');
+  font-weight: lighter;
+}
+
+@font-face{
+  font-family: 'colab';
+  src:  url('fonts/ColabReg-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'colab';
+  src:  url('fonts/ColabBol-webfont.woff') format('woff');
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: 'junction';
+  src:  url('fonts/Junction-regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'junction';
+  src:  url('fonts/Junction-bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+@font-face{
+  font-family: 'junction';
+  src:  url('fonts/Junction-light-webfont.woff') format('woff');
+  font-weight: lighter;
+}
+
+@font-face{
+  font-family: 'tuffy';
+  src:  url('fonts/Tuffy-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'tuffy';
+  src:  url('fonts/Tuffy_Bold-webfont.woff') format('woff');
+  font-weight: bold;
 }
 
 /* Global Styles: */
 body{
   margin: 0;
   overflow-x: hidden;
-  background-color: #010418;
-  font-family: Existence;
-  color: #BF6800;
+  background-color: #0D1126;
+  background-image: url("../res/bg.png");
+  background-repeat: repeat;
+  font-family: opensans;
+  color: #ECA400;
   text-align: center;
+}
+
+h1{
+  font-size: xx-large;
+  font-weight: bold;
 }
 
 nav{
@@ -26,6 +90,94 @@ nav{
   z-index: 999;
   height: 60px;
   width: 100%;
-  background-color: #010418;
-  color: #BF6800
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+}
+nav table{
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  line-height: 60px;
+  width: 50%;
+  text-align: center;
+  table-layout: auto;
+  min-width: 800px;
+  max-width: 2160px;
+}
+nav tr{
+  line-height: 60px;
+  margin: 0px;
+  padding: 0px;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+}
+nav td{
+  width: 300px;
+  padding: 5px;
+  height: 50px;
+  vertical-align: middle;
+  top: 0px;
+  text-align: center;
+}
+nav a{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  line-height: 50px;
+  border-radius: 15px;
+  display: block;
+  min-width: 150px;
+}
+nav a:hover{
+  color: #E0E0E0;
+}
+nav .active{
+  border-top: 1px solid #49A355;
+  border-bottom: 1px solid #49A355;
+  border-radius: 15px;
+}
+nav .passive:hover{
+  border-top: 1px solid #49A355;
+  border-bottom: 1px solid #49A355;
+  border-radius: 15px;
+}
+
+#navbg{
+  z-index: 998;
+  background-color: #0D1126;
+  background-image: url("../res/bg.png");
+  background-repeat: repeat;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  opacity: 0.75;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#fineprint{
+  bottom: 250px;
+  height: 250px;
+}
+
+.logo-sm{
+  height: 50px;
+  width: auto;
+  line-height: 60px;
+  padding: 0px;
+  margin: auto;
 }
