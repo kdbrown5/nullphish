@@ -106,7 +106,7 @@ def registration():
                 emailrecip = username
                 email = username
                 newtoken = generate_confirmation_token(email)
-                link = 'http://localhost:5000/register?token='+newtoken
+                link = 'https://app.nullphish.com/register?token='+newtoken
                 regsend(emailrecip, link, firstname)
                 flash('Success!  Please check your email for a confirmation link.')
                 return render_template('register.html')

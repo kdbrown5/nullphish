@@ -19,7 +19,7 @@ def gophish():
         with con:
             cur = con.cursor()
             businessquery = []
-            for row in cur.execute('select DISTINCT * from users where business LIKE (?);', (business,)):
+            for row in cur.execute('select * from users where business LIKE (?);', (business,)):
                 businessquery.append(row[:])
         con.close()
         businessdata = businessquery
