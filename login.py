@@ -14,7 +14,7 @@ from lumberjack import log
 db = SQLAlchemy()
 
 login = Blueprint('login', __name__, url_prefix='/login', template_folder='templates')
-@login.route("/login", methods=['GET', 'POST'])
+@login.route("/login", subdomain='app', methods=['GET', 'POST'])
 
 def loginpage():
 
