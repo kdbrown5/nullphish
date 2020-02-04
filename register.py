@@ -13,7 +13,6 @@ from lumberjack import log
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from bs4 import BeautifulSoup
 from tokenizer import generate_confirmation_token, confirm_token
 
 db = SQLAlchemy()
@@ -80,7 +79,7 @@ def registration():
             if repeat != password:
                 flash('Your passwords do not match.  Please try again.')
                 return render_template("register.html")
-            con = sqlite3.connect('static/db1.db')
+            con = sqlite3.connect('db/db1.db')
 
             if code != 'goat':
                 if code != 'kdb':
@@ -118,7 +117,7 @@ def registration():
                     newtoken = request.args.get('token'[:])
                     email = str(confirm_token(newtoken))
                     if '@' in email:
-                        con = sqlite3.connect('static/db1.db')
+                        con = sqlite3.connect('db/db1.db')
                         with con:
                             cur = con.cursor()
                             cur.execute('update users set validated = 1 where username = (?);', (email,))

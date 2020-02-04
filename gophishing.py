@@ -14,7 +14,7 @@ gophishing = Blueprint('gophishing', __name__, url_prefix='/gophishing', templat
 @gophishing.route('/gophishing', methods=['GET', 'POST'])
 def gophish():
     def businesslookup():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         business = str(session['business'])
         with con:
             cur = con.cursor()

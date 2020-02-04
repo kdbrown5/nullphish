@@ -22,7 +22,7 @@ def loginpage():
         return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
 
     def validate(username, password): # validate username, pw from database
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         completion = False
         with con:
             cur = con.cursor()
@@ -40,7 +40,7 @@ def loginpage():
         return completion
 
     def setrole(username):
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         role = None
         with con:
             cur = con.cursor()
@@ -51,7 +51,7 @@ def loginpage():
         return loadrole
 
     def setbusiness(username):
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         role = None
         with con:
             cur = con.cursor()

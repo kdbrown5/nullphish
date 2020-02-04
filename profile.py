@@ -24,7 +24,7 @@ profile = Blueprint('profile', __name__, url_prefix='/profile', template_folder=
 
 def myprofile():
     def reguserlookup():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         with con:
             cur = con.cursor()
             con.row_factory = sql.Row
@@ -34,7 +34,7 @@ def myprofile():
         return reguserquery
 
     def rolelookup():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         with con:
             cur = con.cursor()
             con.row_factory = sql.Row
@@ -46,7 +46,7 @@ def myprofile():
         return currentrole
 
     def checkpassword():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('select password from users where username = (?);', (session['username'],))
@@ -96,7 +96,7 @@ def myprofile():
             if len(str(rlname)) > 0:
                 if len(str(emailaddr)) > 0:
                     if str(rrole) != str('Select Role'):
-                        con = sqlite3.connect('static/db1.db')
+                        con = sqlite3.connect('db/db1.db')
                         with con:
                             cur = con.cursor()
                             cur.execute('insert into users (username, firstname, lastname, role, department, validated) VALUES (?,?,?,?,?,0);', (emailaddr, rfname, rlname, rrole, rdpt))
@@ -148,7 +148,7 @@ def myprofile():
                         return render_template('userprofile.html')
                     else:
                         return render_template("profile.html")
-                con = sqlite3.connect('static/db1.db')
+                con = sqlite3.connect('db/db1.db')
                 with con:
                     cur = con.cursor()
                     cur.execute("UPDATE users set password = (?) WHERE username = (?);", (password, session['username'],))

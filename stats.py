@@ -12,7 +12,7 @@ stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templ
 @stats.route('/stats/mod', methods=['GET', 'POST']) ### url to keep modification / record deletion open
 def waitforrecdel1():
     def businesslookup():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')
@@ -36,7 +36,7 @@ def waitforrecdel1():
 @stats.route('/stats/del', methods=['GET', 'POST'])
 def waitforrecdel():
     def businesslookup():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')
@@ -50,7 +50,7 @@ def waitforrecdel():
         return businessquery
 
     def deleterecord(delrec):
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('select business from tests where id = (?);', (delrec,))# grab business name from test deletion request
@@ -79,7 +79,7 @@ def waitforrecdel():
 
 def stat():
     def businesslookup():
-        con = sqlite3.connect('static/db1.db')
+        con = sqlite3.connect('db/db1.db')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')

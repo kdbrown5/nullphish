@@ -36,7 +36,7 @@ app.register_blueprint(profile)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
-@app.route("/stat", subdomain="app")
+@app.route("/stat", subdomain="app", methods=['GET', 'POST'])
 def member_index():
     print('app login')
     return stat()
@@ -92,20 +92,20 @@ def beginst():
 def beginstatdel():
     return waitforrecdel()
 
-@app.route('/stats/mod', methods=['GET', 'POST'])
+@app.route('/stats/mod', subdomain="app", methods=['GET', 'POST'])
 def beginstatdel1():
     return waitforrecdel1()
 
 #### template iframe rendering for gophishing template preview
-@app.route('/templates/amazon.html', methods=['GET', 'POST']) 
+@app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
 def amazontemplate():
     return render_template('amazon.html')
 
-@app.route('/templates/prototype2.html', methods=['GET', 'POST']) 
+@app.route('/templates/prototype2.html', subdomain="app", methods=['GET', 'POST']) 
 def prototype2template():
     return render_template('prototype2.html')
 
-@app.route('/templates/starbucks.html', methods=['GET', 'POST']) 
+@app.route('/templates/starbucks.html', subdomain="app", methods=['GET', 'POST']) 
 def starbuckstemplate():
     return render_template('starbucks.html')
 ######################## end template render
