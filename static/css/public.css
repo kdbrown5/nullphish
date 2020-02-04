@@ -20,7 +20,7 @@ Color Palette Hex Codes:
     animation: fadein 2s;
 }
 
-#slide1{
+#nullphish{
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -30,7 +30,7 @@ Color Palette Hex Codes:
     width: 100%;
     overflow: hidden;
 }
-#slide1 .title{
+#nullphish .title{
     font-size: 4vw;
     vertical-align: middle;
     top: 25%;
@@ -39,7 +39,7 @@ Color Palette Hex Codes:
     width: 100%;
 }
 
-#slide2{
+#education{
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -49,12 +49,12 @@ Color Palette Hex Codes:
     width: 100%;
     overflow: hidden;
 }
-#slide2 .title{
+#education .title{
     font-size: 60px;
     padding-top: 40px;
 }
 
-#slide3{
+#testing{
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -64,12 +64,12 @@ Color Palette Hex Codes:
     width: 100%;
     overflow: hidden;
 }
-#slide3 .title{
+#testing .title{
     font-size: 60px;
     padding-top: 40px;
 }
 
-#slide4{
+#results{
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -79,12 +79,12 @@ Color Palette Hex Codes:
     width: 100%;
     overflow: hidden;
 }
-#slide4 .title{
+#results .title{
     font-size: 60px;
     padding-top: 40px;
 }
 
-#slide5{
+#team{
     position: absolute;
     margin: 0px;
     padding: 0px;
@@ -94,7 +94,7 @@ Color Palette Hex Codes:
     width: 100%;
     overflow: hidden;
 }
-#slide5 .title{
+#team .title{
     font-size: 60px;
     padding-top: 40px;
 }
