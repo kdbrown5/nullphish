@@ -18,7 +18,7 @@ from tokenizer import generate_confirmation_token, confirm_token
 db = SQLAlchemy()
 
 register = Blueprint('register', __name__, url_prefix='/register', template_folder='templates')
-@register.route("/register", methods=['GET', 'POST'])
+@register.route("/register", subdomain='app', methods=['GET', 'POST'])
 
 def registration():
         

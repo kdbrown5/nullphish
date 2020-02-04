@@ -20,7 +20,7 @@ from email.mime.multipart import MIMEMultipart
 
 db = SQLAlchemy()
 profile = Blueprint('profile', __name__, url_prefix='/profile', template_folder='templates')
-@profile.route("/profile", methods=['GET', 'POST'])
+@profile.route("/profile", subdomain='app', methods=['GET', 'POST'])
 
 def myprofile():
     def reguserlookup():
