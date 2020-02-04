@@ -10,6 +10,7 @@ from login import loginpage, login
 from stats import stat, stats, waitforrecdel, waitforrecdel1
 from lumberjack import log
 from profile import myprofile, profile
+from gophishing import gophishing, gophish
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -33,14 +34,9 @@ app.register_blueprint(register)
 app.register_blueprint(stats)
 app.register_blueprint(logout)
 app.register_blueprint(profile)
+app.register_blueprint(gophishing)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
-
-@app.route("/stat", subdomain="app", methods=['GET', 'POST'])
-def member_index():
-    print('app login')
-    return stat()
-
 
 @app.errorhandler(404) # redirect to main page if not found
 def page_not_found_public(e):
@@ -95,6 +91,13 @@ def beginstatdel():
 @app.route('/stats/mod', subdomain="app", methods=['GET', 'POST'])
 def beginstatdel1():
     return waitforrecdel1()
+
+@app.route('/gophishing', subdomain="app", methods=['GET', 'POST']) # main page route
+def loginp():
+    if session.get('logged_in') == True:
+        return gophish()
+    else:
+        return loginpage()
 
 #### template iframe rendering for gophishing template preview
 @app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
