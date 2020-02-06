@@ -2,10 +2,11 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def sendphish(inserttemplate, receiveremail, firstname, lastname, subject):
-    sender_email = "donotreply@nullphish.com"
+def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link):
+    #sender_email = "donotreply@nullphish.com"
+    sender_email = "donotreply@couponcheetah.com"
     receiver_email = receiveremail
-    password = "rtatstfu18as#R654"
+    password = 'kirkland' # cheetah
 
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
@@ -15,12 +16,12 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject):
     # Create the plain-text and HTML version of your message
     text = """\
     """
-
     changetemplate = open(inserttemplate, "rt")###  read template and replace name 
     html = changetemplate.read()
     html = html.replace('firstname', firstname)
     html = html.replace('lastname', lastname)
     html = html.replace('receiveremail', receiveremail)
+    html = html.replace('replacelink', link)
     changetemplate.close()
 
     # Turn these into plain/html MIMEText objects
