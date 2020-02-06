@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 import sqlite3 as sql
 from lumberjack import log
 from maily import sendphish
+from tokenizer import generate_confirmation_token, confirm_token
 
 
 gophishing = Blueprint('gophishing', __name__, url_prefix='/gophishing', template_folder='templates')
