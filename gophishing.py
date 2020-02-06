@@ -28,11 +28,12 @@ def gophish():
     businessdata = businesslookup()
 
     if request.method == 'POST':
-        if request.form.get('templateview') != 'Templates':
+        if str(request.form.get('templateview')) != 'None':
             templateview = request.form.get('templateview')
             return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
-        templatechoice = request.form.get('templates')
-        templatechoice = 'templates/'+templatechoice+'.html'
+        if str(request.form.get('templateview')) == 'None':
+            templatechoice = request.form.get('templates')
+            templatechoice = 'templates/'+str(templatechoice)+'.html'
         if '@' not in request.form.get('email'):
             flash('This is not a valid email address', 'category2')
         else:
