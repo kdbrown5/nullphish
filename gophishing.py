@@ -44,7 +44,7 @@ def gophish():
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            subject = firstname+', you have received a new document'
+            subject = firstname+', this FREE drink is on us!'
             sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
 
