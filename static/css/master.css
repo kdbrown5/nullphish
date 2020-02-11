@@ -73,7 +73,7 @@ body{
   margin: 0;
   overflow-x: hidden;
   background-color: #0D1126;
-  background-image: url("../res/bg2.png");
+  /*background-image: url("../res/bg2.png");*/
   background-repeat: repeat;
   background-size: cover;
   font-family: opensans;
