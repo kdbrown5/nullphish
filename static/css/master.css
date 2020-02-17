@@ -157,6 +157,14 @@ nav .passive:hover{
   border-radius: 15px;
 }
 
+/* IDs */
+#aquarium{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+}
+
 #navbg{
   z-index: 998;
   background-color: #0D1126;
@@ -175,6 +183,8 @@ nav .passive:hover{
   height: 250px;
 }
 
+/* Classes: */
+
 .logo-sm{
   height: 50px;
   width: auto;
@@ -190,4 +200,8 @@ nav .passive:hover{
   color: #E0E0E0;
   text-decoration: none;
   font-weight: bold;
+}
+
+.nolinkdeco{
+  text-decoration: none;
 }
