@@ -31,7 +31,7 @@ def myprofile():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            con.row_factory = sql.Row
+            con.row_factory = sqlite.Row
             cur.execute('select firstname, lastname, department, role from users where business = (?);', (session['business'],))
             reguserquery = cur.fetchall()
         con.close()
@@ -42,7 +42,7 @@ def myprofile():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            con.row_factory = sql.Row
+            con.row_factory = sqlite.Row
             cur.execute('select role from users where username = (?);', (session['username'],))
             currentrole = cur.fetchall()
             currentrole = str(currentrole[0])
