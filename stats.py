@@ -2,22 +2,26 @@ import sqlalchemy
 import flask
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response, send_file
-import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-import sqlite3 as sql
 from lumberjack import log
+from pysqlcipher3 import dbapi2 as sqlite
 
 stats = Blueprint('stats', __name__, url_prefix='/stats', template_folder='templates')
+
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
 
 @stats.route('/stats/mod', methods=['GET', 'POST']) ### url to keep modification / record deletion open
 def waitforrecdel1():
     def businesslookup():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             businessquery = []
             for row in cur.execute('select DISTINCT * from tests where business LIKE (?) and notify = 1;', (business,)):## populate tables with user data from same business
                 businessquery.append(row[:])
@@ -36,12 +40,13 @@ def waitforrecdel1():
 @stats.route('/stats/del', methods=['GET', 'POST'])
 def waitforrecdel():
     def businesslookup():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             businessquery = []
             for row in cur.execute('select DISTINCT * from tests where business LIKE (?) and notify = 1;', (business,)):
                 businessquery.append(row[:])
@@ -50,9 +55,10 @@ def waitforrecdel():
         return businessquery
 
     def deleterecord(delrec):
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select business from tests where id = (?);', (delrec,))# grab business name from test deletion request
             businessverify = cur.fetchone()
             if str(businessverify[0]) == str(session['business'][1:-1]):# compare test business name to admin user business name
@@ -79,7 +85,8 @@ def waitforrecdel():
 
 def stat():
     def businesslookup():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
+        cur.execute('PRAGMA key = '+dbkey+';')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')

@@ -2,23 +2,26 @@ import sqlalchemy
 import flask
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response, send_file
-import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-import sqlite3 as sql
 from lumberjack import log
 from maily import sendphish
 from tokenizer import generate_confirmation_token, confirm_token
-
+from pysqlcipher3 import dbapi2 as sqlite
 
 gophishing = Blueprint('gophishing', __name__, url_prefix='/gophishing', template_folder='templates')
+
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
 
 @gophishing.route('/gophishing', methods=['GET', 'POST'])
 def gophish():
     def businesslookup():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         business = str(session['business'])
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             businessquery = []
             for row in cur.execute('select * from users where business LIKE (?);', (business,)):
                 businessquery.append(row[:])

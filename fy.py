@@ -5,14 +5,17 @@ from sqlalchemy.engine import Engine
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
-import sqlite3
 from lumberjack import log
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from tokenizer import generate_confirmation_token, confirm_twoweektoken
 from datetime import datetime
+from pysqlcipher3 import dbapi2 as sqlite
 
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
 
 db = SQLAlchemy()
 fy = Blueprint('fy', __name__, url_prefix='/fy', template_folder='templates')
@@ -70,9 +73,10 @@ def apiid():
         timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
         timestamp = timestamp.replace(' ', '-')
         if '@' in email:
-            con = sqlite3.connect('db/db1.db')
+            con = sqlite.connect('db/db1.db')
             with con:
                 cur = con.cursor()
+                cur.execute('PRAGMA key = '+dbkey+';')
                 cur.execute('insert into phished (username, date) values ((?), (?));', (email, timestamp))
                 cur.execute('select business from users where username = (?);', (email,))
                 business = cur.fetchone()[0]

@@ -1,11 +1,8 @@
 import requests
 import sqlalchemy
-import sqlite3
-import sqlite3 as sql
 import hashlib
 from sqlalchemy import event, PrimaryKeyConstraint
 from sqlalchemy.engine import Engine
-from sqlite3 import Connection as SQLite3Connection
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
@@ -17,16 +14,23 @@ from tokenizer import generate_confirmation_token, confirm_token
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from pysqlcipher3 import dbapi2 as sqlite
 
 db = SQLAlchemy()
+
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
+
 profile = Blueprint('profile', __name__, url_prefix='/profile', template_folder='templates')
 @profile.route("/profile", subdomain='app', methods=['GET', 'POST'])
 
 def myprofile():
     def reguserlookup():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sql.Row
             cur.execute('select firstname, lastname, department, role from users where business = (?);', (session['business'],))
             reguserquery = cur.fetchall()
@@ -34,9 +38,10 @@ def myprofile():
         return reguserquery
 
     def rolelookup():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sql.Row
             cur.execute('select role from users where username = (?);', (session['username'],))
             currentrole = cur.fetchall()
@@ -46,9 +51,10 @@ def myprofile():
         return currentrole
 
     def checkpassword():
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select password from users where username = (?);', (session['username'],))
             passwordstatus = cur.fetchone()
             return passwordstatus
@@ -96,16 +102,17 @@ def myprofile():
             if len(str(rlname)) > 0:
                 if len(str(emailaddr)) > 0:
                     if str(rrole) != str('Select Role'):
-                        con = sqlite3.connect('db/db1.db')
+                        con = sqlite.connect('db/db1.db')
                         with con:
                             cur = con.cursor()
+                            cur.execute('PRAGMA key = '+dbkey+';')
                             cur.execute('insert into users (username, firstname, lastname, role, department, validated) VALUES (?,?,?,?,?,0);', (emailaddr, rfname, rlname, rrole, rdpt))
                             con.commit
                         con.close
                         emailrecip = emailaddr
                         email = emailaddr
                         newtoken = generate_confirmation_token(email)
-                        link = 'http://localhost:5000/register?token='+newtoken
+                        link = 'https://app.nullphish.com/register?token='+newtoken
                         firstname = rfname
                         regsend(emailrecip, link, firstname)
                         flash('Invitation Email sent to: '+emailrecip+'!', 'category2')
@@ -148,9 +155,10 @@ def myprofile():
                         return render_template('userprofile.html')
                     else:
                         return render_template("profile.html")
-                con = sqlite3.connect('db/db1.db')
+                con = sqlite.connect('db/db1.db')
                 with con:
                     cur = con.cursor()
+                    cur.execute('PRAGMA key = '+dbkey+';')
                     cur.execute("UPDATE users set password = (?) WHERE username = (?);", (password, session['username'],))
                     con.commit()
                     gc.collect()

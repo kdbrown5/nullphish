@@ -8,10 +8,14 @@ from flask import Flask, flash, session, render_template, render_template_string
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import gc
-import sqlite3
 from lumberjack import log
+from pysqlcipher3 import dbapi2 as sqlite
 
 db = SQLAlchemy()
+
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
 
 login = Blueprint('login', __name__, url_prefix='/login', template_folder='templates')
 @login.route("/login", subdomain='app', methods=['GET', 'POST'])
@@ -22,10 +26,11 @@ def loginpage():
         return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
 
     def validate(username, password): # validate username, pw from database
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         completion = False
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute("SELECT * FROM users")
             rows = cur.fetchall()
             for row in rows:
@@ -40,10 +45,11 @@ def loginpage():
         return completion
 
     def setrole(username):
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         role = None
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute("SELECT role FROM users where username = (?);", (username,))
             loadrole = cur.fetchone()
             loadrole = str(loadrole[0])
@@ -51,10 +57,11 @@ def loginpage():
         return loadrole
 
     def setbusiness(username):
-        con = sqlite3.connect('db/db1.db')
+        con = sqlite.connect('db/db1.db')
         role = None
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute("SELECT business FROM users where username = (?);", (username,))
             loadbusiness = cur.fetchone()
             loadbusiness = str(loadbusiness[0])

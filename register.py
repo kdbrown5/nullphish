@@ -8,14 +8,18 @@ from flask import Flask, flash, session, render_template, render_template_string
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt
 import gc
-import sqlite3
 from lumberjack import log
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from tokenizer import generate_confirmation_token, confirm_token
+from pysqlcipher3 import dbapi2 as sqlite
 
 db = SQLAlchemy()
+
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
 
 register = Blueprint('register', __name__, url_prefix='/register', template_folder='templates')
 @register.route("/register", subdomain='app', methods=['GET', 'POST'])
@@ -79,7 +83,7 @@ def registration():
             if repeat != password:
                 flash('Your passwords do not match.  Please try again.')
                 return render_template("register.html")
-            con = sqlite3.connect('db/db1.db')
+            con = sqlite.connect('db/db1.db')
 
             if code != 'goat':
                 if code != 'kdb':
@@ -90,11 +94,13 @@ def registration():
 
             with con:
                 cur = con.cursor()
+                cur.execute('PRAGMA key = '+dbkey+';')
                 x = cur.execute("SELECT * FROM users WHERE username LIKE (?);", (session['username'],))
             result = cur.fetchone()
 
             if result == None:
                 cur = con.cursor()
+                cur.execute('PRAGMA key = '+dbkey+';')
                 cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role, validated) VALUES (?, ?, ?, ?, ?, 'admin', 0);", (username, password, firstname, lastname, business,))
                 cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'admin', 1, 1, 1, 1);", (username,))
                 con.commit()
@@ -117,9 +123,10 @@ def registration():
                     newtoken = request.args.get('token'[:])
                     email = str(confirm_token(newtoken))
                     if '@' in email:
-                        con = sqlite3.connect('db/db1.db')
+                        con = sqlite.connect('db/db1.db')
                         with con:
                             cur = con.cursor()
+                            cur.execute('PRAGMA key = '+dbkey+';')
                             cur.execute('update users set validated = 1 where username = (?);', (email,))
                             cur.execute('select business from users where username = (?);', (email,))
                             business = cur.fetchone()[0]
