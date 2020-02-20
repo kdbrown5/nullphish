@@ -86,12 +86,12 @@ def waitforrecdel():
 def stat():
     def businesslookup():
         con = sqlite.connect('db/db1.db')
-        cur.execute('PRAGMA key = '+dbkey+';')
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')
         with con:
             cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
             businessquery = []
             for row in cur.execute('select DISTINCT * from tests where business LIKE (?) and notify = 1;', (business,)):
                 businessquery.append(row[:])
