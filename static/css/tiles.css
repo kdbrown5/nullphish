@@ -36,6 +36,7 @@ Color Palette Hex Codes:
     color: #49A355;
     min-width: 500px;
     max-width: 2500px;
+    min-height: 500px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -127,11 +128,10 @@ Color Palette Hex Codes:
     width: 100%;
     min-width: 60px;
     max-width: 300px;
+    height: 40%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding-top: 10%;
-    padding-bottom: 5%;
     font-size: calc(16px + 0.5vw);
     text-align: center;
     vertical-align: middle;
