@@ -1,99 +1,113 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>NullPhish: Register Your Account</title>
-<link href="css/style400.css" rel="stylesheet" id="bootstrap-css">
-<script src="js/js400.js"></script>
-<script src="js/js321.js"></script>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-<style>
-  body {background-image: url(https://gokdb.com/public/loginlibrary.jpg);
-    background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-color: black}
-
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://nullphish.com/css/style441.css">
+    <link rel="stylesheet" href="https://nullphish.com/css/style400.css">
+    <link rel="stylesheet" href="https://nullphish.com/css/style321.css">
+    <link rel="stylesheet" href="https://nullphish.com/css/master.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NullPhish: Education tools to Prevent Scams, Phishing, and Security Concerns</title>
+    <style>
+      #particles-js{
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+    </style>
   </head>
-<div class="container" style="max-width: 600px;">
-<hr>
-    <h4  style="color: white" class="card-title mt-3 text-center">Create Account</h4>
-    <p style="color: white" class="text-center">*Beta* - Completely <b>Free</b> !</p>
-    <p style="color: white" class="text-center">Let's get started!</p>
-    <p style="color: white" class="text-center">Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
-    
-    <center>
-        <h1 style="color: white">{% with messages = get_flashed_messages() %}
-                {% if messages %}
-                  <ul class=flashes>
-                  {% for message in messages %}
-                    {{ message }}
-                  {% endfor %}
-                  </ul>
-                {% endif %}
-              {% endwith %}</h1>
-            </center>
-            <br>
-	<p>
-	<form method="POST">
-            <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-key"></i> </span>
-                     </div>
-                    <input name="code" class="form-control" placeholder="Beta registration code:" type="text">
-                </div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input name="firstname" class="form-control" placeholder="First name:" type="text">
-
-    </div> <!-- form-group// -->
-	<div class="form-group input-group">
-		<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-		 </div>
-        <input name="lastname" class="form-control" placeholder="Last name:" type="text">
-
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-		 </div>
-        <input name="email" class="form-control" placeholder="Email address:" type="email">
-    </div> <!-- form-group// -->
-
-    <div class="form-group input-group">
+  <body>
+    <div id="particles-js"></div>
+    <div id="navbg"></div>
+    <nav>
+      <table>
+        <tr>
+          <td><a href="#education" class="passive">Education</a></li>
+          <td><a href="#testing" class="passive">Testing</a></li>
+          <td><a href="#results" class="passive">Results</a></li>
+          <td><a href="#nullphish" class="active">NullPhish &#169;</a></td>
+          <td><a href="#team" class="passive">Team</a></li>
+          <td><a href="https://app.nullphish.com/register" class="passive">Sign Up</a></li>
+          <td><a href="https://app.nullphish.com/login" class="passive">Log In</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div style="position: absolute; width: 80%; top: 120px; margin-left: 10%; margin-right: 10%; vertical-align: middle;">
+      <hr>
+        <h4  style="color: white" class="card-title mt-3 text-center">Create Account</h4>
+        <p style="color: white" class="text-center">*Beta* - Completely <b>Free</b> !</p>
+        <p style="color: white" class="text-center">Let's get started!</p>
+        <p style="color: white" class="text-center">Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
+        <center>
+          <h1>{% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class=flashes>
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+              </ul>
+              {% endif %}
+            {% endwith %}
+          </h1>
+        </center>
+        <br>
+        <form method="POST">
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fas fa-key"></i> </span>
+            </div>
+            <input name="code" class="form-control" placeholder="Beta registration code:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <i class="fa fa-user"></i></span>
+            </div>
+            <input name="firstname" class="form-control" placeholder="First name:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input name="lastname" class="form-control" placeholder="Last name:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+           </div>
+              <input name="email" class="form-control" placeholder="Email address:" type="email">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
             </div>
-            
             <input name="business" class="form-control" placeholder="Business:" type="text">
-        </div> <!-- form-group// -->
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input name="password" class="form-control" placeholder="Create password:" type="password">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
+          </div> <!-- form-group// -->                                      
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+          </div> <!-- form-group// -->      
+          <p style="color: white" class="text-center">Have an account? <a href="/"><b>Log In</b></a> </p>                                                                 
+      </form>
+      </article>
+    </div> 
+    <!--container end.//-->
+    <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/app.js"></script>
+  </body>
 
-
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-
-        <input name="password" class="form-control" placeholder="Create password:" type="password">
-    </div> <!-- form-group// -->
-    <div class="form-group input-group">
-    	<div class="input-group-prepend">
-		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-		</div>
-        <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
-    </div> <!-- form-group// -->                                      
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-    </div> <!-- form-group// -->      
-    <p  style="color: white" class="text-center">Have an account? <a href="/"><b>Log In</b></a> </p>                                                                 
-</form>
-</article>
-
-</div> 
-<!--container end.//-->
-
-<br><br>

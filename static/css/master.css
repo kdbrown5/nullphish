@@ -10,61 +10,61 @@ Color Palette Hex Codes:
 /* Font Declarations */
 @font-face{
   font-family: 'opensans';
-  src:  url('fonts/OpenSans-Regular-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/OpenSans-Regular-webfont.woff') format('woff');
 }
 @font-face{
   font-family: 'opensans';
-  src:  url('fonts/OpenSans-Bold-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/OpenSans-Bold-webfont.woff') format('woff');
   font-weight: bold;
 }
 
 @font-face{
   font-family: 'clearsans';
-  src:  url('fonts/ClearSans-Regular-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/ClearSans-Regular-webfont.woff') format('woff');
 }
 @font-face{
   font-family: 'clearsans';
-  src:  url('fonts/ClearSans-Bold-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/ClearSans-Bold-webfont.woff') format('woff');
   font-weight: bold;
 }
 @font-face{
   font-family: 'clearsans';
-  src:  url('fonts/ClearSans-Light-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/ClearSans-Light-webfont.woff') format('woff');
   font-weight: lighter;
 }
 
 @font-face{
   font-family: 'colab';
-  src:  url('fonts/ColabReg-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/ColabReg-webfont.woff') format('woff');
 }
 @font-face{
   font-family: 'colab';
-  src:  url('fonts/ColabBol-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/ColabBol-webfont.woff') format('woff');
   font-weight: bold;
 }
 
 @font-face{
   font-family: 'junction';
-  src:  url('fonts/Junction-regular-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/Junction-regular-webfont.woff') format('woff');
 }
 @font-face{
   font-family: 'junction';
-  src:  url('fonts/Junction-bold-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/Junction-bold-webfont.woff') format('woff');
   font-weight: bold;
 }
 @font-face{
   font-family: 'junction';
-  src:  url('fonts/Junction-light-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/Junction-light-webfont.woff') format('woff');
   font-weight: lighter;
 }
 
 @font-face{
   font-family: 'tuffy';
-  src:  url('fonts/Tuffy-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/Tuffy-webfont.woff') format('woff');
 }
 @font-face{
   font-family: 'tuffy';
-  src:  url('fonts/Tuffy_Bold-webfont.woff') format('woff');
+  src:  url('https://nullphish.com/css/fonts/Tuffy_Bold-webfont.woff') format('woff');
   font-weight: bold;
 }
 
@@ -160,6 +160,10 @@ nav .passive:hover{
   border-bottom: 1px solid #49A355;
   border-radius: 15px;
   text-decoration: none;
+}
+
+h1{
+  font-size: 60px;
 }
 
 /* IDs */
