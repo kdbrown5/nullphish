@@ -5,8 +5,48 @@
         <script type="text/javascript" src="http:///ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
         <link href="/docs/4.0/assets/css/docs.min.css" rel="stylesheet">
             <link rel="stylesheet" href="css/style400.css">
-            <title>Email Phishing</title>
-      <style>
+			<title>Email Phishing</title>
+			<script src="https://cdn.rawgit.com/lingtalfi/simpledrag/master/simpledrag.js"></script>
+
+	  <style type="text/css">
+	  
+html, body {
+	height: 150%;
+}
+
+.panes-container {
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+}
+
+.left-pane {
+	width: 70%;
+	background: #ffffff;
+}
+
+.panes-separator {
+	width: .5%;
+	background: blue;
+	position: relative;
+	cursor: col-resize;
+}
+
+.right-pane {
+	flex: auto;
+	background: #eee;
+}
+
+.panes-container,
+.panes-separator,
+.left-pane,
+.right-pane {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+
       @import url(https://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext);
       
       body{
@@ -260,6 +300,11 @@
             max-width:500px;
             margin: auto;
             }
+
+			div.ex3 {
+  resize: both;
+  overflow: auto;
+}
           </style>
       <script>
       $(function () {
@@ -270,643 +315,604 @@
       </head>
 <body>
     <center>
+		<div class="panes-container">
+			<div class="left-pane" id="left-pane">
+				<p>Email Refund Example:</p>
+				<div class="gE iv gt ex2">
+					<table cellpadding="0" class="cf gJ">
+					<tbody>
+					<tr class="acZ">
+					<td class="gF gK">
+					<table cellpadding="0" class="cf ix">
+					<tbody>
+					<tr>
+					<td class="c2">
+					<h3 class="iw"><span class="qu" role="gridcell" tabindex="-1"><span email="support@vbankusa.com" name="support@vbankusa.com" data-hovercard-id="support@vbankusa.com" class="gD"><span class="tooltips" tooltip="Good job!<br>Always look at the email associated with the sender.<br>In many email viewers, it is common for only the name to be shown prior to inspection, not the actual email address." tooltip-position="right">support@vbankusa.com</span></span><span>&nbsp;</span><span class="go"><span aria-hidden="true"></span><span aria-hidden="true"></span></span></span></h3>
+					</td>
+					</tr>
+					</tbody>
+					</table>
+					</td>
+				
+					<td class="gH bAk">
+					<div class="gK"><span></span><span id=":18x" class="g3" title="Nov 16, 2019, 7:00 PM" alt="Nov 16, 2019, 7:00 PM" role="gridcell" tabindex="-1">{% if timestamp %} {{ timestamp }} {% endif %}</span>
+					<div class="zd bi4" aria-label="Not starred" title="Not starred" role="checkbox" aria-checked="false" jslog="20511; u014N:cOuCgd,Kr2w4b;" tabindex="0"><span class="T-KT"></span></div>
+					</div>
+					</td>
+					<td class="gH"></td>
+					<td class="gH acX bAm" rowspan="2">
+					<div class="T-I J-J5-Ji T-I-Js-IF aaq T-I-ax7 L3" role="button" data-tooltip="Reply" aria-label="Reply" tabindex="0"><img class="hB T-I-J3 " role="button" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" /></div>
+					<div id=":1c0" class="T-I J-J5-Ji T-I-Js-Gs aap T-I-awG T-I-ax7 L3" role="button" aria-expanded="false" aria-haspopup="true" data-tooltip="More" aria-label="More" tabindex="0"><img class="hA T-I-J3" role="menu" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" /></div>
+					</td>
+					</tr>
+				</tbody>
+				</table>
+				<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody>
+						<tr><center>
+							<td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 14px; line-height: 18px; color: rgb(119, 119, 119); padding: 20px;">
+							<span class="tooltips" tooltip="Great!<br>It is common to see your name used with malicious intent." tooltip-position="right">Hello, <b>{% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %} </b></span></center></td>
+						</tr>
+					</tbody>
+				</table>	
 
-<div class="adn ads" data-legacy-message-id="16e774e02416e02e" data-message-id="#msg-f:1650416294481551406" style="border-left: none; padding: 0px; display: flex; color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; background-color: rgb(255, 255, 255);">
-<div class="gs" style="margin: 0px; padding: 0px 0px 20px; width: 1504px;">
-<div class="gE iv gt" style="padding: 20px 0px 0px; cursor: auto; font-size: 0.875rem;">&nbsp;</div>
+				<table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody>
+						<tr>
+							<td align="center" style="margin: 0px;">
+							<table border="0" cellpadding="0" cellspacing="0" width="100%">
+								<tbody>
+									<tr>
+										<td style="margin: 0px;">&nbsp;</td>
+										<td align="center" style="margin: 0px;" width="117"><img alt="PayPal" border="0" class="CToWUd" height="71" src="https://gokdb.com/public/images/phishing/vbusiness2.png" style="display: block;" title="V. Corp" width="117" /></td>
+										<td style="margin: 0px;">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 
-<div>
-<div class="ii gt" id=":1ag" style="font-size: 0.875rem; direction: ltr; margin: 8px 0px 0px; padding: 0px; position: relative;">
-<div class="a3s aXjCH " id=":1af" style="overflow: hidden; font-variant-numeric: normal; font-variant-east-asian: normal; font-stretch: normal; font-size: small; line-height: 1.5; font-family: Arial, Helvetica, sans-serif;">
-<div style="padding: 0px; margin: 0px; background: rgb(242, 242, 242);">
-<div class="adM">&nbsp;</div>
-<div class="gE iv gt">
-    <table cellpadding="0" class="cf gJ">
-    <tbody>
-    <tr class="acZ">
-    <td class="gF gK">
-    <table cellpadding="0" class="cf ix">
-    <tbody>
-    <tr>
-    <td class="c2">
-    <h3 class="iw"><span class="qu" role="gridcell" tabindex="-1"><span email="support@vbankusa.com" name="support@vbankusa.com" data-hovercard-id="support@vbankusa.com" class="gD"><span class="tooltips" tooltip="Good job!<br>Always look at the email associated with the sender.<br>In many email viewers, it is common for only the name to be shown prior to inspection, not the actual email address." tooltip-position="right">support@vbankusa.com</span></span><span>&nbsp;</span><span class="go"><span aria-hidden="true"></span><span aria-hidden="true"></span></span></span></h3>
-    </td>
-    </tr>
-    </tbody>
+				<table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+
+                        <tr dir="LTR">
+                            <td align="center" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci6.googleusercontent.com/proxy/GsRQ45UFDFHNJuuSD4UyRIHZnPsDMLtcrMgUh9clrtuIlJ9ie2aoareojsvaFa69I4LxwaLHrXZrbilObptP4khOFPSwaGff2zQ3Fe6RNZh4mryWOH3avH3nqCHOZvUOKrUsEyw8KmZr5BJwUEVlNFYrSiQwywpk4pxEICWJiJOABH4=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-left-top.jpg" style="display: block;" width="100%" /></td>
+                            <td align="center" bgcolor="#ffffff" dir="LTR" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" dir="LTR" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" style="margin: 0px;" valign="top" width="12"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/ISLuIPUpMNFjY8a-bm1nohPY-zN0jrmerqg4A1YcWDC70ylH93Yu3xOzXZGf49pgZZg5NdV85vc1yVwQYoIfQEdG-DaMg-nn0Jz72fHDExbfgzqwc6wW6eIOrfvO3tl-nuyfv9y8KIXlD3Uglq_GxpIFz4fwYhGT9MXkcXMz=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-left-corner.jpg" style="display: block;" width="12" /></td>
+                                        <td align="center" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/3yrOoq4c9yMVeYe3jCY80invFSVOeOmPz5ePscm2ZFNY5zjCkEtCy9DnTDUl0aCHHiqS1fSNP6WBNJvpywu0v3ceNSZHH7ACfSNZ8Y0b2Q8NQJuQio6WlEQIRNe0Xo1RsC8b1iRFZ9OUY0hC_E2WCbe57qXhSuw=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-left.jpg" style="display: block;" width="100%" /></td>
+                                        <td align="center" style="margin: 0px;" valign="top" width="117"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/OpxforB8blqTBameEP5zXL6arxqzCNE0VD2TW1qgPjM7q_F766uAMUaQFvzJnkMR2_-41bjIbvlyRovYexuZKOB7a0j0pr8VMbIi5AmD6XoWxhLQ59ImoIRz90SQ1D1RElAO1yOncWmGblnmtxTm7-9GK5AgU1VeqqNuRgCbpoE=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-center-circle.jpg" style="display: block;" width="100%" /></td>
+                                        <td align="center" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/KrF9zANxguzoZWDYQ65Pl2AfO54bq-JrCgACtpnsJ0B4NZQwHSkz-go8t_oSdmdd4tsoWDU6qtfhou8tNAOtc3RzQrDymFh5Ci3CsDRQplUfuQIT7aq-cGx1vIL1VZNdi_GQJLWtfjfjWPzqHLsy_7kjcNmt_yrK=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-right.jpg" style="display: block;" width="100%" /></td>
+                                        <td align="center" style="margin: 0px;" valign="top" width="12"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/TTw4fpPsRLD78A0F_KGnDI_Hya7Uz_Ng7TWonSAGMiRz7qXxRSSZypZzFwFDY4Uq2tHNsEZt__pVgTLH1LGfNWZtct12u5JadOySRWmxL4L8pZl2kg7oksns0Cz51-yqGLIl4xI8mwEuVSYeuV3LfNfm7i9xbf8S-tMnQwf5Wg=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-right-corner.jpg" style="display: block;" width="12" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td align="center" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci6.googleusercontent.com/proxy/QDQw8G1Jt4gXFJwNumnKT6oh1rUOYPZGDK10yrmawTOjM5Fq0x09udc00qTAoviCJse4gVSmX8bK-18SIYyb0dqmwX0kQM1hiWPCzRlksMbBkDXOvu4tN2itSwxBs9pn1UcVNBRq4dlbpY8lnyoUPKKHt5UFDpOcQL8sGo43zA_nmp5J=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-right-top.jpg" style="display: block;" width="100%" /></td>
+                        </tr>
+                        <tr>
+                            <td align="left" style="margin: 0px;" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="96" src="https://ci3.googleusercontent.com/proxy/li1lzePIClKspAmlQFjJlYX_faBkvJHk1SLYGx5Z05tN1t_nCdga9bzGIy6ezhaPqgu108cV0CVj-RKpiEjwkfqZGhi5S7HB7aspPZNZwlPrOe-61OsMPaSTdSpJz6pcQ6NmiAPInA3Rm6p-KEsJyY5elt2S4sAA7gTn-Qc6EWh4e-u-cg8=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-left-bottom.jpg" style="display: block;" width="100%" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img alt="" class="CToWUd" height="100" src="https://ci6.googleusercontent.com/proxy/dWwkdECJDwHgXMbg4bonYp0NRLsTphqtFn1V0v9CGRJoxdNxlkGvL6FJQzlHFEkw0Bkbxxo3w5i-FxytdG3Bo2I87Z7SA6WueDp1lCEHxY3_UHsTE6zFxZNa1ftXAxhnqS4bTccpi9o5o6JCfY14aiWSc059s2vHhSdIiw=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/sidebar-gradient.png" style="display: block;" width="1" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td align="center" style="margin: 0px;" valign="top" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" bgcolor="#ffffff" style="margin: 0px; padding-top: 20px;" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 36px; line-height: 44px; color: rgb(51, 51, 51);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">V. Corp refunded $128.98&nbsp;USD from your recent purchase.</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(51, 51, 51);" valign="top">
+                                                                <div id="m_-4673647860089915424953c8c1f-e332-d01d-fe7c-385b6b094c76">
+                                                                <div id="m_-4673647860089915424d14aa760-e029-bb28-5399-940ce2e2cb13">
+                                                                <div id="m_-4673647860089915424607599eb-068f-187c-3145-87ef372302ab">
+                                                                <div id="m_-4673647860089915424305113e2-ca74-725c-1bc0-4bd65634a648">The money will be refunded to your bank account. It may take a few days to appear on your statement.</div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);">Your refund summary</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119);" valign="top">Transaction ID:&nbsp;31195FA31E54</td>
+                                                                <td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119); padding-left: 10px;" valign="top" width="   ">{% if timestamp %} {{ timestamp }} {% endif %}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 20px;">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(68, 68, 68);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">Total purchase amount</span></td>
+                                                                <td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 22px; line-height: 22px; color: rgb(51, 51, 51); padding-left: 10px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);">$128.98&nbsp;USD</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 20px;">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(68, 68, 68);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">Amount refunded</span></td>
+                                                                <td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 22px; line-height: 22px; color: rgb(51, 51, 51); padding-left: 10px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);">$128.98&nbsp;USD</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);"><span class="im" style="color: rgb(80, 0, 80);">Refund paid by</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(51, 51, 51);" valign="top">
+                                                                <p><span class="im" style="color: rgb(80, 0, 80);">V. Corp</span></p>
+    
+                                                                <p><span class="im" style="color: rgb(80, 0, 80);"><a href="mailto:paypalsupport@valvesoftware.com" style="color: rgb(17, 85, 204);" target="_blank">support@vbankusa.<wbr />com</a></span></p>
+    
+                                                                <p>&nbsp;</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);">Refund paid to</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+    
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(51, 51, 51);" valign="top"><span class="im" style="color: rgb(80, 0, 80);"><a href="mailto:{% if username %}{{ username }}{% endif %}" style="color: rgb(17, 85, 204);" target="_blank">{% if username %}{{ username }}{% endif %}</a></span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="margin: 0px; font-size: 0px; line-height: 0px; border-bottom: 1px solid rgb(214, 214, 214);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);"><span class="im" style="color: rgb(80, 0, 80);">Refund details</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px; padding: 0px 30px 30px;">
+                                                    <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119);" valign="top">
+                                                                <div id="m_-4673647860089915424ea40116f-260c-5828-a45f-6c958f48fded">Refunded to bank&nbsp;xxxx:</div>
+                                                                </td>
+                                                                <td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119); padding-left: 10px;" valign="top" width="30%">
+                                                                <div id="m_-4673647860089915424dcdd8ecd-84f2-953f-e2bc-3b1eac8463cb">$128.98&nbsp;USD</div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td align="left" style="margin: 0px;" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="center" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img border="0" class="CToWUd" height="96" src="https://ci4.googleusercontent.com/proxy/3Vgse0KtQW0Jm0uM-7uIlQSa4BZZZHguqnJ0Wbi9WbqUm_t96uYxbGXSRJWchWqzmF8q3PgbfHvJJj9iPVdtUT45vb7MVCS_y5BBYPoHjQb8WYLYmouYlrjDOT9LgTQCVT39O3HOsDDRr9pYeS1x-xjf7jwE1J1USiF1Dv4U7AotmcSC66H1=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-right-bottom.jpg" style="display: block;" width="100%" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img class="CToWUd" height="100" src="https://ci6.googleusercontent.com/proxy/dWwkdECJDwHgXMbg4bonYp0NRLsTphqtFn1V0v9CGRJoxdNxlkGvL6FJQzlHFEkw0Bkbxxo3w5i-FxytdG3Bo2I87Z7SA6WueDp1lCEHxY3_UHsTE6zFxZNa1ftXAxhnqS4bTccpi9o5o6JCfY14aiWSc059s2vHhSdIiw=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/sidebar-gradient.png" style="display: block;" width="1" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" dir="LTR" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                            <td align="center" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td align="left" style="margin: 0px; vertical-align: top; padding: 0px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="margin: 0px;" valign="top" width="12"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci4.googleusercontent.com/proxy/I7MDHAg3fRKIUlIjbHFigTn8hz6VmA-WW4U0JEsWyMFUK6CwRXPOtZ1N5VkWDYroZzeU2V3n2jOUMBa9jwlw3Vi7F3dhd_g3okJrxsuzbv2eneyoBhG07rge24cIVQJr6GoLRyo13dIq47KACZ-03YsPejH2NbD0rjH_7p2H=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-left-corner.jpg" style="display: block;" width="12" /></span></td>
+                                                    <td align="center" style="margin: 0px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci5.googleusercontent.com/proxy/74wBtNoHrA8Z3FAH1E57IHdZa8n-b_mmYaNyk9mBIQmavl9oFNb0HzghQyrPgRfA_Bzn98Hg44iA3eJQCbqFizacG12A4ugE8Gv-8SWUumJH9z55bW1Rghi3n3gpUZFS4tCmDpo7YZOVqmt5DPRsDvWyq2m-lbyy6Y8jjrFL=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-left-stroke.jpg" style="display: block;" width="100%" /></span></td>
+                                                    <td align="center" style="margin: 0px;" valign="top" width="120"><span class="im" style="color: rgb(80, 0, 80);"><img alt="PayPal" border="0" class="CToWUd" height="80" src="https://gokdb.com/public/images/phishing/vbusiness2.png" style="display: block;" width="120" /></span></td>
+                                                    <td align="center" style="margin: 0px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci5.googleusercontent.com/proxy/P3kU6RqSAxLiAtunuN7iqBgVJ9_czNiww5E1mool5Hxsfhd27vwjGoJR0NCq4_5QZzksXs36ihvbuX3rb7LfZiyOl2136UdO8wETaUxubJkUpHoc6KOfg9_3R0gpfVshOuv9JH4Ryz2cyqp6G1xVDwTZv0vs3h7SicXMG4vbZA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-right-stroke.jpg" style="display: block;" width="100%" /></span></td>
+                                                    <td align="center" style="margin: 0px;" valign="top" width="12"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci3.googleusercontent.com/proxy/DO-1ucQ0tuHvWFFS9uCQWwA1iiyde6JFiPi37iqPBYfLyDhmn1fg9QAuJvUQH7Ihtgg0GCJVaXM5q4WUBQQcGbooew6e6yu14nKgALiRmsqlWDpN8E7K-oGt-qdaIz01H5a0EodOS_Poxvv2gLyK50SDUmvcveF5krWREYf-eA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-right-corner.jpg" style="display: block;" width="12" /></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+    
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 15px; line-height: 22px; color: rgb(68, 68, 68); padding: 20px;"><span class="im" style="color: rgb(80, 0, 80);"><a alt="Help &amp; Contact" data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/selfhelp/home?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNGkFgbIMZ7PGecUD052sQWdcNIF2g" href="https://www.paypal.com/selfhelp/home?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 112, 186); text-decoration-line: none;" target="_blank">Help &amp; Contact</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a alt="Security" data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/us/webapps/mpp/paypal-safety-and-security?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNF8uGTgtoUcNZv9RNoiRAPhVdP0CQ" href="https://www.paypal.com/us/webapps/mpp/paypal-safety-and-security?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 112, 186); text-decoration-line: none;" target="_blank">Security</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a alt="Apps" data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/us/webapps/mpp/mobile-apps?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNHWrZlX8BzF5RywNHyYmyBP6js3QA" href="https://www.paypal.com/us/webapps/mpp/mobile-apps?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 112, 186); text-decoration-line: none;" target="_blank">Apps</a></span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td align="center" style="margin: 0px; padding-bottom: 20px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=https://twitter.com/PayPal?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNHPcSFshc9q0sUBdHFhLJZ4sChGCg" href="https://twitter.com/PayPal?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="twitter" border="0" class="CToWUd" height="29" src="https://ci3.googleusercontent.com/proxy/0wiLWOLyrUJ897a7uGVRIqoUKV1Ijo5E1jRVMgPAUHV3A1-cpiugjHUVy2Kiudtol3slGNTU5mWgcoGFDSez3bWShbXrlbx5PQi-MWqkDzqFKvV8HLKULOlYO-n73PSe2BqWoYAR1799vUEE6_rauevvfg=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-tw.jpg" style="display: block;" width="28" /></a></span></td>
+                                        <td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=https://www.instagram.com/paypal/?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNEEu2X_BPCMyDrjjbdSwZ9ldMPxMQ" href="https://www.instagram.com/paypal/?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="instagram" border="0" class="CToWUd" height="29" src="https://ci6.googleusercontent.com/proxy/cnhdJhK63uSsFcwavOFsQ6lzUn2LAIqszVnZPkX_7Vj9HOyZsdOo7Jwlw_2tqjD-p9sxl6ijHzM_pGgCqEHoUI2i2x9QtFnNtO2iix_DAgL8PlvcV5d88PCrk2pycwH9iiMr7TIzX6qiFnsQPc9xUWRvHA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-ig.jpg" style="display: block;" width="28" /></a></span></td>
+                                        <td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=https://www.facebook.com/PayPalUSA?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNGbbiaLgjC5Ksu7Xyr-q_YKd4Y4Og" href="https://www.facebook.com/PayPalUSA?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="facebook" border="0" class="CToWUd" height="29" src="https://ci6.googleusercontent.com/proxy/JSJS_W8va8ZLj6fe-reVMaV30P6rWf3a9lMWCWiuEEGEoUSYmOPGuIMF78yDSwYZhkLlMvEzAHK-i3LKyhECucuNVj3NPPePR08Uq3PgJDzYr1sDB2wiQqQmlKGybXoqbjhsryHFyb0X45fXRg6qvYPB5Q=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-fb.jpg" style="display: block;" width="28" /></a></span></td>
+                                        <td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=http://www.linkedin.com/company/1482?trk%3Dtyah%26utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNHmndnNp8bGbfjzkLT8MyvbxqeAAg" href="http://www.linkedin.com/company/1482?trk=tyah&amp;utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="linkedin" border="0" class="CToWUd" height="29" src="https://ci6.googleusercontent.com/proxy/F0La4P45ESUMC0gu2RJjsrubrnsxB6bPcPKBY2qO3IT_8rEi3myMPJxHWeZmkqr-aOXwUzvcEoPHpgHfNmB0OLWBAXLpVwlP-_6eH-aMyth1Eb4e-QLE0A4n1ypYf4teQpq4hOr35AfNowvJ5HtLLTVcfA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-li.jpg" style="display: block;" width="28" /></a></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                            <td align="center" style="margin: 0px;" valign="top" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;">&nbsp;</td>
+                            <td align="center" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
+                                        <p>V. Corp is committed to preventing fraudulent emails. Emails from V. Corp will always contain your full name.&nbsp;<a data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/us/webapps/mpp/security/suspicious-activity?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNGFUgCuREDjWC6p5ANql4fyHg0wXA" href="https://www.paypal.com/us/webapps/mpp/security/suspicious-activity?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 156, 222); text-decoration-line: none;" target="_blank"></span></a></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                            <td align="center" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
+                                        <p><span class="im" style="color: rgb(80, 0, 80);">Please don&#39;t reply to this email. To get in touch with us, click&nbsp;<strong><a data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/selfhelp/home?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677509000&amp;usg=AFQjCNGuM6eO8Br-AJDs-kd351CYPgjqBA" href="https://www.paypal.com/selfhelp/home?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204); text-decoration-line: none;" target="_blank">Help &amp; Contact</a></strong>.</span></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                            <td align="center" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
+                                        <p><span class="im" style="color: rgb(80, 0, 80);">V. Corp Customer Service can be reached at 888-855-1611.</span></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                            <td align="center" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 0px 30px;">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                        <tr>
+                            <td style="margin: 0px;">&nbsp;</td>
+                            <td align="center" style="margin: 0px;" width="600">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" id="m_-4673647860089915424emailFooter" style="line-height: 20px;" width="100%">
+                                            <tbody>
+                                                <tr>
+                                                    <td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+                                                    <p><span class="im" style="color: rgb(80, 0, 80);">Copyright &copy; 2005-2020 V. Corp, Inc. All rights reserved. V. Corp is located at 193 1st St., NY 91521.</span></p>
+    
+                                                    <p>V. Corp PPC987213:1.13.47:<wbr />rhf287fy</p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <img alt="" border="0" class="CToWUd" height="1" src="https://ci5.googleusercontent.com/proxy/bKERRcR0EGDTRE1VcalB-gNVL3D99JVNhvfVIW5QxxPpc78Fl3DBixrpwf2hSAHF5FCPacl9TLm1iC1EY4c4_lMDETiE7Vx04QR4zpgwbE6WTESZB1eytYDyatTw2hI9TiBezQyak_zO1dz1hpnog5_-5_g4jfv7mUpGoeuYHKcqzgOaJH6pRlMmZUMYc3TasIOFqNKaJ9t53-y56YCq1HYfwYEM8VIrVrjiLmfisdzmlznAX4mLlZYRcV2FsHps0qkfyT0sWAWTZ4HNE8Djbknj_fBu42fWfmlEVjXf-jfSFEHqr51NOi3AGPLq5bwcNbqUVeMCfIoo5er621WzMXg_ieliwWc=s0-d-e1-ft#https://t.paypal.com/ts?v=1&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=op&amp;mchn=em&amp;s=ci&amp;mail=sys" width="1" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </td>
+                            <td style="margin: 0px;">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </td>
+                <td bgcolor="#ffffff" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; font-size: 0px;">&nbsp;</td>
+            </tr>
+        </tbody>
     </table>
-    </td>
+    
+				</div>
 
-    <td class="gH bAk">
-    <div class="gK"><span></span><span id=":18x" class="g3" title="Nov 16, 2019, 7:00 PM" alt="Nov 16, 2019, 7:00 PM" role="gridcell" tabindex="-1">{% if timestamp %} {{ timestamp }} {% endif %}</span>
-    <div class="zd bi4" aria-label="Not starred" title="Not starred" role="checkbox" aria-checked="false" jslog="20511; u014N:cOuCgd,Kr2w4b;" tabindex="0"><span class="T-KT"></span></div>
-    </div>
-    </td>
-    <td class="gH"></td>
-    <td class="gH acX bAm" rowspan="2">
-    <div class="T-I J-J5-Ji T-I-Js-IF aaq T-I-ax7 L3" role="button" data-tooltip="Reply" aria-label="Reply" tabindex="0"><img class="hB T-I-J3 " role="button" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" /></div>
-    <div id=":1c0" class="T-I J-J5-Ji T-I-Js-Gs aap T-I-awG T-I-ax7 L3" role="button" aria-expanded="false" aria-haspopup="true" data-tooltip="More" aria-label="More" tabindex="0"><img class="hA T-I-J3" role="menu" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" /></div>
-    </td>
-    </tr>
-</tbody>
-</table>
-</div>
-
-
-<div class="adM">&nbsp;</div>
-
-<table border="0" cellpadding="0" cellspacing="0" width="100%">
-	<tbody>
-		<tr>
-			<td bgcolor="#ffffff" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; font-size: 0px;">&nbsp;</td>
-			<td align="center" bgcolor="#ffffff" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;" width="660">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;">&nbsp;</td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table bgcolor="#f5f5f5" border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr><center>
-                                    <td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 14px; line-height: 18px; color: rgb(119, 119, 119); padding: 20px;">
-                                    <span class="tooltips" tooltip="Great!<br>It is common to see your name used with malicious intent." tooltip-position="right">Hello, <b>{% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %} </b></span></center></td>
-								</tr>
-							</tbody>
-						</table>
-
-						<table bgcolor="#f5f5f5" border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td align="center" style="margin: 0px;">
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td style="margin: 0px;">&nbsp;</td>
-							
-												<td style="margin: 0px;">&nbsp;</td>
-											</tr>
-										</tbody>
-									</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;">&nbsp;</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;">&nbsp;</td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="margin: 0px;">&nbsp;</td>
-									<td align="center" style="margin: 0px;" width="117"><img alt="PayPal" border="0" class="CToWUd" height="71" src="https://gokdb.com/public/images/phishing/vbusiness2.png" style="display: block;" title="V. Corp" width="117" /></td>
-									<td style="margin: 0px;">&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;">&nbsp;</td>
-					</tr>
-					<tr dir="LTR">
-						<td align="center" bgcolor="#004f9b" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci6.googleusercontent.com/proxy/GsRQ45UFDFHNJuuSD4UyRIHZnPsDMLtcrMgUh9clrtuIlJ9ie2aoareojsvaFa69I4LxwaLHrXZrbilObptP4khOFPSwaGff2zQ3Fe6RNZh4mryWOH3avH3nqCHOZvUOKrUsEyw8KmZr5BJwUEVlNFYrSiQwywpk4pxEICWJiJOABH4=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-left-top.jpg" style="display: block;" width="100%" /></td>
-						<td align="center" bgcolor="#004f9b" dir="LTR" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" dir="LTR" width="100%">
-							<tbody>
-								<tr>
-									<td align="center" style="margin: 0px;" valign="top" width="12"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/ISLuIPUpMNFjY8a-bm1nohPY-zN0jrmerqg4A1YcWDC70ylH93Yu3xOzXZGf49pgZZg5NdV85vc1yVwQYoIfQEdG-DaMg-nn0Jz72fHDExbfgzqwc6wW6eIOrfvO3tl-nuyfv9y8KIXlD3Uglq_GxpIFz4fwYhGT9MXkcXMz=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-left-corner.jpg" style="display: block;" width="12" /></td>
-									<td align="center" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/3yrOoq4c9yMVeYe3jCY80invFSVOeOmPz5ePscm2ZFNY5zjCkEtCy9DnTDUl0aCHHiqS1fSNP6WBNJvpywu0v3ceNSZHH7ACfSNZ8Y0b2Q8NQJuQio6WlEQIRNe0Xo1RsC8b1iRFZ9OUY0hC_E2WCbe57qXhSuw=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-left.jpg" style="display: block;" width="100%" /></td>
-									<td align="center" style="margin: 0px;" valign="top" width="117"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/OpxforB8blqTBameEP5zXL6arxqzCNE0VD2TW1qgPjM7q_F766uAMUaQFvzJnkMR2_-41bjIbvlyRovYexuZKOB7a0j0pr8VMbIi5AmD6XoWxhLQ59ImoIRz90SQ1D1RElAO1yOncWmGblnmtxTm7-9GK5AgU1VeqqNuRgCbpoE=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-center-circle.jpg" style="display: block;" width="100%" /></td>
-									<td align="center" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/KrF9zANxguzoZWDYQ65Pl2AfO54bq-JrCgACtpnsJ0B4NZQwHSkz-go8t_oSdmdd4tsoWDU6qtfhou8tNAOtc3RzQrDymFh5Ci3CsDRQplUfuQIT7aq-cGx1vIL1VZNdi_GQJLWtfjfjWPzqHLsy_7kjcNmt_yrK=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-right.jpg" style="display: block;" width="100%" /></td>
-									<td align="center" style="margin: 0px;" valign="top" width="12"><img alt="" border="0" class="CToWUd" height="81" src="https://ci3.googleusercontent.com/proxy/TTw4fpPsRLD78A0F_KGnDI_Hya7Uz_Ng7TWonSAGMiRz7qXxRSSZypZzFwFDY4Uq2tHNsEZt__pVgTLH1LGfNWZtct12u5JadOySRWmxL4L8pZl2kg7oksns0Cz51-yqGLIl4xI8mwEuVSYeuV3LfNfm7i9xbf8S-tMnQwf5Wg=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-right-corner.jpg" style="display: block;" width="12" /></td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td align="center" bgcolor="#004f9b" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="81" src="https://ci6.googleusercontent.com/proxy/QDQw8G1Jt4gXFJwNumnKT6oh1rUOYPZGDK10yrmawTOjM5Fq0x09udc00qTAoviCJse4gVSmX8bK-18SIYyb0dqmwX0kQM1hiWPCzRlksMbBkDXOvu4tN2itSwxBs9pn1UcVNBRq4dlbpY8lnyoUPKKHt5UFDpOcQL8sGo43zA_nmp5J=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-right-top.jpg" style="display: block;" width="100%" /></td>
-					</tr>
-					<tr>
-						<td align="left" style="margin: 0px;" valign="top">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td align="center" bgcolor="#004f9b" style="margin: 0px;" valign="top"><img alt="" border="0" class="CToWUd" height="96" src="https://ci3.googleusercontent.com/proxy/li1lzePIClKspAmlQFjJlYX_faBkvJHk1SLYGx5Z05tN1t_nCdga9bzGIy6ezhaPqgu108cV0CVj-RKpiEjwkfqZGhi5S7HB7aspPZNZwlPrOe-61OsMPaSTdSpJz6pcQ6NmiAPInA3Rm6p-KEsJyY5elt2S4sAA7gTn-Qc6EWh4e-u-cg8=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-left-bottom.jpg" style="display: block;" width="100%" /></td>
-								</tr>
-								<tr>
-									<td align="right" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img alt="" class="CToWUd" height="100" src="https://ci6.googleusercontent.com/proxy/dWwkdECJDwHgXMbg4bonYp0NRLsTphqtFn1V0v9CGRJoxdNxlkGvL6FJQzlHFEkw0Bkbxxo3w5i-FxytdG3Bo2I87Z7SA6WueDp1lCEHxY3_UHsTE6zFxZNa1ftXAxhnqS4bTccpi9o5o6JCfY14aiWSc059s2vHhSdIiw=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/sidebar-gradient.png" style="display: block;" width="1" /></td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td align="center" style="margin: 0px;" valign="top" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td align="center" bgcolor="#ffffff" style="margin: 0px; padding-top: 20px;" valign="top">
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 36px; line-height: 44px; color: rgb(51, 51, 51);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">V. Corp refunded $128.98&nbsp;USD from your recent purchase.</span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(51, 51, 51);" valign="top">
-															<div id="m_-4673647860089915424953c8c1f-e332-d01d-fe7c-385b6b094c76">
-															<div id="m_-4673647860089915424d14aa760-e029-bb28-5399-940ce2e2cb13">
-															<div id="m_-4673647860089915424607599eb-068f-187c-3145-87ef372302ab">
-															<div id="m_-4673647860089915424305113e2-ca74-725c-1bc0-4bd65634a648">The money will be refunded to your bank account. It may take a few days to appear on your statement.</div>
-															</div>
-															</div>
-															</div>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);">Your refund summary</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119);" valign="top">Transaction ID:&nbsp;31195FA31E54</td>
-															<td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119); padding-left: 10px;" valign="top" width="   ">{% if timestamp %} {{ timestamp }} {% endif %}</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 20px;">
-												<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(68, 68, 68);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">Total purchase amount</span></td>
-															<td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 22px; line-height: 22px; color: rgb(51, 51, 51); padding-left: 10px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);">$128.98&nbsp;USD</span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 20px;">
-												<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(68, 68, 68);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">Amount refunded</span></td>
-															<td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 22px; line-height: 22px; color: rgb(51, 51, 51); padding-left: 10px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);">$128.98&nbsp;USD</span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td align="" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);"><span class="im" style="color: rgb(80, 0, 80);">Refund paid by</span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(51, 51, 51);" valign="top">
-															<p><span class="im" style="color: rgb(80, 0, 80);">V. Corp</span></p>
-
-															<p><span class="im" style="color: rgb(80, 0, 80);"><a href="mailto:paypalsupport@valvesoftware.com" style="color: rgb(17, 85, 204);" target="_blank">support@vbankusa.<wbr />com</a></span></p>
-
-															<p>&nbsp;</p>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td align="" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);">Refund paid to</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 17px; line-height: 22px; color: rgb(51, 51, 51);" valign="top"><span class="im" style="color: rgb(80, 0, 80);"><a href="mailto:{% if username %}{{ username }}{% endif %}" style="color: rgb(17, 85, 204);" target="_blank">{% if username %}{{ username }}{% endif %}</a></span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td align="center" style="margin: 0px; font-size: 0px; line-height: 0px; border-bottom: 1px solid rgb(214, 214, 214);" valign="top"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; vertical-align: top; padding: 0px; font-size: 19px; line-height: 24px; color: rgb(0, 156, 222);"><span class="im" style="color: rgb(80, 0, 80);">Refund details</span></td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px; padding: 0px 30px 30px;">
-												<table align="left" border="0" cellpadding="0" cellspacing="0" width="100%">
-													<tbody>
-														<tr>
-															<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119);" valign="top">
-															<div id="m_-4673647860089915424ea40116f-260c-5828-a45f-6c958f48fded">Refunded to bank&nbsp;xxxx:</div>
-															</td>
-															<td align="right" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 18px; color: rgb(119, 119, 119); padding-left: 10px;" valign="top" width="30%">
-															<div id="m_-4673647860089915424dcdd8ecd-84f2-953f-e2bc-3b1eac8463cb">$128.98&nbsp;USD</div>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td align="left" style="margin: 0px;" valign="top">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td align="center" bgcolor="#004f9b" style="margin: 0px;" valign="top"><img border="0" class="CToWUd" height="96" src="https://ci4.googleusercontent.com/proxy/3Vgse0KtQW0Jm0uM-7uIlQSa4BZZZHguqnJ0Wbi9WbqUm_t96uYxbGXSRJWchWqzmF8q3PgbfHvJJj9iPVdtUT45vb7MVCS_y5BBYPoHjQb8WYLYmouYlrjDOT9LgTQCVT39O3HOsDDRr9pYeS1x-xjf7jwE1J1USiF1Dv4U7AotmcSC66H1=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/header-sidebar-right-bottom.jpg" style="display: block;" width="100%" /></td>
-								</tr>
-								<tr>
-									<td align="left" bgcolor="#ffffff" style="margin: 0px;" valign="top"><img class="CToWUd" height="100" src="https://ci6.googleusercontent.com/proxy/dWwkdECJDwHgXMbg4bonYp0NRLsTphqtFn1V0v9CGRJoxdNxlkGvL6FJQzlHFEkw0Bkbxxo3w5i-FxytdG3Bo2I87Z7SA6WueDp1lCEHxY3_UHsTE6zFxZNa1ftXAxhnqS4bTccpi9o5o6JCfY14aiWSc059s2vHhSdIiw=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/sidebar-gradient.png" style="display: block;" width="1" /></td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" dir="LTR" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td align="left" style="margin: 0px; vertical-align: top; padding: 0px;">
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="margin: 0px;" valign="top" width="12"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci4.googleusercontent.com/proxy/I7MDHAg3fRKIUlIjbHFigTn8hz6VmA-WW4U0JEsWyMFUK6CwRXPOtZ1N5VkWDYroZzeU2V3n2jOUMBa9jwlw3Vi7F3dhd_g3okJrxsuzbv2eneyoBhG07rge24cIVQJr6GoLRyo13dIq47KACZ-03YsPejH2NbD0rjH_7p2H=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-left-corner.jpg" style="display: block;" width="12" /></span></td>
-												<td align="center" style="margin: 0px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci5.googleusercontent.com/proxy/74wBtNoHrA8Z3FAH1E57IHdZa8n-b_mmYaNyk9mBIQmavl9oFNb0HzghQyrPgRfA_Bzn98Hg44iA3eJQCbqFizacG12A4ugE8Gv-8SWUumJH9z55bW1Rghi3n3gpUZFS4tCmDpo7YZOVqmt5DPRsDvWyq2m-lbyy6Y8jjrFL=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-left-stroke.jpg" style="display: block;" width="100%" /></span></td>
-												<td align="center" style="margin: 0px;" valign="top" width="120"><span class="im" style="color: rgb(80, 0, 80);"><img alt="PayPal" border="0" class="CToWUd" height="80" src="https://gokdb.com/public/images/phishing/vbusiness2.png" style="display: block;" width="120" /></span></td>
-												<td align="center" style="margin: 0px;" valign="top"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci5.googleusercontent.com/proxy/P3kU6RqSAxLiAtunuN7iqBgVJ9_czNiww5E1mool5Hxsfhd27vwjGoJR0NCq4_5QZzksXs36ihvbuX3rb7LfZiyOl2136UdO8wETaUxubJkUpHoc6KOfg9_3R0gpfVshOuv9JH4Ryz2cyqp6G1xVDwTZv0vs3h7SicXMG4vbZA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-right-stroke.jpg" style="display: block;" width="100%" /></span></td>
-												<td align="center" style="margin: 0px;" valign="top" width="12"><span class="im" style="color: rgb(80, 0, 80);"><img alt="" border="0" class="CToWUd" height="141" src="https://ci3.googleusercontent.com/proxy/DO-1ucQ0tuHvWFFS9uCQWwA1iiyde6JFiPi37iqPBYfLyDhmn1fg9QAuJvUQH7Ihtgg0GCJVaXM5q4WUBQQcGbooew6e6yu14nKgALiRmsqlWDpN8E7K-oGt-qdaIz01H5a0EodOS_Poxvv2gLyK50SDUmvcveF5krWREYf-eA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/footer-right-corner.jpg" style="display: block;" width="12" /></span></td>
-											</tr>
-										</tbody>
-									</table>
-
-									<table border="0" cellpadding="0" cellspacing="0" width="100%">
-										<tbody>
-											<tr>
-												<td align="center" style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 15px; line-height: 22px; color: rgb(68, 68, 68); padding: 20px;"><span class="im" style="color: rgb(80, 0, 80);"><a alt="Help &amp; Contact" data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/selfhelp/home?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNGkFgbIMZ7PGecUD052sQWdcNIF2g" href="https://www.paypal.com/selfhelp/home?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 112, 186); text-decoration-line: none;" target="_blank">Help &amp; Contact</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a alt="Security" data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/us/webapps/mpp/paypal-safety-and-security?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNF8uGTgtoUcNZv9RNoiRAPhVdP0CQ" href="https://www.paypal.com/us/webapps/mpp/paypal-safety-and-security?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 112, 186); text-decoration-line: none;" target="_blank">Security</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a alt="Apps" data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/us/webapps/mpp/mobile-apps?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNHWrZlX8BzF5RywNHyYmyBP6js3QA" href="https://www.paypal.com/us/webapps/mpp/mobile-apps?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 112, 186); text-decoration-line: none;" target="_blank">Apps</a></span></td>
-											</tr>
-										</tbody>
-									</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td align="center" style="margin: 0px; padding-bottom: 20px;">
-						<table align="center" border="0" cellpadding="0" cellspacing="0">
-							<tbody>
-								<tr>
-									<td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=https://twitter.com/PayPal?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNHPcSFshc9q0sUBdHFhLJZ4sChGCg" href="https://twitter.com/PayPal?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="twitter" border="0" class="CToWUd" height="29" src="https://ci3.googleusercontent.com/proxy/0wiLWOLyrUJ897a7uGVRIqoUKV1Ijo5E1jRVMgPAUHV3A1-cpiugjHUVy2Kiudtol3slGNTU5mWgcoGFDSez3bWShbXrlbx5PQi-MWqkDzqFKvV8HLKULOlYO-n73PSe2BqWoYAR1799vUEE6_rauevvfg=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-tw.jpg" style="display: block;" width="28" /></a></span></td>
-									<td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=https://www.instagram.com/paypal/?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNEEu2X_BPCMyDrjjbdSwZ9ldMPxMQ" href="https://www.instagram.com/paypal/?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="instagram" border="0" class="CToWUd" height="29" src="https://ci6.googleusercontent.com/proxy/cnhdJhK63uSsFcwavOFsQ6lzUn2LAIqszVnZPkX_7Vj9HOyZsdOo7Jwlw_2tqjD-p9sxl6ijHzM_pGgCqEHoUI2i2x9QtFnNtO2iix_DAgL8PlvcV5d88PCrk2pycwH9iiMr7TIzX6qiFnsQPc9xUWRvHA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-ig.jpg" style="display: block;" width="28" /></a></span></td>
-									<td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=https://www.facebook.com/PayPalUSA?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNGbbiaLgjC5Ksu7Xyr-q_YKd4Y4Og" href="https://www.facebook.com/PayPalUSA?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="facebook" border="0" class="CToWUd" height="29" src="https://ci6.googleusercontent.com/proxy/JSJS_W8va8ZLj6fe-reVMaV30P6rWf3a9lMWCWiuEEGEoUSYmOPGuIMF78yDSwYZhkLlMvEzAHK-i3LKyhECucuNVj3NPPePR08Uq3PgJDzYr1sDB2wiQqQmlKGybXoqbjhsryHFyb0X45fXRg6qvYPB5Q=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-fb.jpg" style="display: block;" width="28" /></a></span></td>
-									<td align="left" style="margin: 0px; padding: 0px 25px 0px 0px;" valign="middle"><span class="im" style="color: rgb(80, 0, 80);"><a data-saferedirecturl="https://www.google.com/url?q=http://www.linkedin.com/company/1482?trk%3Dtyah%26utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNHmndnNp8bGbfjzkLT8MyvbxqeAAg" href="http://www.linkedin.com/company/1482?trk=tyah&amp;utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204);" target="_blank"><img alt="linkedin" border="0" class="CToWUd" height="29" src="https://ci6.googleusercontent.com/proxy/F0La4P45ESUMC0gu2RJjsrubrnsxB6bPcPKBY2qO3IT_8rEi3myMPJxHWeZmkqr-aOXwUzvcEoPHpgHfNmB0OLWBAXLpVwlP-_6eH-aMyth1Eb4e-QLE0A4n1ypYf4teQpq4hOr35AfNowvJ5HtLLTVcfA=s0-d-e1-ft#https://www.paypalobjects.com/digitalassets/c/system-triggered-email/n/layout/images/icon-li.jpg" style="display: block;" width="28" /></a></span></td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-						<td align="center" style="margin: 0px;" valign="top" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;">&nbsp;</td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
-									<p>V. Corp is committed to preventing fraudulent emails. Emails from V. Corp will always contain your full name.&nbsp;<a data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/us/webapps/mpp/security/suspicious-activity?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677508000&amp;usg=AFQjCNGFUgCuREDjWC6p5ANql4fyHg0wXA" href="https://www.paypal.com/us/webapps/mpp/security/suspicious-activity?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(0, 156, 222); text-decoration-line: none;" target="_blank">Learn to identify&nbsp;<span class="il">phishing</span></a></p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;">&nbsp;</td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
-									<p><span class="im" style="color: rgb(80, 0, 80);">Please don&#39;t reply to this email. To get in touch with us, click&nbsp;<strong><a data-saferedirecturl="https://www.google.com/url?q=https://www.paypal.com/selfhelp/home?utm_source%3Dunp%26utm_medium%3Demail%26utm_campaign%3DPPC001683%26utm_unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26ppid%3DPPC001683%26cnac%3DUS%26rsta%3Den_US%26cust%3DX5Y8YY9MJS68E%26unptid%3D666777e5-08e6-11ea-b34f-b875c0032488%26calc%3Dd3beb82eeffea%26unp_tpcid%3DBankRefundReceipt%26page%3Dmain:email:PPC001683:::%26pgrp%3Dmain:email%26e%3Dcl%26mchn%3Dem%26s%3Dci%26mail%3Dsys&amp;source=gmail&amp;ust=1581396677509000&amp;usg=AFQjCNGuM6eO8Br-AJDs-kd351CYPgjqBA" href="https://www.paypal.com/selfhelp/home?utm_source=unp&amp;utm_medium=email&amp;utm_campaign=PPC001683&amp;utm_unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=cl&amp;mchn=em&amp;s=ci&amp;mail=sys" style="color: rgb(17, 85, 204); text-decoration-line: none;" target="_blank">Help &amp; Contact</a></strong>.</span></p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
-									<p><span class="im" style="color: rgb(80, 0, 80);">V. Corp Customer Service can be reached at 888-855-1611.</span></p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 0px 30px;">&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;"><span class="im" style="color: rgb(80, 0, 80);">&nbsp;</span></td>
-					</tr>
-				</tbody>
-			</table>
-
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tbody>
-					<tr>
-						<td style="margin: 0px;">&nbsp;</td>
-						<td align="center" style="margin: 0px;" width="600">
-						<table border="0" cellpadding="0" cellspacing="0" width="100%">
-							<tbody>
-								<tr>
-									<td style="font-family: Calibri, Trebuchet, Arial, &quot;sans serif&quot;; margin: 0px; font-size: 13px; line-height: 20px; color: rgb(153, 153, 153); padding: 20px 30px 30px;">
-									<table border="0" cellpadding="0" cellspacing="0" id="m_-4673647860089915424emailFooter" style="line-height: 20px;" width="100%">
-										<tbody>
-											<tr>
-												<td style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
-												<p><span class="im" style="color: rgb(80, 0, 80);">Copyright &copy; 2005-2020 V. Corp, Inc. All rights reserved. V. Corp is located at 193 1st St., NY 91521.</span></p>
-
-												<p>V. Corp PPC987213:1.13.47:<wbr />rhf287fy</p>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-									<img alt="" border="0" class="CToWUd" height="1" src="https://ci5.googleusercontent.com/proxy/bKERRcR0EGDTRE1VcalB-gNVL3D99JVNhvfVIW5QxxPpc78Fl3DBixrpwf2hSAHF5FCPacl9TLm1iC1EY4c4_lMDETiE7Vx04QR4zpgwbE6WTESZB1eytYDyatTw2hI9TiBezQyak_zO1dz1hpnog5_-5_g4jfv7mUpGoeuYHKcqzgOaJH6pRlMmZUMYc3TasIOFqNKaJ9t53-y56YCq1HYfwYEM8VIrVrjiLmfisdzmlznAX4mLlZYRcV2FsHps0qkfyT0sWAWTZ4HNE8Djbknj_fBu42fWfmlEVjXf-jfSFEHqr51NOi3AGPLq5bwcNbqUVeMCfIoo5er621WzMXg_ieliwWc=s0-d-e1-ft#https://t.paypal.com/ts?v=1&amp;ppid=PPC001683&amp;cnac=US&amp;rsta=en_US&amp;cust=X5Y8YY9MJS68E&amp;unptid=666777e5-08e6-11ea-b34f-b875c0032488&amp;calc=d3beb82eeffea&amp;unp_tpcid=BankRefundReceipt&amp;page=main:email:PPC001683:::&amp;pgrp=main:email&amp;e=op&amp;mchn=em&amp;s=ci&amp;mail=sys" width="1" /></td>
-								</tr>
-							</tbody>
-						</table>
-						</td>
-						<td style="margin: 0px;">&nbsp;</td>
-					</tr>
-				</tbody>
-			</table>
-			</td>
-			<td bgcolor="#ffffff" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; font-size: 0px;">&nbsp;</td>
-		</tr>
-	</tbody>
-</table>
-
-<div class="yj6qo">&nbsp;</div>
-
-<div class="adL">&nbsp;</div>
-</div>
-
-<div class="adL">&nbsp;</div>
-</div>
-</div>
-
-<div class="hi" style="border-bottom-left-radius: 1px; border-bottom-right-radius: 1px; padding: 0px; width: auto; background: rgb(242, 242, 242); margin: 0px;">&nbsp;</div>
-
-</div>
-
-</div>
-
-<div class="ajx" style="clear: both;">&nbsp;
-
-</div>
-
-<hr>
-<h1>
-    <center>
-        <hr>
-        
-        Please hover over each element to expose tooltips.
-        <br><br>
-        The best tools against phishing are skepticism and curiosity!
-        <br><br>
-        <span class="tooltips" tooltip="
-        List:
-        <br>1 - Email Sender Address
-        <br>2 - First / Last Name in opening body of e-mail
-        <br>3
-        " tooltip-position="right"><h5>Hover here to expose hints of where to look.</h5></span>
-    </center>
-</h1>
-</div>
-
-<div class="gA gt acV" style="font-size: 0.875rem; padding: 0px; width: auto; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top: none; margin: 0px; background: rgb(255, 255, 255); color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;">
-<div class="gB xu" style="border-top: 0px; padding: 0px;">
-<div class="ip iq" style="clear: both; margin: 0px; padding: 16px 0px; border-top: none;">
-<div id=":18w">
-<table class="cf wS" role="presentation" style="border-collapse: collapse;">
-	<tbody>
-		<tr>
-			<td class="amq" style="margin: 0px; padding: 0px 16px; vertical-align: top; width: 44px; visibility: hidden;"><img class="ajn bofPge" data-hovercard-id="" id=":nc_6" jid="" name=":nc" src="https://ssl.gstatic.com/ui/v1/icons/mail/no_photo.png" style="display: block; width: 40px; height: 40px; border-radius: 50%;" /></td>
-			<td class="amr" style="margin: 0px; padding: 0px; width: 1504px;">
-			<div class="nr wR" style="box-sizing: border-box; border-radius: 1px; transition: none 0s ease 0s; padding: 0px; border: none !important; margin: 0px !important;">
-			<div class="amn" style="color: inherit; height: auto; padding: 0px; align-items: center; display: flex; line-height: 20px;"><span class="ams bkH" id=":19h" jslog="21576; u014N:cOuCgd,Kr2w4b;" role="link" style="cursor: pointer; align-items: center; border: none; display: inline-flex; justify-content: center; position: relative; z-index: 0; -webkit-font-smoothing: antialiased; font-family: &quot;Google Sans&quot;, Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: 0.875rem; letter-spacing: 0.25px; background: none; border-radius: 4px; box-sizing: border-box; color: rgb(95, 99, 104); height: 36px; outline: none; padding: 0px 16px 0px 12px; box-shadow: rgb(218, 220, 224) 0px 0px 0px 1px inset; min-width: 104px; -webkit-user-drag: none; user-select: none; margin-right: 12px;" tabindex="0">Reply</span><span class="ams bkG" id=":1ax" jslog="21578; u014N:cOuCgd,Kr2w4b;" role="link" style="cursor: pointer; align-items: center; border: none; display: inline-flex; justify-content: center; position: relative; z-index: 0; -webkit-font-smoothing: antialiased; font-family: &quot;Google Sans&quot;, Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: 0.875rem; letter-spacing: 0.25px; background: none; border-radius: 4px; box-sizing: border-box; color: rgb(95, 99, 104); height: 36px; outline: none; padding: 0px 16px 0px 12px; box-shadow: rgb(218, 220, 224) 0px 0px 0px 1px inset; min-width: 104px; -webkit-user-drag: none; user-select: none; margin-right: 12px;" tabindex="0">Forward</span></div>
+				
 			</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
-</div>
-</div>
-</div>
-<div></div>
-</div>
+			<div class="panes-separator" id="panes-separator"></div>
+			<div class="right-pane" id="right-pane">
+				<p>Drag the blue 	pane divider to resize</p>
+				<center>
+					<hr>
+					
+					Please hover over each element to expose tooltips.
+					<br><br>
+					The best tools against phishing are skepticism and curiosity!
+					<br><br>
+					<span class="tooltips" tooltip="
+					List:
+					<br>1 - Email Sender Address
+					<br>2 - First / Last Name in opening body of e-mail
+					<br>3
+					" tooltip-position="left"><h5>Hover here to expose hints of where to look.</h5></span>
+				</center>
+
+			</div>
+		</div>
+<script>
+    var leftPane = document.getElementById('left-pane');
+    var rightPane = document.getElementById('right-pane');
+    var paneSep = document.getElementById('panes-separator');
+
+    // The script below constrains the target to move horizontally between a left and a right virtual boundaries.
+    // - the left limit is positioned at 10% of the screen width
+    // - the right limit is positioned at 90% of the screen width
+    var leftLimit = 10;
+    var rightLimit = 90;
+
+
+    paneSep.sdrag(function (el, pageX, startX, pageY, startY, fix) {
+
+        fix.skipX = true;
+
+        if (pageX < window.innerWidth * leftLimit / 100) {
+            pageX = window.innerWidth * leftLimit / 100;
+            fix.pageX = pageX;
+        }
+        if (pageX > window.innerWidth * rightLimit / 100) {
+            pageX = window.innerWidth * rightLimit / 100;
+            fix.pageX = pageX;
+        }
+
+        var cur = pageX / window.innerWidth * 100;
+        if (cur < 0) {
+            cur = 0;
+        }
+        if (cur > window.innerWidth) {
+            cur = window.innerWidth;
+        }
+        var right = (100-cur-2);
+        leftPane.style.width = cur + '%';
+        rightPane.style.width = right + '%';
+    }, null, 'horizontal');
+</script>
 <script>
     $('.tooltips').append("<span></span>");
     $('.tooltips:not([tooltip-position])').attr('tooltip-position','bottom');
