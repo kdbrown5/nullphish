@@ -22,10 +22,10 @@ Color Palette Hex Codes:
 #tilecontainer{
     z-index: 999;
     position: absolute;
-    top: 90px;
-    bottom: 60px;
-    left: 60px;
-    right: 60px;
+    top: 240px;
+    bottom: 180px;
+    left: 240px;
+    right: 240px;
     width: auto;
     height: auto;
     margin: 0px;
@@ -34,12 +34,16 @@ Color Palette Hex Codes:
     border-radius: 25px;
     border: 1px solid #49A355;
     color: #49A355;
+    min-width: 500px;
+    max-width: 2500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 #tilecontainer table{
     width: 100%;
     height: 100%;
     table-layout: fixed;
-    max-width: 3000px;
+    max-width: 2000px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -51,15 +55,18 @@ Color Palette Hex Codes:
 #tilecontainer tr{
     vertical-align: middle;
 }
+#tilecontainer a{
+    text-decoration: none;
+}
 #tilecontainerbg{
     z-index: 998;
     background-color: #0D1126;
     border-radius: 15px;
     position: absolute;
-    top: 90px;
-    bottom: 60px;
-    left: 60px;
-    right: 60px;
+    top: 240px;
+    bottom: 180px;
+    left: 240px;
+    right: 240px;
     width: auto;
     height: auto;
     opacity: 0.75;
@@ -73,10 +80,10 @@ Color Palette Hex Codes:
     color: #0D1126;
     font-family: opensans;
     font-weight: bold;
-    height: 25vw;
-    width: 25vw;
-    min-width: 120px;
-    min-height: 120px;
+    height: calc(90px + 10vw);
+    width: calc(90px + 10vw);
+    min-width: 90px;
+    min-height: 90px;
     max-width: 400px;
     max-height: 400px;
     -webkit-touch-callout: none;
@@ -88,7 +95,8 @@ Color Palette Hex Codes:
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-    vertical-align: middle;
+    vertical-align: top;
+    overflow: hidden;
 }
 .apptile:hover{
     border-color: #E0E0E0;
@@ -101,12 +109,12 @@ Color Palette Hex Codes:
     color: #0D1126;
 }
 .apptile img{
-    height: 15vw;
-    width: 15vw;
+    height: 10vw;
+    width: 10vw;
     max-width: 250px;
     max-height: 250px;
-    min-width: 120px;
-    min-height: 120px;
+    min-width: 60px;
+    min-height: 60px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 14px;
@@ -122,10 +130,26 @@ Color Palette Hex Codes:
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding-top: 5%;
+    padding-top: 10%;
     padding-bottom: 5%;
-    font-size: calc(12px + 0.5vw);
+    font-size: calc(16px + 0.5vw);
     text-align: center;
     vertical-align: middle;
+}
+
+.appdescription{
+    width: 90%;
+    max-width: 100%;
+    min-width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14px;
+    margin-bottom: 0px;
+    padding: 0px;
+    vertical-align: bottom;
+    visibility: hidden;
+    font-size: calc(12px + 0.25vw);
+    height: calc(24px + 0.25vw);
+    color: #E0E0E0;
 }
 

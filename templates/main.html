@@ -19,7 +19,6 @@
     <div id="navbg"></div>
     <nav>
       <table>
-        <tr>
           <td><a href="/education" class="passive">Education</a></li>
           <td><a href="" class="passive">Testing</a></li>
             <td><a href="/stats" class="passive">Results</a></li>
@@ -39,60 +38,88 @@
         </tr>
         <tr>
           <td>
-            <a href="/education/topic1" style="text-decoration: none;">
-              <div class="apptile">
-                <img>
-                <p>Email Phishing</p>
+            <a href="/education/topic1">
+              <div class="apptile" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
+                  <img>
+                  <p>Email Phishing</p>
               </div>
             </a>
+            <div class="appdescription emailphishingdesc">
+              Email phishing is one of the most common and dangerous forms of scams. This module goes over how to spot phishing emails and mitigate the risks they pose.
+            </div>
           </td>
           <td>
             <a href="/" style="text-decoration: none;">
-              <div class="apptile">
+              <div class="apptile" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
                 <img>
                 <p>Spear Phishing</p>
               </div>
             </a>
+            <div class="appdescription spearphishingdesc">
+              A fancy description about the objectives and overall course go here!
+            </div>
           </td>
           <td>
             <a href="/" style="text-decoration: none;">
-              <div class="apptile">
+              <div class="apptile" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
                 <img>
                 <p>Other Phishing?</p>
               </div>
             </a>
+            <div class="appdescription otherphishingdesc">
+              A fancy description about the objectives and overall course go here!
+            </div>
           </td>
         </tr>
         <tr>
           <td>
             <a href="/" style="text-decoration: none;">
-              <div class="apptile">
+              <div class="apptile" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
                 <img>
                 <p>Results</p>
               </div>
             </a>
+            <div class="appdescription resultsdesc">
+              A fancy description about the objectives and overall course go here!
+            </div>
           </td>
           <td>
             <a href="/" style="text-decoration: none;">
-              <div class="apptile">
+              <div class="apptile" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
                 <img>
                 <p>Profile</p>
               </div>
             </a>
+            <div class="appdescription profiledesc">
+              A fancy description about the objectives and overall course go here!
+            </div>
           </td>
           <td>
             <a href="/" style="text-decoration: none;">
-              <div class="apptile">
+              <div class="apptile" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
                 <img>
                 <p>Log Out</p>
               </div>
             </a>
+            <div class="appdescription logoutdesc">
+              A fancy description about the objectives and overall course go here!
+            </div>
           </td>
         </tr>
       </table>>
     </div>
     <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/app.js"></script>
+    <script type="text/javascript">
+      function showemaildesc(x) {
+        var y = document.getElementsByClassName(x);
+        y[0].style.visibility = 'visible';
+      }
+      function hideemaildesc(x) {
+        var y = document.getElementsByClassName(x);
+        y[0].style.visibility = 'hidden';
+      }
+    </script>
   </body>
 
 </html>

@@ -73,12 +73,12 @@ body{
   margin: 0;
   overflow-x: hidden;
   background-color: #0D1126;
-  /*background-image: url("../res/bg2.png");*/
   background-repeat: repeat;
   background-size: cover;
   font-family: opensans;
   color: #ECA400;
   text-align: center;
+  text-decoration: none;
 }
 
 h1{
@@ -99,6 +99,7 @@ nav{
   font-size: x-large;
   padding: 0px;
   margin: 0px;
+  text-decoration: none;
 }
 nav table{
   margin: 0px;
@@ -113,6 +114,7 @@ nav table{
   table-layout: auto;
   min-width: 800px;
   max-width: 2160px;
+  text-decoration: none;
 }
 nav tr{
   line-height: 60px;
@@ -145,25 +147,22 @@ nav a{
 }
 nav a:hover{
   color: #E0E0E0;
+  text-decoration: none;
 }
 nav .active{
   border-top: 1px solid #49A355;
   border-bottom: 1px solid #49A355;
   border-radius: 15px;
+  text-decoration: none;
 }
 nav .passive:hover{
   border-top: 1px solid #49A355;
   border-bottom: 1px solid #49A355;
   border-radius: 15px;
+  text-decoration: none;
 }
 
 /* IDs */
-#aquarium{
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  position: fixed;
-}
 
 #navbg{
   z-index: 998;
