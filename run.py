@@ -1,7 +1,7 @@
 import os
 from os import path, walk
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
-    Response, g, Markup, Blueprint, make_response
+    Response, g, Markup, Blueprint, make_response, send_from_directory
 from flask_sqlalchemy import SQLAlchemy 
 import sqlite3
 from register import registration, register
@@ -113,6 +113,10 @@ def topic1m():
         return topic11()
     else:
         return redirect("/")
+
+@app.route('/css/<path:path>')
+def send_css(path):
+    return send_from_directory('css', path)
 
 #### template iframe rendering for gophishing template preview
 @app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
