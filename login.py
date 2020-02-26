@@ -10,6 +10,7 @@ from passlib.hash import sha256_crypt
 import gc
 from lumberjack import log
 from pysqlcipher3 import dbapi2 as sqlite
+from passlib.hash import argon2
 
 db = SQLAlchemy()
 
@@ -23,7 +24,8 @@ login = Blueprint('login', __name__, url_prefix='/login', template_folder='templ
 def loginpage():
 
     def check_password(hashed_password, user_password): # currently md5, will change to sha256 later
-        return hashed_password == hashlib.md5(user_password.encode()).hexdigest()
+        password_check = argon2.verify(hashed_password, user_password)
+        return password_check
 
     def validate(username, password): # validate username, pw from database
         con = sqlite.connect('db/db1.db')
@@ -37,7 +39,7 @@ def loginpage():
                 dbUser = row[1]
                 dbPass = row[2]
                 if dbUser == username:
-                    completion = check_password(dbPass, password)
+                    completion = check_password(password, dbPass)
             cur.execute('select validated from users where username = (?)', (username,))
             validated = cur.fetchone()[0]
             session['validated'] = validated
@@ -73,7 +75,6 @@ def loginpage():
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
         completion = validate(username, password)
-        print(session['validated'])
         if session['validated'] == 0:
             error = 'It looks like your account is not yet activated. Please contact your administrator'
         elif session['validated'] == 2:

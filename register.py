@@ -6,7 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
-from passlib.hash import sha256_crypt
 import gc
 from lumberjack import log
 import smtplib, ssl
@@ -14,6 +13,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from tokenizer import generate_confirmation_token, confirm_token
 from pysqlcipher3 import dbapi2 as sqlite
+from passlib.hash import argon2
 
 db = SQLAlchemy()
 
@@ -71,14 +71,14 @@ def registration():
             username = request.form.to_dict()['email']
             business = request.form.to_dict()['business']
             session['username'] = username
-            #password = sha256_crypt.encrypt((str(request.form.get('password'))))
             password = request.form.get('password')
             if len(password) < 10:
                 flash('Please use a password with at least 10 characters')
                 return render_template("register.html")
 
-            password = hashlib.md5(str(request.form.get('password')).encode()).hexdigest()
-            repeat = hashlib.md5(str(request.form.get('repeat')).encode()).hexdigest()
+            password = argon2.using(rounds=4).hash(request.form.get('password'))
+            repeat = argon2.using(rounds=4).hash(request.form.get('repeat'))
+
             code = request.form.to_dict()['code']
             if repeat != password:
                 flash('Your passwords do not match.  Please try again.')
