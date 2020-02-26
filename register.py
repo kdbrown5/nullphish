@@ -76,8 +76,8 @@ def registration():
                 flash('Please use a password with at least 10 characters')
                 return render_template("register.html")
 
-            password = argon2.using(rounds=4).hash(request.form.get('password'))
-            repeat = argon2.using(rounds=4).hash(request.form.get('repeat'))
+            password = str(request.form.get('password'))
+            repeat = str(request.form.get('password'))
 
             code = request.form.to_dict()['code']
             if repeat != password:
@@ -91,14 +91,16 @@ def registration():
                     return render_template("register.html")
                 else:
                     pass     
-
+            
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
                 x = cur.execute("SELECT * FROM users WHERE username LIKE (?);", (session['username'],))
             result = cur.fetchone()
 
+
             if result == None:
+                password = argon2.using(rounds=4).hash(request.form.get('password'))
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
                 cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role, validated) VALUES (?, ?, ?, ?, ?, 'admin', 0);", (username, password, firstname, lastname, business,))
