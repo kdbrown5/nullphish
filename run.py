@@ -12,7 +12,7 @@ from lumberjack import log
 from profile import myprofile, profile
 from gophishing import gophishing, gophish
 from fy import fy, apiid
-from educationemail import educationemail, educationemaillobby
+from educationemail import educationemail, educationemaillobby, email1
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -114,6 +114,9 @@ def emaillobby():
     else:
         return redirect("/")
 
+@app.route('/education/email/1', subdomain="app", methods=['GET', 'POST'])
+def educationemail1():
+    return email1()
 
 #### template iframe rendering for gophishing template preview
 @app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
