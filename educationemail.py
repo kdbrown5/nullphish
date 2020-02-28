@@ -39,4 +39,4 @@ def email1():
     timestamp = timestamp.strftime("%m/%d/%Y %I:%M")
     username=session['username']
 
-    return render_template('topic1mod1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
+    return render_template('email1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
