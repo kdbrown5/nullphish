@@ -40,7 +40,7 @@ app.register_blueprint(profile)
 app.register_blueprint(gophishing)
 app.register_blueprint(fy)
 app.register_blueprint(topic1)
-app.register_blueprint(educationemaillobby)
+app.register_blueprint(educationemail)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
