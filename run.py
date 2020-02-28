@@ -13,6 +13,7 @@ from profile import myprofile, profile
 from gophishing import gophishing, gophish
 from fy import fy, apiid
 from topic1 import topic1, topic11
+from educationemail import educationemail, educationemaillobby
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -39,6 +40,7 @@ app.register_blueprint(profile)
 app.register_blueprint(gophishing)
 app.register_blueprint(fy)
 app.register_blueprint(topic1)
+app.register_blueprint(educationemaillobby)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -113,6 +115,14 @@ def topic1m():
         return topic11()
     else:
         return redirect("/")
+
+@app.route('/education/email', subdomain="app", methods=['GET', 'POST'])
+def emaillobby():
+    if session.get('logged_in'):
+        return educationemaillobby()
+    else:
+        return redirect("/")
+
 
 #### template iframe rendering for gophishing template preview
 @app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
