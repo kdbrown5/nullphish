@@ -7,7 +7,6 @@ from flask_sqlalchemy import SQLAlchemy
 from pysqlcipher3 import dbapi2 as sqlite
 from lumberjack import log
 from datetime import datetime
-from educationemail1 import topic1, topic11
 
 loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
