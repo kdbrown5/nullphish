@@ -100,6 +100,7 @@ def registration():
 
 
             if result == None:
+                del repeat
                 password = argon2.using(rounds=4).hash(request.form.get('password'))
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
@@ -108,6 +109,7 @@ def registration():
                 con.commit()
                 con.close()
                 gc.collect()
+                del password
                 session['role'] = 'admin'
                 session['logged_in'] = True
                 session['username'] = username
