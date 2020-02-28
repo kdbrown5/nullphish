@@ -7,6 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from pysqlcipher3 import dbapi2 as sqlite
 from lumberjack import log
 from datetime import datetime
+from educationemail1 import topic1, topic11
 
 loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
@@ -19,3 +20,24 @@ def educationemaillobby():
     def selection():
         print('emaillobby')
     return render_template('emaillobby.html')
+
+@educationemail.route('/education/email/1', subdomain="app", methods=['GET', 'POST'])
+def email1():
+    def userlookup():
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('select firstname from users where username = (?);', (session['username'],))
+            fname = cur.fetchone()[0]
+            cur.execute('select lastname from users where username = (?);', (session['username'],))
+            lname = cur.fetchone()[0]
+        con.close()
+        return fname, lname
+
+    fname, lname = userlookup()
+    timestamp = (datetime.now())
+    timestamp = timestamp.strftime("%m/%d/%Y %I:%M")
+    username=session['username']
+
+    return render_template('topic1mod1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)

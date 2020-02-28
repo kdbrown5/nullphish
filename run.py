@@ -12,7 +12,6 @@ from lumberjack import log
 from profile import myprofile, profile
 from gophishing import gophishing, gophish
 from fy import fy, apiid
-from topic1 import topic1, topic11
 from educationemail import educationemail, educationemaillobby
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
@@ -39,7 +38,6 @@ app.register_blueprint(logout)
 app.register_blueprint(profile)
 app.register_blueprint(gophishing)
 app.register_blueprint(fy)
-app.register_blueprint(topic1)
 app.register_blueprint(educationemail)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
@@ -108,13 +106,6 @@ def loginp():
 @app.route('/fy', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def logid():
     return apiid() # else redirect to login page
-
-@app.route('/education/topic1', subdomain="app", methods=['GET', 'POST'])
-def topic1m():
-    if session.get('logged_in'):
-        return topic11()
-    else:
-        return redirect("/")
 
 @app.route('/education/email', subdomain="app", methods=['GET', 'POST'])
 def emaillobby():
