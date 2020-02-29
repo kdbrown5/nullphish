@@ -41,7 +41,7 @@ def email1():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('update education set visited = visited +1 where username = (?) and topic = "email";' (session['username'],))
-            cur.execute('insert into education (username, topic, visited) select (?), "email", 1 where (Select changes() = 0);', session['username'],))
+            cur.execute('insert into education (username, topic, visited) select (?), "email", 1 where (Select changes() = 0;', (session['username'],))
         con.close()
 
     fname, lname = userlookup()
