@@ -24,7 +24,7 @@ def educationemaillobby():
 #            return render_template('stats-modify.html', businessdata=businessdata)
 #        else:
 #            delrec = request.args.get('rec')# record deletion requested - ie - nullphish.com/stats/del?rec=5 as example
-3            deleterecord(delrec)
+#            deleterecord(delrec)
 #            return redirect('/stats/mod')# return to table w/ modification enabled render
 #
     return render_template('emaillobby.html')
