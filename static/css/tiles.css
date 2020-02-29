@@ -43,22 +43,9 @@ Color Palette Hex Codes:
   grid-template-columns: auto auto auto;
   grid-template-rows: auto min-content min-content auto;
   row-gap: 0px;
-}
-#tilecontainer table{
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-  max-width: 2000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#tilecontainer th{
-  font-size: calc(24px + 0.5vw);
-  max-height: 40px;
-  vertical-align: middle;
-}
-#tilecontainer tr{
-  vertical-align: middle;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 #tilecontainer a{
   text-decoration: none;
@@ -69,26 +56,6 @@ Color Palette Hex Codes:
   vertical-align: middle;
   grid-column-start: 1;
   grid-column-end: 4;
-}
-#tilecontainerbg{
-  z-index: 998;
-  background-color: black;
-  border-radius: 15px;
-  position: absolute;
-  top: 240px;
-  bottom: 180px;
-  left: 240px;
-  right: 240px;
-  width: auto;
-  height: auto;
-  opacity: 0.5;
-  min-width: 500px;
-  max-width: 2500px;
-  min-height: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 #tilecontainer a{
   border-radius: 15px;
