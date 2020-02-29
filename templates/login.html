@@ -1,31 +1,58 @@
 <html>
   <head>
     <title>NullPhish: Login to Your Account</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://nullphish.com/css/master.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .contentcontainer{
+        z-index: 999;
+        position: absolute;
+        top: 10%;
+        height: 80%;
+        left: 10%;
+        width: 80%;
+        margin: 0px;
+        overflow: hidden;
+        border-radius: 25px;
+        border: 1px solid #E0E0E0;
+        color: #E0E0E0;
+        background-color: rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+    </style>
+    <!--
     <link rel="stylesheet" media="screen" href="css/style336.css">
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/style320.css">
-  <style>
-  .center-me {
-    text-align: center;
-    margin:0 auto;
-  }
-  .center {
-  margin: 0 auto;
-  width: 500px;
-  margin:0 auto;
-}
-  body {background-image: url(https://gokdb.com/public/loginlibrary.jpg);
-    background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-color: black}
-
-  </style>
+    -->
   </head>
   <body>
-    <br><br><br><br><br><br><br><br><br>
+    <div id="particles-js"></div>
+    <nav>
+      <table>
+        <tr>
+          <td><a href="https://app.nullphish.com/register" class="passive">Sign Up</a></li>
+          <td><a href="https://nullphish.com" class="active">NullPhish &#169;</a></td>
+          <td><a href="https://app.nullphish.com/login" class="passive">Log In</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+
+    </div>
+    <!--
     <center>
     <div class="container">
         <h1 style="color: white" class="w3-margin w3-jumbo"><b>Welcome!</b></h1>
@@ -34,22 +61,23 @@
           
       <br>
       <div class="center">
-      <form class="" action="" method="post">
-        <input type="text" class="form-control text-center" placeholder="Email Address" name="username" value="{{
-          request.form.username }}">
-         <input type="password" class="form-control text-center" placeholder="Password" name="password" value="{{
-          request.form.password }}">
-        <input class="btn btn-primary btn-block" type="submit" value="Login">
-        
+        <form class="" action="" method="post">
+          <input type="text" class="form-control text-center" placeholder="Email Address" name="username" value="{{
+            request.form.username }}">
+          <input type="password" class="form-control text-center" placeholder="Password" name="password" value="{{
+            request.form.password }}">
+          <input class="btn btn-primary btn-block" type="submit" value="Login">
+        </form>
       </div>
-      </form>
       {% if error %}
         <p class="error" style="color: white"><strong>Error:</strong> {{ error }}
       {% endif %}
     </div>
-<br><br><br>
+    <br><br><br>
     <p style="color: white" class="w3-large text-center">Don't have an account? <a href="/register" style="color: rgb(95, 170, 255)"><b>Register</b></a> </p>  
-  </center>
-
+    </center>
+    -->
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
 </html>
