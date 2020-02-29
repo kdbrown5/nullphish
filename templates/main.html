@@ -3,12 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--
     <link rel="stylesheet" href="https://nullphish.com/css/master.css">
     <link rel="stylesheet" href="https://nullphish.com/css/tiles.css">
-    -->
-    <link rel="stylesheet" href="/static/css/master.css">
-    <link rel="stylesheet" href="/static/css/tiles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NullPhish: Education tools to Prevent Scams, Phishing, and Security Concerns</title>
@@ -16,100 +12,86 @@
       #particles-js{
         overflow: hidden;
       }
+      
     </style>
   </head>
   <body id="particles-js">
     <div id="navbg"></div>
     <nav>
       <table>
+          <td><a href="/main" class="passive">Modules</a></li>
           <td><a href="/education" class="passive">Education</a></li>
           <td><a href="" class="passive">Testing</a></li>
-            <td><a href="/stats" class="passive">Results</a></li>
+          <td><a href="/stats" class="passive">Results</a></li>
           <td><a href="" class="active">NullPhish &#169;</a></td>
           <td><a href="/profile" class="passive">Profile</a></li>
-            <td><a href="" class="passive">Admin</a></li>
-              <td><a href="/gophishing" class="passive">Phishing</a></li>
+          <td><a href="" class="passive">Admin</a></li>
+          <td><a href="/gophishing" class="passive">Phishing</a></li>
           <td><a href="/logout" class="passive">Log Out</a></td>
         </tr>
       </table>
     </nav>
     <div id="tilecontainerbg"></div>
     <div id="tilecontainer">
-      <table>
-        <tr>
-          <th colspan=3>Select Your Module To Begin!</th>
-        </tr>
-        <tr>
-          <td>
-            <a href="/education/email">
-              <div class="apptile" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
-                  <img>
-                  <p>Email Phishing</p>
-              </div>
-            </a>
-            <div class="appdescription emailphishingdesc">
-              Email phishing is one of the most common and dangerous forms of scams. This module goes over how to spot phishing emails and mitigate the risks they pose.
-            </div>
-          </td>
-          <td>
-            <a href="/" style="text-decoration: none;">
-              <div class="apptile" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
-                <img>
-                <p>Spear Phishing</p>
-              </div>
-            </a>
-            <div class="appdescription spearphishingdesc">
-              A fancy description about the objectives and overall course go here!
-            </div>
-          </td>
-          <td>
-            <a href="/" style="text-decoration: none;">
-              <div class="apptile" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
-                <img>
-                <p>Other Phishing?</p>
-              </div>
-            </a>
-            <div class="appdescription otherphishingdesc">
-              A fancy description about the objectives and overall course go here!
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="/" style="text-decoration: none;">
-              <div class="apptile" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
-                <img>
-                <p>Results</p>
-              </div>
-            </a>
-            <div class="appdescription resultsdesc">
-              A fancy description about the objectives and overall course go here!
-            </div>
-          </td>
-          <td>
-            <a href="/" style="text-decoration: none;">
-              <div class="apptile" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
-                <img>
-                <p>Profile</p>
-              </div>
-            </a>
-            <div class="appdescription profiledesc">
-              A fancy description about the objectives and overall course go here!
-            </div>
-          </td>
-          <td>
-            <a href="/" style="text-decoration: none;">
-              <div class="apptile" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
-                <img>
-                <p>Log Out</p>
-              </div>
-            </a>
-            <div class="appdescription logoutdesc">
-              A fancy description about the objectives and overall course go here!
-            </div>
-          </td>
-        </tr>
-      </table>>
+      <h1>Select Your Module To Begin</h1>
+      <!--Row 1-->
+      <a href="/education/email">
+        <div class="apptile" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
+          <img>
+          <p>Email Phishing</p>
+        </div>
+      </a>
+      <a href="/" style="text-decoration: none;">
+        <div class="apptile" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
+          <img>
+          <p>Spear Phishing</p>
+        </div>
+      </a>
+      <a href="/" style="text-decoration: none;">
+        <div class="apptile" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
+          <img>
+          <p>Other Phishing?</p>
+        </div>
+      </a>
+      <!--Row 2-->
+      <div class="appdescription emailphishingdesc">
+        <span>Email phishing is one of the most common and dangerous forms of scams. This module goes over how to spot phishing emails and mitigate the risks they pose.</span>
+      </div>
+      <div class="appdescription spearphishingdesc">
+        <span>A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <div class="appdescription otherphishingdesc">
+        <span>A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <!--Row 3-->
+      <div class="appdescription resultsdesc" style="vertical-align: bottom; display:flex;">
+        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <div class="appdescription profiledesc" style="vertical-align: bottom; display:flex;">
+        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <div class="appdescription logoutdesc" style="vertical-align: bottom; display:flex;">
+        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <!--Row 4-->
+      <a href="/" style="text-decoration: none;">
+        <div class="apptile" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
+          <img>
+          <p>Results</p>
+        </div>
+      </a>
+      <a href="/" style="text-decoration: none;">
+        <div class="apptile" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
+          <img>
+          <p>Profile</p>
+        </div>
+      </a>
+      <a href="/" style="text-decoration: none;">
+        <div class="apptile" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
+          <img>
+          <p>Log Out</p>
+        </div>
+      </a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
