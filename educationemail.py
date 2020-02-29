@@ -18,6 +18,15 @@ educationemail = Blueprint('educationemail', __name__, url_prefix='/education/em
 def educationemaillobby():
     def selection():
         print('emaillobby')
+
+#    if request.method == 'GET':
+#        if request.args.get('rec'[:]) == None:# if no record deletion requested
+#            return render_template('stats-modify.html', businessdata=businessdata)
+#        else:
+#            delrec = request.args.get('rec')# record deletion requested - ie - nullphish.com/stats/del?rec=5 as example
+3            deleterecord(delrec)
+#            return redirect('/stats/mod')# return to table w/ modification enabled render
+#
     return render_template('emaillobby.html')
 
 @educationemail.route('/education/email/1', subdomain="app", methods=['GET', 'POST'])
@@ -38,5 +47,7 @@ def email1():
     timestamp = (datetime.now())
     timestamp = timestamp.strftime("%m/%d/%Y %I:%M")
     username=session['username']
+
+
 
     return render_template('email1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
