@@ -14,7 +14,7 @@ loadkey.close()
 
 educationemail = Blueprint('educationemail', __name__, url_prefix='/education/email', template_folder='templates')
 
-@educationemail.route('/education/topic1', methods=['GET', 'POST']) ### url to keep modification / record deletion open
+@educationemail.route('/education/email', methods=['GET', 'POST']) ### url to keep modification / record deletion open
 def educationemaillobby():
     def selection():
         print('emaillobby')
