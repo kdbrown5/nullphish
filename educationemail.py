@@ -14,19 +14,11 @@ loadkey.close()
 
 educationemail = Blueprint('educationemail', __name__, url_prefix='/education/email', template_folder='templates')
 
-@educationemail.route('/education/email', methods=['GET', 'POST']) ### url to keep modification / record deletion open
+@educationemail.route('/education/email', methods=['GET', 'POST']) 
 def educationemaillobby():
     def selection():
         print('emaillobby')
 
-#    if request.method == 'GET':
-#        if request.args.get('rec'[:]) == None:# if no record deletion requested
-#            return render_template('stats-modify.html', businessdata=businessdata)
-#        else:
-#            delrec = request.args.get('rec')# record deletion requested - ie - nullphish.com/stats/del?rec=5 as example
-#            deleterecord(delrec)
-#            return redirect('/stats/mod')# return to table w/ modification enabled render
-#
     return render_template('emaillobby.html')
 
 @educationemail.route('/education/email/1', subdomain="app", methods=['GET', 'POST'])
@@ -43,11 +35,21 @@ def email1():
         con.close()
         return fname, lname
 
+    def trackpage():
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('INSERT OR IGNORE INTO education (topic, username, visited) VALUES ("education", (?), 1));', (session['username'],))
+            cur.execute('update education set visited = visited +1 where username = (?);', (session['username'],))
+        con.close()
+
     fname, lname = userlookup()
     timestamp = (datetime.now())
     timestamp = timestamp.strftime("%m/%d/%Y %I:%M")
     username=session['username']
-
-
+    trackpage()
 
     return render_template('email1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
+
+#@educationemail.route('/education/email/2', subdomain="app", methods=['GET', 'POST'])
