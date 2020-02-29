@@ -40,7 +40,7 @@ def email1():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('UPDATE education set visited = visited +1 where username = '(session['username'])' and topic = "email";')
+            cur.execute('update education set visited = visited +1 where username = (?) and topic = "email";' (session['username'],))
             cur.execute('insert into education (username, topic, visited) select (?), "email", 1 where (Select changes() = 0;', (session['username'],))
         con.close()
 
