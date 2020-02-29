@@ -40,8 +40,8 @@ def email1():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('INSERT OR IGNORE INTO education (topic, username, visited) VALUES ("education", (?), 1);', (session['username'],))
-            cur.execute('update education set visited = visited +1 where username = (?);', (session['username'],))
+            cur.execute('INSERT OR IGNORE INTO education (topic, username, visited) VALUES ("email", (?), 1);', (session['username'],))
+            cur.execute('update education set visited = visited +1 where username = (?) and topic = "email";', (session['username'],))
         con.close()
 
     fname, lname = userlookup()
