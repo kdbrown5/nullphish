@@ -141,7 +141,12 @@ def myprofile():
             rdpt = request.form['department']
             emailaddr = request.form['emailaddr']
             rrole = request.form['addrole']
-            registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+            if rrole == 'admin':
+                registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+            if rrole == 'user':
+                registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+            else:
+                flash('this is not a defined role', 'category2')
             
         if 'password' in request.form:
             print(str(request.form['password']))
