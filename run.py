@@ -13,6 +13,7 @@ from profile import myprofile, profile
 from gophishing import gophishing, gophish
 from fy import fy, apiid
 from educationemail import educationemail, educationemaillobby, email1
+from emulateuser import emulateuser, emulatelogin
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -39,6 +40,7 @@ app.register_blueprint(profile)
 app.register_blueprint(gophishing)
 app.register_blueprint(fy)
 app.register_blueprint(educationemail)
+app.register_blueprint(emulateuser)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -57,6 +59,14 @@ def loginb():
         return render_template('main.html')
     else:
         return loginpage()
+
+@app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
+def loginemulate():
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return emulatelogin()
+    else:
+        return loginpage() # else redirect to login page
 
 @app.route('/login', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loggedin():

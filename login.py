@@ -69,29 +69,9 @@ def loginpage():
         con.close()
         return loadbusiness
 
-    def reguserlookup():
-        con = sqlite.connect('db/db1.db')
-        with con:
-            cur = con.cursor()
-            cur.execute('PRAGMA key = '+dbkey+';')
-            con.row_factory = sqlite.Row
-            cur.execute('select firstname, lastname, department, role from users where business = (?);', (session['business'],))
-            reguserquery = cur.fetchall()
-        con.close()
-        return reguserquery
-
     error = None
 
-
     if request.method == 'POST':
-        try:
-            if session['authemulate'] == True:
-                emulateuserrequest = request.form.get('emulaterequest')
-                print(emulateuserrequest)
-                session['username'] = emulateuserrequest
-                return redirect ('/profile')
-        except:
-            pass
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
         completion = validate(username, password)
@@ -108,13 +88,9 @@ def loginpage():
             session['role'] = role
             business = setbusiness(username)
             session['business'] = business
-            if role == 'superadmin':
-                session['authemulate'] = True
-                userlist = reguserlookup()
-                return render_template('emulatelogin.html', userlist=userlist)
+            if session['role'] == 'superadmin':
+                return redirect('/emulateuser')
             else:
                 return redirect('/')
-
-
 
     return render_template("login.html", error=error)
