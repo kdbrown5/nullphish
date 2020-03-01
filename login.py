@@ -101,7 +101,6 @@ def loginpage():
         else:
             session['username'] = (username)
             session['logged_in'] = True
-            session['authemulate'] = False
             role = setrole(username)
             session['role'] = role
             business = setbusiness(username)
