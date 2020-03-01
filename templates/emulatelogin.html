@@ -1,0 +1,97 @@
+<html>
+    <head>
+      <title>NullPhish: Login to Your Account</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://nullphish.com/css/master.css">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <style>
+        #particles-js{
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+          padding: 0px;
+          margin: 0px;
+          position: absolute;
+        }
+        .contentcontainer{
+          z-index: -999;
+          position: absolute;
+          top: 10%;
+          height: 80%;
+          left: 10%;
+          width: 80%;
+          margin: 0px;
+          overflow: hidden;
+          border-radius: 25px;
+          border: 1px solid #E0E0E0;
+          color: #E0E0E0;
+          background-color: rgba(0,0,0,0.5);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        .notincontainer{ 
+          padding: 300;
+          z-index: 5;
+          position: relative;
+          overflow: hidden;
+        }
+  
+        .input-element{
+  font-size: 30px; // for say a select
+  width: 400px;
+  }
+      </style>
+      <!--
+      <link rel="stylesheet" media="screen" href="css/style336.css">
+      <link rel="stylesheet" href="css/w3.css">
+      <link rel="stylesheet" href="css/style320.css">
+      -->
+    </head>
+    <body>
+      <div id="particles-js"></div>
+      <nav>
+        <table>
+          <tr>
+            <td><a href="https://app.nullphish.com/register" class="passive">Sign Up</a></li>
+            <td><a href="https://nullphish.com" class="active">NullPhish &#169;</a></td>
+            <td><a href="https://app.nullphish.com/login" class="passive">Log In</a></td>
+          </tr>
+        </table>
+      </nav>
+      <div class="contentcontainer">
+  
+      </div>
+  
+      <center>
+      <div class="notincontainer">
+        <div class="center">
+            <div class="col-md" style="form">
+                
+                <h2 style="color: white" class="w3-xlarge">User List</h2>
+                <div class="ex2">
+                  <div class="form-group">
+                      <form method = "POST">
+                      <label for="exampleFormControlSelect1"></label>
+                      <select name= 'emulaterequest' class="form-control" id="exampleFormControlSelect1">
+                          <option>Users</option>
+                              {% for row in lookup %}
+                                  <option>{{ row }}</option>
+                              {% endfor %}     
+                      </select>
+                      <button type="submit" class="btn btn-primary btn-block">Emulate User</button>
+                    </form>
+                      </div>
+                    </div>
+                    
+              </div>
+  
+
+      </center>
+  
+      <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+      <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    </body>
+  </html>
+  
