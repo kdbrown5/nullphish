@@ -176,7 +176,7 @@ def myprofile():
 
                 flash('Password must be 8 characters or more.', 'category2')
                 if currentrole == "user":
-                    return render_template('userprofile.html')
+                    return render_template('userprofile.html', username=session['username'])
                 else:
                     return render_template("profile.html", lookup=lookup, username=session['username'])
 
