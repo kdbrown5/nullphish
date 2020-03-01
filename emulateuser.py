@@ -32,6 +32,7 @@ def emulatelogin():
         emulateuserrequest = request.form.get('emulaterequest')
         print(emulateuserrequest)
         session['username'] = emulateuserrequest
+        session['role'] = 'user'
         return redirect ('/profile')
 
     return render_template('emulatelogin.html', userlist=userlist)
