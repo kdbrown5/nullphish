@@ -26,13 +26,15 @@ def emulatelogin():
         con.close()
         return reguserquery
 
-    userlist = reguserlookup()              
+    userlist = reguserlookup()
+    print(session['business'])
     
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
         print(emulateuserrequest)
         session['username'] = emulateuserrequest
         session['role'] = 'user'
+        session['validated'] = 1
         return redirect ('/profile')
 
     return render_template('emulatelogin.html', userlist=userlist)
