@@ -82,16 +82,14 @@ def loginpage():
 
     error = None
 
-    if 'emulateuser' in request.form:
-        if session['authemulate'] == True:
-            print(request.form('emulateuser'))
-            emulateuserrequest = request.form('emulateuser')
-            session['username'] = emulateuserrequest
-            return redirect ('/profile')
-
-
 
     if request.method == 'POST':
+        if 'emulateuser' in request.form:
+            if session['authemulate'] == True:
+                print(request.form('emulateuser'))
+                emulateuserrequest = request.form('emulateuser')
+                session['username'] = emulateuserrequest
+                return redirect ('/profile')
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
         completion = validate(username, password)
