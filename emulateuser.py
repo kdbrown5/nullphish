@@ -5,6 +5,7 @@ from sqlalchemy.engine import Engine
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
+from pysqlcipher3 import dbapi2 as sqlite
 
 loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
