@@ -1,11 +1,17 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>NullPhish: Login to Your Account</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://nullphish.com/css/master.css">
+    <!--
+    <link rel="stylesheet" href="https://nullphish.com/css/style441.css">
+    <link rel="stylesheet" href="https://nullphish.com/css/style400.css">
+    <link rel="stylesheet" href="https://nullphish.com/css/style320.css">
+    -->
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NullPhish: Education tools to Prevent Scams, Phishing, and Security Concerns</title>
     <style>
       #particles-js{
         height: 100%;
@@ -32,22 +38,20 @@
         -webkit-backdrop-filter: blur(10px);
       }
       .notincontainer{ 
-        padding: 300;
+
+        top: 25%;
+        left: 35%;
+        padding: 700;
         z-index: 5;
-        position: relative;
+        position: absolute;
         overflow: hidden;
       }
 
       .input-element{
-font-size: 30px; // for say a select
-width: 400px;
-}
+        font-size: 30px;
+        width: 400px;
+      }
     </style>
-    <!--
-    <link rel="stylesheet" media="screen" href="css/style336.css">
-    <link rel="stylesheet" href="css/w3.css">
-    <link rel="stylesheet" href="css/style320.css">
-    -->
   </head>
   <body>
     <div id="particles-js"></div>
@@ -79,11 +83,10 @@ width: 400px;
       {% if error %}
         <p class="input-element error" style="color: white"><strong>Error:</strong> {{ error }}</p>
       {% endif %}
-    </div>
 
     <p style="color: white" class="input-element w3-large text-center">Don't have an account? <a href="/register" style="color: rgb(95, 170, 255)"><b>Register</b></a> </p>  
     </center>
-
+    </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>

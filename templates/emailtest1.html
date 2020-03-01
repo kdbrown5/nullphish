@@ -1,0 +1,365 @@
+<style>
+    
+body{
+	font-size: 20px;
+	font-family: 'Work Sans', sans-serif;
+	color: rgb(255, 255, 255);
+  font-weight: 300;
+  text-align: center;
+  background-color: #383838;
+}
+h1{
+  font-weight: 300;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #444;
+  color: #fff;
+}
+.question{
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.answers {
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
+}
+.answers label{
+  display: block;
+  margin-bottom: 10px;
+}
+button{
+  font-family: 'Work Sans', sans-serif;
+	font-size: 22px;
+	background-color: #279;
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+button:hover{
+	background-color: #38a;
+}
+
+
+
+
+
+.slide{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.active-slide{
+  opacity: 1;
+  z-index: 2;
+}
+.quiz-container{
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
+}
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: rgb(136, 136, 136);
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: rgb(51, 51, 51);
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+div.ex2 {
+            max-width:800px;
+            margin: auto;
+            }
+</style>
+
+<div class="split left">
+    <div class="centered ex2">
+        <p>Below is an an actual e-mail received by Nullphish<br>Please investigate and find suspicious aspects</p>
+
+        <div style="color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+            <br class="Apple-interchange-newline">
+            <table cellpadding="0" class="cf gJ" style="border-collapse: collapse; margin-top: 0px; width: auto; -webkit-font-smoothing: antialiased; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: 14px; letter-spacing: 0.2px; display: block; color: rgb(34, 34, 34); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+              <tbody style="display: block;">
+                <tr class="acZ" style="height: auto; display: flex;">
+                  <td class="gF gK" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; text-align: left; white-space: nowrap; padding: 0px; vertical-align: top; width: 1053.6px; line-height: 20px; display: block; max-height: 20px;">
+                    <table cellpadding="0" class="cf ix" style="border-collapse: collapse; table-layout: fixed; width: 1053.33px;">
+                      <tbody>
+                        <tr>
+                          <td class="c2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; display: flex;">
+                            <h3 class="iw" style="overflow: hidden; white-space: nowrap; max-width: calc(100% - 8px); display: block; font-size: 0.75rem; font-weight: inherit; margin: inherit; text-overflow: ellipsis; -webkit-font-smoothing: auto; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; letter-spacing: 0.3px; color: rgb(95, 99, 104); line-height: 20px;"><span class="qu" tabindex="-1"><span class="gD" data-hovercard-id="g8aT5eMZ@wifkjwueth2cyelp.com" data-hovercard-owner-id="79" name="Congratulations l" style="color: rgb(32, 33, 36); font-size: 0.875rem; font-weight: bold; white-space: nowrap; display: inline; vertical-align: top; -webkit-font-smoothing: antialiased; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; letter-spacing: 0.2px; line-height: 20px;">Congratulations l</span> <span class="go gD" style="color: rgb(32, 33, 36); font-size: 0.875rem; font-weight: bold; white-space: nowrap; display: inline; vertical-align: top; -webkit-font-smoothing: antialiased; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; letter-spacing: 0.2px; line-height: 20px;">g8aT5eMZ@wifkjwueth2cyelp.com</span> <span class="go" style="vertical-align: top; color: rgb(85, 85, 85);">
+                                  <a class="acP" href="#" style="vertical-align: top; color: rgb(34, 34, 34);" target="_blank">via</a> ec2-12-131-131-131.us-west-2.compute.amazonaws.com&nbsp;
+                                </span></span></h3>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td class="gH bAk" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; text-align: right; white-space: nowrap; vertical-align: top; color: rgb(34, 34, 34); align-items: center; display: block; max-height: 20px;">
+                    <div class="gK" style="padding: 0px; align-items: center; display: flex;"><span alt="Feb 3, 2020, 9:14 PM" class="g3" style="vertical-align: top; margin: 0px; -webkit-font-smoothing: auto; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: 0.75rem; letter-spacing: 0.3px; color: rgb(95, 99, 104); display: block; line-height: 20px;" tabindex="-1" title="Feb 3, 2020, 9:14 PM">Feb 3, 2020, 9:14 PM</span>
+                      <div class="zd bi4" style="user-select: none; cursor: pointer; display: inline-block; height: 20px; margin-left: 20px; outline: 0px;" tabindex="0" title="Not starred">
+                        <br>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="gH" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; text-align: right; white-space: nowrap; vertical-align: top; color: rgb(34, 34, 34); align-items: center; display: flex;">
+                    <br>
+                  </td>
+                  <td class="gH acX bAm" rowspan="2" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; text-align: right; white-space: nowrap; vertical-align: top; color: rgb(34, 34, 34); align-items: center; display: block; max-height: 20px;">
+                    <div class="T-I J-J5-Ji T-I-Js-IF aaq T-I-ax7 L3" data-tooltip="Reply" style="display: inline-flex; position: relative; border-radius: 2px 0px 0px 2px; cursor: pointer; font-size: 0.875rem; font-weight: 500; text-align: center; white-space: nowrap; margin: 0px 0px 0px 20px; height: 20px; line-height: 18px; min-width: 0px; outline: none; padding: 0px; z-index: 0; box-shadow: none; background: transparent; color: rgb(68, 68, 68); border: none; -webkit-user-drag: none; user-select: none; align-items: center; justify-content: center;" tabindex="0">
+                      <img class="hB T-I-J3" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" style="background: url(&quot;https://www.gstatic.com/images/icons/material/system/2x/reply_black_20dp.png&quot;) center center / 20px no-repeat; height: 20px; width: 20px; opacity: 0.54; padding: 0px; transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;">
+                    </div>
+                    <div class="T-I J-J5-Ji T-I-Js-Gs aap T-I-awG T-I-ax7 L3" data-tooltip="More" style="display: inline-flex; position: relative; border-radius: 0px 2px 2px 0px; cursor: pointer; font-size: 0.875rem; font-weight: 500; text-align: center; white-space: nowrap; margin: 0px 0px 0px 20px; height: 20px; line-height: 18px; min-width: 0px; outline: none; padding: 0px; z-index: 0; box-shadow: none; background: transparent; color: rgb(68, 68, 68); border: none; -webkit-user-drag: none; user-select: none; align-items: center; justify-content: center;" tabindex="0">
+                      <img class="hA T-I-J3" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" style="background: url(&quot;https://www.gstatic.com/images/icons/material/system/2x/more_vert_black_20dp.png&quot;) center center / 20px no-repeat; height: 20px; width: 20px; opacity: 0.54; padding: 0px; transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0s;">
+                    </div>
+                  </td>
+                </tr>
+                <tr class="acZ xD" style="height: auto; display: flex;">
+                  <td colspan="3" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+                    <table cellpadding="0" class="cf adz" style="border-collapse: collapse; table-layout: fixed; white-space: nowrap; width: 1290.67px;">
+                      <tbody>
+                        <tr>
+                          <td class="ady" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px; overflow: visible; text-overflow: ellipsis; white-space: nowrap; align-items: center; display: flex; line-height: 20px;">
+                            <div class="iw ajw" style="overflow: hidden; white-space: nowrap; max-width: 92%; display: inline-block;">&nbsp;<span class="hb" style="vertical-align: top; color: rgb(95, 99, 104); -webkit-font-smoothing: auto; font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: 0.75rem; letter-spacing: 0.3px; line-height: 20px;">to&nbsp;<span class="g2" data-hovercard-id="kdbrown5@gmail.com" data-hovercard-owner-id="79" dir="ltr" name="me" style="vertical-align: top;">me</span></span></div>
+                            <div class="ajy" data-tooltip="Show details" style="display: inline-flex; margin-left: 4px; vertical-align: top; align-items: center; border: none; justify-content: center; outline: none; position: relative; z-index: 0;" tabindex="0">
+                              <img class="ajz" src="https://mail.google.com/mail/u/0/images/cleardot.gif" alt="" style="background: url(&quot;https://www.gstatic.com/images/icons/material/system/2x/arrow_drop_down_black_20dp.png&quot;) center center / 20px no-repeat; cursor: pointer; padding: 0px; height: 20px; width: 20px; border: none; right: 0px; top: 0px; opacity: 0.54;">
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="color: rgb(34, 34, 34); font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">
+            <div class="ii gt" style="font-size: 0.875rem; direction: ltr; margin: 8px 0px 0px; padding: 0px; position: relative;">
+              <div class=" a3s aXjCH " style="overflow: hidden; font: small / 1.5 Arial, Helvetica, sans-serif;">
+                <a data-saferedirecturl="" href="https://fakesite" rel="noopener" style="color: rgb(17, 85, 204); font: bold 45px arial, sans-serif; display: block; overflow: hidden; text-decoration: none; text-align: center; width: 550px; height: 330px; background-color: rgb(236, 236, 236); padding: 10px; border-radius: 15px; border: 8px dotted rgb(30, 105, 160);" target="_blank"><strong>Congratulations
+                    <br>
+                    <br><span class="il">Paypal</span> Has A Big Surprise For You</strong></a>
+                <br>
+                <p style="text-align: center;"><span style="text-decoration: none;">if you can't see the images below please , click 
+                    <a data-saferedirecturl="" href="https://fakesite" style="color: rgb(17, 85, 204);" target="_blank">here</a>
+                  </span></p>
+                <p>
+                  <a data-saferedirecturl="" href="https://fakesite" style="color: rgb(17, 85, 204);" target="_blank"></a>
+                </p>
+                <p>
+                  <a data-saferedirecturl="" href="https://fakesite" style="color: rgb(17, 85, 204);" target="_blank"></a>
+                </p><span style="color: rgb(0, 0, 0); font-size: 11px; font-family: verdana; display: block; text-align: center; margin-top: 10px;">click 
+                  <a data-saferedirecturl="" href="https://fakesite" style="color: rgb(17, 85, 204);" target="_blank">here</a> to unsubscribe out from our emails list
+                </span>
+            </div>
+            </div>
+          </div>
+        
+
+
+        
+    </div>
+  </div>
+  
+  <div class="split right">
+    <div class="centered">
+        
+    </div>
+    <div class="quiz-container">
+        <div id="quiz"></div>
+      </div>
+      <button id="previous">Previous Question</button>
+      <button id="next">Next Question</button>
+      <button id="submit">Submit Quiz</button>
+      <div id="results"></div>
+      <script>
+      (function(){
+          // Functions
+          function buildQuiz(){
+            // variable to store the HTML output
+            const output = [];
+        
+            // for each question...
+            myQuestions.forEach(
+              (currentQuestion, questionNumber) => {
+        
+                // variable to store the list of possible answers
+                const answers = [];
+        
+                // and for each available answer...
+                for(letter in currentQuestion.answers){
+        
+                  // ...add an HTML radio button
+                  answers.push(
+                    `<label>
+                      <input type="radio" name="question${questionNumber}" value="${letter}">
+                      ${letter} :
+                      ${currentQuestion.answers[letter]}
+                    </label>`
+                  );
+                }
+        
+                // add this question and its answers to the output
+                output.push(
+                  `<div class="slide">
+                    <div class="question"> ${currentQuestion.question} </div>
+                    <div class="answers"> ${answers.join("")} </div>
+                  </div>`
+                );
+              }
+            );
+        
+            // finally combine our output list into one string of HTML and put it on the page
+            quizContainer.innerHTML = output.join('');
+          }
+        
+          function showResults(){
+        
+            // gather answer containers from our quiz
+            const answerContainers = quizContainer.querySelectorAll('.answers');
+        
+            // keep track of user's answers
+            let numCorrect = 0;
+        
+            // for each question...
+            myQuestions.forEach( (currentQuestion, questionNumber) => {
+        
+              // find selected answer
+              const answerContainer = answerContainers[questionNumber];
+              const selector = `input[name=question${questionNumber}]:checked`;
+              const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+        
+              // if answer is correct
+              if(userAnswer === currentQuestion.correctAnswer){
+                // add to the number of correct answers
+                numCorrect++;
+        
+                // color the answers green
+                answerContainers[questionNumber].style.color = 'lightgreen';
+              }
+              // if answer is wrong or blank
+              else{
+                // color the answers red
+                answerContainers[questionNumber].style.color = 'red';
+              }
+            });
+        
+            // show number of correct answers out of total
+            resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+          }
+        
+          function showSlide(n) {
+            slides[currentSlide].classList.remove('active-slide');
+            slides[n].classList.add('active-slide');
+            currentSlide = n;
+            if(currentSlide === 0){
+              previousButton.style.display = 'none';
+            }
+            else{
+              previousButton.style.display = 'inline-block';
+            }
+            if(currentSlide === slides.length-1){
+              nextButton.style.display = 'none';
+              submitButton.style.display = 'inline-block';
+            }
+            else{
+              nextButton.style.display = 'inline-block';
+              submitButton.style.display = 'none';
+            }
+          }
+        
+          function showNextSlide() {
+            showSlide(currentSlide + 1);
+          }
+        
+          function showPreviousSlide() {
+            showSlide(currentSlide - 1);
+          }
+        
+          // Variables
+          const quizContainer = document.getElementById('quiz');
+          const resultsContainer = document.getElementById('results');
+          const submitButton = document.getElementById('submit');
+          const myQuestions = [
+            {
+              question: "This E-Mail sender is:",
+              answers: {
+                a: "Legitimate",
+                b: "Illegitimate",
+              },
+              correctAnswer: "b"
+            },
+            {
+              question: "The content of this E-Mail is:",
+              answers: {
+                a: "Legitimate",
+                b: "Illegitimate",
+              },
+              correctAnswer: "b"
+            },
+            {
+              question: "There is a unsubscribe link at the bottom of this email<br>Should you unsubscribe from this sender?",
+              answers: {
+                a: "Yes",
+                b: "No",
+              },
+              correctAnswer: "b"
+            }
+          ];
+        
+          // Kick things off
+          buildQuiz();
+        
+          // Pagination
+          const previousButton = document.getElementById("previous");
+          const nextButton = document.getElementById("next");
+          const slides = document.querySelectorAll(".slide");
+          let currentSlide = 0;
+        
+          // Show the first slide
+          showSlide(currentSlide);
+        
+          // Event listeners
+          submitButton.addEventListener('click', showResults);
+          previousButton.addEventListener("click", showPreviousSlide);
+          nextButton.addEventListener("click", showNextSlide);
+        })();
+      </script>
+  </div>

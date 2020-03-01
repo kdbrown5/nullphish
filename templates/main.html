@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://nullphish.com/css/master.css">
-    <link rel="stylesheet" href="https://nullphish.com/css/tiles.css">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NullPhish: Education tools to Prevent Scams, Phishing, and Security Concerns</title>
@@ -14,17 +14,13 @@
       }
     </style>
   </head>
-  <body id="particles-js">
+  <body id="particles-js" onload="">
     <nav>
       <table>
           <td><a href="/main" class="passive">Modules</a></li>
-          <td><a href="/education" class="passive">Education</a></li>
-          <td><a href="" class="passive">Testing</a></li>
           <td><a href="/stats" class="passive">Results</a></li>
           <td><a href="" class="active">NullPhish &#169;</a></td>
           <td><a href="/profile" class="passive">Profile</a></li>
-          <td><a href="" class="passive">Admin</a></li>
-          <td><a href="/gophishing" class="passive">Phishing</a></li>
           <td><a href="/logout" class="passive">Log Out</a></td>
         </tr>
       </table>
@@ -32,27 +28,21 @@
     <div id="tilecontainer">
       <h1>Select Your Module To Begin</h1>
       <!--Row 1-->
-      <a href="/education/email">
-        <div class="apptile" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
-          <img>
-          <p>Email Phishing</p>
+      <a href="/education/email" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
+        <div class="apptile">
         </div>
       </a>
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
-          <img>
-          <p>Spear Phishing</p>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
+        <div class="apptile">
         </div>
       </a>
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
-          <img>
-          <p>Other Phishing?</p>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
+        <div class="apptile">
         </div>
       </a>
       <!--Row 2-->
       <div class="appdescription emailphishingdesc">
-        <span>Email phishing is one of the most common and dangerous forms of scams. This module goes over how to spot phishing emails and mitigate the risks they pose.</span>
+        <span>A fancy description about the objectives and overall course go here!</span>
       </div>
       <div class="appdescription spearphishingdesc">
         <span>A fancy description about the objectives and overall course go here!</span>
@@ -71,22 +61,16 @@
         <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
       </div>
       <!--Row 4-->
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
-          <img>
-          <p>Results</p>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
+        <div class="apptile">
         </div>
       </a>
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
-          <img>
-          <p>Profile</p>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
+        <div class="apptile">
         </div>
       </a>
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
-          <img>
-          <p>Log Out</p>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
+        <div class="apptile">
         </div>
       </a>
     </div>
@@ -103,5 +87,4 @@
       }
     </script>
   </body>
-
 </html>
