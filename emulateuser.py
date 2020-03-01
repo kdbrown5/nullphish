@@ -27,10 +27,15 @@ def emulatelogin():
         return reguserquery
 
     userlist = reguserlookup()[:]
+    
     print(session['business'])
     
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
+        emulateuserrequest = emulateuserrequest.replace('(', '')
+        emulateuserrequest = emulateuserrequest.replace(')', '')
+        emulateuserrequest = emulateuserrequest.replace("'", '')
+        emulateuserrequest = emulateuserrequest.replace(',', '')
         print(emulateuserrequest)
         session['username'] = emulateuserrequest
         session['role'] = 'user'
