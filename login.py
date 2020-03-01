@@ -40,9 +40,12 @@ def loginpage():
                 dbPass = row[2]
                 if dbUser == username:
                     completion = check_password(password, dbPass)
-            cur.execute('select validated from users where username = (?)', (username,))
-            validated = cur.fetchone()[0]
-            session['validated'] = validated
+            try:
+                cur.execute('select validated from users where username = (?)', (username,))
+                validated = cur.fetchone()[0]
+                session['validated'] = validated
+            except:
+                pass
         con.close()
         return completion
 
