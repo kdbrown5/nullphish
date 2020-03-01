@@ -132,7 +132,7 @@ def myprofile():
 
     lookup =  reguserlookup()
     passwordstatus = checkpassword()
-    #currentrole = rolelookup()
+    currentrole = session['role']
 
     if request.method == "POST":
         if 'emailaddr' in request.form:
@@ -156,7 +156,7 @@ def myprofile():
                 repeat = hashlib.md5(str(request.form.get('repeat')).encode()).hexdigest()
                 if repeat != password:
                     flash('Your passwords do not match.  Please try again.', 'category2')
-                    if currentrole == "User":
+                    if currentrole == "user":
                         return render_template('userprofile.html')
                     else:
                         return render_template("profile.html")
@@ -168,14 +168,14 @@ def myprofile():
                     con.commit()
                     gc.collect()
                     flash('Password Changed!', 'category2')       
-                    if currentrole == "User":
+                    if currentrole == "user":
                         return render_template('userprofile.html')
                     else:
                         return render_template("profile.html", lookup=lookup)
             else:
 
                 flash('Password must be 8 characters or more.', 'category2')
-                if currentrole == "User":
+                if currentrole == "user":
                     return render_template('userprofile.html')
                 else:
                     return render_template("profile.html", lookup=lookup)
@@ -185,7 +185,7 @@ def myprofile():
         flash('(password requirements: more than 10 characters)', 'category1')
         return render_template('userprofile.html', lookup=lookup)
 
-    if currentrole == "User":
+    if currentrole == "user":
         return render_template('userprofile.html')
 
 
