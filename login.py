@@ -84,8 +84,8 @@ def loginpage():
 
 
     if request.method == 'POST':
-        if session['authemulate'] == True:
-            if session['logged_in'] == True:
+        try:
+            if session['authemulate'] == True:
                 emulateuserrequest = request.form.get('emulaterequest')
                 print(emulateuserrequest)
                 session['username'] = emulateuserrequest
