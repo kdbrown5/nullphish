@@ -38,9 +38,12 @@
         -webkit-backdrop-filter: blur(10px);
       }
       .notincontainer{ 
-        padding: 300;
+
+        top: 25%;
+        left: 35%;
+        padding: 700;
         z-index: 5;
-        position: relative;
+        position: absolute;
         overflow: hidden;
       }
 
@@ -80,11 +83,10 @@
       {% if error %}
         <p class="input-element error" style="color: white"><strong>Error:</strong> {{ error }}</p>
       {% endif %}
-    </div>
 
     <p style="color: white" class="input-element w3-large text-center">Don't have an account? <a href="/register" style="color: rgb(95, 170, 255)"><b>Register</b></a> </p>  
     </center>
-
+    </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
