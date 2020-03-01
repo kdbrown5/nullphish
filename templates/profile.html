@@ -101,7 +101,7 @@ body {
 <center><h3  style="color: white">
   <hr>
 
-Name:
+Name: 
 
 <br>
 
@@ -113,7 +113,7 @@ Department:
 
 <br>
 
-Email:
+Email: {% if username %}{{ username }}{% endif %}
 
 <hr>
 
@@ -139,7 +139,7 @@ Password Change:
     <div class="form-group">
         <label for="exampleFormControlSelect1"></label>
         <select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
-            <option>Students</option>
+            <option>Users</option>
                 {% for row in lookup %}
                     <option>{{ row }}</option>
                 {% endfor %}     

@@ -184,4 +184,4 @@ def myprofile():
         return render_template('userprofile.html')
 
 
-    return render_template("profile.html", lookup=lookup)
+    return render_template("profile.html", lookup=lookup, username=session['username'])
