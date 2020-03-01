@@ -26,7 +26,7 @@ def emulatelogin():
         con.close()
         return reguserquery
 
-    userlist = reguserlookup()
+    userlist = reguserlookup()[:]
     print(session['business'])
     
     if request.method == 'POST':
