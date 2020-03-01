@@ -85,8 +85,8 @@ def loginpage():
 
     if request.method == 'POST':
         if session['authemulate'] == True:
-            emulateuserrequest = request.form.to_dict()['emulaterequest']
-            print(request.form.to_dict()['emulaterequest'])
+            emulateuserrequest = request.form.get('emulaterequest')
+            print(emulateuserrequest)
             session['username'] = emulateuserrequest
             return redirect ('/profile')
         username = request.form.to_dict()['username']
