@@ -22,7 +22,7 @@ def emulatelogin():
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
             cur.execute('select username from users where business = (?);', (session['business'],))
-            reguserquery = cur.fetchall()
+            reguserquery = cur.fetchall()[0]
         con.close()
         return reguserquery
 
