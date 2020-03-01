@@ -119,16 +119,16 @@ def myprofile():
                         return redirect('/profile')
                     else:
                         flash('Please select role', 'category2')
-                        return render_template('profile.html', lookup=lookup)
+                        return render_template('profile.html', lookup=lookup, username=session['username'])
                 else:
                     flash('Please enter email address', 'category2')
-                    return render_template('profile.html', lookup=lookup)
+                    return render_template('profile.html', lookup=lookup, username=session['username'])
             else:
                 flash('Please enter last name', 'category2')
-                return render_template('profile.html', lookup=lookup)
+                return render_template('profile.html', lookup=lookup, username=session['username'])
         else:
             flash('Please enter first name', 'category2')
-            return render_template('profile.html', lookup=lookup)
+            return render_template('profile.html', lookup=lookup, username=session['username'])
 
     lookup =  reguserlookup()
     passwordstatus = checkpassword()
@@ -171,19 +171,19 @@ def myprofile():
                     if currentrole == "user":
                         return render_template('userprofile.html')
                     else:
-                        return render_template("profile.html", lookup=lookup)
+                        return render_template("profile.html", lookup=lookup, username=session['username'])
             else:
 
                 flash('Password must be 8 characters or more.', 'category2')
                 if currentrole == "user":
                     return render_template('userprofile.html')
                 else:
-                    return render_template("profile.html", lookup=lookup)
+                    return render_template("profile.html", lookup=lookup, username=session['username'])
 
     if passwordstatus == None:
         flash('Please create a password for this account', 'category2')
         flash('(password requirements: more than 10 characters)', 'category1')
-        return render_template('userprofile.html', lookup=lookup)
+        return render_template('userprofile.html', lookup=lookup, username=session['username'])
 
     if currentrole == "user":
         return render_template('userprofile.html')
