@@ -101,6 +101,7 @@ def loginpage():
         else:
             session['username'] = (username)
             session['logged_in'] = True
+            session['authemulate'] = False
             role = setrole(username)
             session['role'] = role
             business = setbusiness(username)
@@ -109,8 +110,8 @@ def loginpage():
                 session['authemulate'] = True
                 userlist = reguserlookup()
                 return render_template('emulatelogin.html', userlist=userlist)
-            session['authemulate'] = False
-            return redirect('/')
+            else:
+                return redirect('/')
 
 
 
