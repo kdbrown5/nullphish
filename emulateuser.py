@@ -21,7 +21,7 @@ def emulatelogin():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select firstname, lastname, department, role from users where business = (?);', (session['business'],))
+            cur.execute('select username from users where business = (?);', (session['business'],))
             reguserquery = cur.fetchall()
         con.close()
         return reguserquery
