@@ -132,7 +132,7 @@ def myprofile():
 
     lookup =  reguserlookup()
     passwordstatus = checkpassword()
-    currentrole = rolelookup()
+    #currentrole = rolelookup()
 
     if request.method == "POST":
         if 'emailaddr' in request.form:
