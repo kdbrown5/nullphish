@@ -84,9 +84,10 @@ def loginpage():
 
     if 'emulateuser' in request.form:
         if session['authemulate'] == True:
+            print(request.form('emulateuser'))
             emulateuserrequest = request.form('emulateuser')
             session['username'] = emulateuserrequest
-            return redirect ('/')
+            return redirect ('/profile')
 
 
 
