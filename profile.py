@@ -157,7 +157,7 @@ def myprofile():
                 if repeat != password:
                     flash('Your passwords do not match.  Please try again.', 'category2')
                     if currentrole == "user":
-                        return render_template('userprofile.html')
+                        return render_template('userprofile.html', username=session['username'])
                     else:
                         return render_template("profile.html")
                 con = sqlite.connect('db/db1.db')
@@ -169,7 +169,7 @@ def myprofile():
                     gc.collect()
                     flash('Password Changed!', 'category2')       
                     if currentrole == "user":
-                        return render_template('userprofile.html')
+                        return render_template('userprofile.html', username=session['username'])
                     else:
                         return render_template("profile.html", lookup=lookup, username=session['username'])
             else:
@@ -186,7 +186,7 @@ def myprofile():
         return render_template('userprofile.html', lookup=lookup, username=session['username'])
 
     if currentrole == "user":
-        return render_template('userprofile.html')
+        return render_template('userprofile.html', username=session['username'])
 
 
     return render_template("profile.html", lookup=lookup, username=session['username'])
