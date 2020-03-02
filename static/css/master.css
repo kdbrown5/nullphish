@@ -89,7 +89,7 @@ h1{
 nav{
   margin: 0;
   z-index: 999;
-  height: 80px;
+  height: 90px;
   width: 100%;
   top: 0px;
   left: 0px;
@@ -103,6 +103,7 @@ nav{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  vertical-align: top;
 }
 nav table{
   margin: 0px;
@@ -131,7 +132,7 @@ nav td{
   width: 300px;
   padding: 5px;
   height: 50px;
-  vertical-align: middle;
+  vertical-align: top;
   top: 0px;
   text-align: center;
 }
@@ -187,6 +188,8 @@ nav .passive:hover{
 #fineprint{
   bottom: 250px;
   height: 250px;
+  width: 100%;
+  padding: 20px;
 }
 
 /* Classes: */
