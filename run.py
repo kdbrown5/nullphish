@@ -14,6 +14,7 @@ from gophishing import gophishing, gophish
 from fy import fy, apiid
 from educationemail import educationemail, educationemaillobby, email1
 from emulateuser import emulateuser, emulatelogin
+from adminprofile import adminprofile, loadadminprofile
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -37,6 +38,7 @@ app.register_blueprint(register)
 app.register_blueprint(stats)
 app.register_blueprint(logout)
 app.register_blueprint(profile)
+app.register_blueprint(adminprofile)
 app.register_blueprint(gophishing)
 app.register_blueprint(fy)
 app.register_blueprint(educationemail)
@@ -59,6 +61,19 @@ def loginb():
         return render_template('main.html')
     else:
         return loginpage()
+
+@app.route('/adminprofile', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
+def rediradminprofile():
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return loadadminprofile
+        elif session.get('role') == 'admin':
+            return loadadminprofile
+        else:
+            return redirect('/profile')
+    else:
+        return redirect('/login') # else redirect to login page
+
 
 @app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loginemulate():
