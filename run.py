@@ -66,9 +66,9 @@ def loginb():
 def rediradminprofile():
     if session.get('logged_in') == True:
         if session.get('role') == 'superadmin':
-            return loadadminprofile
+            return loadadminprofile()
         elif session.get('role') == 'admin':
-            return loadadminprofile
+            return loadadminprofile()
         else:
             return redirect('/profile')
     else:
