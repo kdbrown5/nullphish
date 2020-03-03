@@ -127,7 +127,7 @@ def loadadminprofile():
             
         if 'password' in request.form:
             if len(str(request.form['password'])) > 8:
-                if repeat != password:
+                if request.form['password'] != request.form['repeat']:
                     flash('Your passwords do not match.  Please try again.', 'category2')
                     return render_template("adminprofile.html")
                 else:
