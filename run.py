@@ -100,10 +100,16 @@ def beginlogout():
 
 @app.route('/profile', subdomain="app", methods=['GET', 'POST'])
 def beginp():
-    if session.get('logged_in'):
-        return myprofile()
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return redirect('/adminprofile')
+        elif session.get('role') == 'admin':
+            return redirect('/adminprofile')
+        else:
+            return myprofile()
     else:
-        return redirect('/')
+        return redirect('/login') # else redirect to login page
+
 
 @app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
