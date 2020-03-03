@@ -62,7 +62,36 @@
       <center>
       <div class="notincontainer">
         <div class="center">
-          <button onclick="window.location.href = '/';">Click here to login normally</button>
+          <!-- Modify this according to your requirement -->
+<h3>
+  <button onclick="window.location.href = '/';">Click here to login with your default account</button>
+  
+  <p>Redirecting to main page after <span id="countdown">10</span> seconds</p>
+</h3>
+<!-- JavaScript part -->
+<script type="text/javascript">
+    
+    // Total seconds to wait
+    var seconds = 10;
+    
+    function countdown() {
+        seconds = seconds - 1;
+        if (seconds < 0) {
+            // Chnage your redirection link here
+            window.location = "/";
+        } else {
+            // Update remaining seconds
+            document.getElementById("countdown").innerHTML = seconds;
+            // Count down using javascript
+            window.setTimeout("countdown()", 1000);
+        }
+    }
+    
+    // Run countdown function
+    countdown();
+    
+</script>
+          
             <div class="col-md" style="form">
                 <br><br>
                 <h2 style="color: white" class="w3-xlarge">Emulate User:</h2>
