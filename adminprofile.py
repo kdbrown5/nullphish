@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
-from passlib.hash import sha256_crypt
+from passlib.hash import sha256_crypt, argon2
 import gc
 from register import register, registration
 from tokenizer import generate_confirmation_token, confirm_token
@@ -15,6 +15,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pysqlcipher3 import dbapi2 as sqlite
+
 
 db = SQLAlchemy()
 
