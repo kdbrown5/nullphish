@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NullPhish: Education tools to Prevent Scams, Phishing, and Security Concerns</title>
+    <style>
+      #particles-js{
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body id="particles-js" onload="">
+    <nav>
+      <table>
+          <td><a href="/results" class="passive">Results</a></li>
+          <td><a href="/gophishing" class="passive">Phishing</a></li>
+          <td><a href="/stats" class="passive">Stats</a></li>
+          <td><a href="/" class="active">NullPhish &#169;</a></td>
+          <td><a href="/profile" class="passive">Profile</a></li>
+          <td><a href="/logout" class="passive">Log Out</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div id="tilecontainer">
+      <h1>Admin Toolset:</h1>
+      <!--Row 1-->
+      <a href="/adduser" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
+        <div class="apptile">
+        </div>
+      </a>
+      <a href="/mailconfig" style="text-decoration: none;" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
+        <div class="apptile">
+        </div>
+      </a>
+      <a href="/stats" style="text-decoration: none;" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
+        <div class="apptile">
+        </div>
+      </a>
+      <!--Row 2-->
+      <div class="appdescription emailphishingdesc">
+        <span>Register new users</span>
+      </div>
+      <div class="appdescription spearphishingdesc">
+        <span>Configure SMTP settings to add your mail server as an option for phishing</span>
+      </div>
+      <div class="appdescription otherphishingdesc">
+        <span>View Education </span>
+      </div>
+      <!--Row 3-->
+      <div class="appdescription resultsdesc" style="vertical-align: bottom; display:flex;">
+        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <div class="appdescription profiledesc" style="vertical-align: bottom; display:flex;">
+        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <div class="appdescription logoutdesc" style="vertical-align: bottom; display:flex;">
+        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
+      </div>
+      <!--Row 4-->
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
+        <div class="apptile">
+        </div>
+      </a>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
+        <div class="apptile">
+        </div>
+      </a>
+      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
+        <div class="apptile">
+        </div>
+      </a>
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript">
+      function showemaildesc(x) {
+        var y = document.getElementsByClassName(x);
+        y[0].style.visibility = 'visible';
+      }
+      function hideemaildesc(x) {
+        var y = document.getElementsByClassName(x);
+        y[0].style.visibility = 'hidden';
+      }
+    </script>
+  </body>
+</html>

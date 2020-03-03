@@ -58,7 +58,12 @@ def logina():
 @app.route('/', subdomain="app", methods=['GET', 'POST']) # main page route
 def loginb():
     if session.get('logged_in') == True:
-        return render_template('main.html')
+        if session.get('role') == 'admin':
+            return render_template('adminlobby.html')
+        elif session.get('role') == 'superadmin':
+            return render_template('adminlobby.html')
+        else:
+            return render_template('main.html')
     else:
         return loginpage()
 
