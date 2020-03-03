@@ -119,25 +119,43 @@ def beginp():
 @app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
     if session.get('logged_in'):
-        if session.get('role') == 'superadmin' or 'admin':
+        if session.get('role') == 'superadmin':
+            return stat()
+        elif session.get('role') == 'admin':
             return stat()
     else:
         return redirect("/")
 
 @app.route('/stats/del', subdomain="app", methods=['GET', 'POST'])
 def beginstatdel():
-    return waitforrecdel()
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            return waitforrecdel()
+        elif session.get('role') == 'admin':
+            return waitforrecdel()
+    else:
+        return redirect("/")
+    
 
 @app.route('/stats/mod', subdomain="app", methods=['GET', 'POST'])
 def beginstatdel1():
-    return waitforrecdel1()
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            return waitforrecdel()
+        elif session.get('role') == 'admin':
+            return waitforrecdel()
+    else:
+        return redirect("/")
 
 @app.route('/gophishing', subdomain="app", methods=['GET', 'POST']) # main page route
 def loginp():
-    if session.get('logged_in') == True:
-        return gophish()
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            return gophish()
+        elif session.get('role') == 'admin':
+            return gophish()
     else:
-        return loginpage()
+        return redirect("/")
 
 @app.route('/fy', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def logid():
@@ -157,15 +175,24 @@ def educationemail1():
 #### template iframe rendering for gophishing template preview
 @app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
 def amazontemplate():
-    return render_template('amazon.html')
+    if session.get('logged_in'):
+        return render_template('amazon.html')
+    else:
+        return redirect('/')
 
 @app.route('/templates/prototype2.html', subdomain="app", methods=['GET', 'POST']) 
 def prototype2template():
-    return render_template('prototype2.html')
+    if session.get('logged_in'):
+        return render_template('prototype2.html')
+    else:
+        return redirect('/')
 
 @app.route('/templates/starbucks.html', subdomain="app", methods=['GET', 'POST']) 
 def starbuckstemplate():
-    return render_template('starbucks.html')
+    if session.get('logged_in'):
+        return render_template('starbucks.html')
+    else:
+        return redirect('/')
 ######################## end template render
 
 if __name__ == '__main__':
