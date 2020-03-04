@@ -12,7 +12,7 @@ from lumberjack import log
 from profile import myprofile, profile
 from gophishing import gophishing, gophish
 from fy import fy, apiid
-from educationemail import educationemail, educationemaillobby, email1
+from educationemail import educationemail, educationemaillobby, email1, email2
 from emulateuser import emulateuser, emulatelogin
 from adminprofile import adminprofile, loadadminprofile
 
@@ -172,6 +172,13 @@ def emaillobby():
 def educationemail1():
     if session.get('logged_in'):
         return email1()
+    else:
+        return redirect("/")
+
+@app.route('/education/email/2', subdomain="app", methods=['GET', 'POST'])
+def educationemail2():
+    if session.get('logged_in'):
+        return email2()
     else:
         return redirect("/")
 
