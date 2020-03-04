@@ -15,6 +15,7 @@ from fy import fy, apiid
 from educationemail import educationemail, educationemaillobby, email1, email2
 from emulateuser import emulateuser, emulatelogin
 from adminprofile import adminprofile, loadadminprofile
+from educationintro import educationintro, educationintro1
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -43,6 +44,7 @@ app.register_blueprint(gophishing)
 app.register_blueprint(fy)
 app.register_blueprint(educationemail)
 app.register_blueprint(emulateuser)
+app.register_blueprint(educationintro)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -179,6 +181,13 @@ def educationemail1():
 def educationemail2():
     if session.get('logged_in'):
         return email2()
+    else:
+        return redirect("/")
+
+@app.route('/education/intro', subdomain="app", methods=['GET', 'POST'])
+def educationintro1():
+    if session.get('logged_in'):
+        return educationintro()
     else:
         return redirect("/")
 
