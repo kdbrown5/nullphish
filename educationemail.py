@@ -44,6 +44,14 @@ def email1():
             cur.execute('insert into email (username, pagenum, visited) select (?), 1, 1 where (Select changes() = 0);', (session['username'],))
         con.close()
 
+    if request.method == 'GET':
+        if request.args.get('!'[:]) != None:
+            pass
+        else:
+            flash('Never click links! You could have been sent to a malicious website!', 'category2')
+            return render_template('email1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
+
+
     fname, lname = userlookup()
     timestamp = (datetime.now())
     timestamp = timestamp.strftime("%m/%d/%Y %I:%M")
