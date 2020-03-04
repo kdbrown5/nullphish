@@ -74,7 +74,7 @@ def email2():
     timestamp = (datetime.now())
     timestamp = timestamp.strftime("%m/%d/%Y %I:%M")
     username=session['username']
-    trackpage()
+    trackpage2()
 
     if request.method == 'GET':
         if request.args.get('!'[:]) == None:
