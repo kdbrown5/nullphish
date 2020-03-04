@@ -187,7 +187,7 @@ def educationemail2():
 @app.route('/education/intro', subdomain="app", methods=['GET', 'POST'])
 def educationintroload():
     if session.get('logged_in'):
-        return educationintro()
+        return educationintro1()
     else:
         return redirect("/")
 
