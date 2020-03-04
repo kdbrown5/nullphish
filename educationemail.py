@@ -51,7 +51,7 @@ def email1():
     trackpage()
 
     if request.method == 'GET':
-        if request.args.get('!'[:]) != None:
+        if request.args.get('!'[:]) == None:
             pass
         else:
             flash('Never click links! You could have been sent to a malicious website!', 'category2')
