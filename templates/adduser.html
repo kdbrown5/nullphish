@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+		<title>Profile</title> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<style>
+	div.ex2 {
+  max-width:500px;
+  margin: auto;
+  opacity: 1
+	}
+  .form-control {
+    height: auto;
+    min-height: 36px;
+    opacity: 1
+}
+
+.header-site {
+  content: "Profile";
+  background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url(https://gokdb.com/public/header-library.jpg);
+  opacity: 1
+}
+h2.heade {
+  text-align: center;
+}
+.center-div
+{
+     margin: 0 auto;
+     width: 100px; 
+}
+form {
+  text-align: center;
+  opacity: 1
+}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+.bgg {font-size:75px}
+body {
+  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url(https://gokdb.com/public/header-library.jpg);
+  opacity: 1
+}
+    </style>
+<body>
+<div class="w3-top">
+		<div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+		  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+          <a href="/main" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
+          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
+          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
+		  <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
+        </div></div>
+        
+        
+
+                <div class="w3-top heade">
+                        <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+                          <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                          <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+                          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
+                          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
+                          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
+                          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
+                        </div>
+                      
+                        <!-- Navbar on small screens -->
+                        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+                          <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
+                        </div>
+                      </div>
+                      
+                      <!-- Header -->
+                      <header class="w3-container header-site w3-center" style="padding:128px 16px">
+                        <h1 style="color: white" class="w3-margin w3-jumbo"><b>Add Users</b></h1>
+                      
+                        <br>
+
+<center>
+
+    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        {% if messages %}
+          <ul class="flashes w3-jumbo" style="color: white">
+          {% for message in messages %}
+        {{ message }}
+          {% endfor %}
+          </ul>
+        {% endif %}
+        {% endwith %}</h1>
+
+    </center>
+    <br>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+<center><h3  style="color: white">
+
+
+<div class="col-md" style="form">
+  <hr>
+  <h2 style="color: white" class="w3-xlarge">View Users</h2>
+  <div class="ex2">
+    <div class="form-group">
+        <label for="exampleFormControlSelect1"></label>
+        <select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
+            <option>Users</option>
+                {% for row in lookup %}
+                    <option>{{ row }}</option>
+                {% endfor %}     
+        </select>
+        </div>
+      </div>
+      <hr>
+</div>
+<div class="col-md" style="center">
+<center>
+  <hr>
+<h2 style="color: white">
+  Add Member:
+
+  <form method="POST">
+    <p style="color: white" class="w3-xlarge"></p>
+    <select name= 'addrole' class="form-control" id="addrole" required>
+      <option>Select Role</option>
+              <option>User</option>
+              <option>Admin</option>
+  </select>
+      <input name='firstname' type="text" class="form-control" placeholder="First Name" required></input>
+
+          <input name='lastname' type="text" class="form-control" placeholder="Last Name" required></input>
+
+          <input name='department' placeholder="Department (Optional)" type="text" class="form-control"></input>
+
+          <input name='emailaddr' placeholder="Email Address" type="text" class="form-control" required></input>
+ 
+      <button name="adduser" class="btn btn-primary btn-block">Add User</button>
+
+    </form>
+  </div>
+</div>
+  </center>
+    <br><br>
+
+  </body>
+<br>
+</h2>
+</div>
+</article>
+</h2>
+</center>
+

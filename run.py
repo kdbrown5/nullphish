@@ -16,6 +16,7 @@ from educationemail import educationemail, educationemaillobby, email1, email2
 from emulateuser import emulateuser, emulatelogin
 from adminprofile import adminprofile, loadadminprofile
 from educationintro import educationintro, educationintro1
+from adduser import adduser, addnewuser
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -45,6 +46,7 @@ app.register_blueprint(fy)
 app.register_blueprint(educationemail)
 app.register_blueprint(emulateuser)
 app.register_blueprint(educationintro)
+app.register_blueprint(adduser)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -81,6 +83,17 @@ def rediradminprofile():
     else:
         return redirect('/login') # else redirect to login page
 
+@app.route('/adduser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
+def adduserload():
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return addnewuser()
+        elif session.get('role') == 'admin':
+            return addnewuser()
+        else:
+            return redirect('/profile')
+    else:
+        return redirect('/login') # else redirect to login page
 
 @app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loginemulate():

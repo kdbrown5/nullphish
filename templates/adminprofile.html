@@ -113,6 +113,10 @@ Department:
 
 <br>
 
+Role:
+
+<br>
+
 Email: {% if username %}{{ username }}{% endif %}
 
 <hr>
@@ -131,51 +135,6 @@ Password Change:
 </form>
 
 </div></div></div>
-
-<div class="col-md" style="form">
-  <hr>
-  <h2 style="color: white" class="w3-xlarge">View Users</h2>
-  <div class="ex2">
-    <div class="form-group">
-        <label for="exampleFormControlSelect1"></label>
-        <select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
-            <option>Users</option>
-                {% for row in lookup %}
-                    <option>{{ row }}</option>
-                {% endfor %}     
-        </select>
-        </div>
-      </div>
-      <hr>
-</div>
-<div class="col-md" style="center">
-<center>
-  <hr>
-<h2 style="color: white">
-  Add Member:
-
-  <form method="POST">
-    <p style="color: white" class="w3-xlarge"></p>
-    <select name= 'addrole' class="form-control" id="addrole" required>
-      <option>Select Role</option>
-              <option>User</option>
-              <option>Admin</option>
-  </select>
-      <input name='firstname' type="text" class="form-control" placeholder="First Name" required></input>
-
-          <input name='lastname' type="text" class="form-control" placeholder="Last Name" required></input>
-
-          <input name='department' placeholder="Department (Optional)" type="text" class="form-control"></input>
-
-          <input name='emailaddr' placeholder="Email Address" type="text" class="form-control" required></input>
- 
-      <button name="adduser" class="btn btn-primary btn-block">Add User</button>
-
-    </form>
-  </div>
-</div>
-  </center>
-    <br><br>
 
   </body>
 <br>
