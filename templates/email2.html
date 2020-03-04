@@ -323,11 +323,12 @@ html, body {
                         <div dir="auto">
                                 <div dir="auto">
                                 <div>From: "⁠GEICO Ins." &lt;<a target="_self" href="/education/email/2?!" target="_blank" rel="noopener">noreply@jellyfishesfond.com</a>&gt;</div><br>
-                                <div>Date: 2/27/20 4:00 PM (GMT-08:00)</div><br>
+                                <div>Date: {% if timestamp %}{{ timestamp }}{% endif %}</div><br>
                                 <div>To: {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %} &lt;<a target="_self" href="/education/email/2?!" target="_blank" rel="noopener">{% if username %}{{ username }}{% endif %}</a>&gt;</div><br>
                                 <div>Subject: ⁠Switch to GEICO Now and You Could Save</div>
                                 <div>&nbsp;</div>
                                 </div>
+                                <br><br>
                                 <center>
                                 <table border="0" cellspacing="0" cellpadding="0">
                                 <tbody>
