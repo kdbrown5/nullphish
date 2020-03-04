@@ -881,7 +881,7 @@ html, body {
 
                     <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
                         {% if messages %}
-                          <ul class="flashes w3-jumbo" style="color: white">
+                          <ul class="flashes w3-jumbo" style="color: black">
                           {% for message in messages %}
                         {{ message }}
                           {% endfor %}
@@ -890,7 +890,7 @@ html, body {
                         {% endwith %}</h1>
                         <h1>{% with messages = get_flashed_messages(category_filter=["category1"]) %}
                           {% if messages %}
-                            <ul class="flashes w3-jumbo" style="color: white">
+                            <ul class="flashes w3-jumbo" style="color: black">
                             {% for message in messages %}
                           {{ message }}
                             {% endfor %}
