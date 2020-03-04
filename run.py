@@ -170,7 +170,10 @@ def emaillobby():
 
 @app.route('/education/email/1', subdomain="app", methods=['GET', 'POST'])
 def educationemail1():
-    return email1()
+    if session.get('logged_in'):
+        return email1()
+    else:
+        return redirect("/")
 
 #### template iframe rendering for gophishing template preview
 @app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
