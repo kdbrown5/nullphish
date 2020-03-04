@@ -47,9 +47,9 @@ def loadadminprofile():
                         con.commit()
                         gc.collect()
                         flash('Password Changed!', 'category2')       
-                        return render_template("adminprofile.html", lookup=lookup, username=session['username'])
+                        return render_template("adminprofile.html", username=session['username'])
             else:
                 flash('Password must be 8 characters or more.', 'category2')
-                return render_template("adminprofile.html", lookup=lookup, username=session['username'])
+                return render_template("adminprofile.html", username=session['username'])
 
-    return render_template("adminprofile.html", lookup=lookup, username=session['username'])
+    return render_template("adminprofile.html", username=session['username'])
