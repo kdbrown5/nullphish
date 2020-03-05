@@ -16,14 +16,28 @@
         padding: 0px;
         margin: 0px;
         position: absolute;
+        background-image: linear-gradient(#0D1126, black);
       }
       .fader{
         opacity: 1;
       }
+      #logo{
+        position: absolute;
+        width: 15%;
+        height: auto;
+        top: 450%;
+        left: 10%;
+        -webkit-transform:rotate(-25deg);
+        -moz-transform: rotate(-25deg);
+        -ms-transform: rotate(-25deg);
+        -o-transform: rotate(-25deg);
+        transform: rotate(-25deg);
+        z-index: 1;
+      }
     </style>
   </head>
   <body>
-    <div id="particles-js" style="background-image: linear-gradient(#0D1126, black);"></div>
+    <div id="particles-js"></div>
     <nav>
       <table>
         <tr>
@@ -65,6 +79,7 @@
       Our rich backgrounds have given us hands-on experience with a multitude of multi-faceted threats which have helped us develop the best practices to protect our users against these threats.</span>
       <br>
     </div>
+    <img id="logo" src="../static/res/angler.svg">
     <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="../static/js/jquery.js"></script>
