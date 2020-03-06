@@ -19,17 +19,37 @@ Color Palette Hex Codes:
 }
 
 /* Styles */
+
+#module1{
+  background-image:url("https://app.nullphish.com/static/res/module1.svg")
+}
+#module2{
+  background-image:url("https://app.nullphish.com/static/res/module2.svg")
+}
+#module3{
+  background-image:url("https://app.nullphish.com/static/res/module3.svg")
+}
+#module4{
+  background-image:url("https://app.nullphish.com/static/res/module4.svg")
+}
+#module5{
+  background-image:url("https://app.nullphish.com/static/res/module5.svg")
+}
+#module6{
+  background-image:url("https://app.nullphish.com/static/res/module6.svg")
+}
+
 #tilecontainer{
   z-index: 999;
   position: absolute;
-  top: 240px;
-  bottom: 180px;
-  left: 240px;
-  right: 240px;
+  top: 120px;
+  bottom: 90px;
+  left: 180px;
+  right: 180px;
   width: auto;
   height: auto;
   margin: 0px;
-  padding-top: 60px;
+  padding-top: 30px;
   overflow: hidden;
   border-radius: 25px;
   border: 2px solid #E0E0E0;
@@ -41,30 +61,11 @@ Color Palette Hex Codes:
   margin-right: auto;
   display: grid;
   grid-template-columns: auto auto auto;
-  grid-template-rows: auto min-content min-content auto;
+  grid-template-rows: auto auto auto;
   row-gap: 0px;
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-#tilecontainer table{
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-  max-width: 2000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#tilecontainer th{
-  font-size: calc(24px + 0.5vw);
-  max-height: 40px;
-  vertical-align: middle;
-}
-#tilecontainer tr{
-  vertical-align: middle;
-}
-#tilecontainer a{
-  text-decoration: none;
 }
 #tilecontainer h1{
   font-size: calc(24px + 0.5vw);
@@ -75,22 +76,29 @@ Color Palette Hex Codes:
 }
 #tilecontainer a{
   border-radius: 15px;
-  border: 10px solid #49A355;
+  border: 5px solid #49A355;
   background-color: #49A355;
   color: #0D1126;
   font-family: opensans;
   font-weight: bold;
-  height: calc(90px + 20vh);
-  width: calc(90px + 20vh);
+  height: calc(90px + 5vh);
+  width: calc(90px + 5vh);
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  text-decoration: none;
+  box-shadow: 0px 0px 10px 5px #49A355;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 #tilecontainer a:hover{
   border-color: #E0E0E0;
+  box-shadow: 0px 0px 10px 5px #E0E0E0;
 }
 #tilecontainer a:active{
   border-color: #E0E0E0;
+  box-shadow: 0px 0px 10px 5px #E0E0E0;
   background-color: #E0E0E0;
 }
 
@@ -126,14 +134,14 @@ Color Palette Hex Codes:
 .appdescription{
   margin-top: 14px;
   margin-bottom: 0px;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 0px;
   visibility: hidden;
   font-size: calc(12px + 0.25vw);
   color: #E0E0E0;
-  width: 90%;
+  width: 80%;
   height: auto;
   text-align: center;
-}
-.appdescription hr{
-  color: #49A355;
+  vertical-align: top;
 }
