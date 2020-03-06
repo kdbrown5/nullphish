@@ -32,7 +32,7 @@ Color Palette Hex Codes:
   padding-top: 60px;
   overflow: hidden;
   border-radius: 25px;
-  border: 1px solid #E0E0E0;
+  border: 2px solid #E0E0E0;
   color: #E0E0E0;
   min-width: 500px;
   max-width: 2500px;
@@ -75,6 +75,7 @@ Color Palette Hex Codes:
 }
 #tilecontainer a{
   border-radius: 15px;
+  border: 10px solid #49A355;
   background-color: #49A355;
   color: #0D1126;
   font-family: opensans;
@@ -85,13 +86,16 @@ Color Palette Hex Codes:
   margin-left: auto;
   margin-right: auto;
 }
+#tilecontainer a:hover{
+  border-color: #E0E0E0;
+}
+#tilecontainer a:active{
+  border-color: #E0E0E0;
+  background-color: #E0E0E0;
+}
 
 .apptile{
   border-radius: 15px;
-  background-color: #49A355;
-  color: #0D1126;
-  font-family: opensans;
-  font-weight: bold;
   height: calc(90px + 10vw);
   width: calc(90px + 10vw);
   -webkit-touch-callout: none;
@@ -103,13 +107,6 @@ Color Palette Hex Codes:
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
-}
-.apptile:hover{
-  border-color: #E0E0E0;
-}
-.apptile:active{
-  border-color: #E0E0E0;
-  background-color: #E0E0E0;
 }
 .apptile img{
   height: 10vw;
@@ -125,19 +122,6 @@ Color Palette Hex Codes:
   padding: 0px;
   vertical-align: middle;
 }
-.apptile p{
-  padding: 0px;
-  width: 100%;
-  min-width: 60px;
-  max-width: 300px;
-  height: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  font-size: calc(16px + 0.5vw);
-  text-align: center;
-  vertical-align: middle;
-}
 
 .appdescription{
   margin-top: 14px;
@@ -146,7 +130,7 @@ Color Palette Hex Codes:
   visibility: hidden;
   font-size: calc(12px + 0.25vw);
   color: #E0E0E0;
-  width: 100%;
+  width: 90%;
   height: auto;
   text-align: center;
 }
