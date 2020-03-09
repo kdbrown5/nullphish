@@ -31,11 +31,12 @@ def gophish():
 
     def lookupmailserver():
         con = sqlite.connect('db/db1.db')
+        business = str(session['business'])
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             serverlist = []
-            for row in cur.execute('select mailuser from mailconfig where business LIKE (?) OR "nullphish";', (session['business'],))
+            for row in cur.execute('select mailuser from mailconfig where business LIKE (?) OR "nullphish";', (business,)):
                 serverlist.append(row[:])
         con.close()
         return serverlist
@@ -47,6 +48,9 @@ def gophish():
             cur.execute('PRAGMA key = '+dbkey+';')
             templatelist = []
             for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],))
+                templatelist.append(row[:])
+            con.close
+        return templatelist
 
 # create templates ( id INTEGER PRIMARY KEY autoincrement, name text, business text)
 # insert into templates ( name, business ) values ('amazon', 'nullphish')
@@ -82,4 +86,4 @@ def gophish():
     if 'exitmodify' in request.form:
         return redirect('/stats')
 
-    return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates)    
+    return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
