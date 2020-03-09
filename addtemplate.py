@@ -30,7 +30,10 @@ def addnewtemplate():
             cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],))
             templateresults = cur.fetchall()
         con.close()
-        return templateresults    
+        return templateresults
+
+#    def templatesubmit():
+        
 
     searchtemplates = templatelookup()
 
