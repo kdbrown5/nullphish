@@ -42,12 +42,13 @@ def gophish():
         return serverlist
 
     def lookuptemplates():
+        business = str(session['business'])
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             templatelist = []
-            for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],))
+            for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (business,)):
                 templatelist.append(row[:])
             con.close
         return templatelist
