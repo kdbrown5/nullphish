@@ -140,7 +140,7 @@ def beginlogout():
 def beginphishinstats():
     if session.get('logged_in') == True:
         if session.get('role') == 'superadmin':
-            return phishingstatsload())
+            return phishingstatsload()
         elif session.get('role') == 'admin':
             return phishingstatsload()
         else:
@@ -152,7 +152,7 @@ def beginphishinstats():
 def beginmailsetup():
     if session.get('logged_in') == True:
         if session.get('role') == 'superadmin':
-            return mailsetup())
+            return mailsetup()
         elif session.get('role') == 'admin':
             return mailsetup()
         else:
