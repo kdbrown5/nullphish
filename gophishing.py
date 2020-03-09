@@ -53,12 +53,8 @@ def gophish():
             con.close
         return templatelist
 
-# create templates ( id INTEGER PRIMARY KEY autoincrement, name text, business text)
-# insert into templates ( name, business ) values ('amazon', 'nullphish')
-# insert into templates ( name, business ) values ('prototype2', 'nullphish')
-# insert into templates ( name, business ) values ('starbucks', 'nullphish')
-
     availtemplates = lookuptemplates()
+    print(availtemplates)
     #availtemplates = ['amazon', 'prototype2', 'starbucks']
 
     businessdata = businesslookup()
