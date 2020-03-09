@@ -17,6 +17,9 @@ from emulateuser import emulateuser, emulatelogin
 from adminprofile import adminprofile, loadadminprofile
 from educationintro import educationintro, educationintro1
 from adduser import adduser, addnewuser
+from phishingstats import phishingstats, phishingstatsload
+from mailsetup import mailsetup, mailconfig
+from addtemplate import addtemplate, addnewtemplate
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -47,6 +50,9 @@ app.register_blueprint(educationemail)
 app.register_blueprint(emulateuser)
 app.register_blueprint(educationintro)
 app.register_blueprint(adduser)
+app.register_blueprint(phishingstats)
+app.register_blueprint(mailsetup)
+app.register_blueprint(addtemplate)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -95,6 +101,18 @@ def adduserload():
     else:
         return redirect('/login') # else redirect to login page
 
+@app.route('/addtemplate', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
+def addtemplateload():
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return addnewtemplate()
+        elif session.get('role') == 'admin':
+            return addnewtemplate()
+        else:
+            return redirect('/')
+    else:
+        return redirect('/login') # else redirect to login page
+
 @app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loginemulate():
     if session.get('logged_in') == True:
@@ -117,6 +135,31 @@ def beginr():
 @app.route('/logout', subdomain="app", methods=['GET', 'POST']) # redirect to logout function to strip session variable in cookie
 def beginlogout():
     return logoutuser()
+
+@app.route('/phishingstats', subdomain='app', methods=['GET', 'POST'])
+def beginphishinstats():
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return phishingstatsload())
+        elif session.get('role') == 'admin':
+            return phishingstatsload()
+        else:
+            return redirect('/')
+    else:
+        return redirect('/login') # else redirect to login page
+
+@app.route('/mailsetup', subdomain='app', methods=['GET', 'POST'])
+def beginmailsetup():
+    if session.get('logged_in') == True:
+        if session.get('role') == 'superadmin':
+            return mailsetup())
+        elif session.get('role') == 'admin':
+            return mailsetup()
+        else:
+            return redirect('/')
+    else:
+        return redirect('/login') # else redirect to login page
+
 
 @app.route('/profile', subdomain="app", methods=['GET', 'POST'])
 def beginp():

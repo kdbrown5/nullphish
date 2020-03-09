@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+		<title>Stats</title> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<style>
+body            { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+a, h1, h2       { color: #2196F3; }
+h1, h2          { margin: 0; }
+h1              { border-bottom: 0px solid #eee; }
+h2              { font-size: 1.2em; }
+
+table.dataframe, .dataframe th, .dataframe td {
+  border: line;
+  border-bottom: 1px solid #black;
+  border-top: 1px solid black;
+  border-collapse: collapse;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: 0.95em;
+}
+
+tr.border_bottom td {
+  border-bottom:1pt solid black;
+}
+.table {
+	
+  width: 90%;
+  margin-bottom: 0px;
+}
+div.ex2 {
+  max-width:500px;
+  margin: auto;
+	}
+  .form-control {
+    height: auto;
+    min-height: 36px;
+}
+tr:nth-child(odd)		{ background-color: #fff; }
+tr:nth-child(even)	{ background-color:#eeeeee; }
+
+tr:hover            { background-color: rgba(255, 0, 0, 0.185);}
+h2.heade {
+  text-align: center;
+}
+
+body {
+  background-color: Lightgrey;
+}
+.buttonHolder{ text-align: center; }
+</style>
+
+<div class="w3-top">
+		<div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+		  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+		  <a href="/main" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Profile</a>
+          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-white">Stats</a>
+          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
+		  <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
+		</div></div>
+
+<br>
+<br>
+
+
+<center>
+	<form method="post">
+        <h2 class="heade"> <input class="btn btn-secondary btn-block" type="submit" name="modifyrecord" value="Modify Records"></h2></form>
+<br><br>
+</center>
+<center>
+	
+    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        {% if messages %}
+          <ul class="flashes w3-jumbo" style="color: Black">
+          {% for message in messages %}
+        {{ message }}
+          {% endfor %}
+          </ul>
+        {% endif %}
+		{% endwith %}</h1>
+			
+				{% if phishdata %}
+	<h1><u><b>Business Exam Results</b></u></h1>
+<br>
+	<table class="table table-hover dataframe" align="center">
+		<thead>
+			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+			<td width="5%">Department</td>
+			<td>First</td>
+			<td>Last</td>
+			<td>Test</td>
+			<td>Correct</td>
+			<td>Incorrect</td>
+			<td>Pass/Fail</td>
+			<td>Notified</td>
+			<td>Date</td>
+		</tr>
+	{% for item in phishdata %}
+	<tr style="text-align:center;" class="border_bottom">
+			<td width="5%">{{item[10]}}</td>
+		<td>{{item[2]}}</td>
+		<td>{{item[3]}}</td>
+		<td>{{item[4]}}</td>
+		<td>{{item[5]}}</td>
+		<td>{{item[6]}}</td>
+		<td>{{item[7]|replace('1', 'Pass')|replace('0', 'Fail')}}</td>
+		<td>{{item[8]|replace('0', 'Not Sent')|replace('1', 'Sent') }}</td>
+		<td>{{item[9]}}</td>
+	</tr>
+	{% endfor %}
+	</table>
+	{% endif %}
+
+			<br>
+	</center>
+	</form>
+	<br><br><br><br><br>
+
+</html>

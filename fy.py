@@ -90,10 +90,10 @@ def apiid():
                 adminlist.append(row)
             emailrecip = adminlist[0]
             tattletale(emailrecip, email)
-            return redirect('https://nullphish.com')
+            return redirect('https://google.com')
         else:
-            return redirect('https://nullphish.com')
+            return redirect('https://google.com')
 
 
         
-    return redirect('https://nullphish.com')
+    return redirect('https://google.com')

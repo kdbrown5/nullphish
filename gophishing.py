@@ -28,8 +28,36 @@ def gophish():
         con.close()
         businessdata = businessquery
         return businessdata
-    availtemplates = ['amazon', 'prototype2', 'starbucks']
+
+    def lookupmailserver():
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            serverlist = []
+            for row in cur.execute('select mailuser from mailconfig where business LIKE (?) OR "nullphish";', (session['business'],))
+                serverlist.append(row[:])
+        con.close()
+        return serverlist
+
+    def lookuptemplates():
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            templatelist = []
+            for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],))
+
+# create templates ( id INTEGER PRIMARY KEY autoincrement, name text, business text)
+# insert into templates ( name, business ) values ('amazon', 'nullphish')
+# insert into templates ( name, business ) values ('prototype2', 'nullphish')
+# insert into templates ( name, business ) values ('starbucks', 'nullphish')
+
+    availtemplates = lookuptemplates()
+    #availtemplates = ['amazon', 'prototype2', 'starbucks']
+
     businessdata = businesslookup()
+    serverlist = lookupmailserver()
 
     if request.method == 'POST':
         if str(request.form.get('templateview')) != 'None':

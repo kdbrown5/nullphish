@@ -14,7 +14,7 @@ h2              { font-size: 1.2em; }
 
 table.dataframe, .dataframe th, .dataframe td {
   border: line;
-  border-bottom: 1px solid #black;
+  border-bottom: 1px solid black;
   border-top: 1px solid black;
   border-collapse: collapse;
   border-left: 1px solid black;
@@ -97,6 +97,7 @@ body {
 			<td>Last</td>
             <td>Email Address</td>
             <td>Template</td>
+            <td>Mail Server</td>
             <td>Phish!</td>
 		</tr>
     {% for item in businessdata %}
@@ -107,13 +108,22 @@ body {
 		<td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
         <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
         
-        <td>        <select name= "templates" class="form-control" id="templates">
+        <td>        <select name="templates" class="form-control" id="templates">
             <option>Templates</option>
                 {% for row in availtemplates %}
                     <option>{{ row }}</option>
                 {% endfor %}
         </select>
+        <td>
+          <select name="smtpserver" class="form-control" id="smtpserver">
+          <option>Mail Server</option>
+            {% for row in mailservers %}
+            <option>{{ row }}</option>
+            {% endfor %}
+          </select>
+        </td>
     </td>
+
         <td><button type="submit" class="btn btn-primary">Phish!</button></form></td>
         {% endfor %}
 	</tr>
