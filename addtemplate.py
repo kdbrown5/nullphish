@@ -9,7 +9,7 @@ from flask import Flask, flash, session, render_template, render_template_string
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt, argon2
 from pysqlcipher3 import dbapi2 as sqlite
-
+from pathlib import Path
 
 db = SQLAlchemy()
 
@@ -32,6 +32,7 @@ def addnewtemplate():
         con.close()
         return templateresults
 
+    Path("/templates/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 #    def templatesubmit():
         
 
