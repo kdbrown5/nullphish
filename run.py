@@ -152,9 +152,9 @@ def beginphishinstats():
 def beginmailsetup():
     if session.get('logged_in') == True:
         if session.get('role') == 'superadmin':
-            return mailsetup()
+            return mailconfig()
         elif session.get('role') == 'admin':
-            return mailsetup()
+            return mailconfig()
         else:
             return redirect('/')
     else:
