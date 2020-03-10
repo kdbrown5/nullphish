@@ -46,18 +46,26 @@ def mailconfig():
                 
     if request.method == 'POST':
         if session['logged_in'] == True:
-            timestamp = (datetime.now())
-            timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
-            timestamp = timestamp.replace(' ', '-')
-            con = sqlite.connect('db/db1.db')
-            with con:
-                cur = con.cursor()
-                cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('insert into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, date) values ((?), (?), (?), (?), (?), (?), (?));', (hostname, mailuser, mailpass, mailport, mailport, session['business'], timestamp,))
-            con.close()
-            return 'Complete!'
+            if 'mailhost' in request.form:
+                mailhost = request.form['mailhost']
+                mailuser = request.form['mailuser']
+                mailpass = request.form['mailpass']
+                mailtype = request.form['mailtype']
+                timestamp = (datetime.now())
+                timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+                timestamp = timestamp.replace(' ', '-')
+                con = sqlite.connect('db/db1.db')
+                with con:
+                    cur = con.cursor()
+                    cur.execute('PRAGMA key = '+dbkey+';')
+                    cur.execute('insert into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, date) values ((?), (?), (?), (?), (?), (?), (?));', (hostname, mailuser, mailpass, mailport, mailport, session['business'], timestamp,))
+                con.close()
+                flash('Mail server added!', 'category2')
+                return return_render('mailsetup.html')
+            else:
+                pass
         else:
-            return return_render('mailsetup.html')
+            return redirect('/')
     else:
         return render_template('mailsetup.html', currentsetup=currentsetup)
 
