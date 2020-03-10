@@ -62,7 +62,7 @@ def mailconfig():
                     cur.execute('insert into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, date) values ((?), (?), (?), (?), (?), (?), (?));', (mailhost, mailuser, mailpass, mailport, mailport, session['business'], timestamp,))
                 con.close()
                 flash('Mail server added!', 'category2')
-                return return_render('mailsetup.html')
+                return render_template('mailsetup.html')
             else:
                 pass
         else:
