@@ -32,7 +32,7 @@ def addnewtemplate():
         con.close()
         return templateresults
 
-    Path("./templates/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
+    Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 #    def templatesubmit():
         
 
