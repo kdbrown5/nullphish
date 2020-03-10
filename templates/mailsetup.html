@@ -104,7 +104,7 @@ body {
   <div class="row">
     <div class="col-md">
 <center><h3  style="color: white">
-  <h1>
+  <h1 style="color: white">
     {% if currentsetup %}
       <li>{{ currentsetup }}</li>
     {% endif %}
@@ -121,19 +121,18 @@ body {
       <span class=""> <i class="fa fa-lock"></i> </span>
       <input name="mailpass" class="form-control" placeholder="Mailbox Password:" type="password">
       <span class=""> <i class="fa fa-lock"></i> </span>
-      <select name= 'mailtype' class="form-control" id="mailtype" required>
+      <select name='mailtype' class="form-control" id="mailtype" required>
         <option>Select Security Type:</option>
-                <option>None</option>
-                <option>SSL</option>
-                <option>TLS</option>
+                <option value="none">None</option>
+                <option value="ssl">SSL</option>
+                <option value="tls">TLS</option>
     </select>
-
       <span class=""> <i class="fa fa-lock"></i> </span>
-      <select name= 'mailport' class="form-control" id="mailport" required>
+      <select name='mailport' class="form-control" id="mailport" required>
         <option>Select Port:</option>
-                <option>25</option>
-                <option>465</option>
-                <option>587</option>
+                <option value="25">25</option>
+                <option value="465">465</option>
+                <option value="587">587</option>
     </select>
       <button type="submit" class="btn btn-primary btn-block"> Submit  </button>
 </form>
