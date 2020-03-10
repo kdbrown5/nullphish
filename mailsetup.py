@@ -51,6 +51,7 @@ def mailconfig():
                 mailuser = request.form['mailuser']
                 mailpass = request.form['mailpass']
                 mailtype = request.form['mailtype']
+                mailport = request.form['mailport']
                 timestamp = (datetime.now())
                 timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
                 timestamp = timestamp.replace(' ', '-')
