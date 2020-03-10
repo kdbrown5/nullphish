@@ -99,10 +99,15 @@ body {
 
     </center>
     <br>
+    
 <div class="container">
   <div class="row">
     <div class="col-md">
 <center><h3  style="color: white">
+  <h1>
+    {% if currentsetup %}
+      <li>{{ currentsetup }}</li>
+    {% endif %}
   <hr>
 
 <form method="POST">
