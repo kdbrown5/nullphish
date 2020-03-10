@@ -114,26 +114,16 @@ body {
 <div class="container" style="max-width: 600px;">
 
 <div class="form-group">
-      <span class=""> <i class="fa fa-lock"></i> </span>
       <input name="mailhost" class="form-control" placeholder="Mail Server Hostname:" type="">
-      <span class=""> <i class="fa fa-lock"></i> </span>
       <input name="mailuser" class="form-control" placeholder="Mailbox Username:" type="">
-      <span class=""> <i class="fa fa-lock"></i> </span>
       <input name="mailpass" class="form-control" placeholder="Mailbox Password:" type="password">
-      <span class=""> <i class="fa fa-lock"></i> </span>
       <select name='mailtype' class="form-control" id="mailtype" required>
         <option>Select Security Type:</option>
                 <option value="none">None</option>
                 <option value="ssl">SSL</option>
                 <option value="tls">TLS</option>
     </select>
-      <span class=""> <i class="fa fa-lock"></i> </span>
-      <select name='mailport' class="form-control" id="mailport" required>
-        <option>Select Port:</option>
-                <option value="25">25</option>
-                <option value="465">465</option>
-                <option value="587">587</option>
-    </select>
+    <input name="mailport" class="form-control" placeholder="Port:" type="">
       <button type="submit" class="btn btn-primary btn-block"> Submit  </button>
 </form>
 
