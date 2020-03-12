@@ -63,8 +63,18 @@ def gophish():
     if request.method == 'POST':
         if str(request.form.get('templateview')) != 'None':
             templateview = request.form.get('templateview')
-            templateview = '/templates/'+session['business']+'/'+templateview+'.html'
-            return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
+            if templateview == 'amazon':
+                templateview = '/templates/amazon.html'
+                return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
+            if templateview == 'starbucks':
+                templateview = '/templates/starbucks.html'
+                return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
+            if templateview == 'prototype2':
+                templateview = '/templates/prototype2.html'
+                return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
+            else:
+                templateview = '/templates/'+session['business']+'/'+templateview+'.html'
+                return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
         if str(request.form.get('templateview')) == 'None':
             templatechoice = request.form.get('templates')
             templatechoice = 'templates/'+str(templatechoice)+'.html'
