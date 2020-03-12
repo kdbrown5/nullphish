@@ -10,6 +10,7 @@ from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt, argon2
 from pysqlcipher3 import dbapi2 as sqlite
 from pathlib import Path
+import os.path
 
 db = SQLAlchemy()
 
@@ -36,18 +37,15 @@ def addnewtemplate():
 #    def templatesubmit():
     if request.method == "POST":
         try:
-            print('summernote---')
-            print(request.form.get('summernote'))
-        except:
-            pass
-        try:
-            print('editor---')
-            print(request.form.get('editordata'))
-        except:
-            pass
-        try:
-            print('templatename---')
-            print(request.form.get('templatename'))
+            savehtml = request.form.get('editordata')
+            savehtmlname = str(request.form.get('templatename'))
+            savehtmlname = savehtmlname+'.html'
+            if os.path.isfile(savehtmlname):
+                flash('A template with this name already exists', 'category2')
+                return render_template("addtemplate.html", searchtemplates=searchtemplates)
+            else:
+                with open(savehtmlname, 'w') as f:
+                    f.write(savehtml)
         except:
             pass
     else:
