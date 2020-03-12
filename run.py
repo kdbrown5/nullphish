@@ -221,8 +221,10 @@ def loginp():
 def dynamicphishload(templateview):
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
+            templateview = templateview.replace('https://app.nullphish.com/gophishing/', '.')
             return render_html(templateview)
         elif session.get('role') == 'admin':
+            templateview = templateview.replace('https://app.nullphish.com/gophishing/', '.')
             return render_html(templateview)
     else:
         return redirect('/')
