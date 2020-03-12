@@ -42,7 +42,7 @@ def addnewtemplate():
             pass
         try:
             print('editor---')
-            print(request.form.get('editor'))
+            print(request.form.get('editordata'))
         except:
             pass
         try:
