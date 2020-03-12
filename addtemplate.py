@@ -34,15 +34,20 @@ def addnewtemplate():
 
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 #    def templatesubmit():
-    if request.method == 'POST':
+    if request.method == "POST":
         try:
             print('summernote---')
-            print(request.form['summernote'])
+            print(request.form.get('summernote'))
         except:
             pass
         try:
             print('editor---')
-            print(request.form['editor'])
+            print(request.form.get('editor'))
+        except:
+            pass
+        try:
+            print('templatename---')
+            print(request.form.get('templatename'))
         except:
             pass
     else:
