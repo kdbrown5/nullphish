@@ -221,9 +221,9 @@ def loginp():
 def dynamicphishload(templateview):
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
-            return render_html('/'+templateview)
+            return render_html('/gophishing/'+templateview)
         elif session.get('role') == 'admin':
-            return render_html('/'+templateview)
+            return render_html('/gophishing/'+templateview)
     else:
         return redirect('/')
 
