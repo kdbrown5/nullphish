@@ -63,6 +63,7 @@ def gophish():
     if request.method == 'POST':
         if str(request.form.get('templateview')) != 'None':
             templateview = request.form.get('templateview')
+            templateview = '/templates/'+session['business']+'/'+templateview+'.html'
             return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
         if str(request.form.get('templateview')) == 'None':
             templatechoice = request.form.get('templates')
