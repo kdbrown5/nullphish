@@ -40,11 +40,11 @@ def addnewtemplate():
             savehtml = request.form.get('editordata')
             savehtmlname = str(request.form.get('templatename'))
             savehtmlname = savehtmlname+'.html'
-            if os.path.isfile('./templates/businesses/'+session['business]'+savehtmlname):
+            if os.path.isfile('./templates/businesses/'+session['business']+savehtmlname):
                 flash('A template with this name already exists', 'category2')
                 return render_template("addtemplate.html", searchtemplates=searchtemplates)
             else:
-                with open('./templates/businesses/'+session['business]'+savehtmlname, 'w') as f:
+                with open('./templates/businesses/'+session['business']+savehtmlname, 'w') as f:
                     f.write(savehtml)
         except:
             pass
