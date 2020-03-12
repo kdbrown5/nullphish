@@ -34,7 +34,16 @@ def addnewtemplate():
 
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 #    def templatesubmit():
-        
+    if request.method == 'POST':
+        if 'emailaddr' in request.form:
+            print('summernote---')
+            print(request.form['summernote'])
+            print('editor---')
+            print(request.form['editor'])
+        else:
+            pass
+    else:
+        pass
 
     searchtemplates = templatelookup()
 

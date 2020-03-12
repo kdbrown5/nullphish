@@ -9,7 +9,7 @@
     <link href="https://nullphish.com/static/summernote/bootstrap337min.css" rel="stylesheet">
     <script src="https://nullphish.com/static/summernote/jquery341min.js"></script>
     <script src="https://nullphish.com/static/summernote/bootstrap337min.js"></script>
-    <link href="https://nullphish.com/static/summernote/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
     <script src="https://nullphish.com/static/summernote/summernote.min.js"></script>
 
 <style>
@@ -125,7 +125,12 @@ body {
 
   <h2 style="color: white">
     Add New Template:
-  <div id="summernote"><p>Hello Summernote</p></div>
+
+    <form method="post">
+      <textarea id="summernote" name="editordata"></textarea>
+      <input name='templatename' type="text" class="form-control" placeholder="Template Name" required></input>
+      <button name="addtemplate" class="btn btn-primary btn-block">Add Template</button>
+    </form>
   <script>
     $(document).ready(function() {
         $('#summernote').summernote();
@@ -138,11 +143,6 @@ body {
   <hr>
 
 
-  <form method="POST">
-    <p style="color: white" class="w3-xlarge"></p>
-      <input name='templatename' type="text" class="form-control" placeholder="Template Name" required></input>
-      <button name="addtemplate" class="btn btn-primary btn-block">Add Template</button>
-    </form>
   </div>
 </div>
   </center>
