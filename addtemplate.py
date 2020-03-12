@@ -35,12 +35,15 @@ def addnewtemplate():
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 #    def templatesubmit():
     if request.method == 'POST':
-        if 'emailaddr' in request.form:
+        try:
             print('summernote---')
             print(request.form['summernote'])
+        except:
+            pass
+        try:
             print('editor---')
             print(request.form['editor'])
-        else:
+        except:
             pass
     else:
         pass
