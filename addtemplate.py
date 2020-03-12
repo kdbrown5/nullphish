@@ -38,14 +38,23 @@ def addnewtemplate():
     if request.method == "POST":
         try:
             savehtml = request.form.get('editordata')
-            savehtmlname = str(request.form.get('templatename'))
-            savehtmlname = savehtmlname+'.html'
+            savehtmlnam = str(request.form.get('templatename'))
+            savehtmlname = savehtmlnam+'.html'
             if os.path.isfile('./templates/businesses/'+session['business']+'/'+savehtmlname):
                 flash('A template with this name already exists', 'category2')
                 return render_template("addtemplate.html", searchtemplates=searchtemplates)
             else:
                 with open('./templates/businesses/'+session['business']+'/'+savehtmlname, 'w') as f:
                     f.write(savehtml)
+                con = sqlite.connect('db/db1.db')
+                with con:
+                    cur = con.cursor()
+                    cur.execute('PRAGMA key = '+dbkey+';')
+                    cur.execute('insert into templates (business, name) VALUES (?,?);', (session['business'], savehtmlnam))
+                    con.commit
+                con.close
+                flash('Submitted!', 'category2')
+                return render_template("addtemplate.html", searchtemplates=searchtemplates)
         except:
             pass
     else:
