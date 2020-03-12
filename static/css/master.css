@@ -160,7 +160,6 @@ nav .active{
   text-decoration: none;
 }
 nav .passive:hover{
-  border-top: 1px solid #49A355;
   border-bottom: 1px solid #49A355;
   border-radius: 15px;
   text-decoration: none;

@@ -12,6 +12,24 @@
       #particles-js{
         overflow: hidden;
       }
+      #module1{
+        background-image:url("https://app.nullphish.com/static/res/modules/admin/module1.svg")
+      }
+      #module2{
+        background-image:url("https://app.nullphish.com/static/res/modules/admin/module2.svg")
+      }
+      #module3{
+        background-image:url("https://app.nullphish.com/static/res/modules/admin/module3.svg")
+      }
+      #module4{
+        background-image:url("https://app.nullphish.com/static/res/modules/admin/module4.svg")
+      }
+      #module5{
+        background-image:url("https://app.nullphish.com/static/res/modules/admin/module5.svg")
+      }
+      #module6{
+        background-image:url("https://app.nullphish.com/static/res/modules/admin/module6.svg")
+      }
     </style>
   </head>
   <body id="particles-js" onload="">
@@ -29,63 +47,33 @@
     <div id="tilecontainer">
       <h1>Admin Toolset:</h1>
       <!--Row 1-->
-      <a href="/adduser" onmouseover="showemaildesc('emailphishingdesc')" onmouseout="hideemaildesc('emailphishingdesc')">
+      <a href="/adduser" id="module1">
         <div class="apptile">
         </div>
       </a>
-      <a href="/mailsetup" style="text-decoration: none;" onmouseover="showemaildesc('spearphishingdesc')" onmouseout="hideemaildesc('spearphishingdesc')">
+      <a href="/mailsetup" id="module2">
         <div class="apptile">
         </div>
       </a>
-      <a href="/addtemplate" style="text-decoration: none;" onmouseover="showemaildesc('otherphishingdesc')" onmouseout="hideemaildesc('otherphishingdesc')">
+      <a href="/addtemplate" id="module3">
         <div class="apptile">
         </div>
       </a>
       <!--Row 2-->
-      <div class="appdescription emailphishingdesc">
-        <span>Register new users</span>
-      </div>
-      <div class="appdescription spearphishingdesc">
-        <span>Configure SMTP settings to add your mail server as an option for phishing</span>
-      </div>
-      <div class="appdescription otherphishingdesc">
-        <span>Add new phishing templates</span>
-      </div>
-      <!--Row 3-->
-      <div class="appdescription resultsdesc" style="vertical-align: bottom; display:flex;">
-        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <div class="appdescription profiledesc" style="vertical-align: bottom; display:flex;">
-        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <div class="appdescription logoutdesc" style="vertical-align: bottom; display:flex;">
-        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <!--Row 4-->
-      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('resultsdesc')" onmouseout="hideemaildesc('resultsdesc')">
+      <a href="/" id="module4">
         <div class="apptile">
         </div>
       </a>
-      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('profiledesc')" onmouseout="hideemaildesc('profiledesc')">
+      <a href="/" id="module5">
         <div class="apptile">
         </div>
       </a>
-      <a href="/" style="text-decoration: none;" onmouseover="showemaildesc('logoutdesc')" onmouseout="hideemaildesc('logoutdesc')">
+      <a href="/" id="module6">
         <div class="apptile">
         </div>
       </a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
-    <script type="text/javascript">
-      function showemaildesc(x) {
-        var y = document.getElementsByClassName(x);
-        y[0].style.visibility = 'visible';
-      }
-      function hideemaildesc(x) {
-        var y = document.getElementsByClassName(x);
-        y[0].style.visibility = 'hidden';
-      }
-    </script>
   </body>
 </html>

@@ -19,26 +19,6 @@ Color Palette Hex Codes:
 }
 
 /* Styles */
-
-#module1{
-  background-image:url("https://app.nullphish.com/static/res/module1.svg")
-}
-#module2{
-  background-image:url("https://app.nullphish.com/static/res/module2.svg")
-}
-#module3{
-  background-image:url("https://app.nullphish.com/static/res/module3.svg")
-}
-#module4{
-  background-image:url("https://app.nullphish.com/static/res/module4.svg")
-}
-#module5{
-  background-image:url("https://app.nullphish.com/static/res/module5.svg")
-}
-#module6{
-  background-image:url("https://app.nullphish.com/static/res/module6.svg")
-}
-
 #tilecontainer{
   z-index: 999;
   position: absolute;

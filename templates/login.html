@@ -3,14 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
-
     <title>NullPhish: Login to Your Account</title>
     <meta charset="utf-8">	    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <style>
       #particles-js{
         height: 100%;
@@ -37,7 +34,6 @@
         -webkit-backdrop-filter: blur(10px);
       }
       .notincontainer{ 
-
         top: 25%;
         left: 35%;
         padding: 700;
@@ -45,7 +41,6 @@
         position: absolute;
         overflow: hidden;
       }
-
       .input-element{
         font-size: 30px;
         width: 400px;
@@ -64,28 +59,25 @@
       </table>
     </nav>
     <div class="contentcontainer">
-
     </div>
-
     <center>
-    <div class="notincontainer">
-      <div class="center">
-        <form class="" action="" method="post">
-          <input type="text" class="input-element form-control text-center" placeholder="Email Address" name="username" value="{{
-            request.form.username }}">
-          <input type="password" class="input-element form-control text-center" placeholder="Password" name="password" value="{{
-            request.form.password }}">
-            <br>
-          <input class="input-element btn btn-primary btn-block" type="submit" value="Login">
-        </form>
+      <div class="notincontainer">
+        <div class="center">
+          <form class="" action="" method="post">
+            <input type="text" class="input-element form-control text-center" placeholder="Email Address" name="username" value="{{
+              request.form.username }}">
+            <input type="password" class="input-element form-control text-center" placeholder="Password" name="password" value="{{
+              request.form.password }}">
+              <br>
+            <input class="input-element btn btn-primary btn-block" type="submit" value="Login">
+          </form>
+        </div>
+        {% if error %}
+          <p class="input-element error" style="color: white"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+        <p style="color: white" class="input-element w3-large text-center">Don't have an account? <a href="/register" style="color: rgb(95, 170, 255)"><b>Register</b></a> </p>  
       </div>
-      {% if error %}
-        <p class="input-element error" style="color: white"><strong>Error:</strong> {{ error }}</p>
-      {% endif %}
-
-    <p style="color: white" class="input-element w3-large text-center">Don't have an account? <a href="/register" style="color: rgb(95, 170, 255)"><b>Register</b></a> </p>  
     </center>
-    </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
