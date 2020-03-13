@@ -166,9 +166,16 @@ nav .passive:hover{
 }
 
 /* IDs */
+#fineprint{
+  bottom: 250px;
+  height: 250px;
+  width: 100%;
+  padding: 20px;
+}
 
+/* Classes: */
 .contentcontainer{
-  z-index: 999;
+  z-index: -999;
   position: absolute;
   top: 10%;
   height: 80%;
@@ -182,16 +189,13 @@ nav .passive:hover{
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  padding: 15px;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-content: center;
 }
-
-#fineprint{
-  bottom: 250px;
-  height: 250px;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Classes: */
 
 .fader{
   opacity: 0;
