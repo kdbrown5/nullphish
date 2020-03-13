@@ -12,27 +12,37 @@
       #particles-js{
         overflow: hidden;
       }
-      #module1{
-        background-image:url("https://app.nullphish.com/static/res/modules/main/module1.svg")
-      }
-      #module2{
-        background-image:url("https://app.nullphish.com/static/res/modules/main/module2.svg")
-      }
-      #module3{
-        background-image:url("https://app.nullphish.com/static/res/modules/main/module3.svg")
-      }
-      #module4{
-        background-image:url("https://app.nullphish.com/static/res/modules/main/module4.svg")
-      }
-      #module5{
-        background-image:url("https://app.nullphish.com/static/res/modules/main/module5.svg")
-      }
-      #module6{
-        background-image:url("https://app.nullphish.com/static/res/modules/main/module6.svg")
-      }
+      #tilecontainer{
+  z-index: 999;
+  position: absolute;
+  top: 120px;
+  bottom: 90px;
+  left: 180px;
+  right: 180px;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding-top: 30px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: 2px solid #E0E0E0;
+  color: #E0E0E0;
+  min-width: 500px;
+  max-width: 2500px;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: minmax(100px,300px) minmax(100px,300px) minmax(100px,300px);
+  grid-template-rows: auto auto auto;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: center;
+}
     </style>
   </head>
-  <body id="particles-js" onload="">
+  <body id="particles-js">
     <nav>
       <table>
           <td><a href="/main" class="passive">Modules</a></li>
@@ -46,30 +56,18 @@
     <div id="tilecontainer">
       <h1>Select Your Module To Begin</h1>
       <!--Row 1-->
-      <a href="/education/intro" id="module1">
-        <div class="apptile">
-        </div>
+      <a href="/education/intro" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module1.svg');">
       </a>
-      <a href="/education/email" id="module2">
-        <div class="apptile">
-        </div>
+      <a href="/education/email" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module2.svg');">
       </a>
-      <a href="/" id="module3">
-        <div class="apptile">
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module3.svg');">
       </a>
       <!--Row 2-->
-      <a href="/" id="module4">
-        <div class="apptile">
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module4.svg');">
       </a>
-      <a href="/" id="module5">
-        <div class="apptile">
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module5.svg');">
       </a>
-      <a href="/" id="module6">
-        <div class="apptile">
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module6.svg');">
       </a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
