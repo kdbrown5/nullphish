@@ -84,7 +84,7 @@ def gophish():
             if templatechoice == 'amazon' or templatechoice == 'starbucks' or templatechoice == 'prototype2':
                 inserttemplate = templatechoice
             else:
-                inserttemplate = './businesses'+session['business']+'/'+templatechoice
+                inserttemplate = './businesses/'+session['business']+'/'+templatechoice
 
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
