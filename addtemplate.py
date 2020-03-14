@@ -11,6 +11,7 @@ from passlib.hash import sha256_crypt, argon2
 from pysqlcipher3 import dbapi2 as sqlite
 from pathlib import Path
 import os.path
+import re
 
 db = SQLAlchemy()
 
@@ -39,6 +40,7 @@ def addnewtemplate():
         if request.form.get('editordata') != None:
             try:
                 savehtml = request.form.get('editordata')
+                savehtml = re.replace(r"""<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1""", 'replacelink', savehtml)
                 savehtmlnam = str(request.form.get('templatename'))
                 savehtmlname = savehtmlnam+'.html'
                 templatesubject = request.form.get('templatesubject')
