@@ -53,6 +53,10 @@ def gophish():
             con.close
         return templatelist
 
+    def convertTuple(tup): 
+        str =  ''.join(tup) 
+        return str
+
     def lookupemailsubject(templatename):
         business = str(session['business'])
         con = sqlite.connect('db/db1.db')
@@ -62,6 +66,7 @@ def gophish():
             cur.execute('select emailsubject from templates where business LIKE (?) and name LIKE (?);', (business, templatename,))
             emailsubject = cur.fetchall()[0]
         con.close
+        emailsubject = convertTuple(emailsubject)
         emailsubject = emailsubject.replace(',', '')
         print(emailsubject)
         print('0->')
