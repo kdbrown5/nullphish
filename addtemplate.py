@@ -59,7 +59,7 @@ def addnewtemplate():
             except:
                 pass
         if request.form.get('selecttemplate') != 'Templates':
-            print(request.form.get('selecttemplate')[0])
+            print(request.form['selecttemplate'][0])
 
     else:
         pass
