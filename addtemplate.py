@@ -68,8 +68,6 @@ def addnewtemplate():
             con.close()
             os.remove('./templates/businesses/'+session['business']+'/'+selecttemplate+'.html')
             flash('Deleted!', 'category2')
-            searchtemplates = templatelookup()
-            return render_template("addtemplate.html", searchtemplates=searchtemplates)
 
     else:
         pass
