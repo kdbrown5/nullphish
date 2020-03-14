@@ -81,7 +81,11 @@ def gophish():
         if '@' not in request.form.get('email'):
             flash('This is not a valid email address', 'category2')
         else:
-            inserttemplate = templatechoice
+            if templatechoice == 'amazon' or templatechoice == 'starbucks' or templatechoice == 'prototype2':
+                inserttemplate = templatechoice
+            else:
+                inserttemplate = './businesses'+session['business']+'/'+templatechoice
+
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
