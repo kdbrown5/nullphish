@@ -31,8 +31,6 @@ def addnewtemplate():
             cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],))
             templateresults = cur.fetchall()
         con.close()
-        templateresults=str(templateresults).replace("('", '')
-        templateresults=str(templateresults).replace("',)", '')
         return templateresults
 
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
