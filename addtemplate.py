@@ -28,7 +28,7 @@ def addnewtemplate():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             templateresults = []
-            for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],)):
+            for row in cur.execute('select name from templates where business LIKE (?);', (session['business'],)):
                 templateresults.append(row[:][0])
         con.close()
         return templateresults
@@ -59,7 +59,16 @@ def addnewtemplate():
             except:
                 pass
         if request.form.get('selecttemplate') != 'Templates':
-            print(request.form.get('selecttemplate'))
+            selecttemplate = request.form.get('selecttemplate')
+            con = sqlite.connect('db/db1.db')
+            with con:
+                cur = con.cursor()
+                cur.execute('PRAGMA key = '+dbkey+';')
+                cur.execute('delete from templates where business LIKE (?) and name LIKE (?);', (session['business'], selecttemplate,))
+            con.close()
+            os.remove('./templates/businesses/'+session['business']+'/'+selecttemplate+'.html')
+            flash('Deleted!', 'category2')
+            return render_template("addtemplate.html", searchtemplates=searchtemplates)
 
     else:
         pass
