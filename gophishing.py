@@ -59,7 +59,7 @@ def gophish():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('select emailsubject from templates where business LIKE (?) OR "nullphish" and name LIKE (?);', (business, templatename,)):
+            cur.execute('select emailsubject from templates where business LIKE (?) OR "nullphish" and name LIKE (?);', (business, templatename,))
             emailsubject = cur.fetchall()
         con.close
         print(emailsubject)
