@@ -59,10 +59,14 @@ def gophish():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            emailsubject = []
-            for row in cur.execute('select emailsubject from templates where business LIKE (?) OR "nullphish" and name LIKE (?);', (business, templatename,)):
-                emailsubject.append(row[:][0])
-            con.close
+            cur.execute('select emailsubject from templates where business LIKE (?) OR "nullphish" and name LIKE (?);', (business, templatename,)):
+            emailsubject = cur.fetchall()
+        con.close
+        print(emailsubject)
+        print('0->')
+        print(emailsubject[0])
+        print('[:]')
+        print(emailsubject[:])
         return emailsubject
 
     availtemplates = lookuptemplates()
