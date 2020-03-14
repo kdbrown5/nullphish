@@ -53,6 +53,18 @@ def gophish():
             con.close
         return templatelist
 
+    def lookupemailsubject(templatename):
+        business = str(session['business'])
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            emailsubject = []
+            for row in cur.execute('select emailsubject from templates where business LIKE (?) OR "nullphish" and name LIKE (?);', (business, templatename,)):
+                emailsubject.append(row[:][0])
+            con.close
+        return emailsubject
+
     availtemplates = lookuptemplates()
     print(availtemplates)
     #availtemplates = ['amazon', 'prototype2', 'starbucks']
@@ -77,6 +89,7 @@ def gophish():
                 return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templatecustom=templatecustom)
         if str(request.form.get('templateview')) == 'None':
             templatechoice = request.form.get('templates')
+            templatename = templatechoice
             templatechoice = str(templatechoice)+'.html'
         if '@' not in request.form.get('email'):
             flash('This is not a valid email address', 'category2')
@@ -85,13 +98,12 @@ def gophish():
                 inserttemplate = 'templates/'+templatechoice
             else:
                 inserttemplate = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+templatechoice
-
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            subject = firstname+', this FREE drink is on us!'
+            subject = lookupemailsubject(templatename)
             sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
 
