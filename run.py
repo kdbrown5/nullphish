@@ -219,18 +219,14 @@ def loginp():
 
 @app.route('/gophishing/<templateview>', subdomain="app", methods=['GET', 'POST'])
 def dynamicphishload(templateview):
-    print(templateview)
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
-            templateview = templateview.replace('+++', '/')
-            print(templateview)
+            templateview = templateview.replace('+^+', '/')
             return render_template(templateview)
         elif session.get('role') == 'admin':
-            templateview = templateview.replace('+++', '/')
-            print(templateview)
+            templateview = templateview.replace('+^+', '/')
             return render_template(templateview)
     else:
-        print(templateview)
         return redirect('/')
 
 @app.route('/fy', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
