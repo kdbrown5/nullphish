@@ -28,12 +28,11 @@ def addnewtemplate():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            templateresults = []
-            for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],)):## populate tables with user data from same business
-                templateresults=str(templateresults).replace("('", '')
-                templateresults=str(templateresults).replace("',)", '')
-                templateresults.append(row[:])
+            cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],))
+            templateresults = cur.fetchall()
         con.close()
+        templateresults=str(templateresults).replace("('", '')
+        templateresults=str(templateresults).replace("',)", '')
         return templateresults
 
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
@@ -62,7 +61,7 @@ def addnewtemplate():
             except:
                 pass
         if request.form.get('selecttemplate') != 'Templates':
-            print(request.form['selecttemplate'])
+            print(request.form.get('selecttemplate'))
 
     else:
         pass
