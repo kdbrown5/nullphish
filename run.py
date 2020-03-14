@@ -229,6 +229,7 @@ def dynamicphishload(templateview):
             print(templateview)
             return render_html(templateview)
     else:
+        print(templateview)
         return redirect('/')
 
 @app.route('/fy', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
