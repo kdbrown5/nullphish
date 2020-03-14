@@ -41,6 +41,7 @@ def addnewtemplate():
                 savehtml = request.form.get('editordata')
                 savehtmlnam = str(request.form.get('templatename'))
                 savehtmlname = savehtmlnam+'.html'
+                templatesubject = request.form.get('templatesubject')
                 if os.path.isfile('./templates/businesses/'+session['business']+'/'+savehtmlname):
                     flash('A template with this name already exists', 'category2')
                     return render_template("addtemplate.html", searchtemplates=searchtemplates)
@@ -51,7 +52,7 @@ def addnewtemplate():
                     with con:
                         cur = con.cursor()
                         cur.execute('PRAGMA key = '+dbkey+';')
-                        cur.execute('insert into templates (business, name) VALUES (?,?);', (session['business'], savehtmlnam))
+                        cur.execute('insert into templates (business, name, emailsubject) VALUES (?,?,?);', (session['business'], savehtmlnam, templatesubject))
                         con.commit
                     con.close
                     flash('Submitted!', 'category2')

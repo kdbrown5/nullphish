@@ -102,12 +102,12 @@ def gophish():
                 inserttemplate = 'templates/'+templatechoice
             else:
                 inserttemplate = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+templatechoice
+            subject = lookupemailsubject(templatename)
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            subject = lookupemailsubject(templatename)
             sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
 
