@@ -12,6 +12,7 @@ from pysqlcipher3 import dbapi2 as sqlite
 from pathlib import Path
 import os.path
 import re
+from bs4 import BeautifulSoup as bs4
 
 db = SQLAlchemy()
 
@@ -40,7 +41,11 @@ def addnewtemplate():
         if request.form.get('editordata') != None:
             try:
                 savehtml = request.form.get('editordata')
-                savehtml = re.replace(r'<a href=[\'"]?([^\'" >]+)', 'replacelink', savehtml)
+                soup = bs(savehtml)
+                for a in soup.findAll('a'):
+                    a['href'] = "replacelink"
+                print(soup)
+                savehtml = soup
                 savehtmlnam = str(request.form.get('templatename'))
                 savehtmlname = savehtmlnam+'.html'
                 templatesubject = request.form.get('templatesubject')
