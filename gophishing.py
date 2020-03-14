@@ -77,12 +77,12 @@ def gophish():
                 return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templatecustom=templatecustom)
         if str(request.form.get('templateview')) == 'None':
             templatechoice = request.form.get('templates')
-            templatechoice = 'templates/'+str(templatechoice)+'.html'
+            templatechoice = str(templatechoice)+'.html'
         if '@' not in request.form.get('email'):
             flash('This is not a valid email address', 'category2')
         else:
             if templatechoice == 'amazon' or templatechoice == 'starbucks' or templatechoice == 'prototype2':
-                inserttemplate = templatechoice
+                inserttemplate = 'templates/'+templatechoice
             else:
                 inserttemplate = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+templatechoice
 
