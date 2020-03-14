@@ -30,6 +30,8 @@ def addnewtemplate():
             con.row_factory = sqlite.Row
             templateresults = []
             for row in cur.execute('select name from templates where business LIKE (?) OR "nullphish";', (session['business'],)):## populate tables with user data from same business
+                templateresults=templateresults.replace("('", '')
+                templateresults=templateresults.replace("',)", '')
                 templateresults.append(row[:])
         con.close()
         return templateresults
