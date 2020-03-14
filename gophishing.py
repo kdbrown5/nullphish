@@ -73,7 +73,7 @@ def gophish():
                 templateview = '/templates/prototype2.html'
                 return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview)
             else:
-                templatecustom = '/templates/businesses/'+session['business']+'/'+templateview+'.html'
+                templatecustom = '/gophishing/+++templates+++businesses+++'+session['business']+'+++'+templateview+'.html'
                 return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templatecustom=templatecustom)
         if str(request.form.get('templateview')) == 'None':
             templatechoice = request.form.get('templates')

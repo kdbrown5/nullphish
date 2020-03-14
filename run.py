@@ -222,13 +222,13 @@ def dynamicphishload(templateview):
     print(templateview)
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
-            templateview = templateview.replace('https://app.nullphish.com/gophishing/', '.')
+            templateview = templateview.replace('+++', '/')
             print(templateview)
-            return render_html(templateview)
+            return render_template(templateview)
         elif session.get('role') == 'admin':
             templateview = templateview.replace('https://app.nullphish.com/gophishing/', '.')
             print(templateview)
-            return render_html(templateview)
+            return render_template(templateview)
     else:
         print(templateview)
         return redirect('/')
