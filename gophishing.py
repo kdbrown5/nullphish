@@ -67,12 +67,6 @@ def gophish():
             emailsubject = cur.fetchall()[0]
         con.close
         emailsubject = convertTuple(emailsubject)
-        emailsubject = emailsubject.replace(',', '')
-        print(emailsubject)
-        print('0->')
-        print(emailsubject[0])
-        print('[:]')
-        print(emailsubject[:])
         return emailsubject
 
     availtemplates = lookuptemplates()
