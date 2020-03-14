@@ -62,6 +62,7 @@ def gophish():
             cur.execute('select emailsubject from templates where business LIKE (?) and name LIKE (?);', (business, templatename,))
             emailsubject = cur.fetchall()[0]
         con.close
+        emailsubject = emailsubject.replace(',', '')
         print(emailsubject)
         print('0->')
         print(emailsubject[0])
