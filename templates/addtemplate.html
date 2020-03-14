@@ -115,22 +115,29 @@ body {
 <center><h3  style="color: white">
 
 {% if searchtemplates %}
+<form method="post">
 <div class="col-md" style="form">
   <hr>
   <h2 style="color: white" class="w3-xlarge">View Existing Templates:</h2>
   <div class="ex2">
     <div class="form-group">
         <label for="exampleFormControlSelect1"></label>
-        <select name= 'searchtemplates' class="form-control" id="exampleFormControlSelect1">
+        <select name= 'selecttemplate' class="form-control" id="selecttemplate">
             <option>Templates</option>
                 {% for row in searchtemplates %}
-                    <option>{{ row }}</option>
+                    <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
                 {% endfor %}     
         </select>
+        <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
         </div>
       </div>
       <hr>
 </div>
+</form>
+  
+
+
+
 {% endif %}
 
   <h2 style="color: white">
