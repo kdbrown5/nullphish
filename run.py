@@ -219,6 +219,7 @@ def loginp():
 
 @app.route('/gophishing/<templateview>', subdomain="app", methods=['GET', 'POST'])
 def dynamicphishload(templateview):
+    print(templateview)
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
             templateview = templateview.replace('https://app.nullphish.com/gophishing/', '.')
