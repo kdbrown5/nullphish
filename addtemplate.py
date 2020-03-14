@@ -60,14 +60,21 @@ def addnewtemplate():
                 pass
         if request.form.get('selecttemplate') != 'Templates':
             selecttemplate = request.form.get('selecttemplate')
-            con = sqlite.connect('db/db1.db')
-            with con:
-                cur = con.cursor()
-                cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('delete from templates where business LIKE (?) and name LIKE (?);', (session['business'], selecttemplate,))
-            con.close()
-            os.remove('./templates/businesses/'+session['business']+'/'+selecttemplate+'.html')
-            flash('Deleted!', 'category2')
+            if selecttemplate == 'prototype2':
+                flash('No deleting default templates', 'category2')
+            elif selecttemplate == 'amazon':
+                flash('No deleting default templates', 'category2')
+            elif selecttemplate == 'starbucks':
+                flash('No deleting default templates', 'category2')
+            else:
+                con = sqlite.connect('db/db1.db')
+                with con:
+                    cur = con.cursor()
+                    cur.execute('PRAGMA key = '+dbkey+';')
+                    cur.execute('delete from templates where business LIKE (?) and name LIKE (?);', (session['business'], selecttemplate,))
+                con.close()
+                os.remove('./templates/businesses/'+session['business']+'/'+selecttemplate+'.html')
+                flash('Deleted!', 'category2')
 
     else:
         pass
