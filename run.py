@@ -221,9 +221,9 @@ def loginp():
 def gophishingdonothing():
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
-            pass
+            return gophish()
         elif session.get('role') == 'admin':
-            pass
+            return gophish()
         else:
             return redirect('/')
     else:
