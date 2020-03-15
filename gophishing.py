@@ -109,6 +109,7 @@ def gophish():
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
             sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
+            flash('Email sent to'+receiveremail, 'category2')
 
 
     if 'exitmodify' in request.form:
