@@ -23,12 +23,15 @@ adduser = Blueprint('adduser', __name__, url_prefix='/adduser', template_folder=
 def addnewuser():
     def reguserlookup():
         con = sqlite.connect('db/db1.db')
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
             reguserquery = []
-            for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?);', (session['business'],))
+            for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?);', (business,))
                 reguserquery.append(row[:][0])
         con.close()
         return reguserquery
