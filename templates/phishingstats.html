@@ -96,6 +96,7 @@ body {
 		<thead>
 			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
 			<td width="5%">Department</td>
+			<td>User Phished</td>
 			<td>Business</td>
 			<td>Admin Notified</td>
 			<td>Date</td>
@@ -103,6 +104,7 @@ body {
 	{% for item in phishdata %}
 	<tr style="text-align:center;" class="border_bottom">
 			<td width="5%">{{item[7]}}</td>
+			<td>{{item[1]}}</td>
 		<td>{{item[4]}}</td>
 		<td>{{item[6]}}</td>
 		<td>{{item[3]}}</td>
