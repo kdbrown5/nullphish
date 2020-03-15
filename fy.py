@@ -80,7 +80,7 @@ def apiid():
                 cur.execute('insert into phished (username, date) values ((?), (?));', (email, timestamp))
                 cur.execute('select business from users where username = (?);', (email,))
                 business = cur.fetchone()[0]
-                cur.execute('select username from users where role = "admin" and business = (?);', (business,))
+                cur.execute('select username from users where notify = 1 and business = (?);', (business,))
                 admins = cur.fetchall()
             con.close()
             adminlist = []
