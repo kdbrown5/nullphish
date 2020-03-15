@@ -29,9 +29,6 @@ def addnewuser():
             con.row_factory = sqlite.Row
             reguserquery = []
             for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?);', (session['business'],)):
-                reguserquery.replace('(', '')
-                reguserquery.replace(')', '')
-                reguserquery.replace("'", '')
                 reguserquery.append(row[:])
         con.close()
         return reguserquery
