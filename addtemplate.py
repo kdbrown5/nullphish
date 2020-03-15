@@ -41,7 +41,11 @@ def addnewtemplate():
         if request.form.get('editordata') != None:
             try:
                 savehtml = request.form.get('editordata')
-                print(savehtml)
+                soup = bs4(savehtml)
+                for a in soup.findAll('a'):
+                    a['href'] = "replacelink"
+                    a['data-saferedirecturl'] = 'replacelink'
+                savehtml = str(soup)
                 savehtmlnam = str(request.form.get('templatename'))
                 savehtmlname = savehtmlnam+'.html'
                 templatesubject = request.form.get('templatesubject')
