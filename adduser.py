@@ -27,8 +27,9 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select firstname, lastname, department, role from users where business = (?);', (session['business'],))
-            reguserquery = cur.fetchall()
+            reguserquery = []
+            for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?);', (session['business'],))
+                reguserquery.append(row[:][0])
         con.close()
         return reguserquery
 
