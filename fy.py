@@ -82,14 +82,10 @@ def apiid():
                 business = cur.fetchone()[0]
                 cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
                 cur.execute('select username from users where notify = 1 and business = (?);', (business,))
-                admins = cur.fetchall()
+                admins = cur.fetchall()[0]
+                cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
             con.close()
-            adminlist = []
-            for row in admins:
-                row = str(row)
-                row = row[2:-3]
-                adminlist.append(row)
-            emailrecip = adminlist[0]
+            emailrecip = admins
             tattletale(emailrecip, email)
             return redirect('https://google.com')
         else:
