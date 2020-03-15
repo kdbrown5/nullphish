@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-		<title>Stats</title> 
+		<title>Phishing Stats</title> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
 
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -73,11 +73,6 @@ body {
 
 
 <center>
-	<form method="post">
-        <h2 class="heade"> <input class="btn btn-secondary btn-block" type="submit" name="modifyrecord" value="Modify Records"></h2></form>
-<br><br>
-</center>
-<center>
 	
     <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
@@ -90,7 +85,7 @@ body {
 		{% endwith %}</h1>
 			
 				{% if phishdata %}
-	<h1><u><b>Business Exam Results</b></u></h1>
+	<h1><u><b>User Phished</b></u></h1>
 <br>
 	<table class="table table-hover dataframe" align="center">
 		<thead>
