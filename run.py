@@ -217,6 +217,18 @@ def loginp():
     else:
         return redirect("/")
 
+@app.route('/gophishing/replacelink', subdomain="app", methods=['GET', 'POST']) # main page route
+def loginp():
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            pass
+        elif session.get('role') == 'admin':
+            pass
+        else:
+            return redirect('/')
+    else:
+        return redirect("/")
+
 @app.route('/gophishing/<templateview>', subdomain="app", methods=['GET', 'POST'])# this is for iframed business templates
 def dynamicphishload(templateview):
     if session.get('logged_in'):
