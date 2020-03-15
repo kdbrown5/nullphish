@@ -218,7 +218,7 @@ def loginp():
         return redirect("/")
 
 @app.route('/gophishing/replacelink', subdomain="app", methods=['GET', 'POST']) # main page route
-def loginp():
+def gophishingdonothing():
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
             pass
