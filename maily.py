@@ -62,6 +62,11 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     smtpserver = mailsettings[0][3]
     mailport = mailsettings[0][4]
 
+    print(sender_email)
+    print(password)
+    print(smtpserver)
+    print(mailport)
+
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
     message["From"] = sender_email
