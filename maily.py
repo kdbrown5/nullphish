@@ -4,6 +4,10 @@ from pysqlcipher3 import dbapi2 as sqlite
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
+
 def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link):
     #sender_email = "donotreply@nullphish.com"
     sender_email = "donotreply@couponcheetah.com"
