@@ -4,7 +4,7 @@ from flask import Flask, flash, session, render_template, render_template_string
     Response, g, Markup, Blueprint, make_response, send_file
 from flask_sqlalchemy import SQLAlchemy
 from lumberjack import log
-from maily import sendphish, customsendphish
+from maily import sendphish
 from tokenizer import generate_confirmation_token, confirm_token
 from pysqlcipher3 import dbapi2 as sqlite
 
@@ -97,23 +97,23 @@ def gophish():
             templatechoice = str(templatechoice)+'.html'
         if '@' not in request.form.get('email'):
             flash('This is not a valid email address', 'category2')
+        if request.form.get('smtpserver') == 'Mail Server':
+            flash('Please choose a mail server', 'category2')
+        if request.form.get('templates') == 'Templates':
+            flash('Please choose a template', 'category2')
         else:
             if templatechoice == 'amazon' or templatechoice == 'starbucks' or templatechoice == 'prototype2':
                 inserttemplate = 'templates/'+templatechoice
             else:
                 inserttemplate = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+templatechoice
-            if request.form.get('smtpserver') == 'Mail Server':
-                flash('Please choose a mail server', 'category2')
-            else:
-                smtpserver = request.form.get('smtpserver')
-
+            smtpserver = request.form.get('smtpserver')
             subject = lookupemailsubject(templatename)
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link)
+            customsendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
             flash('Email sent to: '+receiveremail, 'category2')
 
 

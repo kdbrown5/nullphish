@@ -1,4 +1,6 @@
 import smtplib, ssl
+import sqlalchemy
+from pysqlcipher3 import dbapi2 as sqlite
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -42,7 +44,6 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
         )
 
 def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link):
-    
     con = sqlite.connect('db/db1.db')
     with con:
         cur = con.cursor()
