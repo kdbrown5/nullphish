@@ -47,7 +47,7 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
             sender_email, receiver_email, message.as_string()
         )
 
-def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link):
+def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, business):
     con = sqlite.connect('db/db1.db')
     with con:
         cur = con.cursor()

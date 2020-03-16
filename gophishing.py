@@ -115,7 +115,7 @@ def gophish():
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link)
+            customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, session['business'])
             flash('Email sent to: '+receiveremail, 'category2')
 
 
