@@ -56,13 +56,11 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
         for row in cur.execute('select DISTINCT mailhost, mailuser, mailpass, mailtype, mailport from mailconfig where name like (?) and business = "nullphish" or (?);', (smtpserver, business,)):
             mailsettings.append(row[:])
     con.close()
-    print('mailsettings')
-    print(mailsettings)
-    print('mailsettings[0]')
-    print(mailsettings[0])
-    sender_email = "donotreply@couponcheetah.com"
+    sender_email = mailsettings[0][1]
     receiver_email = receiveremail
-    password = 'kirkland' # cheetah
+    password = mailsettings[0][2]
+    smtpserver = mailsettings[0][3]
+    mailport = mailsettings[0][4]
 
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
@@ -91,7 +89,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
 
     # Create secure connection with server and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=context) as server:
+    with smtplib.SMTP_SSL(smtpserver, mailport, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
