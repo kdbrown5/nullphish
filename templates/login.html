@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <title>NullPhish: Login to Your Account</title>
-    <link rel="icon" href="https://app.nullphish.com/static/res/favicon.png">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-196.png">
     <meta charset="utf-8">	    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -18,31 +18,24 @@
         margin: 0px;
         position: absolute;
       }
-      .contentcontainer{
-        z-index: 999;
-        position: absolute;
-        top: 10%;
-        height: 80%;
-        left: 10%;
-        width: 80%;
-        margin: 0px;
-        overflow: hidden;
-        border-radius: 25px;
-        border: 1px solid #E0E0E0;
-        color: #E0E0E0;
-        background-color: rgba(0,0,0,0.5);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 15px;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
-        align-content: center;
-        justify-content: center;
-      }
       .input-element{
         font-size: 30px;
         width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
       }
     </style>
   </head>
@@ -58,14 +51,17 @@
       </table>
     </nav>
     <div class="contentcontainer">
-      <form class="" action="" method="post">
-        <input type="text" class="input-element form-control text-center" placeholder="Email Address" name="username" value="{{
-          request.form.username }}">
-        <input type="password" class="input-element form-control text-center" placeholder="Password" name="password" value="{{
-          request.form.password }}">
-          <br>
-        <input class="input-element btn btn-primary btn-block" type="submit" value="Login">
-      </form>
+      <div><h1>Login to <span class="nullmention">NullPhish</span></h1></div>
+      <div>
+        <form class="" action="" method="post">
+          <input type="text" class="nulltxt" placeholder="Email Address" name="username" value="{{
+            request.form.username }}" style="margin: 10px;">
+          <input type="password" class="nulltxt" placeholder="Password" name="password" value="{{
+            request.form.password }}" style="margin: 10px;">
+            <br>
+          <input class="nullbtn" type="submit" value="Login" style="margin: 10px;">
+        </form>
+      </div>
       <div>
         {% if error %}
         <p class="input-element error" style="color: white"><strong>Error:</strong> {{ error }}</p>

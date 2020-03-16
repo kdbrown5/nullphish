@@ -175,26 +175,42 @@ nav .passive:hover{
 
 /* Classes: */
 .contentcontainer{
-  z-index: -999;
+  z-index: 999;
   position: absolute;
-  top: 10%;
-  height: 80%;
-  left: 10%;
-  width: 80%;
+  top: 120px;
+  bottom: 90px;
+  left: 180px;
+  right: 180px;
+  width: auto;
+  height: auto;
   margin: 0px;
+  padding-top: 30px;
   overflow: hidden;
   border-radius: 25px;
-  border: 1px solid #E0E0E0;
+  border: 2px solid #E0E0E0;
   color: #E0E0E0;
+  min-width: 500px;
+  max-width: 2500px;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: 15px;
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto;
-  align-content: center;
   justify-content: center;
+  text-align: center;
+}
+.contentcontainer h1{
+  font-size: calc(24px + 0.5vw);
+  max-height: 40px;
+  vertical-align: middle;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .fader{
@@ -211,6 +227,18 @@ nav .passive:hover{
   margin: auto;
 }
 
+.nullbtn{
+  background-color: #49A355;
+  border: none;
+  color: #0D1126;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: x-large;
+  width: 33%;
+}
+
 .nullmention{
   border-top: 1px solid #49A355;
   border-bottom: 1px solid #49A355;
@@ -218,6 +246,19 @@ nav .passive:hover{
   color: #E0E0E0;
   text-decoration: none;
   font-weight: bold;
+}
+
+.nulltxt{
+  background-color: #E0E0E0;
+  border: none;
+  color: #0D1126;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: x-large;
+  width: 100%;
+  margin: auto;
 }
 
 .nolinkdeco{
