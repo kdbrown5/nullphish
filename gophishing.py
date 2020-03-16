@@ -30,14 +30,14 @@ def gophish():
         return businessdata
 
     def lookupmailserver():
-        con = sqlite.connect('db/db1.db')
         business = str(session['business'])
+        con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             serverlist = []
-            for row in cur.execute('select mailuser from mailconfig where business LIKE (?) OR "nullphish";', (business,)):
-                serverlist.append(row[:])
+            for row in cur.execute('select name from mailconfig where business LIKE (?) OR "nullphish";', (business,)):
+                serverlist.append(row[:][0])
         con.close()
         return serverlist
 
