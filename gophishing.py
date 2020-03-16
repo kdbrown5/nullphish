@@ -99,8 +99,10 @@ def gophish():
             flash('This is not a valid email address', 'category2')
         if request.form.get('smtpserver') == 'Mail Server':
             flash('Please choose a mail server', 'category2')
+            return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)
         if request.form.get('templates') == 'Templates':
             flash('Please choose a template', 'category2')
+            return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)
         else:
             if templatechoice == 'amazon' or templatechoice == 'starbucks' or templatechoice == 'prototype2':
                 inserttemplate = 'templates/'+templatechoice
@@ -113,7 +115,7 @@ def gophish():
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            customsendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
+            customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link)
             flash('Email sent to: '+receiveremail, 'category2')
 
 
