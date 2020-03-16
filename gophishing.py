@@ -4,7 +4,7 @@ from flask import Flask, flash, session, render_template, render_template_string
     Response, g, Markup, Blueprint, make_response, send_file
 from flask_sqlalchemy import SQLAlchemy
 from lumberjack import log
-from maily import sendphish
+from maily import sendphish, customsendphish
 from tokenizer import generate_confirmation_token, confirm_token
 from pysqlcipher3 import dbapi2 as sqlite
 
