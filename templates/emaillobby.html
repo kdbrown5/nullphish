@@ -32,67 +32,25 @@
     <div id="tilecontainer">
       <h1>Choose a module</h1>
       <!--Row 1-->
-      <a href="/education/email/1">
-        <div class="apptile" onmouseover="showemaildesc('module1desc')" onmouseout="hideemaildesc('module1desc')">
-          <img>
-          <p>Example 1: Generic/HTML</p>
-        </div>
+      <a href="/education/email/1" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module1.svg');">
+        <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('module2desc')" onmouseout="hideemaildesc('module2desc')">
-          <img>
-          <p>Example 2: Image links</p>
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module2.svg');">
+        <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <a href="/education/email/2" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('module3desc')" onmouseout="hideemaildesc('module3desc')">
-          <img>
-          <p>Example 3: TBD</p>
-        </div>
+      <a href="/education/email/2" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module3.svg');">
+        <span class="tooltiptext">Tooltip text here!</span>
       </a>
       <!--Row 2-->
-      <div class="appdescription module1desc">
-        <span>A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <div class="appdescription module2desc">
-        <span>A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <div class="appdescription module3desc">
-        <span>A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <!--Row 3-->
-      <div class="appdescription module4desc" style="vertical-align: bottom; display:flex;">
-        <span style="align-self:flex-end; padding-bottom: 15px;">A fancy description about the objectives and overall course go here!</span>
-      </div>
-      <div class="appdescription module5desc" style="vertical-align: bottom; display:flex;">
-        <span style="align-self:flex-end; padding-bottom: 15px;">Test your knowledge of this section</span>
-      </div>
-      <!--Row 4-->
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('module4desc')" onmouseout="hideemaildesc('resultsdesc')">
-          <img>
-          <p>4: </p>
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module4.svg');">
+        <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <a href="/" style="text-decoration: none;">
-        <div class="apptile" onmouseover="showemaildesc('module5desc')" onmouseout="hideemaildesc('profiledesc')">
-          <img>
-          <p>Take the Quiz</p>
-        </div>
+      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module5.svg');">
+        <span class="tooltiptext">Tooltip text here!</span>
       </a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
-    <script type="text/javascript">
-      function showemaildesc(x) {
-        var y = document.getElementsByClassName(x);
-        y[0].style.visibility = 'visible';
-      }
-      function hideemaildesc(x) {
-        var y = document.getElementsByClassName(x);
-        y[0].style.visibility = 'hidden';
-      }
-    </script>
   </body>
 
 </html>
