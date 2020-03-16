@@ -108,13 +108,17 @@ def gophish():
             else:
                 inserttemplate = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+templatechoice
             smtpserver = request.form.get('smtpserver')
+            if smtpserver == 'couponcheetah.com':
+                mailservbusiness = 'public'
+            else:
+                mailservbusiness = session['business']
             subject = lookupemailsubject(templatename)
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
-            customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, session['business'])
+            customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
             flash('Email sent to: '+receiveremail, 'category2')
 
 
