@@ -46,6 +46,7 @@ Color Palette Hex Codes:
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   justify-content: center;
+  align-content: center;
 }
 #tilecontainer h1{
   font-size: calc(24px + 0.5vw);
