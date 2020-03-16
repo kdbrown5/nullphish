@@ -1,4 +1,120 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <title>NullPhish: Profile</title>
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <meta charset="utf-8">	    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+      .contentcontainer h2{
+        font-size: calc(18px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      .contentcontainer hr{
+        color: #E0E0E0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <nav>
+      <table>
+        <tr>
+          <td><a href="/main" class="passive">Modules</a></li>
+          <td><a href="/stats" class="passive">Results</a></li>
+          <td><a href="/main" class="active">NullPhish &#169;</a></td>
+          <td><a href="/profile" class="passive">Profile</a></li>
+          <td><a href="/logout" class="passive">Log Out</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <div><h1><span class="nullmention">NullPhish</span> User Profile</h1></div>
+      <div>
+        {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        {% if messages %}
+        <ul class="flashes w3-jumbo" style="color: white">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% with messages = get_flashed_messages(category_filter=["category1"]) %}
+        {% if messages %}
+        <ul class="flashes w3-jumbo" style="color: white">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+      </div>
+      <div>
+        <hr>
+        <h2>Password Change:</h2>
+        <form method="POST">
+          <div class="form-group">
+            <span class=""> <i class="fa fa-lock"></i> </span>
+            <input name="password" class="nulltxt" placeholder="Enter password:" type="password">
+            <span class=""> <i class="fa fa-lock"></i> </span>
+            <input name="repeat" class="nulltxt" placeholder="Repeat password:" type="password">
+            <button type="submit" class="nullbtn"> Choose a new password</button>
+            <p>Your password must be at least 1 bajillion characters long and have 32 different languages present</p>
+          </div>
+        </form>
+        <hr>
+      </div>
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+  </body>
+</html>
+
+
+
+<!--
+
+OLD CODE:
+
 <html lang="en">
 		<title>Profile</title> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
@@ -6,8 +122,6 @@
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
 <style>
 	div.ex2 {
   max-width:500px;
@@ -54,7 +168,6 @@ body {
           <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
           <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
           <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-		  <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
         </div></div>
         
         
@@ -66,16 +179,14 @@ body {
                           <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
                           <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
                           <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-                          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
                         </div>
                       
-                        <!-- Navbar on small screens -->
                         <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
                           <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
                         </div>
                       </div>
                       
-                      <!-- Header -->
+
                       <header class="w3-container header-site w3-center" style="padding:128px 16px">
                         <h1 style="color: white" class="w3-margin w3-jumbo"><b>Profile</b></h1>
                       
@@ -83,24 +194,7 @@ body {
 
 <center>
 
-    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
-        {% if messages %}
-          <ul class="flashes w3-jumbo" style="color: white">
-          {% for message in messages %}
-        {{ message }}
-          {% endfor %}
-          </ul>
-        {% endif %}
-        {% endwith %}</h1>
-        <h1>{% with messages = get_flashed_messages(category_filter=["category1"]) %}
-          {% if messages %}
-            <ul class="flashes w3-jumbo" style="color: white">
-            {% for message in messages %}
-          {{ message }}
-            {% endfor %}
-            </ul>
-          {% endif %}
-          {% endwith %}</h1>
+    
 
     </center>
     <br>
@@ -152,3 +246,4 @@ Password Change:
 </h2>
 </center>
 
+-->
