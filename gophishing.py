@@ -70,7 +70,6 @@ def gophish():
         return emailsubject
 
     availtemplates = lookuptemplates()
-    print(availtemplates)
     #availtemplates = ['amazon', 'prototype2', 'starbucks']
 
     businessdata = businesslookup()
