@@ -115,13 +115,15 @@ body {
                 {% endfor %}
         </select>
         <td>
+          {% if serverlist %}
           <select name="smtpserver" class="form-control" id="smtpserver">
           <option>Mail Server</option>
-            {% for row in mailservers %}
+            {% for row in serverlist %}
             <option>{{ row }}</option>
             {% endfor %}
           </select>
         </td>
+        {% endif %}
     </td>
 
         <td><button type="submit" class="btn btn-primary">Phish!</button></form></td>
