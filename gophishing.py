@@ -103,7 +103,7 @@ def gophish():
             flash('Please choose a template', 'category2')
             return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)
         else:
-            if templatechoice == 'amazon' or templatechoice == 'starbucks' or templatechoice == 'prototype2':
+            if templatechoice == 'amazon.html' or templatechoice == 'starbucks.html' or templatechoice == 'prototype2.html':
                 inserttemplate = 'templates/'+templatechoice
             else:
                 inserttemplate = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+templatechoice
