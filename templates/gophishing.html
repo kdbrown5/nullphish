@@ -119,7 +119,7 @@ body {
           <select name="smtpserver" class="form-control" id="smtpserver">
           <option>Mail Server</option>
             {% for row in serverlist %}
-            <option>{{ row }}</option>
+            <option id={{row}} name={{row}}>{{ row }}</option>
             {% endfor %}
           </select>
         </td>
