@@ -53,7 +53,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
         mailsettings = []
-        for row in cur.execute('select mailhost, mailuser, mailpass, mailtype, mailport from mailconfig where business like (?) OR "nullphish" and name like (?);', (session['business'], smtpserver,)):
+        for row in cur.execute('select mailhost, mailuser, mailpass, mailtype, mailport from mailconfig where business like (?) OR "nullphish" and name like (?);', (business, smtpserver,)):
             print(mailsettings.append(row[:][0]))
             print(mailsettings.append(row[:]))
             mailsettings.append(row[:])
