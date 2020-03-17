@@ -47,6 +47,7 @@ def mailconfig():
     if request.method == 'POST':
         if session['logged_in'] == True:
             if 'mailhost' in request.form:
+                mailname = request.form['mailname']
                 mailhost = request.form['mailhost']
                 mailuser = request.form['mailuser']
                 mailpass = request.form['mailpass']
@@ -59,7 +60,7 @@ def mailconfig():
                 with con:
                     cur = con.cursor()
                     cur.execute('PRAGMA key = '+dbkey+';')
-                    cur.execute('update mailconfig set mailhost = (?), mailuser = (?), mailpass = (?), mailtype = (?), mailport = (?), date = (?) where business = (?);', (mailhost, mailuser, mailpass, mailtype, mailport, timestamp, session['business'],))
+                    cur.execute('update mailconfig set mailhost = (?), mailuser = (?), mailpass = (?), mailtype = (?), mailport = (?), mailname = (?), date = (?) where business = (?);', (mailhost, mailuser, mailpass, mailtype, mailport, mailname, timestamp, session['business'],))
                     cur.execute('insert or ignore into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, date) values ((?), (?), (?), (?), (?), (?), (?));', (mailhost, mailuser, mailpass, mailtype, mailport, session['business'], timestamp,))
                 con.close()
                 flash('Mail server added!', 'category2')

@@ -114,16 +114,17 @@ body {
 <div class="container" style="max-width: 600px;">
 
 <div class="form-group">
-      <input name="mailhost" class="form-control" placeholder="Mail Server Hostname:" type="">
-      <input name="mailuser" class="form-control" placeholder="Mailbox Username:" type="">
-      <input name="mailpass" class="form-control" placeholder="Mailbox Password:" type="password">
+     <input name="mailname" class="form-control" placeholder="What would you like to call this mailserver?" type="" required>
+      <input name="mailhost" class="form-control" placeholder="Mail Server Hostname:" type="" required>
+      <input name="mailuser" class="form-control" placeholder="Mailbox Username:" type="" required>
+      <input name="mailpass" class="form-control" placeholder="Mailbox Password:" type="password" required>
       <select name='mailtype' class="form-control" id="mailtype" required>
         <option>Select Security Type:</option>
                 <option value="none">None</option>
                 <option value="ssl">SSL</option>
                 <option value="tls">TLS</option>
     </select>
-    <input name="mailport" class="form-control" placeholder="Port:" type="">
+    <input name="mailport" class="form-control" placeholder="Port:" type="" required>
       <button type="submit" class="btn btn-primary btn-block"> Submit  </button>
 </form>
 
