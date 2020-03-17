@@ -61,7 +61,7 @@ def mailconfig():
                     cur = con.cursor()
                     cur.execute('PRAGMA key = '+dbkey+';')
                     cur.execute('update mailconfig set mailhost = (?), mailuser = (?), mailpass = (?), mailtype = (?), mailport = (?), name = (?), date = (?) where business = (?);', (mailhost, mailuser, mailpass, mailtype, mailport, mailname, timestamp, session['business'],))
-                    cur.execute('insert or ignore into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, name, date) values ((?), (?), (?), (?), (?), (?), (?));', (mailhost, mailuser, mailpass, mailtype, mailport, session['business'], mailname, timestamp,))
+                    cur.execute('insert or ignore into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, name, date) values ((?), (?), (?), (?), (?), (?), (?), (?));', (mailhost, mailuser, mailpass, mailtype, mailport, session['business'], mailname, timestamp,))
                 con.close()
                 flash('Mail server added!', 'category2')
                 return render_template('mailsetup.html')
