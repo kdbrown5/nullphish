@@ -52,10 +52,13 @@ def sendtxt():
 
     if request.method == 'POST':
         phonenumber = request.form.get('phonenumber')
+        print(phonenumber)
         if len(phonenumber) == 10:
             phonenumber = re.sub(r"\D", "", phonenumber)
+            print(phonenumber)
             phonenumber = int(phonenumber)
-            sendsmspost(phonenumber)
+            print(phonenumber)
+            confirmation = sendsmspost(phonenumber)
             flash('Sent! - confirmation '+confirmation, 'category2')
 
             #receiveremail = request.form.get('email')
