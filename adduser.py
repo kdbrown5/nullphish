@@ -26,8 +26,8 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select (?) from users where business = (?);', (username, session['business'],))
-            if cur.fetchone():
+            cur.execute('select EXISTS ( select (?) from users where business = (?));', (username, session['business'],))
+            try cur.fetchone():
                 doesitexist = 1
             else:
                 doesitexist = 0
