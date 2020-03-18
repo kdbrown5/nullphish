@@ -91,7 +91,7 @@ def addnewuser():
                 sender_email, receiver_email, message.as_string()
             )
 
-    def registerreguser(rfname, rlname, rdpt, emailaddr, rrole, business):
+    def registerreguser(rfname, rlname, rdpt, emailaddr, rrole):
         if len(str(rfname)) > 0:
             if len(str(rlname)) > 0:
                 if len(str(emailaddr)) > 0:
@@ -100,7 +100,7 @@ def addnewuser():
                         with con:
                             cur = con.cursor()
                             cur.execute('PRAGMA key = '+dbkey+';')
-                            cur.execute('insert into users (username, firstname, lastname, role, department, validated, business) VALUES (?,?,?,?,?,0);', (emailaddr, rfname, rlname, rrole, rdpt, session['business'],))
+                            cur.execute('insert into users (username, firstname, lastname, role, department, validated, business) VALUES (?,?,?,?,?,0,?);', (emailaddr, rfname, rlname, rrole, rdpt, session['business'],))
                             con.commit
                         con.close
                         emailrecip = emailaddr
