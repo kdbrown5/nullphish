@@ -52,7 +52,7 @@ def sendtxt():
 
     if request.method == 'POST':
         phonenumber = request.form.get('phonenumber')
-        if len(phonenumber) == 7:
+        if len(phonenumber) == 10:
             phonenumber = re.sub(r"\D", "", phonenumber)
             phonenumber = int(phonenumber)
             sendsmspost(phonenumber)
@@ -66,6 +66,6 @@ def sendtxt():
             #customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
             #flash('Email sent to: '+receiveremail, 'category2')
         else:
-            flash('Not a valid number', 'category2')
+            flash('Not a valid number - format 8051113333', 'category2')
 
     return render_template('sendsms.html', businessdata=businessdata)    
