@@ -25,7 +25,7 @@ def sendtxt():
         auth_token  = "6494c074317d604b58cf07ec042c4f49"
         client = Client(account_sid, auth_token)
         message = client.messages.create(
-            to='1'+smsrecipient,
+            to=smsrecipient,
             from_="+18053211499",
             body="Hello from Python!")
         confirmation = message.sid
@@ -55,9 +55,8 @@ def sendtxt():
         print(phonenumber)
         if len(phonenumber) == 10:
             phonenumber = re.sub(r"\D", "", phonenumber)
-            print(phonenumber)
+            phonenumber = '1'+phonenumber
             phonenumber = int(phonenumber)
-            print(phonenumber)
             confirmation = sendsmspost(phonenumber)
             flash('Sent! - confirmation '+confirmation, 'category2')
 
