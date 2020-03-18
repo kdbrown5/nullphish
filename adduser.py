@@ -9,6 +9,7 @@ from flask import Flask, flash, session, render_template, render_template_string
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt, argon2
 from pysqlcipher3 import dbapi2 as sqlite
+from tokenizer import generate_confirmation_token, confirm_token
 
 
 db = SQLAlchemy()
