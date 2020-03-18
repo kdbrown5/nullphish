@@ -29,7 +29,7 @@ Color Palette Hex Codes:
   width: auto;
   height: auto;
   margin: 0px;
-  padding-top: 30px;
+  padding: 5px;
   overflow: hidden;
   border-radius: 25px;
   border: 2px solid #E0E0E0;
@@ -50,7 +50,7 @@ Color Palette Hex Codes:
 }
 #tilecontainer h1{
   font-size: calc(24px + 0.5vw);
-  max-height: 40px;
+  max-height: 100px;
   vertical-align: middle;
   grid-column-start: 1;
   grid-column-end: 4;
@@ -69,6 +69,8 @@ Color Palette Hex Codes:
   background-size: cover;
   background-position: center;
   padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #tilecontainer a:hover{
   border-color: #E0E0E0;
