@@ -36,7 +36,7 @@ def gophish():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             serverlist = []
-            for row in cur.execute('select name from mailconfig where business = (?) OR business = "public";', (business,)):
+            for row in cur.execute('select name from mailconfig where business = (?) OR share = 1;', (business,)):
                 serverlist.append(row[:][0])
         con.close()
         return serverlist
