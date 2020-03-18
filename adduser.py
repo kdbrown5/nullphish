@@ -127,7 +127,7 @@ def addnewuser():
             emailaddr = request.form['emailaddr']
             rrole = request.form['addrole']
             doesitexist = checkifexist(emailaddr)
-            if doesitexist = 1:
+            if doesitexist == 1:
                 flash('this user already exists', 'category2')
             else:
                 if rrole == 'Admin':
