@@ -26,12 +26,10 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select EXISTS ( select (?) from users where business = (?));', (username, session['business'],))
-            if cur.fetchone():
-                doesitexist = 1
-            else:
-                doesitexist = 0
+            cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],))
+            doesitexist = cur.fetchone[0]
         con.close()
+        print(doesitexist)
         return doesitexist
 
     def reguserlookup():
