@@ -19,8 +19,21 @@ loadkey.close()
 
 adduser = Blueprint('adduser', __name__, url_prefix='/adduser', template_folder='templates')
 @adduser.route("/adduser", subdomain='app', methods=['GET', 'POST'])
-
 def addnewuser():
+    def checkifexist(username):
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            con.row_factory = sqlite.Row
+            cur.execute('select username from users where business = (?);', (session['business'],)):
+            if cur.fetchone():
+                doesitexist = 1
+            else:
+                doesitexist = 0
+        con.close()
+        return doesitexist
+
     def reguserlookup():
         con = sqlite.connect('db/db1.db')
         with con:
@@ -113,13 +126,17 @@ def addnewuser():
             rdpt = request.form['department']
             emailaddr = request.form['emailaddr']
             rrole = request.form['addrole']
-            if rrole == 'admin':
-                registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
-            if rrole == 'user':
-                registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+            doesitexist = checkifexist(emailaddr)
+            if doesitexist = 1:
+                flash('this user already exists', 'category2')
             else:
-                flash('this is not a defined role', 'category2')
-                return render_template("adduser.html", lookup=lookup, username=session['username'])
+                if rrole == 'Admin':
+                    registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                if rrole == 'User':
+                    registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                else:
+                    flash('this is not a defined role', 'category2')
+                    return render_template("adduser.html", lookup=lookup, username=session['username'])
             
         if 'password' in request.form:
             if len(str(request.form['password'])) > 8:
