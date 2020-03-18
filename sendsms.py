@@ -20,14 +20,14 @@ loadkey.close()
 @sendsms.route('/sendsms', methods=['GET', 'POST'])
 
 def sendtxt():
-    def sendsmspost(smsrecipient):
+    def sendsmspost(smsrecipient, messagecontent):
         account_sid = "AC34370e6c0a300d0fd33641c804c9f510"
         auth_token  = "6494c074317d604b58cf07ec042c4f49"
         client = Client(account_sid, auth_token)
         message = client.messages.create(
             to=smsrecipient,
             from_="+18053211499",
-            body="Hello from Python!")
+            body=messagecontent)
         confirmation = message.sid
         return confirmation
 
@@ -54,10 +54,11 @@ def sendtxt():
         phonenumber = request.form.get('phonenumber')
         print(phonenumber)
         if len(phonenumber) == 10:
+            messagecontent = request.form.get('txtmessage')
             phonenumber = re.sub(r"\D", "", phonenumber)
             phonenumber = '1'+phonenumber
             phonenumber = int(phonenumber)
-            confirmation = sendsmspost(phonenumber)
+            confirmation = sendsmspost(phonenumber, messagecontent)
             flash('Sent! - confirmation '+confirmation, 'category2')
 
             #receiveremail = request.form.get('email')

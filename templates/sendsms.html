@@ -97,6 +97,7 @@ body {
 			<td>Last</td>
             <td>Email Address</td>
             <td>Phone Number</td>
+            <td>Message Contents</td>
             <td>Phish!</td>
 		</tr>
     {% for item in businessdata %}
@@ -107,6 +108,7 @@ body {
 		<td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
         <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
         <td name="phonenumber"><input name="phonenumber" placeholder="numbers only"></td>
+        <td name="txtmessage"><input name="txtmessage" placeholder="Message here"></td>
         <td><button type="submit" class="btn btn-primary">Phish!</button></form></td>
         {% endfor %}
 	</tr>
