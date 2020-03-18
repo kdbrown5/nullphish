@@ -20,6 +20,7 @@ from adduser import adduser, addnewuser
 from phishingstats import phishingstats, phishingstatsload
 from mailsetup import mailsetup, mailconfig
 from addtemplate import addtemplate, addnewtemplate
+from sendsms import sendsms, sendtxt
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -53,6 +54,7 @@ app.register_blueprint(adduser)
 app.register_blueprint(phishingstats)
 app.register_blueprint(mailsetup)
 app.register_blueprint(addtemplate)
+app.register_blueprint(sendsms)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -181,6 +183,16 @@ def beginst():
             return stat()
         elif session.get('role') == 'admin':
             return stat()
+    else:
+        return redirect("/")
+
+@app.route('/sendsms', subdomain="app", methods=['GET', 'POST'])
+def beginsms():
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            return sendtxt()
+        elif session.get('role') == 'admin':
+            return sendtxt()
     else:
         return redirect("/")
 
