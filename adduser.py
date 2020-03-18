@@ -32,7 +32,7 @@ def addnewuser():
             print('query')
             print(cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],)))
             cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],))
-            if cur.fetchone():
+            if cur.fetchone()[0] == 1:
                 doesitexist = 1
             else:
                 doesitexist = 0
