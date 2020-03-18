@@ -26,11 +26,15 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
+            print('query')
+            print(cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],)))
             cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],))
             if cur.fetchone():
                 doesitexist = 1
             else:
                 doesitexist = 0
+            print('doesitexist')
+            print(doesitexist)
         con.close()
         return doesitexist
 
