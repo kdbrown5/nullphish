@@ -25,7 +25,7 @@ def sendtxt():
         auth_token  = "6494c074317d604b58cf07ec042c4f49"
         client = Client(account_sid, auth_token)
         message = client.messages.create(
-            to=1+smsrecipient,
+            to='1'+smsrecipient,
             from_="+18053211499",
             body="Hello from Python!")
         confirmation = message.sid
