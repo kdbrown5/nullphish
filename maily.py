@@ -75,7 +75,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     html = html.replace('firstname', firstname)
     html = html.replace('lastname', lastname)
     html = html.replace('receiveremail', receiveremail)
-    html = html.replace('replacelink', link)
+    html = html.replace('replacelink', str(link[0]))
     changetemplate.close()
 
     # Turn these into plain/html MIMEText objects
