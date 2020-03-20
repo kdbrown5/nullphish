@@ -1,3 +1,4 @@
+import bitlyshortener
 from bitlyshortener import Shortener
 
 def linkshorten(linkbeforeshorten):
