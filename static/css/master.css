@@ -154,12 +154,6 @@ nav a:hover{
   text-decoration: underline;
   text-decoration-color: #E0E0E0;
 }
-nav .active{
-  border-top: 1px solid #49A355;
-  border-bottom: 1px solid #49A355;
-  border-radius: 15px;
-  text-decoration: none;
-}
 nav a .viewing{
   color: #ECA400;
 }
