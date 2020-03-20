@@ -151,7 +151,8 @@ nav a{
 }
 nav a:hover{
   color: #E0E0E0;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: #E0E0E0;
 }
 nav .active{
   border-top: 1px solid #49A355;

@@ -41,7 +41,7 @@ Color Palette Hex Codes:
   margin-right: auto;
   display: grid;
   grid-template-columns: minmax(250px,600px) minmax(250px,600px) minmax(250px,600px);
-  grid-template-rows: auto auto auto;
+  grid-template-rows: minmax(100px,300px) minmax(300px,600px) minmax(300px,600px);
   background-color: rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
