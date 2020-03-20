@@ -69,6 +69,10 @@ Color Palette Hex Codes:
 }
 
 /* Global Styles: */
+a{
+  outline: none;
+}
+
 body{
   margin: 0;
   overflow-x: hidden;
@@ -222,7 +226,7 @@ nav a .viewing{
 
 .nullbtn{
   background-color: #49A355;
-  border: none;
+  border: 1px solid #49A355;
   color: #0D1126;
   padding: 15px 32px;
   text-align: center;
@@ -231,6 +235,14 @@ nav a .viewing{
   font-size: x-large;
   width: 33%;
   border-radius: 5px;
+  cursor: pointer;
+}
+.nullbtn:hover{
+  border-color: #E0E0E0;
+}
+.nullbtn:active{
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
 }
 
 .nullmention{
@@ -244,7 +256,7 @@ nav a .viewing{
 
 .nulltxt{
   background-color: #E0E0E0;
-  border: none;
+  border: 1px solid #E0E0E0;
   color: #0D1126;
   padding: 15px 32px;
   text-align: left;
@@ -254,6 +266,9 @@ nav a .viewing{
   width: 100%;
   margin: auto;
   border-radius: 5px;
+}
+.nulltxt:active{
+  border-color: #ECA400;
 }
 
 .nolinkdeco{
