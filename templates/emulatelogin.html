@@ -1,122 +1,112 @@
 <html>
-    <head>
-      <title>NullPhish: Login to Your Account</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <style>
-        #particles-js{
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-          padding: 0px;
-          margin: 0px;
-          position: absolute;
-        }
-        .contentcontainer{
-          z-index: -999;
-          position: absolute;
-          top: 10%;
-          height: 80%;
-          left: 10%;
-          width: 80%;
-          margin: 0px;
-          overflow: hidden;
-          border-radius: 25px;
-          border: 1px solid #E0E0E0;
-          color: #E0E0E0;
-          background-color: rgba(0,0,0,0.5);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-        }
-        .notincontainer{ 
-          padding: 300;
-          z-index: 5;
-          position: relative;
-          overflow: hidden;
-        }
-  
-        .input-element{
-  font-size: 30px; // for say a select
-  width: 400px;
-  }
-      </style>
-    </head>
-    <body>
-      <div id="particles-js"></div>
-      <nav>
-        <table>
-          <tr>
-            <td><a href="https://app.nullphish.com/register">Sign Up</a></li>
-            <td><a href="https://nullphish.com" class="active">NullPhish &#169;</a></td>
-            <td><a href="https://app.nullphish.com/login">Log In</a></td>
-          </tr>
-        </table>
-      </nav>
-      <div class="contentcontainer">
-  
+  <head>
+    <title>NullPhish: Login to Your Account</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .contentcontainer{
+        z-index: 999;
+        position: absolute;
+        top: 120px;
+        bottom: 90px;
+        left: 180px;
+        right: 180px;
+        width: auto;
+        height: auto;
+        margin: 0px;
+        padding-top: 30px;
+        overflow: hidden;
+        border-radius: 25px;
+        border: 2px solid #E0E0E0;
+        color: #E0E0E0;
+        min-width: 500px;
+        max-width: 2500px;
+        min-height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        background-color: rgba(0,0,0,0.5);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        justify-content: center;
+        text-align: center;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <nav>
+      <table>
+        <tr>
+          <td><a href="https://app.nullphish.com/register">Sign Up</a></li>
+          <td><a href="https://nullphish.com" class="active">NullPhish &#169;</a></td>
+          <td><a href="https://app.nullphish.com/login">Log In</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <h1>Redirecting to main page after <span id="countdown">10</span> seconds</h1>
+      <div>
+        <button class="nullbtn" onclick="window.location.href = '/';">Continue to Admin Controls</button>
       </div>
-  
-      <center>
-      <div class="notincontainer">
-        <div class="center">
-          <!-- Modify this according to your requirement -->
-<h3>
-  <button onclick="window.location.href = '/';">Click here to login with your default account</button>
-  
-  <p>Redirecting to main page after <span id="countdown">10</span> seconds</p>
-</h3>
-<!-- JavaScript part -->
-<script type="text/javascript">
-    
-    // Total seconds to wait
-    var seconds = 10;
-    
-    function countdown() {
+      <div>
+        <h2 style="color: white" class="w3-xlarge">Emulate User:</h2>
+        <div>
+          <form method = "POST">
+            <label for="exampleFormControlSelect1"></label>
+            <select name='emulaterequest' class="form-control" id="exampleFormControlSelect1" id='emulaterequest'>
+              <option>Users</option>
+              {% for row in userlist %}
+              <option>{{ row }}</option>
+              {% endfor %}     
+            </select>
+            <br>
+            <button class="nullbtn" type="submit">Emulate User</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      // Total seconds to wait
+      var seconds = 10; 
+      function countdown() {
         seconds = seconds - 1;
         if (seconds < 0) {
-            // Chnage your redirection link here
-            window.location = "/";
+          // Chnage your redirection link here
+          window.location = "/";
         } else {
-            // Update remaining seconds
-            document.getElementById("countdown").innerHTML = seconds;
-            // Count down using javascript
-            window.setTimeout("countdown()", 1000);
+          // Update remaining seconds
+          document.getElementById("countdown").innerHTML = seconds;
+          // Count down using javascript
+          window.setTimeout("countdown()", 1000);
         }
-    }
-    
-    // Run countdown function
-    countdown();
-    
-</script>
-          
-            <div class="col-md" style="form">
-                <br><br>
-                <h2 style="color: white" class="w3-xlarge">Emulate User:</h2>
-                <div class="ex2">
-                  <div class="form-group">
-                      <form method = "POST">
-                      <label for="exampleFormControlSelect1"></label>
-                      <select name='emulaterequest' class="form-control" id="exampleFormControlSelect1" id='emulaterequest'>
-                          <option>Users</option>
-                              {% for row in userlist %}
-                                  <option>{{ row }}</option>
-                              {% endfor %}     
-                      </select>
-                      <button type="submit" class="btn btn-primary btn-block">Emulate User</button>
-                    </form>
-                      </div>
-                    </div>
-                    
-              </div>
-  
-
-      </center>
-  
-      <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
-      <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
-    </body>
-  </html>
-  
+      }
+      // Run countdown function
+      countdown();
+    </script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+  </body>
+</html>
