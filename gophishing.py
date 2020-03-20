@@ -7,6 +7,7 @@ from lumberjack import log
 from maily import sendphish, customsendphish
 from tokenizer import generate_confirmation_token, confirm_token
 from pysqlcipher3 import dbapi2 as sqlite
+from bitly import linkshorten
 
 gophishing = Blueprint('gophishing', __name__, url_prefix='/gophishing', template_folder='templates')
 
@@ -116,6 +117,7 @@ def gophish():
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
+            link = linkshorten(link)
             firstname = request.form.get('firstname')
             lastname = request.form.get('lastname')
             customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
