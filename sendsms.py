@@ -10,6 +10,7 @@ from pysqlcipher3 import dbapi2 as sqlite
 import re
 import twilio
 from twilio.rest import Client
+from bitly import linkshorten
 
 sendsms = Blueprint('sendsms', __name__, url_prefix='/sendsms', template_folder='templates')
 
@@ -58,6 +59,11 @@ def sendtxt():
             phonenumber = re.sub(r"\D", "", phonenumber)
             phonenumber = '1'+phonenumber
             phonenumber = int(phonenumber)
+            receiveremail = request.form.get('email')
+            newtoken = generate_confirmation_token(receiveremail)
+            link = 'https://app.nullphish.com/fy?id='+newtoken
+            link = linkshorten(link)
+            messagecontent = messagecontent+' - '+link
             confirmation = sendsmspost(phonenumber, messagecontent)
             flash('Sent! - confirmation '+confirmation, 'category2')
 
