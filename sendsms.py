@@ -63,10 +63,7 @@ def sendtxt():
             newtoken = generate_confirmation_token(receiveremail)
             link = 'https://app.nullphish.com/fy?id='+newtoken
             link = linkshorten(link)
-            print(messagecontent)
-            print(link)
-            print(messagecontent[0])
-            print(link[0])
+            link = link[0]
             messagecontent = messagecontent+' - '+link
             confirmation = sendsmspost(phonenumber, messagecontent)
             flash('Sent! - confirmation '+confirmation, 'category2')
