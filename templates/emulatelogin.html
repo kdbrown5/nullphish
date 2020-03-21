@@ -67,10 +67,7 @@
       </table>
     </nav>
     <div class="contentcontainer">
-      <h1>Redirecting to main page after <span id="countdown">10</span> seconds</h1>
-      <div>
-        <button class="nullbtn" onclick="window.location.href = '/';">Continue to Admin Controls</button>
-      </div>
+      <h1>Emulate User:</h1>
       <div>
         <h2 style="color: white" class="w3-xlarge">Emulate User:</h2>
         <div>
@@ -86,26 +83,11 @@
             <button class="nullbtn" type="submit">Emulate User</button>
           </form>
         </div>
+        <div>
+          <button class="nullbtn" onclick="window.location.href = '/';">Return to Admin Controls</button>
+        </div>
       </div>
     </div>
-    <script type="text/javascript">
-      // Total seconds to wait
-      var seconds = 10; 
-      function countdown() {
-        seconds = seconds - 1;
-        if (seconds < 0) {
-          // Chnage your redirection link here
-          window.location = "/";
-        } else {
-          // Update remaining seconds
-          document.getElementById("countdown").innerHTML = seconds;
-          // Count down using javascript
-          window.setTimeout("countdown()", 1000);
-        }
-      }
-      // Run countdown function
-      countdown();
-    </script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>

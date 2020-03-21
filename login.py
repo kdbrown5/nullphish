@@ -92,7 +92,8 @@ def loginpage():
             business = setbusiness(username)
             session['business'] = business
             if session['role'] == 'superadmin':
-                return redirect('/emulateuser')
+                return redirect('/')
+                #return redirect('/emulateuser')
             else:
                 return redirect('/')
 
