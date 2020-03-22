@@ -77,7 +77,7 @@ def apiid():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('insert into phished (username, date, method) values ((?), (?), "email");', (email, timestamp))
+                cur.execute('insert into phished (username, date, method) values ((?), (?), "E-MAIL");', (email, timestamp))
                 cur.execute('select business from users where username = (?);', (email,))
                 business = cur.fetchone()[0]
                 cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
