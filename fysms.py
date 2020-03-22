@@ -78,22 +78,24 @@ def smsapiid():
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
                 cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
-                cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
-                cur.execute('select business from users where username = (?);', (email,))
-                business = cur.fetchone()[0]
-                cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
-                cur.execute('select username from users where notify = 1 and business = (?);', (business,))
-                admins = cur.fetchone()[0]
-                cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
-                cur.execute('select department from users where username = (?);', (email,))
-                userdept = cur.fetchone()[0]
-                cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
-                cur.execute('insert into phished (username, token, method) select (?), (?), "SMS" where (Select changes() = 0);', (email, usertoken))
                 cur.execute('select hit from phished where token = (?);', (usertoken,))
                 hitcount = cur.fetchone()[0]
+                hitcount = int(hitcount)
+                if hitcount > 1:
+                    cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
+                    cur.execute('select business from users where username = (?);', (email,))
+                    business = cur.fetchone()[0]
+                    cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
+                    cur.execute('select username from users where notify = 1 and business = (?);', (business,))
+                    admins = cur.fetchone()[0]
+                    cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
+                    cur.execute('select department from users where username = (?);', (email,))
+                    userdept = cur.fetchone()[0]
+                    cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
+                else:
+                    cur.execute('insert into phished (username, token, method) values ((?), (?), "SMS";', (email, usertoken))
             con.close()
-            hitcount = int(hitcount)
-            if hitcount > 0:
+            if hitcount > 1:
                 emailrecip = admins
                 tattletale(emailrecip, email)
                 return redirect('https://google.com')
