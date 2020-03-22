@@ -62,9 +62,9 @@ def phishingstatsload():
 
     if request.method == 'POST':
         print(request.form.get('report'))
-        if request.form.get('report') == "SMS":
+        if request.form.get('report') == "SMS Report":
             download_report()
-        if request.form.get('report') == "E-MAIL":
+        if request.form.get('report') == "E-MAIL Report":
             download_report()
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
