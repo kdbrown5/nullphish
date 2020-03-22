@@ -96,7 +96,7 @@ def smsapiid():
                     userdept = cur.fetchone()[0]
                     cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
                 if hitcount == 0:
-                    cur.execute('insert into phished (username, token, method) values ((?), (?), "SMS";', (email, usertoken))
+                    cur.execute('insert into phished (username, token, method) values ((?), (?), "SMS");', (email, usertoken))
             con.close()
             if hitcount > 1:
                 emailrecip = admins
