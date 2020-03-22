@@ -93,7 +93,7 @@ body {
 			<td width="5%">Department</td>
 			<td width="5%">Method</td>
 			<td>User Phished</td>
-			{% if item[12] in phishdata %}
+			{% if item[12] %}
 			<td>Phone Number</td>
 			{% endif %}
 			<td>Business</td>
@@ -109,7 +109,7 @@ body {
 		<td>{{item[4]}}</td>
 		<td>{{item[6]}}</td>
 		<td>{{item[3]}}</td>
-		{% if item[12] in phishdata %}
+		{% if item[12] %}
 		<td>{{item[12]}}</td>
 		{% endif %}
 	</tr>
