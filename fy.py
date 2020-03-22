@@ -88,7 +88,7 @@ def apiid():
                 cur.execute('select department from users where username = (?);', (email,))
                 userdept = cur.fetchone()[0]
                 cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
-                cur.execute('insert into phished (username, token, method) values ((?), (?), "E-MAIL" where (Select changes() = 0);', (email, usertoken))
+                cur.execute('insert into phished (username, token, method) select (?), (?), "E-MAIL" where (Select changes() = 0);', (email, usertoken))
                 cur.execute('select hit from phished where token = (?);', (usertoken,))
                 hitcount = cur.fetchone()[0]
             con.close()
