@@ -26,7 +26,7 @@ def phishingstatsload():
             for row in cur.execute('select * from phished where business LIKE (?) and method = "E-MAIL";', (business,)):## populate tables with user data from same business
                 emailquery.append(row[:])
             smsquery = []
-            for row in cur.execute('select * from phished where business LIKE (?) and method = SMS";', (business,)):## populate tables with user data from same business
+            for row in cur.execute('select * from phished where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
                 smsquery.append(row[:])            
         con.close()
         return emailquery, smsquery
