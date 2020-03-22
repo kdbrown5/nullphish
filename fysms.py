@@ -83,7 +83,7 @@ def smsapiid():
                     hitcount = cur.fetchone()[0]
                     hitcount = int(hitcount)
                 except:
-                    hitcount = None
+                    hitcount = 0
                 if hitcount > 1:
                     cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
                     cur.execute('select business from users where username = (?);', (email,))
@@ -95,7 +95,7 @@ def smsapiid():
                     cur.execute('select department from users where username = (?);', (email,))
                     userdept = cur.fetchone()[0]
                     cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
-                if hitcount == None:
+                if hitcount == 0:
                     cur.execute('insert into phished (username, token, method) values ((?), (?), "SMS";', (email, usertoken))
             con.close()
             if hitcount > 1:
