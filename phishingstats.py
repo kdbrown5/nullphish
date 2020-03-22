@@ -22,14 +22,18 @@ def phishingstatsload():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            businessquery = []
-            for row in cur.execute('select * from phished where business LIKE (?)', (business,)):## populate tables with user data from same business
-                businessquery.append(row[:])
+            emailquery = []
+            for row in cur.execute('select * from phished where business LIKE (?) and method = "E-MAIL";', (business,)):## populate tables with user data from same business
+                emailquery.append(row[:])
+            smsquery = []
+            for row in cur.execute('select * from phished where business LIKE (?) and method = SMS";', (business,)):## populate tables with user data from same business
+                smsquery.append(row[:])            
         con.close()
-        phishedquery = businessquery
-        return phishedquery
+        return emailquery, smsquery
         
-    phishdata = phishedlookup()# return userdata list to render on page
 
 
-    return render_template('phishingstats.html', phishdata=phishdata)   
+    emailquery, smsquery = phishedlookup()# return userdata list to render on page
+
+
+    return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
