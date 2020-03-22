@@ -84,6 +84,17 @@ body {
         {% endif %}
 		{% endwith %}</h1>
 			
+		<br><br>
+
+		<form method="POST">
+			<select name= 'reports' class="form-control" id="reports">
+				<option>Click dropdown to download a report</option>
+						<option id="E-MAIL" name="E-MAIL">E-Mail Report</option>
+						<option id="SMS" name="SMS">SMS Report</option>
+					</select>
+			<button name="report" class="btn btn-primary btn-block">Download report</button>
+		</form>
+		<br><br>
 				{% if emailquery %}
 	<h1><u><b>User Phished via E-Mail</b></u></h1>
 <br>

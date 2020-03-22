@@ -5,6 +5,9 @@ from flask import Flask, flash, session, render_template, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 from lumberjack import log
 from pysqlcipher3 import dbapi2 as sqlite
+from io import StringIO
+from werkzeug.wrappers import Response
+
 
 phishingstats = Blueprint('phishingstats', __name__, url_prefix='/phishingstats', template_folder='templates')
 
@@ -31,9 +34,37 @@ def phishingstatsload():
         con.close()
         return emailquery, smsquery
         
-
+    def download_report():
+        def generate():
+            data = StringIO()
+            w = csv.writer(data)# write header
+            w.writerow(('Department', 'Method', 'User Phished', 'Business', 'Admin Notified', 'Date'))
+            yield data.getvalue()
+            data.seek(0)
+            data.truncate(0)# write each log item
+            for item in emailquery:
+                w.writerow((
+                    item[7],
+                    item[10],
+                    item[1],
+                    item[4],
+                    item[6],
+                    item[3].isoformat()  # format datetime as string
+                ))
+                yield data.getvalue()
+                data.seek(0)
+                data.truncate(0)# stream the response as the data is generated
+        response = Response(generate(), mimetype='text/csv') # add a filename
+        response.headers.set("Content-Disposition", "attachment", filename="report.csv")
+        return response
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
+    if request.method == 'POST':
+        print(request.args.get('report'))
+        if request.args.get('report') == "SMS":
+            download_report()
+        if request.args.get('report') == "E-MAIL":
+            download_report()
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
