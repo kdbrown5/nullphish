@@ -3,7 +3,7 @@ import sqlalchemy
 import hashlib
 from sqlalchemy.engine import Engine
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, flash, session, render_template, render_template_string, request, jsonifysms, redirect, url_for, \
+from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
 from lumberjack import log
 import smtplib, ssl
