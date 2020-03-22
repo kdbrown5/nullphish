@@ -3,7 +3,7 @@ import sqlalchemy
 import hashlib
 from sqlalchemy.engine import Engine
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
+from flask import Flask, flash, session, render_template, render_template_string, request, jsonifysms, redirect, url_for, \
     Response, g, Markup, Blueprint, make_response
 from lumberjack import log
 import smtplib, ssl
@@ -18,10 +18,10 @@ dbkey=loadkey.read()
 loadkey.close()
 
 db = SQLAlchemy()
-fy = Blueprint('fy', __name__, url_prefix='/fy', template_folder='templates')
-@fy.route("/fy", methods=['GET', 'POST'])
+fysms = Blueprint('fysms', __name__, url_prefix='/fysms', template_folder='templates')
+@fysms.route("/fysms", methods=['GET', 'POST'])
 
-def apiid():
+def smsapiid():
     def tattletale(emailrecip, email):
         sender_email = "donotreply@nullphish.com"
         receiver_email = emailrecip
