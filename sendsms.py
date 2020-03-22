@@ -61,7 +61,7 @@ def sendtxt():
             phonenumber = int(phonenumber)
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
-            link = 'https://app.nullphish.com/fysms?id='+newtoken+'&did='+phonenumber
+            link = 'https://app.nullphish.com/fysms?id='+newtoken+'&did='+(str(phonenumber))
             link = linkshorten(link)
             link = link[0]
             messagecontent = messagecontent+' - '+link
