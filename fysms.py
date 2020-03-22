@@ -67,6 +67,7 @@ def smsapiid():
                 return usertoken
                 
     if request.method == 'GET':
+        print(request.args.get('did'))
         usertoken = (processtoken())
         email = str(confirm_twoweektoken(usertoken))
         timestamp = (datetime.now())
