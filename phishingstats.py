@@ -61,10 +61,10 @@ def phishingstatsload():
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == 'POST':
-        print(request.args.get('report'))
-        if request.args.get('report') == "SMS":
+        print(request.form.get('report')
+        if request.form.get('report') == "SMS":
             download_report()
-        if request.args.get('report') == "E-MAIL":
+        if request.form.get('report') == "E-MAIL":
             download_report()
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
