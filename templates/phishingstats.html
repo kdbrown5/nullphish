@@ -89,10 +89,10 @@ body {
 		<form method="POST">
 			<select name= 'report' class="form-control" id="report">
 				<option>Click dropdown to download a report</option>
-						<option>E-Mail Report</option>
-						<option>SMS Report</option>
+						<option id="E-MAIL" name="E-MAIL">E-Mail Report</option>
+						<option id="SMS" name="SMS">SMS Report</option>
 					</select>
-			<button name="report" class="btn btn-primary btn-block">Download report</button>
+					<button name="submit" type="submit" class="btn btn-primary btn-block">Download report</button>
 		</form>
 		<br><br>
 				{% if emailquery %}
