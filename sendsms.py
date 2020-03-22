@@ -57,11 +57,12 @@ def sendtxt():
         if len(phonenumber) == 10:
             messagecontent = request.form.get('txtmessage')
             phonenumber = re.sub(r"\D", "", phonenumber)
+            phonedid = phonenumber
             phonenumber = '1'+phonenumber
             phonenumber = int(phonenumber)
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
-            link = 'https://app.nullphish.com/fysms?id='+newtoken+'&did='+(str(phonenumber))
+            link = 'https://app.nullphish.com/fysms?id='+newtoken+'&did='+(str(phonedid))
             link = linkshorten(link)
             link = link[0]
             messagecontent = messagecontent+' - '+link

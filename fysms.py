@@ -67,18 +67,19 @@ def smsapiid():
                 return usertoken
                 
     if request.method == 'GET':
-        print(request.args.get('did'))
         usertoken = (processtoken())
         email = str(confirm_twoweektoken(usertoken))
         timestamp = (datetime.now())
         timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
         timestamp = timestamp.replace(' ', '-')
         if '@' in email:
+            phonedid = request.args.get('did')
             con = sqlite.connect('db/db1.db')
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
                 cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
+                cur.execute('UPDATE phished set phonedid = (?) where token = (?);', (phonedid, usertoken,))
                 cur.execute('select hit from phished where token = (?);', (usertoken,))
                 try:
                     hitcount = cur.fetchone()[0]

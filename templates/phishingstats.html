@@ -93,9 +93,13 @@ body {
 			<td width="5%">Department</td>
 			<td width="5%">Method</td>
 			<td>User Phished</td>
+			{% if item[12] in phishdata %}
+			<td>Phone Number</td>
+			{% endif %}
 			<td>Business</td>
 			<td>Admin Notified</td>
 			<td>Date</td>
+			
 		</tr>
 	{% for item in phishdata %}
 	<tr style="text-align:center;" class="border_bottom">
@@ -105,6 +109,9 @@ body {
 		<td>{{item[4]}}</td>
 		<td>{{item[6]}}</td>
 		<td>{{item[3]}}</td>
+		{% if item[12] in phishdata %}
+		<td>{{item[12]}}</td>
+		{% endif %}
 	</tr>
 	{% endfor %}
 	</table>
