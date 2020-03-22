@@ -77,7 +77,8 @@ def smsapiid():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('insert into phished (username, date, method) values ((?), (?), "SMS");', (email, timestamp))
+                cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
+                cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
                 cur.execute('select business from users where username = (?);', (email,))
                 business = cur.fetchone()[0]
                 cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
@@ -87,10 +88,17 @@ def smsapiid():
                 cur.execute('select department from users where username = (?);', (email,))
                 userdept = cur.fetchone()[0]
                 cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
+                cur.execute('insert into phished (username, token, method) select (?), (?), "SMS" where (Select changes() = 0);', (email, usertoken))
+                cur.execute('select hit from phished where token = (?);', (usertoken,))
+                hitcount = cur.fetchone()[0]
             con.close()
-            emailrecip = admins
-            tattletale(emailrecip, email)
-            return redirect('https://google.com')
+            hitcount = int(hitcount)
+            if hitcount > 0:
+                emailrecip = admins
+                tattletale(emailrecip, email)
+                return redirect('https://google.com')
+            else:
+                return redirect('https://google.com')
         else:
             return redirect('https://google.com')
 
