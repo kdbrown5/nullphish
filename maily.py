@@ -3,6 +3,7 @@ import sqlalchemy
 from pysqlcipher3 import dbapi2 as sqlite
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from datetime import datetime
 
 loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
@@ -62,6 +63,10 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     smtpserver = mailsettings[0][0]
     mailport = mailsettings[0][4]
 
+    timestamp = (datetime.now())
+    timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+    timestamp = timestamp.replace(' ', '-')
+
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
     message["From"] = sender_email
@@ -75,6 +80,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     html = html.replace('firstname', firstname)
     html = html.replace('lastname', lastname)
     html = html.replace('receiveremail', receiveremail)
+    html = html.replace('datestamp', timestamp)
     html = html.replace('replacelink', str(link[0]))
     changetemplate.close()
 
