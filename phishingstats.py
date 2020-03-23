@@ -5,9 +5,11 @@ from flask import Flask, flash, session, render_template, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 from lumberjack import log
 from pysqlcipher3 import dbapi2 as sqlite
-from io import StringIO
-from werkzeug.wrappers import Response
+#from io import StringIO
+#from werkzeug.wrappers import Response
 import csv
+import os.path
+from pathlib import Path
 
 phishingstats = Blueprint('phishingstats', __name__, url_prefix='/phishingstats', template_folder='templates')
 
@@ -34,49 +36,19 @@ def phishingstatsload():
         con.close()
         return emailquery, smsquery
         
-    def download_report():
-        def generate():
-            data = StringIO()
-            w = csv.writer(data)# write header
-            w.writerow(('Department', 'Method', 'User Phished', 'Business', 'Admin Notified', 'Date'))
-            yield data.getvalue()
-            data.seek(0)
-            data.truncate(0)# write each log item
-            print(emailquery)
-            for item in emailquery:
-                w.writerow((
-                    item[7],
-                    item[10],
-                    item[1],
-                    item[4],
-                    item[6],
-                    item[3]  # format datetime as string
-                ))
-                yield data.getvalue()
-                data.seek(0)
-                data.truncate(0)# stream the response as the data is generated
-        response = Response(generate(), mimetype='text/csv') # add a filename
-        response.headers.set("Content-Disposition", "attachment", filename="report.csv")
-        return response
-
     def export():
-        si = StringIO()
-        cw = csv.writer(si)
-        for item in emailquery:
-            cw.writerow((
-                item[7],
-                item[10],
-                item[1],
-                item[4],
-                item[6],
-                item[3]  # format datetime as string
-            ))
-        response = make_response(si.getvalue())
-        response.headers['Content-Disposition'] = 'attachment; filename=report.csv'
-        response.headers["Content-type"] = "text/csv"
-        return response
+        with open('output.csv', 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerows(emailquery)    
+
+
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
+    businessdir = './reports/businesses/'+session['business']
+    if not os.path.exists(businessdir):
+        os.makedirs(businessdir)
+    #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
+    #newreport = './reports/businesses/'+session['business']+'/phishingreport.csv'
     export()
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
