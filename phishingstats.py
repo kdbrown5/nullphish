@@ -50,7 +50,7 @@ def phishingstatsload():
                     item[1],
                     item[4],
                     item[6],
-                    item[3].isoformat()  # format datetime as string
+                    item[3]  # format datetime as string
                 ))
                 yield data.getvalue()
                 data.seek(0)
