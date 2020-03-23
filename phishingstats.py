@@ -39,16 +39,20 @@ def phishingstatsload():
     def export(newreport):
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(('Department', 'Method', 'User Phished', 'Business', 'Admin_Notified', 'Date'))
+            writer.writerow(('Department', 'Method', 'User_Phished', 'Business', 'Admin_Notified', 'Date'))
             for item in emailquery:
                 writer.writerow((item[7], item[10], item[1], item[4], item[6], item[3]))
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
-    businessdir = './reports/businesses/'+session['business']
-    if not os.path.exists(businessdir):
-        os.makedirs(businessdir)
-    #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
-    newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
-    export(newreport)
+
+    if request.method == "POST":
+        if request.form.get('report') != "Click dropdown to download a report"
+            businessdir = './reports/businesses/'+session['business']
+            if not os.path.exists(businessdir):
+                os.makedirs(businessdir)
+            #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
+            newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
+            export(newreport)
+            return send_file(newreport, attachment_filename='phishingreport.csv')
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
