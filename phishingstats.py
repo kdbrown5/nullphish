@@ -10,6 +10,7 @@ from pysqlcipher3 import dbapi2 as sqlite
 import csv
 import os.path
 from pathlib import Path
+from datetime import datetime
 
 phishingstats = Blueprint('phishingstats', __name__, url_prefix='/phishingstats', template_folder='templates')
 
@@ -59,7 +60,8 @@ def phishingstatsload():
                 os.makedirs(businessdir)
             newreport = 'reports/businesses/'+session['business']+'/emailreport.csv'
             exportemail(newreport)
-            return send_file(newreport, as_attachment=True, attachment_filename='emailreport.csv')
+            datestamp = datetime.now().strftime('%m-%d-%Y_%I-%M%p')
+            return send_file(newreport, as_attachment=True, attachment_filename='emailreport-'+datestamp+'.csv')
 
         if request.form.get('report') == "SMS Report":
             businessdir = './reports/businesses/'+session['business']
@@ -67,6 +69,7 @@ def phishingstatsload():
                 os.makedirs(businessdir)
             newreport = 'reports/businesses/'+session['business']+'/smsreport.csv'
             exportsms(newreport)
-            return send_file(newreport, as_attachment=True, attachment_filename='smsreport.csv')
+            datestamp = datetime.now().strftime('%m-%d-%Y_%I-%M%p')
+            return send_file(newreport, as_attachment=True, attachment_filename='smsreport-'+datestamp+'.csv')
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
