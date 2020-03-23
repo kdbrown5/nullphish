@@ -41,7 +41,7 @@ def phishingstatsload():
             writer = csv.writer(f)
             writer.writerow(('Department', 'Method', 'User Phished', 'Business', 'Admin_Notified', 'Date'))
             for item in emailquery:
-                writer.writerow(item[7], item[10], item[1], item[4], item[6], item[3], )
+                writer.writerow((item[7], item[10], item[1], item[4], item[6], item[3]))
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
     businessdir = './reports/businesses/'+session['business']
