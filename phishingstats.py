@@ -7,7 +7,7 @@ from lumberjack import log
 from pysqlcipher3 import dbapi2 as sqlite
 from io import StringIO
 from werkzeug.wrappers import Response
-
+import csv
 
 phishingstats = Blueprint('phishingstats', __name__, url_prefix='/phishingstats', template_folder='templates')
 
