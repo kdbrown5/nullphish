@@ -36,7 +36,7 @@ def phishingstatsload():
         con.close()
         return emailquery, smsquery
         
-    def export():
+    def export(newreport):
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(('Department', 'Method', 'User Phished', 'Business', 'Admin Notified', 'Date'))
