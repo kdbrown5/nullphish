@@ -259,6 +259,24 @@ nav a .viewing{
   font-weight: bold;
 }
 
+.nullselect{
+  background-color: #E0E0E0;
+  border: 1px solid #E0E0E0;
+  color: #0D1126;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: x-large;
+  width: 100%;
+  margin: auto;
+  border-radius: 5px;
+  font-family: opensans;
+}
+.nullselect:active{
+  border-color: #ECA400;
+}
+
 .nulltxt{
   background-color: #E0E0E0;
   border: 1px solid #E0E0E0;
@@ -271,6 +289,7 @@ nav a .viewing{
   width: 100%;
   margin: auto;
   border-radius: 5px;
+  font-family: opensans;
 }
 .nulltxt:active{
   border-color: #ECA400;

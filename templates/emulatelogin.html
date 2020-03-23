@@ -60,8 +60,8 @@
     <nav>
       <table>
         <tr>
-          <td><a href="https://app.nullphish.com/register">Sign Up</a></li>
-          <td><a href="https://nullphish.com" class="active">NullPhish &#169;</a></td>
+          <td><a href="https://app.nullphish.com/register">Sign Up</a></td>
+          <td><a href="https://app.nullphish.com">NullPhish &#169;</a></td>
           <td><a href="https://app.nullphish.com/login">Log In</a></td>
         </tr>
       </table>
@@ -73,18 +73,18 @@
         <div>
           <form method = "POST">
             <label for="exampleFormControlSelect1"></label>
-            <select name='emulaterequest' class="form-control" id="exampleFormControlSelect1" id='emulaterequest'>
+            <select name='emulaterequest' class="nullselect" id='emulaterequest' style="width: 100%;">
               <option>Users</option>
               {% for row in userlist %}
               <option>{{ row }}</option>
               {% endfor %}     
             </select>
             <br>
-            <button class="nullbtn" type="submit">Emulate User</button>
+            <button class="nullbtn" type="submit" style="width: 100%;">Emulate User</button>
           </form>
         </div>
         <div>
-          <button class="nullbtn" onclick="window.location.href = '/';">Return to Admin Controls</button>
+          <button class="nullbtn" onclick="window.location.href = '/';" style="width: 100%;">Return to Admin Controls</button>
         </div>
       </div>
     </div>
