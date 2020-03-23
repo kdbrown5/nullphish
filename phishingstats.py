@@ -42,6 +42,7 @@ def phishingstatsload():
             yield data.getvalue()
             data.seek(0)
             data.truncate(0)# write each log item
+            print(emailquery)
             for item in emailquery:
                 w.writerow((
                     item[7],
@@ -61,10 +62,7 @@ def phishingstatsload():
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == 'POST':
-        print(request.form.get('report'))
-        if request.form.get('report') == "SMS Report":
-            download_report()
-        if request.form.get('report') == "E-MAIL Report":
+        if request.form.get('report') != None:
             download_report()
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
