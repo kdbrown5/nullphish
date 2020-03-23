@@ -36,12 +36,19 @@ def phishingstatsload():
         con.close()
         return emailquery, smsquery
         
-    def export(newreport):
+    def exportemail(newreport):
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(('Department', 'Method', 'User_Phished', 'Business', 'Admin_Notified', 'Date'))
             for item in emailquery:
                 writer.writerow((item[7], item[10], item[1], item[4], item[6], item[3]))
+
+    def exportsms(newreport):
+        with open(newreport, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(('Department', 'Method', 'User_Phished', 'Phone_Number', 'Business', 'Admin_Notified', 'Date'))
+            for item in smsquery:
+                writer.writerow((item[7], item[10], item[1], item[12], item[4], item[6], item[3]))
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
@@ -51,17 +58,17 @@ def phishingstatsload():
             if not os.path.exists(businessdir):
                 os.makedirs(businessdir)
             #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
-            newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
-            export(newreport)
-            return send_file(newreport, as_attachment=True, attachment_filename='phishingreport.csv')
+            newreport = 'reports/businesses/'+session['business']+'/emailreport.csv'
+            exportemail(newreport)
+            return send_file(newreport, as_attachment=True, attachment_filename='emailreport.csv')
 
         if request.form.get('report') == "SMS" or "SMS Report":
             businessdir = './reports/businesses/'+session['business']
             if not os.path.exists(businessdir):
                 os.makedirs(businessdir)
             #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
-            newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
-            export(newreport)
-            return send_file(newreport, as_attachment=True, attachment_filename='phishingreport.csv')
-            
+            newreport = 'reports/businesses/'+session['business']+'/smsreport.csv'
+            exportsms(newreport)
+            return send_file(newreport, as_attachment=True, attachment_filename='smsreport.csv')
+
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
