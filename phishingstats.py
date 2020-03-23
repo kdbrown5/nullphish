@@ -69,7 +69,7 @@ def phishingstatsload():
                 item[1],
                 item[4],
                 item[6],
-                item[3].isoformat()  # format datetime as string
+                item[3]  # format datetime as string
             ))
         response = make_response(si.getvalue())
         response.headers['Content-Disposition'] = 'attachment; filename=report.csv'
