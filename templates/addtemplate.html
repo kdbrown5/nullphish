@@ -90,9 +90,9 @@ body {
                       </div>
                       
                       <!-- Header -->
-                      <header class="w3-container header-site w3-center" style="padding:128px 16px">
-                        <h1 style="color: white" class="w3-margin w3-jumbo"><b>Add E-mail Phishing templates</b></h1>
-                      
+                      <header class="w3-container header-site w3-center" style="padding:128px 16px"><center>
+                        <h1 style="color: white" class=""><b>Add E-mail Phishing templates</b></h1>
+                      </center></header>
                         <br>
 
 <center>
@@ -140,9 +140,12 @@ body {
 
 {% endif %}
 
-  <h3 style="color: white">
-    Add New Template:<br>Links will be scrubbed and replaced with an API token for reporting.<br>Please ensure text and images are as you would like them to appear<br>If the text 'firstname', or 'lastname' is used in the template, <br>this text will be replaced with the recipient's name.
+
+
 </h3>
+<h1 style="color: white">
+Add New Template:
+</h1>
     <form method="post">
       <textarea id="summernote" name="editordata"></textarea>
       <input name='templatename' type="text" class="form-control" placeholder="Template Name:" required></input>
@@ -154,9 +157,19 @@ body {
         $('#summernote').summernote();
     });
   </script>
-</body>
-</html>
-<div class="col-md" style="center">
+
+
+  <h4 style="color: white">
+   <br>Links will be scrubbed and replaced with an API token for reporting.
+    <br>Please ensure text and images are as you would like them to appear.
+    <br>If any of following keywords are used in the template,
+    <br>they will be replaced with information related to the recipient.
+    <br>firstname
+    <br>lastname
+    <br>receiveremail
+    <br>datestamp<br>
+    </h4>
+  </div>
 <center>
   <hr>
 
@@ -167,10 +180,6 @@ body {
     <br><br>
 
   </body>
-<br>
-</h2>
-</div>
-</article>
-</h2>
+  </html>
 </center>
 
