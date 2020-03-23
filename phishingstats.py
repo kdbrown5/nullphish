@@ -59,7 +59,6 @@ def phishingstatsload():
                 os.makedirs(businessdir)
             newreport = 'reports/businesses/'+session['business']+'/emailreport.csv'
             exportemail(newreport)
-            print(newreport)
             return send_file(newreport, as_attachment=True, attachment_filename='emailreport.csv')
 
         if request.form.get('report') == "SMS Report":
@@ -68,7 +67,6 @@ def phishingstatsload():
                 os.makedirs(businessdir)
             newreport = 'reports/businesses/'+session['business']+'/smsreport.csv'
             exportsms(newreport)
-            print(newreport)
             return send_file(newreport, as_attachment=True, attachment_filename='smsreport.csv')
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
