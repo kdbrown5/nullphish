@@ -39,9 +39,9 @@ def phishingstatsload():
     def exportemail(newreport):
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(('Department', 'Method', 'User_Phished', 'Business', 'Admin_Notified', 'Date'))
+            writer.writerow(('Department', 'Method', 'User_Phished', 'Template_Used' 'Business', 'Admin_Notified', 'Date'))
             for item in emailquery:
-                writer.writerow((item[7], item[10], item[1], item[4], item[6], item[3]))
+                writer.writerow((item[7], item[10], item[1], item[2], item[4], item[6], item[3]))
 
     def exportsms(newreport):
         with open(newreport, 'w', newline='') as f:
