@@ -17,7 +17,7 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
-    message["From"] = sender_email
+    message["From"] = 'Do Not Reply'
     message["To"] = receiver_email
 
     # Create the plain-text and HTML version of your message
