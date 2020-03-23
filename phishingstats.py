@@ -47,7 +47,8 @@ def phishingstatsload():
     if not os.path.exists(businessdir):
         os.makedirs(businessdir)
     #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
-    newreport = './reports/businesses/'+session['business']+'/phishingreport.csv'
+    newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
     export(newreport)
+    export('testreport.csv')
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
