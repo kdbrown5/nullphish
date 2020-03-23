@@ -53,6 +53,7 @@ def phishingstatsload():
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == "POST":
+        print(request.form.get('report'))
         if request.form.get('report') == "E-Mail Report" or "E-MAIL":
             businessdir = './reports/businesses/'+session['business']
             if not os.path.exists(businessdir):
