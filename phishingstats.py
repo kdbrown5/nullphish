@@ -59,7 +59,24 @@ def phishingstatsload():
         response.headers.set("Content-Disposition", "attachment", filename="report.csv")
         return response
 
+    def export():
+        si = StringIO()
+        cw = csv.writer(si)
+        for item in emailquery:
+            cw.writerow((
+                item[7],
+                item[10],
+                item[1],
+                item[4],
+                item[6],
+                item[3].isoformat()  # format datetime as string
+            ))
+        response = make_response(si.getvalue())
+        response.headers['Content-Disposition'] = 'attachment; filename=report.csv'
+        response.headers["Content-type"] = "text/csv"
+        return response
+
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
-    download_report()
+    export()
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
