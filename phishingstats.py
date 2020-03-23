@@ -46,7 +46,7 @@ def phishingstatsload():
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == "POST":
-        if request.form.get('report') != "Click dropdown to download a report"
+        if request.form.get('report') != "Click dropdown to download a report":
             businessdir = './reports/businesses/'+session['business']
             if not os.path.exists(businessdir):
                 os.makedirs(businessdir)
