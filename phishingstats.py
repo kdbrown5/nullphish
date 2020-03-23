@@ -46,13 +46,22 @@ def phishingstatsload():
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == "POST":
-        if request.form.get('report') != "Click dropdown to download a report":
+        if request.form.get('report') == "E-Mail Report" or "E-MAIL":
             businessdir = './reports/businesses/'+session['business']
             if not os.path.exists(businessdir):
                 os.makedirs(businessdir)
             #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
             newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
             export(newreport)
-            return send_file(newreport, attachment_filename='phishingreport.csv')
+            return send_file(newreport, as_attachment=True, attachment_filename='phishingreport.csv')
 
+        if request.form.get('report') == "SMS" or "SMS Report":
+            businessdir = './reports/businesses/'+session['business']
+            if not os.path.exists(businessdir):
+                os.makedirs(businessdir)
+            #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
+            newreport = 'reports/businesses/'+session['business']+'/phishingreport.csv'
+            export(newreport)
+            return send_file(newreport, as_attachment=True, attachment_filename='phishingreport.csv')
+            
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
