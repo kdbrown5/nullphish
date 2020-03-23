@@ -37,18 +37,17 @@ def phishingstatsload():
         return emailquery, smsquery
         
     def export():
-        with open('output.csv', 'w', newline='') as f:
+        with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerows(emailquery)    
-
-
+            writer.writerow(('Department', 'Method', 'User Phished', 'Business', 'Admin Notified', 'Date'))
+            writer.writerows(emailquery)
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
     businessdir = './reports/businesses/'+session['business']
     if not os.path.exists(businessdir):
         os.makedirs(businessdir)
     #Path("./reports/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
-    #newreport = './reports/businesses/'+session['business']+'/phishingreport.csv'
-    export()
+    newreport = './reports/businesses/'+session['business']+'/phishingreport.csv'
+    export(newreport)
 
     return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
