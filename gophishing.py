@@ -49,7 +49,7 @@ def gophish():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             templatelist = []
-            for row in cur.execute('select name from templates where business = (?) or business = "nullphish";', (business,)):
+            for row in cur.execute('select name from templates where business = (?) or shared = 1;', (business,)):
                 templatelist.append(row[:][0])
             con.close
         return templatelist
