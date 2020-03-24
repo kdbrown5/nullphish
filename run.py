@@ -292,13 +292,6 @@ def educationintroload():
         return redirect("/")
 
 #### template iframe rendering for gophishing template preview
-@app.route('/templates/amazon.html', subdomain="app", methods=['GET', 'POST']) 
-def amazontemplate():
-    if session.get('logged_in'):
-        return render_template('amazon.html')
-    else:
-        return redirect('/')
-
 @app.route('/templates/prototype2.html', subdomain="app", methods=['GET', 'POST']) 
 def prototype2template():
     if session.get('logged_in'):
@@ -306,12 +299,6 @@ def prototype2template():
     else:
         return redirect('/')
 
-@app.route('/templates/starbucks.html', subdomain="app", methods=['GET', 'POST']) 
-def starbuckstemplate():
-    if session.get('logged_in'):
-        return render_template('starbucks.html')
-    else:
-        return redirect('/')
 ######################## end template render
 
 if __name__ == '__main__':
