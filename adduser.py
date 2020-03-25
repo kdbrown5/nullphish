@@ -116,24 +116,21 @@ def addnewuser():
                         firstname = rfname
                         regsend(emailrecip, link, firstname)
                         flash('Invitation Email sent to: '+emailrecip+'!', 'category2')
-                        return render_template('adduser.html', lookup=usernamelookup)
+                        return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department))
                     else:
                         flash('Please select role', 'category2')
-                        return render_template('adduser.html', lookup=usernamelookup)
+                        return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department))
                 else:
                     flash('Please enter email address', 'category2')
-                    return render_template('adduser.html', lookup=usernamelookup)
+                    return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department))
             else:
                 flash('Please enter last name', 'category2')
-                return render_template('adduser.html', lookup=usernamelookup)
+                return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department))
         else:
             flash('Please enter first name', 'category2')
-            return render_template('adduser.html', lookup=usernamelookup)
+            return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department))
 
     usernamelookup, firstname, lastname, department =  reguserlookup()
-    print(firstname)
-    print(lastname)
-    print(department)
 
     if request.method == "POST":
         if 'emailaddr' in request.form:
@@ -154,7 +151,7 @@ def addnewuser():
                     registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
                 else:
                     flash('this is not a defined role', 'category2')
-                    return render_template("adduser.html", lookup=usernamelookup)
+                    return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department))
             
         if 'password' in request.form:
             if len(str(request.form['password'])) > 8:
@@ -172,9 +169,9 @@ def addnewuser():
                         con.commit()
                         gc.collect()
                         flash('Password Changed!', 'category2')       
-                        return render_template("adduser.html", lookup=usernamelookup)
+                        return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department))
             else:
                 flash('Password must be 8 characters or more.', 'category2')
-                return render_template("adduser.html", lookup=usernamelookup)
+                return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department))
 
-    return render_template("adduser.html", lookup=usernamelookup)
+    return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department))

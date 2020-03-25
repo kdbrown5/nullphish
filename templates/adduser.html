@@ -109,8 +109,8 @@ body {
         <label for="exampleFormControlSelect1"></label>
         <select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
             <option>Users</option>
-                {% for row in lookup %}
-                    <option>{{ row }}</option>
+                {% for usernamelookup,firstname,lastname,department in lookup %}
+                    <option>{{ usernamelookup }} | { {firstname }} | {{ lastname }} | {{ department }} </option>
                 {% endfor %}     
         </select>
         </div>
