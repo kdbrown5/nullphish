@@ -26,9 +26,14 @@ def myprofile():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('select password from users where username = (?);', (session['username'],))
-            passwordstatus = cur.fetchone()
-            return passwordstatus
+            try:
+                cur.execute('select password from users where username = (?);', (session['username'],))
+                passwordstatus = cur.fetchone()
+                passwordstatus = 1
+                return passwordstatus
+            except:
+                passwordstatus = None
+                return passwordstatus
 
     passwordstatus = checkpassword()
 
