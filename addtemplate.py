@@ -41,7 +41,8 @@ def addnewtemplate():
     if request.method == "POST":
         print(request.form.get('templateview'))
         if str(request.form.get('templateview')) != 'None':
-            print(templatelist)  
+            searchtemplates = templatelookup()
+            print(searchtemplates)
             print(request.form.get('templateview'))
             templateview = request.form.get('templateview')
             if templateview == 'prototype2':
@@ -97,6 +98,7 @@ def addnewtemplate():
                     os.remove('./templates/businesses/'+session['business']+'/'+selecttemplate+'.html')
                     flash('Deleted!', 'category2')
 
-    print(templatelist)    
+    searchtemplates = templatelookup()
+    print(searchtemplates)    
 
     return render_template("addtemplate.html", searchtemplates=searchtemplates)
