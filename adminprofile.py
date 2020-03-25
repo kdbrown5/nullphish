@@ -50,6 +50,6 @@ def loadadminprofile():
                         return render_template("adminprofile.html", username=session['username'])
             else:
                 flash('Password must be 8 characters or more.', 'category2')
-                return render_template("adminprofile.html", username=session['username'])
+                return render_template("adminprofile.html", username=session['username'], business=session['business'], department=session['department'])
 
-    return render_template("adminprofile.html", username=session['username'])
+    return render_template("adminprofile.html", username=session['username'], business=session['business'], department=session['department'])
