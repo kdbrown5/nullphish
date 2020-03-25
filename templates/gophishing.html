@@ -57,6 +57,24 @@ body {
 .isolate * {
   all: unset;
 }
+.center {
+    text-align: center;
+    vertical-align: middle;
+}
+input.checkbox {
+    width : 20px;
+    height : 20px;
+}
+td, th {
+    padding: 5px;   
+}
+tr {
+    height: 25px;   
+}
+td {
+  text-align: center; /* center checkbox horizontally */
+  vertical-align: middle; /* center checkbox vertically */
+}
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> 
 </head>
@@ -98,6 +116,7 @@ body {
             <td>Email Address</td>
             <td>Template</td>
             <td>Mail Server</td>
+            <td>Shorten link</td>
             <td>Phish!</td>
 		</tr>
     {% for item in businessdata %}
@@ -107,7 +126,6 @@ body {
 		<td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
 		<td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
         <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
-        
         <td>        <select name="templates" class="form-control" id="templates">
             <option>Templates</option>
                 {% for row in availtemplates %}
@@ -124,6 +142,10 @@ body {
           </select>
         </td>
         {% endif %}
+        <td>
+          <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
+<label for="shorten"></label>
+        </td>
     </td>
 
         <td><button type="submit" class="btn btn-primary">Phish!</button></form></td>
@@ -153,11 +175,11 @@ $(function() {
 </script>
 </div>
 {% if templateview %}
-<iframe height="1000px" width="850px" src="{{ templateview }}">
+<iframe height="1000px" width="1200px" src="{{ templateview }}">
 </iframe>
 {% endif %}
 {% if templatecustom %}
-<iframe height="1000px" width="850px" src="https://app.nullphish.com/gophishing/{{ templatecustom }}">
+<iframe height="1000px" width="1200px" src="https://app.nullphish.com/gophishing/{{ templatecustom }}">
 </iframe>
 {% endif %}
 
