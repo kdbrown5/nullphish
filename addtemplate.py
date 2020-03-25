@@ -34,7 +34,8 @@ def addnewtemplate():
                 templateresults.append(row[:][0])
         con.close()
         return templateresults
-
+        
+    searchtemplates = templatelookup()
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 
     if request.method == "POST":
@@ -96,7 +97,5 @@ def addnewtemplate():
 
     else:
         pass
-
-    searchtemplates = templatelookup()
 
     return render_template("addtemplate.html", searchtemplates=searchtemplates)

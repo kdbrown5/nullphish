@@ -144,36 +144,33 @@ Add New Template:
     </h4>
 
 
-    {% if searchtemplates %}
-<form method="post">
-<div class="col-md" style="form">
-  <hr>
-  <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
-  <div class="ex2">
-    <div class="form-group">
-        <label for="exampleFormControlSelect1"></label>
-        <select name= 'selecttemplate' class="form-control" id="selecttemplate">
+    <div class="ex2">
+      <form method="POST">
+          <td>        <select name= "templateview" class="form-control" id="templateview">
             <option>Templates</option>
-                {% for row in searchtemplates %}
-                    <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
-                {% endfor %}     
+                {% for row in availtemplates %}
+                    <option>{{ row }}</option>
+                {% endfor %}
         </select>
-        <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
-        </div>
-      </div>
-      <hr>
-</div>
-</form>
-{% endif %}
+    </td>
+    </form>
+    <script>
+    $(function() {
+      $('#templateview').change(function() {
+          this.form.submit();
+      });
+    });
+    </script>
+    </div>
+    {% if templateview %}
+    <iframe height="1000px" width="1200px" src="{{ templateview }}">
+    </iframe>
+    {% endif %}
+    {% if templatecustom %}
+    <iframe height="1000px" width="1200px" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
+    </iframe>
+    {% endif %}
 
-{% if templateview %}
-<iframe height="1000px" width="1200px" src="{{ templateview }}">
-</iframe>
-{% endif %}
-{% if templatecustom %}
-<iframe height="1000px" width="1200px" src="https://app.nullphish.com/gophishing/{{ templatecustom }}">
-</iframe>
-{% endif %}
   </div>
 <center>
   <hr>
