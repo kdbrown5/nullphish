@@ -53,17 +53,17 @@
       <div><h1>Login to <span class="nullmention">NullPhish</span></h1></div>
       <div>
         <form class="" action="" method="post">
-          <input type="text" class="nulltxt" placeholder="Email Address" name="username" value="{{
+          <input type="text" placeholder="Email Address" name="username" value="{{
             request.form.username }}" style="margin: 10px;">
-          <input type="password" class="nulltxt" placeholder="Password" name="password" value="{{
+          <input type="password" placeholder="Password" name="password" value="{{
             request.form.password }}" style="margin: 10px;">
             <br>
-          <input class="nullbtn" type="submit" value="Login" style="margin: 10px;">
+          <input type="submit" value="Login" style="margin: 10px;">
         </form>
       </div>
       <div>
         {% if error %}
-        <p class="input-element error" style="color: white"><strong>Error:</strong> {{ error }}</p>
+        <p><strong>Error:</strong> {{ error }}</p>
         {% endif %}
         <p>Don't have an account? <a href="/register"><strong>Register</strong></a></p> 
       </div>

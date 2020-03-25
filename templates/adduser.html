@@ -1,156 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
-		<title>Profile</title> 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
-<style>
-	div.ex2 {
-  max-width:500px;
-  margin: auto;
-  opacity: 1
-	}
-  .form-control {
-    height: auto;
-    min-height: 36px;
-    opacity: 1
-}
-
-.header-site {
-  content: "Profile";
-  background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url(https://gokdb.com/public/header-library.jpg);
-  opacity: 1
-}
-h2.heade {
-  text-align: center;
-}
-.center-div
-{
-     margin: 0 auto;
-     width: 100px; 
-}
-form {
-  text-align: center;
-  opacity: 1
-}
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-.bgg {font-size:75px}
-body {
-  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url(https://gokdb.com/public/header-library.jpg);
-  opacity: 1
-}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>NullPhish: Login to Your Account</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
     </style>
-<body>
-<div class="w3-top">
-		<div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-		  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-          <a href="/main" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
-          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
-          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-		  <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
-        </div></div>
-        
-        
-
-                <div class="w3-top heade">
-                        <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-                          <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-                          <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-                          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
-                          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
-                          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-                          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
-                        </div>
-                      
-                        <!-- Navbar on small screens -->
-                        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-                          <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-                        </div>
-                      </div>
-                      
-                      <!-- Header -->
-                      <header class="w3-container header-site w3-center" style="padding:128px 16px">
-                        <h1 style="color: white" class="w3-margin w3-jumbo"><b>Add Users</b></h1>
-                      
-                        <br>
-
-<center>
-
-    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <nav>
+      <table>
+        <tr>
+          <div class="vertline"></div>
+          <td><a href="https://app.nullphish.com">NullPhish &#169;</a></td>
+          <div class="vertline"></div>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <div><h1>Edit Users</h1></div>
+      <div>
+        <h2>View Users</h2>
+        {% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
-          <ul class="flashes w3-jumbo" style="color: white">
+        <ul>
           {% for message in messages %}
-        {{ message }}
+          {{ message }}
           {% endfor %}
-          </ul>
+        </ul>
         {% endif %}
-        {% endwith %}</h1>
-
-    </center>
-    <br>
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-<center><h3  style="color: white">
-
-
-<div class="col-md" style="form">
-  <hr>
-  <h2 style="color: white" class="w3-xlarge">View Users</h2>
-  <div class="ex2">
-    <div class="form-group">
-        <label for="exampleFormControlSelect1"></label>
-        <select name= 'searchstudent' class="form-control" id="exampleFormControlSelect1">
-            <option>Users</option>
-                {% for usernamelookup,firstname,lastname,department,role in lookup %}
-                    <option>{{ usernamelookup }} | {{ firstname }} | {{ lastname }} | {{ department }} | {{ role }}</option>
-                {% endfor %}     
-        </select>
-        </div>
+        {% endwith %}
       </div>
-      <hr>
-</div>
-<div class="col-md" style="center">
-<center>
-  <hr>
-<h2 style="color: white">
-  Add Member:
-
-  <form method="POST">
-    <p style="color: white" class="w3-xlarge"></p>
-    <select name= 'addrole' class="form-control" id="addrole" required>
-      <option>Select Role</option>
-              <option>user</option>
-              <option>admin</option>
-  </select>
-      <input name='firstname' type="text" class="form-control" placeholder="First Name" required></input>
-
-          <input name='lastname' type="text" class="form-control" placeholder="Last Name" required></input>
-
-          <input name='department' placeholder="Department (Optional)" type="text" class="form-control"></input>
-
-          <input name='emailaddr' placeholder="Email Address" type="text" class="form-control" required></input>
- 
-      <button name="adduser" class="btn btn-primary btn-block">Add User</button>
-
-    </form>
-  </div>
-</div>
-  </center>
-    <br><br>
-
+      <div>
+        <select name='searchstudent' class="form-control" id="exampleFormControlSelect1">
+          <option>Users</option>
+          {% for usernamelookup,firstname,lastname,department,role in lookup %}
+          <option>{{ usernamelookup }} | {{ firstname }} | {{ lastname }} | {{ department }} | {{ role }}</option>
+          {% endfor %}     
+        </select>
+      </div>
+      <div>
+        <h2>Add User</h2>
+        <form method="POST">
+          <select name= 'addrole' class="form-control" id="addrole" required>
+            <option>Select Role</option>
+            <option>user</option>
+            <option>admin</option>
+          </select>
+          <input name='firstname' type="text" placeholder="First Name" required></input>
+          <input name='lastname' type="text" placeholder="Last Name" required></input>
+          <input name='department' placeholder="Department (Optional)" type="text"></input>
+          <input name='emailaddr' placeholder="Email Address" type="text" required></input>
+          <button name="adduser">Add User</button>
+        </form>
+      </div>
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
-<br>
-</h2>
-</div>
-</article>
-</h2>
-</center>
-
+</html>
