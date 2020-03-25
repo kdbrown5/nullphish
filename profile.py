@@ -49,14 +49,14 @@ def myprofile():
                         con.commit()
                         gc.collect()
                         flash('Password Changed!', 'category2')       
-                        return render_template("userprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], fname=session['fname'], lname=session['lname'])
+                        return render_template("userprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
             else:
                 flash('Password must be 8 characters or more.', 'category2')
-                return render_template("userprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], fname=session['fname'], lname=session['lname'])
+                return render_template("userprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
 
     if passwordstatus == None:
         flash('Please create a password for this account', 'category2')
         flash('(password requirements: more than 10 characters)', 'category1')
-        return render_template('userprofile.html', username=session['username'], business=session['business'], department=session['department'], role=session['role'], fname=session['fname'], lname=session['lname'])
+        return render_template('userprofile.html', username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
 
-    return render_template("userprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], fname=session['fname'], lname=session['lname'])
+    return render_template("userprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
