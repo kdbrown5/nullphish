@@ -77,10 +77,10 @@ def loginpage():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute("SELECT firstname, lastname FROM users where username = (?);", (username,))
-            loadname = cur.fetchall()
-            firstname = loadname[0]
-            lastname = loadname[1]
+            cur.execute("SELECT firstname FROM users where username = (?);", (username,))
+            firstname = cur.fetchone()
+            cur.execute("SELECT lastname FROM users where username = (?);", (username,))
+            lastname = cur.fetchone()
         con.close()
         return firstname, lastname
 
