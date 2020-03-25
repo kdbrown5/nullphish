@@ -78,10 +78,14 @@ def loginpage():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute("SELECT firstname FROM users where username = (?);", (username,))
-            firstname = cur.fetchone()[0]
+            firstname = cur.fetchone()
             cur.execute("SELECT lastname FROM users where username = (?);", (username,))
-            lastname = cur.fetchone()[0]
+            lastname = cur.fetchone()
         con.close()
+        firstname = firstname[0]
+        lastname = lastname[0]
+        print(firstname)
+        print(lastname)
         return firstname, lastname
 
     def setdept(username):
