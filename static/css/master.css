@@ -214,6 +214,10 @@ nav a .viewing{
   grid-row-start: 1;
   grid-row-end: 2;
 }
+.contentcontainer.scrollable{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
 
 .fader{
   opacity: 0;

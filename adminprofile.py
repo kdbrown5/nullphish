@@ -16,7 +16,6 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pysqlcipher3 import dbapi2 as sqlite
 
-
 db = SQLAlchemy()
 
 loadkey=open('../topseekrit', 'r')

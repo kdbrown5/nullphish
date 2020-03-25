@@ -1,140 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-		<title>Mail Setup</title> 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-
-<style>
-	div.ex2 {
-  max-width:500px;
-  margin: auto;
-  opacity: 1
-	}
-  .form-control {
-    height: auto;
-    min-height: 36px;
-    opacity: 1
-}
-
-.header-site {
-  content: "Profile";
-  background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url(https://gokdb.com/public/header-library.jpg);
-  opacity: 1
-}
-h2.heade {
-  text-align: center;
-}
-.center-div
-{
-     margin: 0 auto;
-     width: 100px; 
-}
-form {
-  text-align: center;
-  opacity: 1
-}
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-.bgg {font-size:75px}
-body {
-  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)),url(https://gokdb.com/public/header-library.jpg);
-  opacity: 1
-}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>NullPhish: Mail Settings</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+      }
     </style>
-<body>
-<div class="w3-top">
-		<div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-		  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-          <a href="/main" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
-          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
-          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-		  <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
-        </div></div>
-        
-        
-
-                <div class="w3-top heade">
-                        <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-                          <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-                          <a href="/" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-                          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-white">Profile</a>
-                          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
-                          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-                          <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
-                        </div>
-                      
-                        <!-- Navbar on small screens -->
-                        <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-                          <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-                        </div>
-                      </div>
-                      
-                      <!-- Header -->
-                      <header class="w3-container header-site w3-center" style="padding:128px 16px">
-                        <h1 style="color: white" class="w3-margin w3-jumbo"><b>Mail Setup</b></h1>
-                      
-                        <br>
-
-<center>
-
-    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
-        {% if messages %}
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <nav>
+      <table>
+        <tr>
+          <td><a href="/main">Modules</a></td>
+            <td><a href="/stats">Results</a></td>
+            <td><a href="/profile">Profile</a></td>
+            <td><a href="/logout">Log Out</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <div><h1>Mail Settings</h1></div>
+      <div>
+        <p>
+          {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+          {% if messages %}
           <ul class="flashes w3-jumbo" style="color: white">
-          {% for message in messages %}
-        {{ message }}
-          {% endfor %}
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
           </ul>
+          {% endif %}
+          {% endwith %}
+          {% if currentsettings %}
+          {{ currentsettings }}
+          {% endif %}
+        </p>
+      </div>
+      <div>
+        <form method="POST"></form>
+          <input name="mailname" class="nulltxt" style="width: 50%;" placeholder="What would you like to call this mailserver?" type="" required>
+          <input name="mailhost" class="nulltxt" style="width: 50%;" placeholder="Mail Server Hostname:" type="" required>
+          <input name="mailuser" class="nulltxt" style="width: 50%;" placeholder="Mailbox Username:" type="" required>
+          <input name="mailpass" class="nulltxt" style="width: 50%;" placeholder="Mailbox Password:" type="password" required>
+          <select name='mailtype' class="nullselect" style="width: 50%;" id="mailtype" required>
+            <option class=>Select Security Type:</option>
+            <option value="none">None</option>
+            <option value="ssl">SSL</option>
+            <option value="tls">TLS</option>
+          </select>
+          <input name="mailport" class="nulltxt" style="width: 50%;" placeholder="Port:" type="" required>
+          <button type="submit" class="nullbtn" style="width: 50%;">Submit</button>
+        </form>
+      </div>
+      <div>
+        {% if currentsetup %}
+        <li>{{ currentsetup }}</li>
         {% endif %}
-        {% endwith %}</h1>
-
-        {% if currentsettings %}
-        {{ currentsettings }}
-        {% endif %}
-
-    </center>
-    <br>
-    
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-<center><h3  style="color: white">
-  <h1 style="color: white">
-    {% if currentsetup %}
-      <li>{{ currentsetup }}</li>
-    {% endif %}
-  <hr>
-
-<form method="POST">
-<div class="container" style="max-width: 600px;">
-
-<div class="form-group">
-     <input name="mailname" class="form-control" placeholder="What would you like to call this mailserver?" type="" required>
-      <input name="mailhost" class="form-control" placeholder="Mail Server Hostname:" type="" required>
-      <input name="mailuser" class="form-control" placeholder="Mailbox Username:" type="" required>
-      <input name="mailpass" class="form-control" placeholder="Mailbox Password:" type="password" required>
-      <select name='mailtype' class="form-control" id="mailtype" required>
-        <option>Select Security Type:</option>
-                <option value="none">None</option>
-                <option value="ssl">SSL</option>
-                <option value="tls">TLS</option>
-    </select>
-    <input name="mailport" class="form-control" placeholder="Port:" type="" required>
-      <button type="submit" class="btn btn-primary btn-block"> Submit  </button>
-</form>
-
-</div></div></div>
-
+      </div>
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
-<br>
-</h2>
-</div>
-</article>
-</h2>
-</center>
-
+</html>
