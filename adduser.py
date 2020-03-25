@@ -49,7 +49,7 @@ def addnewuser():
             con.row_factory = sqlite.Row
             reguserquery = []
             for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?);', (session['business'],)):
-                reguserquery.append(row[:])
+                reguserquery.append(row[:][0])
         con.close()
         return reguserquery
 
@@ -138,8 +138,10 @@ def addnewuser():
                 flash('this user already exists', 'category2')
             else:
                 if rrole == 'Admin':
+                    rrole = 'admin'
                     registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
                 if rrole == 'User':
+                    rrole = 'user'
                     registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
                 else:
                     flash('this is not a defined role', 'category2')
