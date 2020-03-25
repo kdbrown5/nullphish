@@ -119,7 +119,7 @@ def gophish():
                 flash('Email sent to: '+receiveremail, 'category2')
             else:
                 link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
-                #customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
+                customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
                 flash('Email sent to: '+receiveremail, 'category2')
             
     if 'exitmodify' in request.form:
