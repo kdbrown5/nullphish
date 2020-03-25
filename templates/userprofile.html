@@ -91,11 +91,11 @@
 
       <hr>
 
-      Name: 
+      Name:&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;{% if lastname %}{{ lastname }}{% endif %}
       
       <br>
       
-      Business:{% if business %}{{ business }}{% endif %}
+      Business:&nbsp;{% if business %}{{ business }}{% endif %}
       
       <br>
       
@@ -103,11 +103,11 @@
       
       <br>
       
-      Role: {% if role %}{{ role }}{% endif %}
+      Role:&nbsp;{% if role %}{{ role }}{% endif %}
       
       <br>
       
-      Email: {% if username %}{{ username }}{% endif %}
+      Email:&nbsp;{% if username %}{{ username }}{% endif %}
       
       <hr>
       <div>
