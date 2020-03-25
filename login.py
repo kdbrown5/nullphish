@@ -72,6 +72,20 @@ def loginpage():
         con.close()
         return loadbusiness
 
+    def setdept(username):
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute("SELECT department FROM users where username = (?);", (username,))
+        con.close()
+        try:
+            loadept = cur.fetchone()
+            loadept = str(loadbusiness[0])
+        except:
+            loadept = 'None'
+        return loadept
+
     error = None
 
     if request.method == 'POST':
@@ -91,6 +105,9 @@ def loginpage():
             session['role'] = role
             business = setbusiness(username)
             session['business'] = business
+            department = setdept(username)
+            session['department'] = department
+
             if session['role'] == 'superadmin':
                 return redirect('/')
                 #return redirect('/emulateuser')
