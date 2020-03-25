@@ -25,15 +25,16 @@ addtemplate = Blueprint('addtemplate', __name__, url_prefix='/addtemplate', temp
 
 def addnewtemplate():
     def templatelookup():
+        business = str(session['business'])
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            templateresults = []
-            for row in cur.execute('select name from templates where business LIKE (?);', (session['business'],)):
-                templateresults.append(row[:][0])
-        con.close()
-        return templateresults
+            templatelist = []
+            for row in cur.execute('select name from templates where business = (?) or shared = 1;', (business,)):
+                templatelist.append(row[:][0])
+            con.close
+        return templatelist
 
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 
@@ -83,10 +84,6 @@ def addnewtemplate():
                 selecttemplate = request.form.get('selecttemplate')
                 if selecttemplate == 'prototype2':
                     flash('No deleting default templates', 'category2')
-                elif selecttemplate == 'amazon':
-                    flash('No deleting default templates', 'category2')
-                elif selecttemplate == 'starbucks':
-                    flash('No deleting default templates', 'category2')
                 else:
                     con = sqlite.connect('db/db1.db')
                     with con:
@@ -96,9 +93,6 @@ def addnewtemplate():
                     con.close()
                     os.remove('./templates/businesses/'+session['business']+'/'+selecttemplate+'.html')
                     flash('Deleted!', 'category2')
-
-    else:
-        pass
 
     searchtemplates = templatelookup()
 
