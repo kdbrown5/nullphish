@@ -129,6 +129,18 @@ def dynamictemplateload(templateview):
     else:
         return redirect('/')
 
+@app.route('/addtemplate/replacelink', subdomain="app", methods=['GET', 'POST']) # main page route
+def addtemplatedonothing():
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            return addnewtemplate()
+        elif session.get('role') == 'admin':
+            return addnewtemplate()
+        else:
+            return redirect('/')
+    else:
+        return redirect("/")
+
 @app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loginemulate():
     if session.get('logged_in') == True:
