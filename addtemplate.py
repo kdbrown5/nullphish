@@ -34,18 +34,20 @@ def addnewtemplate():
                 templateresults.append(row[:][0])
         con.close()
         return templateresults
-        
-    searchtemplates = templatelookup()
+
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
 
     if request.method == "POST":
+        print(request.form.get('templateview'))
         if str(request.form.get('templateview')) != 'None':
             templateview = request.form.get('templateview')
             if templateview == 'prototype2':
                 templateview = '/templates/prototype2.html'
+                searchtemplates = templatelookup()
                 return render_template('addtemplate.html', searchtemplates=searchtemplates, templateview=templateview)
             else:
                 templatecustom = 'businesses+^+'+session['business']+'+^+'+templateview+'.html'
+                searchtemplates = templatelookup()
                 return render_template('addtemplate.html', searchtemplates=searchtemplates, templatecustom=templatecustom)
 
         if request.form.get('editordata') != None:
@@ -97,5 +99,7 @@ def addnewtemplate():
 
     else:
         pass
+
+    searchtemplates = templatelookup()
 
     return render_template("addtemplate.html", searchtemplates=searchtemplates)
