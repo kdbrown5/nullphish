@@ -50,6 +50,7 @@ def emulatelogin():
     
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
+        emulateuserrequest = [emulateuserrequest]
         session['fname'], session['lname'], session['department'] = userlookup(emulateuserrequest)
         session['username'] = emulateuserrequest
         session['role'] = 'user'
