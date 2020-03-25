@@ -21,22 +21,36 @@ def emulatelogin():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select username from users where business = (?);', (session['business'],))
-            reguserquery = cur.fetchall()
+            userquery = []
+            for row in cur.execute('select username from users where business = (?) and role = "user";', (session['business'],)):
+                userquery.append(row[:][0])
         con.close()
-        return reguserquery
+        return userquery
 
-    userlist = reguserlookup()[:]
+    def userlookup(emulateuserrequest):
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('select firstname from users where username = (?);', (emulateuserrequest))
+            emulatefname = cur.fetchone()
+            emulatefname = emulatefname[0]
+            cur.execute('select lastname from users where username = (?);', (emulateuserrequest))
+            emulatelname = cur.fetchone()
+            emulatelname = emulatelname[0]
+            cur.execute('select department from users where username = (?);', (emulateuserrequest))
+            emulatedept = cur.fetchone()
+            emulatedept = emulatedept[0]
+        con.close()
+        return emulatefname, emulatelname, emulatedept
+
+    userlist = reguserlookup()
     
     print(session['business'])
     
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
-        emulateuserrequest = emulateuserrequest.replace('(', '')
-        emulateuserrequest = emulateuserrequest.replace(')', '')
-        emulateuserrequest = emulateuserrequest.replace("'", '')
-        emulateuserrequest = emulateuserrequest.replace(',', '')
-        print(emulateuserrequest)
+        session['fname'], session['lname'], session['department'] = userlookup(emulateuserrequest)
         session['username'] = emulateuserrequest
         session['role'] = 'user'
         session['validated'] = 1
