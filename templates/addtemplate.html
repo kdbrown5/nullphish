@@ -143,7 +143,30 @@ Add New Template:
     <br>datestamp<br>
     </h4>
 
+    {% if searchtemplates %}
+    <form method="post">
+    <div class="col-md" style="form">
+      <hr>
+      <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
+      <div class="ex2">
+        <div class="form-group">
+            <label for="exampleFormControlSelect1"></label>
+            <select name= 'selecttemplate' class="form-control" id="selecttemplate">
+                <option>Templates</option>
+                    {% for row in searchtemplates %}
+                        <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
+                    {% endfor %}     
+            </select>
+            <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
+            </div>
+          </div>
+          <hr>
+    </div>
+    </form>    
+    {% endif %}
 
+    <br><br>
+    View templates
     <div class="ex2">
       <form method="POST">
           <td>        <select name= "templateview" class="form-control" id="templateview">
