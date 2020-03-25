@@ -93,7 +93,7 @@ body {
                       <header class="w3-container header-site w3-center" style="padding:128px 16px"><center>
                         <h1 style="color: white" class=""><b>Add E-mail Phishing templates</b></h1>
                       </center></header>
-                        <br>
+                        
 
 <center>
 
@@ -108,38 +108,11 @@ body {
         {% endwith %}</h1>
 
     </center>
-    <br>
+   
 <div class="container">
   <div class="row">
     <div class="col-md">
 <center>
-
-{% if searchtemplates %}
-<form method="post">
-<div class="col-md" style="form">
-  <hr>
-  <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
-  <div class="ex2">
-    <div class="form-group">
-        <label for="exampleFormControlSelect1"></label>
-        <select name= 'selecttemplate' class="form-control" id="selecttemplate">
-            <option>Templates</option>
-                {% for row in searchtemplates %}
-                    <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
-                {% endfor %}     
-        </select>
-        <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
-        </div>
-      </div>
-      <hr>
-</div>
-</form>
-  
-
-
-
-{% endif %}
-
 
 
 </h3>
@@ -169,6 +142,38 @@ Add New Template:
     <br>receiveremail
     <br>datestamp<br>
     </h4>
+
+
+    {% if searchtemplates %}
+<form method="post">
+<div class="col-md" style="form">
+  <hr>
+  <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
+  <div class="ex2">
+    <div class="form-group">
+        <label for="exampleFormControlSelect1"></label>
+        <select name= 'selecttemplate' class="form-control" id="selecttemplate">
+            <option>Templates</option>
+                {% for row in searchtemplates %}
+                    <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
+                {% endfor %}     
+        </select>
+        <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
+        </div>
+      </div>
+      <hr>
+</div>
+</form>
+{% endif %}
+
+{% if templateview %}
+<iframe height="1000px" width="1200px" src="{{ templateview }}">
+</iframe>
+{% endif %}
+{% if templatecustom %}
+<iframe height="1000px" width="1200px" src="https://app.nullphish.com/gophishing/{{ templatecustom }}">
+</iframe>
+{% endif %}
   </div>
 <center>
   <hr>

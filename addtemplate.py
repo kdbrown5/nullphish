@@ -36,8 +36,17 @@ def addnewtemplate():
         return templateresults
 
     Path("./templates/businesses/"+str(session['business'])).mkdir(parents=True, exist_ok=True)
-#    def templatesubmit():
+
     if request.method == "POST":
+        if str(request.form.get('templateview')) != 'None':
+            templateview = request.form.get('templateview')
+            if templateview == 'prototype2':
+                templateview = '/templates/prototype2.html'
+                return render_template('addtemplate.html', searchtemplates=searchtemplates, templateview=templateview)
+            else:
+                templatecustom = 'businesses+^+'+session['business']+'+^+'+templateview+'.html'
+                return render_template('addtemplate.html', searchtemplates=searchtemplates, templatecustom=templatecustom)
+
         if request.form.get('editordata') != None:
             try:
                 savehtml = request.form.get('editordata')

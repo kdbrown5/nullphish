@@ -117,6 +117,18 @@ def addtemplateload():
     else:
         return redirect('/login') # else redirect to login page
 
+@app.route('/addtemplate/<templateview>', subdomain="app", methods=['GET', 'POST'])# this is for iframed business templates
+def dynamictemplateload(templateview):
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            templateview = templateview.replace('+^+', '/')
+            return render_template(templateview)
+        elif session.get('role') == 'admin':
+            templateview = templateview.replace('+^+', '/')
+            return render_template(templateview)
+    else:
+        return redirect('/')
+
 @app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loginemulate():
     if session.get('logged_in') == True:
