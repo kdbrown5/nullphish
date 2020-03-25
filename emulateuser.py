@@ -46,8 +46,6 @@ def emulatelogin():
 
     userlist = reguserlookup()
     
-    print(session['business'])
-    
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
         emulateuserrequest = [emulateuserrequest]

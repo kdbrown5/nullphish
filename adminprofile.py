@@ -38,7 +38,6 @@ def loadadminprofile():
                     return render_template("adminprofile.html")
                 else:
                     password = argon2.using(rounds=4).hash(request.form.get('password'))
-                    repeat = password = argon2.using(rounds=4).hash(request.form.get('repeat'))
                     con = sqlite.connect('db/db1.db')
                     with con:
                         cur = con.cursor()
