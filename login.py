@@ -72,6 +72,18 @@ def loginpage():
         con.close()
         return loadbusiness
 
+    def setname(username):
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute("SELECT firstname, lastname FROM users where username = (?);", (username,))
+            loadname = cur.fetchall()
+            firstname = loadname[0]
+            lastname = loadname[1]
+        con.close()
+        return firstname, lastname
+
     def setdept(username):
         con = sqlite.connect('db/db1.db')
         with con:
@@ -107,6 +119,8 @@ def loginpage():
             session['business'] = business
             department = setdept(username)
             session['department'] = department
+            session['fname'], session['lname'] = setname(username)
+
 
             if session['role'] == 'superadmin':
                 return redirect('/')
