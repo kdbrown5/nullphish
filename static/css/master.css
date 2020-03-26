@@ -166,7 +166,7 @@ input[type=submit]:hover{
 nav{
   margin: 0;
   z-index: 999;
-  height: 90px;
+  height: 60px;
   width: 100%;
   top: 0px;
   left: 0px;
@@ -233,12 +233,6 @@ nav a:focus{
   outline: none;
   text-decoration: underline;
   text-decoration-color: #E0E0E0;
-}
-nav .vertline{
-  border-left: 1px solid #E0E0E0;
-  height: 50px;
-  margin-top: 2px;
-  opacity: 0.2;
 }
 
 select{
