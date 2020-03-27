@@ -51,7 +51,6 @@
         margin-left: auto;
         margin-right: auto;
       }
-      
     </style>
   </head>
   <body>
@@ -61,15 +60,14 @@
         <tr>
           <td><a href="/main">Modules</a></td>
           <td><a href="/stats">Results</a></td>
-          <td><a href="/main">NullPhish &#169;</a></td>
-          <td><a href="/profile">Profile</a></td>
+          <td><a href="/profile" class="current">Profile</a></td>
           <td><a href="/logout">Log Out</a></td>
         </tr>
       </table>
     </nav>
     <div class="contentcontainer">
       <div><h1><span class="nullmention">NullPhish</span> User Profile</h1></div>
-      <div>
+      <div class="bordered">
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
         <ul class="flashes w3-jumbo" style="color: white">
@@ -89,30 +87,18 @@
         {% endif %}
         {% endwith %}
       </div>
-
-      <hr>
-
-      Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
-      
-      <br>
-      
-      Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}
-      
-      <br>
-      
-      Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}
-      
-      <br>
-      
-      Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
-      
-      <br>
-      
-      Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
-      
-      <hr>
-      <div>
-        <hr>
+      <div class="bordered">
+        Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
+        <br>
+        Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}
+        <br>
+        Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}
+        <br>
+        Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
+        <br>
+        Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
+      </div>
+      <div class="bordered">
         <h2>Password Change:</h2>
         <form method="POST">
           <div class="form-group">
@@ -123,7 +109,6 @@
             <button type="submit" class="nullbtn" style="padding: 5px;"> Choose a new password</button>
           </div>
         </form>
-        <hr>
       </div>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
