@@ -62,6 +62,7 @@ def addnewuser():
         return reguserquery, firstname, lastname, department, role
 
     def importusers():
+        # columns - username , firstname, lastname, mobilephone, department, role 
         businessdir = './reports/businesses/'+session['business']
         if not os.path.exists(businessdir):
             os.makedirs(businessdir)        
@@ -70,16 +71,14 @@ def addnewuser():
             imported = []
             for row in csvreader:
                 imported.append(row)
-                print(": ".join(row))
-            print('imported')
-            print(imported)
-            print(imported[0])
             if imported[0][0] == 'Username' or 'username':
                 del imported[0]
             for row in imported:
-                print(row[0])
-                print(row[1])
-                print(row[2])
+                try:
+                    
+                print(row[0]) # username
+                print(row[1]) # firstname
+                print(row[2]) # lastname
 
 
 
