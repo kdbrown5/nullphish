@@ -38,7 +38,7 @@ def emulatelogin():
                 adminquery.append(row[:][0])
             rolequery = []
             for row in cur.execute('select role from users where role = "admin" or business = (?);', (session['business'],)):
-                rolequery.append(row[0])
+                rolequery.append(row)
         con.close()
         return adminquery, rolequery
 
