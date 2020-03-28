@@ -80,6 +80,7 @@ def doresetpass():
         receiver_email = emailrecip
         emailrecip = str(emailrecip)
         firstname = str(firstname)
+        link = str(link)
 
         password = "rtatstfu18as#R654"
         
