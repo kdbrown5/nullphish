@@ -63,7 +63,7 @@ def emulatelogin():
         adminquery = adminuserlookup()
     
     if request.method == 'POST':
-        if request.form.get('emulaterequest') == '--- Admins ---' or if request.form.get('emulaterequest') == '--- Users ---':
+        if request.form.get('emulaterequest') == '--- Admins ---' or request.form.get('emulaterequest') == '--- Users ---':
             flash('Invalid Request. Select a User or Admin to emulate', 'category2')
         else:
             emulateuserrequest = request.form.get('emulaterequest')
