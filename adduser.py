@@ -72,12 +72,10 @@ def addnewuser():
             importedr = []
             for row in csvreader:
                 importedu.append(row[0])
-                importedd.append(row[0])
+                importedd.append(row[1])
                 importedr.append(row[0])
             print('imported')
-            print(importedu)
             print(importedd)
-            print(importedr)
 
 
 
