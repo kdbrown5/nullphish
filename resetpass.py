@@ -140,4 +140,4 @@ def doresetpass():
                 flash('Invitation Email sent to: '+emailrecip+'!', 'category2')
 
 
-    return render_template('resetemailform.html')
+    return render_template('resetpassform.html')
