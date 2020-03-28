@@ -130,6 +130,7 @@ def doresetpass():
     if request.method == 'POST':
         username = request.form.to_dict()['username']
         if '@' in username:
+            username = [username]
             validusername = checkuser(username)
             if validusername != False:
                 newtoken = generate_confirmation_token(username)
