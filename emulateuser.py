@@ -59,13 +59,15 @@ def emulatelogin():
         con.close()
         return emulatefname, emulatelname, emulatedept, emulaterole
 
-    if session['role'] == 'admin':
-        userlist = reguserlookup()
+    if request.method == 'GET':
+        if session['role'] == 'admin':
+            userlist = reguserlookup()
+            return render_template('emulatelogin.html', userlist=userlist)
+        if session['role'] == 'superadmin':
+            userlist = reguserlookup()
+            adminquery = adminuserlookup()
+            return render_template('emulatelogin.html', userlist=userlist, adminquery=adminquery)
 
-    if session['role'] == 'superadmin':
-        userlist = reguserlookup()
-        adminquery = adminuserlookup()
-    
     if request.method == 'POST':
         if request.form.get('emulaterequest') == '--- Admins ---' or request.form.get('emulaterequest') == '--- Users ---':
             flash('Invalid Request. Select a User or Admin to emulate', 'category2')
@@ -78,4 +80,4 @@ def emulatelogin():
             session['validated'] = 1
             return redirect ('/profile')
 
-    return render_template('emulatelogin.html', userlist=userlist, adminquery=adminquery)
+    return render_template('emulatelogin.html')
