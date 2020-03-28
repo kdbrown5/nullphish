@@ -141,7 +141,7 @@ def doresetpass():
                 link = 'https://app.nullphish.com/resetpass?token='+newtoken
                 firstname = lookupfirstname(username)
                 sendreset(firstname, username, link)
-                flash('Invitation Email sent to: '+emailrecip+'!', 'category2')
+                flash('Reset sent!  Check your inbox for reset link', 'category2')
 
 
     return render_template('resetpassform.html')
