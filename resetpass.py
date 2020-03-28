@@ -49,7 +49,7 @@ def doresetpass():
             try:
                 validusername = cur.fetchone()
                 return validusername
-            else:
+            except:
                 validusername = False
                 return validusername
 
