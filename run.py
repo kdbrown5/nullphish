@@ -22,6 +22,7 @@ from mailsetup import mailsetup, mailconfig
 from addtemplate import addtemplate, addnewtemplate
 from sendsms import sendsms, sendtxt
 from fysms import fysms, smsapiid
+from resetpass import resetpass, doresetpass
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -57,6 +58,7 @@ app.register_blueprint(phishingstats)
 app.register_blueprint(mailsetup)
 app.register_blueprint(addtemplate)
 app.register_blueprint(sendsms)
+app.register_blueprint(resetpass)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -201,6 +203,12 @@ def beginp():
     else:
         return redirect('/login') # else redirect to login page
 
+@app.route('/resetpass', subdomain="app", methods=['GET', 'POST'])
+def beginresetpass():
+    if session.get('logged_in'):
+        return redirect ('/profile')
+    else:
+        return doresetpass()
 
 @app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
