@@ -46,11 +46,12 @@ def doresetpass():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select firstname from users where username = (?);', username)
-            if cur.fetchone():
+            try:
                 validusername = cur.fetchone()
+                return validusername
             else:
                 validusername = False
-            return validusername
+                return validusername
 
     def userlookup(username):
         con = sqlite.connect('db/db1.db')
@@ -81,6 +82,8 @@ def doresetpass():
         receiver_email = emailrecip[0]
         firstname = str(firstname)
         link = str(link)
+
+        print('send to: '+receiver_email)
 
         password = "rtatstfu18as#R654"
         
