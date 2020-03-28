@@ -53,8 +53,11 @@ def emulatelogin():
             cur.execute('select department from users where username = (?);', (emulateuserrequest))
             emulatedept = cur.fetchone()
             emulatedept = emulatedept[0]
+            cur.execute('select role from users where username = (?);', (emulateuserrequest))
+            emulaterole = cur.fetchone()
+            emulaterole = emulaterole[0]
         con.close()
-        return emulatefname, emulatelname, emulatedept
+        return emulatefname, emulatelname, emulatedept, emulaterole
 
     if session['role'] == 'admin':
         userlist = reguserlookup()
@@ -68,10 +71,9 @@ def emulatelogin():
         else:
             emulateuserrequest = request.form.get('emulaterequest')
             emulateuserrequest = [emulateuserrequest]
-            session['fname'], session['lname'], session['department'] = userlookup(emulateuserrequest)
+            session['fname'], session['lname'], session['department'], session['role'] = userlookup(emulateuserrequest)
             emulateuserrequest = emulateuserrequest[0]
             session['username'] = emulateuserrequest
-            session['role'] = 'user'
             session['validated'] = 1
             return redirect ('/profile')
 
