@@ -58,12 +58,13 @@ def emulatelogin():
             emulaterole = emulaterole[0]
         con.close()
         return emulatefname, emulatelname, emulatedept, emulaterole
-
-    if session['role'] == 'admin':
-        userlist = reguserlookup()
-    if session['role'] == 'superadmin':
-        userlist = reguserlookup()
-        adminquery = adminuserlookup()
+        
+    if request.method == 'GET':
+        if session['role'] == 'admin':
+            userlist = reguserlookup()
+        if session['role'] == 'superadmin':
+            userlist = reguserlookup()
+            adminquery = adminuserlookup()
     
     if request.method == 'POST':
         if request.form.get('emulaterequest') == '--- Admins ---' or request.form.get('emulaterequest') == '--- Users ---':
