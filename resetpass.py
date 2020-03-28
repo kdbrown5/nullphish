@@ -79,6 +79,7 @@ def doresetpass():
         sender_email = "donotreply@nullphish.com"
         receiver_email = emailrecip
         emailrecip = str(emailrecip)
+        firstname = str(firstname)
 
         password = "rtatstfu18as#R654"
         
