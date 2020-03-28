@@ -72,13 +72,14 @@
           <form method = "POST">
             <label for="exampleFormControlSelect1"></label>
             <select name='emulaterequest' id='emulaterequest' style="width: 100%;">
-              <option>Users</option>
               {% if adminquery %}
+              <option>--- Admins ---</option>
               {% for admin in adminquery %}
               <option>{{ admin }}</option>
               {% endfor %}
               {% endif %}
               {% if userlist %}
+              <option>--- Users ---</option>
               {% for row in userlist %}
               <option>{{ row }}</option>
               {% endfor %}

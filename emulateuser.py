@@ -34,13 +34,10 @@ def emulatelogin():
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
             adminquery = []
-            for row in cur.execute('select username from users where role = "admin" or business = (?);', (session['business'],)):
+            for row in cur.execute('select username from users where role = "admin";'):
                 adminquery.append(row[:][0])
-            rolequery = []
-            for row in cur.execute('select role from users where role = "admin" or business = (?);', (session['business'],)):
-                rolequery.append(row[0])
         con.close()
-        return adminquery, rolequery
+        return adminquery
 
     def userlookup(emulateuserrequest):
         con = sqlite.connect('db/db1.db')
