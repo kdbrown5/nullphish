@@ -55,6 +55,7 @@ def doresetpass():
 
     def userlookup(username):
         con = sqlite.connect('db/db1.db')
+        username = [username]
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
@@ -143,7 +144,7 @@ def doresetpass():
             validusername = checkuser(username)
             if validusername != False:
                 newtoken = generate_confirmation_token(username)
-                link = 'https://app.nullphish.com/resetpass?token='+newtoken
+                link = 'https://app.nullphish.com/resetpass?id='+newtoken
                 firstname = lookupfirstname(username)
                 sendreset(firstname, username, link)
                 print(firstname)
