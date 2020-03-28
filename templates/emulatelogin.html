@@ -74,7 +74,7 @@
             <select name='emulaterequest' id='emulaterequest' style="width: 100%;">
               <option>Users</option>
               {% for row in userlist %}
-              <option>{{ row }}</option>
+              <option>{{ row }}{% if rolequery %}&nbsp;-&nbsp;{{ rolequery }}{% endif %}</option>
               {% endfor %}     
             </select>
             <br>

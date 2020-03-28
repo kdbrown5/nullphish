@@ -27,6 +27,21 @@ def emulatelogin():
         con.close()
         return userquery
 
+    def adminuserlookup():
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            con.row_factory = sqlite.Row
+            adminquery = []
+            for row in cur.execute('select username from users where role = "admin" or business = (?);', (session['business'],)):
+                adminquery.append(row[:][0])
+            rolequery = []
+            for row in cur.execute('select role from users where role = "admin" or businesss = (?);', (session['business'],)):
+                rolequery.append(row[:][0])
+        con.close()
+        return adminquery, rolequery
+
     def userlookup(emulateuserrequest):
         con = sqlite.connect('db/db1.db')
         with con:
@@ -44,7 +59,10 @@ def emulatelogin():
         con.close()
         return emulatefname, emulatelname, emulatedept
 
-    userlist = reguserlookup()
+    if session['role'] == 'admin':
+        userlist = reguserlookup()
+    if session['role'] == 'superadmin':
+        rolequery, userlist = adminuserlookup()
     
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
@@ -56,4 +74,4 @@ def emulatelogin():
         session['validated'] = 1
         return redirect ('/profile')
 
-    return render_template('emulatelogin.html', userlist=userlist)
+    return render_template('emulatelogin.html', userlist=userlist, rolequery=rolequery)
