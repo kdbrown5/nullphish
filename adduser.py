@@ -61,6 +61,12 @@ def addnewuser():
         con.close()
         return reguserquery, firstname, lastname, department, role
 
+#    def importusers():
+#        with open("import2.csv", encoding="utf8") as csvfile:
+#            csvreader = csv.reader(csvfile, delimiter=",")
+#            for row in csvreader:
+#                print(": ".join(row))        
+
     def regsend(emailrecip, link, firstname):
         sender_email = "donotreply@nullphish.com"
         receiver_email = emailrecip
