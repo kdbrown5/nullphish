@@ -67,12 +67,17 @@ def addnewuser():
             os.makedirs(businessdir)        
         with open(businessdir+'/'+'import2.csv', encoding="utf8") as csvfile:
             csvreader = csv.reader(csvfile, delimiter=",")
-            imported = []
+            importedu = []
+            importedd = []
+            importedr = []
             for row in csvreader:
-                imported.append(''.join(row))
-                print(": ".join(row))
+                importedu.append(row[0])
+                importedd.append(row[0])
+                importedr.append(row[0])
             print('imported')
-            print(imported)
+            print(importedu)
+            print(importedd)
+            print(importedr)
 
 
 
