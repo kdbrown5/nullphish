@@ -62,7 +62,7 @@ def emulatelogin():
     if session['role'] == 'admin':
         userlist = reguserlookup()
     if session['role'] == 'superadmin':
-        rolequery, userlist = adminuserlookup()
+        userlist, rolequery = adminuserlookup()
     
     if request.method == 'POST':
         emulateuserrequest = request.form.get('emulaterequest')
