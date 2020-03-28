@@ -64,7 +64,7 @@ def addnewuser():
         businessdir = './reports/businesses/'+session['business']
         if not os.path.exists(businessdir):
             os.makedirs(businessdir)        
-        with open(businessdir+'/'+import2.csv, encoding="utf8") as csvfile:
+        with open(businessdir+'/'+'import2.csv', encoding="utf8") as csvfile:
             csvreader = csv.reader(csvfile, delimiter=",")
             imported = []
             for row in csvreader:
@@ -148,6 +148,7 @@ def addnewuser():
             return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
 
     usernamelookup, firstname, lastname, department, role =  reguserlookup()
+    importusers()
 
     if request.method == "POST":
         if 'emailaddr' in request.form:
