@@ -129,9 +129,6 @@ def doresetpass():
 
     if request.method == 'POST':
         username = request.form.to_dict()['username']
-        print(username)
-        print(username[0])
-        username = username[0]
         if '@' in username:
             validusername = checkuser(username)
             if validusername != False:
