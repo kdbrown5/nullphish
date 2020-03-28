@@ -74,7 +74,12 @@ def addnewuser():
             print('imported')
             print(imported)
             print(imported[0])
-            print(imported[1])
+            if imported[0][0] == 'Username' or 'username':
+                del imported[0]
+            for row in imported:
+                print(row[0])
+                print(row[1])
+                print(row[2])
 
 
 
