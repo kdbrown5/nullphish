@@ -61,7 +61,7 @@ def emulatelogin():
 
     if session['role'] == 'admin':
         userlist = reguserlookup()
-        adminquery = 'Your account does not have the ability to emulate admins'
+
     if session['role'] == 'superadmin':
         userlist = reguserlookup()
         adminquery = adminuserlookup()

@@ -144,7 +144,7 @@ def addtemplatedonothing():
 @app.route('/emulateuser', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loginemulate():
     if session.get('logged_in') == True:
-        if session.get('role') == 'superadmin':
+        if session.get('role') == 'superadmin' or session.get('role') == 'admin':
             return emulatelogin()
     else:
         return loginpage() # else redirect to login page
