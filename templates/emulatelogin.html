@@ -67,6 +67,15 @@
     <div class="contentcontainer">
       <h1>Emulate User</h1>
       <div>
+        {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
         <h2 style="color: white">Select User:</h2>
         <div>
           <form method = "POST">

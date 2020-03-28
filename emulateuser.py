@@ -63,13 +63,16 @@ def emulatelogin():
         adminquery = adminuserlookup()
     
     if request.method == 'POST':
-        emulateuserrequest = request.form.get('emulaterequest')
-        emulateuserrequest = [emulateuserrequest]
-        session['fname'], session['lname'], session['department'] = userlookup(emulateuserrequest)
-        emulateuserrequest = emulateuserrequest[0]
-        session['username'] = emulateuserrequest
-        session['role'] = 'user'
-        session['validated'] = 1
-        return redirect ('/profile')
+        if request.form.get('emulaterequest') == '--- Admins ---' or if request.form.get('emulaterequest') == '--- Users ---':
+            flash('Invalid Request. Select a User or Admin to emulate', 'category2')
+        else:
+            emulateuserrequest = request.form.get('emulaterequest')
+            emulateuserrequest = [emulateuserrequest]
+            session['fname'], session['lname'], session['department'] = userlookup(emulateuserrequest)
+            emulateuserrequest = emulateuserrequest[0]
+            session['username'] = emulateuserrequest
+            session['role'] = 'user'
+            session['validated'] = 1
+            return redirect ('/profile')
 
     return render_template('emulatelogin.html', userlist=userlist, adminquery=adminquery)
