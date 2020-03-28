@@ -61,19 +61,14 @@ def doresetpass():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select firstname from users where username = (?);', (username))
             emulatefname = cur.fetchone()
-            emulatefname = emulatefname[0]
             cur.execute('select lastname from users where username = (?);', (username))
             emulatelname = cur.fetchone()
-            emulatelname = emulatelname[0]
             cur.execute('select department from users where username = (?);', (username))
             emulatedept = cur.fetchone()
-            emulatedept = emulatedept[0]
             cur.execute('select role from users where username = (?);', (username))
             emulaterole = cur.fetchone()
-            emulaterole = emulaterole[0]
             cur.execute('select business from users where username = (?);', (username))
-            emulatebusiness = cur.fecthone()
-            emulatebusiness = emulatebusiness[0]
+            emulatebusiness = cur.fetchone()
         con.close()
         return emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness   
 
