@@ -13,6 +13,9 @@ from tokenizer import generate_confirmation_token, confirm_token
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os.path
+from pathlib import Path
+from datetime import datetime
 
 db = SQLAlchemy()
 
@@ -29,15 +32,11 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            print('query')
-            print(cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],)))
             cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],))
             if cur.fetchone()[0] == 1:
                 doesitexist = 0
             else:
                 doesitexist = 1
-            print('doesitexist')
-            print(doesitexist)
         con.close()
         return doesitexist
 
@@ -61,11 +60,21 @@ def addnewuser():
         con.close()
         return reguserquery, firstname, lastname, department, role
 
-#    def importusers():
-#        with open("import2.csv", encoding="utf8") as csvfile:
-#            csvreader = csv.reader(csvfile, delimiter=",")
-#            for row in csvreader:
-#                print(": ".join(row))        
+    def importusers():
+        businessdir = './reports/businesses/'+session['business']
+        if not os.path.exists(businessdir):
+            os.makedirs(businessdir)        
+        with open(businessdir+'/'+import2.csv, encoding="utf8") as csvfile:
+            csvreader = csv.reader(csvfile, delimiter=",")
+            imported = []
+            for row in csvreader:
+                imported.append(''.join(row))
+                print(": ".join(row))
+            print('imported')
+            print(imported)
+
+
+
 
     def regsend(emailrecip, link, firstname):
         sender_email = "donotreply@nullphish.com"
