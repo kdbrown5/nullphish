@@ -73,7 +73,7 @@
             <label for="exampleFormControlSelect1"></label>
             <select name='emulaterequest' id='emulaterequest' style="width: 100%;">
               <option>Users</option>
-              <option>{% if userlist %}{% for row in userlist %}{{ row }}{% endfor %}{% endif %}{% if rolequery %}{% for row in rolequery %} - {{ rolequery }}{% endfor %}{% endif %}</option>
+              <option>{% if userlist %}{% for row in userlist %}{{ row }}{% endfor %}{% endif %}{% if rolequery %}{% for row in rolequery %} - {{ row }}{% endfor %}{% endif %}</option>
             </select>
             <br>
             <button type="submit" style="width: 100%;">Emulate User</button>
