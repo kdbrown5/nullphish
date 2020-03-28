@@ -35,7 +35,7 @@ def doresetpass():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select username from users where username = (?);', username)
             if cur.fetchone():
-                validusername = cur.fetchone()[0]
+                validusername = cur.fetchone()
             else:
                 validusername = False
             return validusername
