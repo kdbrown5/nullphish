@@ -69,7 +69,7 @@ def addnewuser():
             csvreader = csv.reader(csvfile, delimiter=",")
             imported = []
             for row in csvreader:
-                imported.append(row))
+                imported.append(row)
                 print(": ".join(row))
             print('imported')
             print(imported)
