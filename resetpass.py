@@ -78,7 +78,7 @@ def doresetpass():
     def sendreset(firstname, emailrecip, link):
         sender_email = "donotreply@nullphish.com"
         emailrecip = str(emailrecip)
-        receiver_email = emailrecip
+        receiver_email = emailrecip[0]
         firstname = str(firstname)
         link = str(link)
 
