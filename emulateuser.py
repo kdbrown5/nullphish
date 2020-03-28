@@ -40,6 +40,8 @@ def emulatelogin():
             for row in cur.execute('select role from users where role = "admin" or business = (?);', (session['business'],)):
                 rolequery.append(row[:][0])
         con.close()
+        print(adminquery)
+        print(rolequery)
         return adminquery, rolequery
 
     def userlookup(emulateuserrequest):
