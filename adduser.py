@@ -199,7 +199,7 @@ def addnewuser():
         print(request.files)
         print('request.files[file]')
         print(request.files['file'])
-        if request.files['file'] != '':
+        if len(request.files['file']) > 3:
             businessdir = './reports/businesses/'+session['business']+'/'
             if not os.path.exists(businessdir):
                 os.makedirs(businessdir)      
