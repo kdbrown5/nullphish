@@ -86,14 +86,19 @@ def addnewuser():
                 importdept.append(row[3]) # dept
                 importrole.append(row[4]) # role
                 importmobph.append(row[5]) # mobile phone
-            for i in importusername:
-                i = [i]
-                if checkifexist(i) == 0:
+            for iterateusername, iteratefname, iteratelname, iteratedept, iteraterole, iteratemobph in importusername, importfname, importlname, importdept, importrole, importmobph:
+                iterateusername = [iterateusername]
+                iteratefname = [iteratefname]
+                iteratelname = [iteratelname]
+                iteratedept = [iteratedept]
+                iteraterole = [iteraterole]
+                iteratemobph = [iteratemobph]
+                if checkifexist(iterateusername) == 0:
                     con = sqlite.connect('db/db1.db')
                     with con:
                         cur = con.cursor()
                         cur.execute('PRAGMA key = '+dbkey+';')
-                        cur.execute('insert into users (username) values ((?));', i)
+                        cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (iterateusername, iteratefirstname, iteratelastname, session['business'], iteratedept, iteraterole, iteratemobph))
                     con.close()
             flash('Import complete', 'category2')
             
