@@ -31,10 +31,14 @@ def addnewuser():
         con = sqlite.connect('db/db1.db')
         with con:
             username = ''.join(username)
+            print(username)
+            print(username[0])
+            print(list(username))
+            print(list(username)[0])
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select EXISTS ( select placeholder from users where username = (?));', (username))
+            cur.execute('select EXISTS ( select placeholder from users where username = (?));', (username,))
             if cur.fetchone()[0] == 1:
                 doesitexist = 1
             else:
