@@ -89,6 +89,8 @@ def addnewuser():
             for i in importusername, importfname, importlname, importdept, importrole, importmobph:
                 print(i)
                 print(i[0])
+                print(i[1])
+                print(i[2])
                 print('after')
                 iterateusername = [iterateusername]
                 iteratefname = [iteratefname]
