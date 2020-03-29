@@ -143,10 +143,10 @@ def doresetpass():
     if request.method == 'GET':
         usertoken = (processtoken())
         email = str(confirm_15mtoken(usertoken))
-        timestamp = (datetime.now())
-        timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
-        timestamp = timestamp.replace(' ', '-')
         if '@' in email:
+            timestamp = (datetime.now())
+            timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+            timestamp = timestamp.replace(' ', '-')
             emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness = userlookup(email)
             session['fname'] = emulatefname
             session['lname'] = emulatelname
@@ -162,6 +162,9 @@ def doresetpass():
             session['validated'] = 1
             session['logged_in'] = True
             return redirect('/profile')
+        else:
+            flash('Not a valid user, or token has expired', 'category2')
+            return render_template('resetpassform.html')
 
     if request.method == 'POST':
         username = request.form.to_dict()['username']
@@ -175,9 +178,6 @@ def doresetpass():
                 sendreset(firstname, username, link)
                 flash('Reset sent!  Check your inbox for reset link', 'category2')
                 return render_template('resetpassform.html')
-        else:
-            flash('Not a valid user, or token has expired', 'category2')
-            return render_template('resetpassform.html')
 
 
     return render_template('resetpassform.html')
