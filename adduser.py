@@ -195,10 +195,6 @@ def addnewuser():
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":
-        print('request.files >')
-        print(request.files)
-        print('request.files[file]')
-        print(request.files['file'])
         print('dict')
         print(request.form.to_dict()['file'])
 
