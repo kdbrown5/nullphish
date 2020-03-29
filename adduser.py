@@ -74,9 +74,6 @@ def addnewuser():
             if imported[0][0] == 'Username' or 'username':
                 del imported[0]
             for row in imported:
-                try:
-
-                    
                 print(row[0]) # username
                 print(row[1]) # firstname
                 print(row[2]) # lastname
