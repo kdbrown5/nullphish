@@ -195,6 +195,7 @@ def addnewuser():
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":   
+        print(request.form)
         try:
             submitted_file = request.files['file']
             if submitted_file and allowed_file(submitted_file.filename):
@@ -214,6 +215,7 @@ def addnewuser():
                 flash('Import complete', 'category2')
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
+            print(request.form)
             if 'emailaddr' in request.form:
                 rfname = request.form['firstname']
                 rlname = request.form['lastname']
