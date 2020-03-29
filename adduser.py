@@ -213,7 +213,7 @@ def addnewuser():
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
             if 'Download' in request.form:
-                return send_file('importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
+                return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
             if 'emailaddr' in request.form:
                 rfname = request.form['firstname']
                 rlname = request.form['lastname']
