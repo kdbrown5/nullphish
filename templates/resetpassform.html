@@ -52,6 +52,15 @@
     <div class="contentcontainer">
       <div><h1><span class="nullmention">NullPhish</span><br><br>Reset Password</h1></div>
       <div>
+        <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+          {% if messages %}
+            <ul class="flashes w3-jumbo" style="color: white">
+            {% for message in messages %}
+          {{ message }}
+            {% endfor %}
+            </ul>
+          {% endif %}
+          {% endwith %}</h1>
         <form class="" action="" method="post">
           <input type="text" placeholder="Email Address" name="username" value="{{
             request.form.username }}">

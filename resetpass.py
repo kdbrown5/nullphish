@@ -79,6 +79,8 @@ def doresetpass():
         emailrecip = emailrecip.replace("']", '')
         receiver_email = emailrecip
         firstname = str(firstname)
+        firstname = firstname.replace("('", '')
+        firstname = firstname.replace("',)", '')
         link = str(link)
 
         print('send to: '+receiver_email)
@@ -126,7 +128,12 @@ def doresetpass():
         timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
         timestamp = timestamp.replace(' ', '-')
         if '@' in email:
-            session['fname'], session['lname'], session['department'], session['role'], session['business'] = userlookup(email)
+            emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness = userlookup(email)
+            session['fname'] = emulatefname
+            session['lname'] = emulatelname
+            session['department'] = emulatedept
+            session['role'] = emulaterole
+            session['business'] = emulatebusiness
             session['username'] = email
             session['validated'] = 1
             session['logged_in'] = True
@@ -142,13 +149,11 @@ def doresetpass():
                 link = 'https://app.nullphish.com/resetpass?id='+newtoken
                 firstname = lookupfirstname(username)
                 sendreset(firstname, username, link)
-                print(firstname)
-                print(username)
-                print(link)
                 flash('Reset sent!  Check your inbox for reset link', 'category2')
                 return render_template('resetpassform.html')
             else:
-                flash('Not a valid user', 'category2')
+                flash('Not a valid user, or token has expired', 'category2')
+                return render_template('resetpassform.html')
 
 
     return render_template('resetpassform.html')
