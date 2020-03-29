@@ -22,7 +22,7 @@ feedback = Blueprint('feedback', __name__, url_prefix='/feedback', template_fold
 @feedback.route("/feedback", subdomain='app', methods=['GET', 'POST'])
 
 def getfeedback():
-    def emailfeedback(feedbackhtml):
+    def emailfeedback(savefeedback):
         sender_email = "donotreply@nullphish.com"
         receiver_email = 'kdbrown5@gmail.com'
         password = "rtatstfu18as#R654"
@@ -36,8 +36,8 @@ def getfeedback():
         text = """\
         """
 
-        feedbackhtml = session['username']+'<br><br>'+feedbackhmtl
-        html = feedbackhtml
+        savefeedback = session['username']+'<br><br>'+savefeedback
+        html = savefeedback
 
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
