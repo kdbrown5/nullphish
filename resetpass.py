@@ -55,11 +55,10 @@ def doresetpass():
 
     def userlookup(username):
         con = sqlite.connect('db/db1.db')
-        username = [username]
+        print(username)
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            print(username[0][0])
             cur.execute('select firstname from users where username = (?);', (username))
             emulatefname = cur.fetchone()
             cur.execute('select lastname from users where username = (?);', (username))
