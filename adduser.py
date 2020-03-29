@@ -62,7 +62,7 @@ def addnewuser():
         return reguserquery, firstname, lastname, department, role
 
     def importusers():
-        # columns - username , firstname, lastname, mobilephone, department, role 
+        # columns - username , firstname, lastname, department, role, mobilephone
         businessdir = './reports/businesses/'+session['business']
         if not os.path.exists(businessdir):
             os.makedirs(businessdir)        
@@ -73,10 +73,24 @@ def addnewuser():
                 imported.append(row)
             if imported[0][0] == 'Username' or 'username':
                 del imported[0]
+            importusername = []
+            importfname = []
+            importlname = []
+            importdept = []
+            importrole = []
+            importmobph = []
             for row in imported:
-                print(row[0]) # username
-                print(row[1]) # firstname
-                print(row[2]) # lastname
+                importusername.append(row[0]) # username
+                importfname.append(row[1]) # firstname
+                importlname.append(row[2]) # lastname
+                importdept.append(row[3]) # dept
+                importrole.append(row[4]) # role
+                importmobph.append(row[5]) # mobile phone
+            for i in importusername:
+                checkifexist(i)
+                print(checkifexist(i))
+            
+
 
 
 
