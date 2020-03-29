@@ -31,7 +31,8 @@ def addnewuser():
         con = sqlite.connect('db/db1.db')
         with con:
             print(username)
-            username = [str(username)]
+            username = ''.join(username)
+            print(username)
             username = username[0]
             print(username)
             cur = con.cursor()
