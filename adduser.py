@@ -5,7 +5,7 @@ from sqlalchemy import event, PrimaryKeyConstraint
 from sqlalchemy.engine import Engine
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, flash, session, render_template, render_template_string, request, jsonify, redirect, url_for, \
-    Response, g, Markup, Blueprint, make_response
+    Response, g, Markup, Blueprint, make_response, send_file
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from passlib.hash import sha256_crypt, argon2
 from pysqlcipher3 import dbapi2 as sqlite
@@ -191,8 +191,6 @@ def addnewuser():
 
 
     usernamelookup, firstname, lastname, department, role =  reguserlookup()
-    #importusers()
-    #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":   
         try:
@@ -215,7 +213,7 @@ def addnewuser():
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
             if 'Download' in request.form:
-                print('yes it is')
+                return send_file('importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
             if 'emailaddr' in request.form:
                 rfname = request.form['firstname']
                 rlname = request.form['lastname']
