@@ -75,8 +75,10 @@ def addnewuser():
                 del imported[0]
             convertimport = []
             for row in imported:
+                print('rowtest >>')
+                print(row[0])
                 convertimport.append(row)
-
+            print('convertimport >>')
             for i in convertimport:
                 print(i[0])
                 print(i[1])
