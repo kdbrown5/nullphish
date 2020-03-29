@@ -129,6 +129,11 @@ def doresetpass():
         timestamp = timestamp.replace(' ', '-')
         if '@' in email:
             emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness = userlookup(email)
+            print(emulatefname)
+            print(emulatelname)
+            print(emulatedept)
+            print(emulaterole)
+            print(emulatebusiness)
             session['fname'] = emulatefname
             session['lname'] = emulatelname
             session['department'] = emulatedept
