@@ -87,8 +87,8 @@ def addnewuser():
                 importrole.append(row[4]) # role
                 importmobph.append(row[5]) # mobile phone
             for i in importusername:
+                i = [i]
                 if checkifexist(i) == 0:
-                    i = [i]
                     con = sqlite.connect('db/db1.db')
                     with con:
                         cur = con.cursor()
