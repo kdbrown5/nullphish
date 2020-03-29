@@ -44,11 +44,12 @@ def doresetpass():
         timestamp = (datetime.now())
         timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
         timestamp = timestamp.replace(' ', '-')
+        print(timestamp)
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into passreset (username, date) values ((?), (?));', username, timestamp)
+            cur.execute('insert into passreset (username, date) values ((?), (?));', (username, timestamp))
         con.close()
 
     def lookupfirstname(username):
