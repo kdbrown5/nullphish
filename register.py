@@ -95,8 +95,9 @@ def registration():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                x = cur.execute("SELECT * FROM users WHERE username LIKE (?);", (session['username'],))
-            result = cur.fetchone()
+                cur.execute("SELECT * FROM users WHERE username LIKE (?);", (session['username'],))
+                result = cur.fetchone()
+            con.close
 
 
             if result == None:

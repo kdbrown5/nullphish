@@ -205,7 +205,6 @@ def addnewuser():
                 timestamp = timestamp.replace(' ', '-')
                 timestamp = timestamp.replace('/', '-')
                 filename = timestamp+filename
-                print(filename)
                 submitted_file.save(os.path.join(businessdir, filename))
                 importusers(filename)
                 usernamelookup, firstname, lastname, department, role =  reguserlookup()
