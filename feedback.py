@@ -56,12 +56,12 @@ def getfeedback():
 
     if request.method == "POST":
         if request.form.get('editordata') != None:
-            try:
-                savefeedback = request.form.get('editordata')
-                emailfeedback(savefeedback)
-                flash('Submitted! Thank you for the feedback', 'category2')
-                return render_template("feedback.html")
-            except:
+            #try:
+            savefeedback = request.form.get('editordata')
+            emailfeedback(savefeedback)
+            flash('Submitted! Thank you for the feedback', 'category2')
+            return render_template("feedback.html")
+            #except:
                 pass
 
 
