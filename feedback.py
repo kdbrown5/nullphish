@@ -62,7 +62,7 @@ def getfeedback():
             flash('Submitted! Thank you for the feedback', 'category2')
             return render_template("feedback.html")
             #except:
-                pass
+                #pass
 
 
     return render_template("feedback.html")
