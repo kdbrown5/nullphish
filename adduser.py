@@ -80,12 +80,12 @@ def addnewuser():
             importrole = []
             importmobph = []
             for row in imported:
-                importusername.append(row[0]) # username
-                importfname.append(row[1]) # firstname
-                importlname.append(row[2]) # lastname
-                importdept.append(row[3]) # dept
-                importrole.append(row[4]) # role
-                importmobph.append(row[5]) # mobile phone
+                importusername.append(row) # username
+                #importfname.append(row[1]) # firstname
+                #importlname.append(row[2]) # lastname
+                #importdept.append(row[3]) # dept
+                #importrole.append(row[4]) # role
+                #importmobph.append(row[5]) # mobile phone
             for i in importusername, importfname, importlname, importdept, importrole, importmobph:
                 print(i)
                 print(i[0])
