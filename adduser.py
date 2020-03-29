@@ -75,6 +75,7 @@ def addnewuser():
                 del imported[0]
             for row in imported:
                 try:
+
                     
                 print(row[0]) # username
                 print(row[1]) # firstname
@@ -120,6 +121,36 @@ def addnewuser():
             server.sendmail(
                 sender_email, receiver_email, message.as_string()
             )
+
+    def registernosend(rfname, rlname, rdpt, emailaddr, rrole):
+        if len(str(rfname)) > 0:
+            if len(str(rlname)) > 0:
+                if len(str(emailaddr)) > 0:
+                    if str(rrole) != str('Select Role'):
+                        con = sqlite.connect('db/db1.db')
+                        with con:
+                            cur = con.cursor()
+                            cur.execute('PRAGMA key = '+dbkey+';')
+                            cur.execute('insert into users (username, firstname, lastname, role, department, validated, business) VALUES (?,?,?,?,?,0,?);', (emailaddr, rfname, rlname, rrole, rdpt, session['business'],))
+                            con.commit
+                        con.close
+                        emailrecip = emailaddr
+                        email = emailaddr
+                        firstname = rfname
+                        flash('User added: '+emailrecip+'!', 'category2')
+                        return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
+                    else:
+                        flash('Please select role', 'category2')
+                        return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
+                else:
+                    flash('Please enter email address', 'category2')
+                    return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
+            else:
+                flash('Please enter last name', 'category2')
+                return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
+        else:
+            flash('Please enter first name', 'category2')
+            return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
 
     def registerreguser(rfname, rlname, rdpt, emailaddr, rrole):
         if len(str(rfname)) > 0:
@@ -170,10 +201,16 @@ def addnewuser():
             else:
                 if rrole == 'Admin':
                     rrole = 'admin'
-                    registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                    if request.form['sendreg'] == 'Send A Registration E-Mail':
+                        registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                    else:
+                        registernosend(rfname, rlname, rdpt, emailaddr, rrole)
                 if rrole == 'User':
                     rrole = 'user'
-                    registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                    if request.form['sendreg'] == 'Send A Registration E-Mail':
+                        registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                    else:
+                        registernosend(rfname, rlname, rdpt, emailaddr, rrole)
                 else:
                     flash('this is not a defined role', 'category2')
                     return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
