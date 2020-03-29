@@ -199,24 +199,10 @@ def addnewuser():
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":
-        if 'emailaddr' not in request.form:
-            print(request.files)
-            
-            if 'file' not in request.files:
-                flash('No file part')
-                return redirect(request.url)
-            file = request.files['file']
-            if file.filename == '':
-                flash('No file selected for uploading', 'category2')
-                return redirect(request.url)
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(businessdir, filename))
-                flash('File successfully uploaded')
-                return render_html('adduser.html')
-            else:
-                flash('Uploaded File must be CSV')
-                return render_html('adduser.html')
+        submitted_file = request.files['file']
+        if submitted_file and allowed_filename(submitted_file.filename):
+            filename = secure_filename(submitted_file.filename)
+            submitted_file.save(os.path.join(businessdir, filename))
 
         if 'emailaddr' in request.form:
             rfname = request.form['firstname']
