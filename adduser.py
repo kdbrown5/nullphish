@@ -200,6 +200,8 @@ def addnewuser():
 
     if request.method == "POST":
         if 'emailaddr' not in request.form:
+            print(request.files)
+            
             if 'file' not in request.files:
                 flash('No file part')
                 return redirect(request.url)
