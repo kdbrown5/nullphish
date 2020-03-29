@@ -200,7 +200,7 @@ def addnewuser():
 
     if request.method == "POST":
         submitted_file = request.files['file']
-        if submitted_file and allowed_filename(submitted_file.filename):
+        if submitted_file and allowed_file(submitted_file.filename):
             filename = secure_filename(submitted_file.filename)
             submitted_file.save(os.path.join(businessdir, filename))
 
