@@ -198,7 +198,7 @@ def addnewuser():
         try:
             submitted_file = request.files['file']
             if submitted_file and allowed_file(submitted_file.filename):
-                businessdir = './reports/businesses/'+session['business']+'/'
+                businessdir = './reports/businesses/'+session['business']
                 if not os.path.exists(businessdir):
                     os.makedirs(businessdir)   
                 filename = secure_filename(submitted_file.filename)
@@ -206,6 +206,7 @@ def addnewuser():
                 timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
                 timestamp = timestamp.replace(' ', '-')
                 filename = timestamp+filename
+                print(filename)
                 submitted_file.save(os.path.join(businessdir, filename))
                 importusers(filename)
                 usernamelookup, firstname, lastname, department, role =  reguserlookup()
