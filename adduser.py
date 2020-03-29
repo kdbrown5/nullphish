@@ -78,13 +78,13 @@ def addnewuser():
                 convertimport.append(row)
             for i in convertimport:
                 if checkifexist(i) == 0:
-                con = sqlite.connect('db/db1.db')
-                with con:
-                    cur = con.cursor()
-                    cur.execute('PRAGMA key = '+dbkey+';')
-                    cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (i[0], i[1], i[2], session['business'], i[3], i[4], i[5]))
-                con.close()                  
-            flash('Import complete', 'category2')
+                    con = sqlite.connect('db/db1.db')
+                    with con:
+                        cur = con.cursor()
+                        cur.execute('PRAGMA key = '+dbkey+';')
+                        cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (i[0], i[1], i[2], session['business'], i[3], i[4], i[5]))
+                    con.close()                  
+        flash('Import complete', 'category2')
             
 
 
