@@ -23,6 +23,7 @@ from addtemplate import addtemplate, addnewtemplate
 from sendsms import sendsms, sendtxt
 from fysms import fysms, smsapiid
 from resetpass import resetpass, doresetpass
+from feedback import feedback, getfeedback
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -59,6 +60,7 @@ app.register_blueprint(mailsetup)
 app.register_blueprint(addtemplate)
 app.register_blueprint(sendsms)
 app.register_blueprint(resetpass)
+app.register_blueprint(feedback)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -150,6 +152,13 @@ def loginemulate():
             return emulatelogin()
     else:
         return loginpage() # else redirect to login page
+
+@app.route('/feedback', subdomain="app", methods=['GET', 'POST']) # redirect to feedback if logged in
+def loggedin():
+    if session.get('logged_in') == True: # 
+        return getfeedback()
+    else:
+        return redirect('/') # else redirect to login page
 
 @app.route('/login', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loggedin():
