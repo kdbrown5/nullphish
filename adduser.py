@@ -73,25 +73,20 @@ def addnewuser():
                 imported.append(row)
             if imported[0][0] == 'Username' or 'username':
                 del imported[0]
-            importusername = []
-            importfname = []
-            importlname = []
-            importdept = []
-            importrole = []
-            importmobph = []
+            convertimport = []
             for row in imported:
-                importusername.append(row) # username
-                #importfname.append(row[1]) # firstname
-                #importlname.append(row[2]) # lastname
-                #importdept.append(row[3]) # dept
-                #importrole.append(row[4]) # role
-                #importmobph.append(row[5]) # mobile phone
-            for i in importusername, importfname, importlname, importdept, importrole, importmobph:
-                print(i)
+                convertimport.append(row)
+
+            for i in convertimport:
                 print(i[0])
-                print(i[1])
-                print(i[2])
+                print(i[0][0])
+                print(i[0][1])
+                print(i[0][2])
+                print(i[0][3])
+                print(i[0][4])
+                print(i[0][5])
                 print('after')
+                print(stoptthis)
                 iterateusername = [iterateusername]
                 iteratefname = [iteratefname]
                 iteratelname = [iteratelname]
