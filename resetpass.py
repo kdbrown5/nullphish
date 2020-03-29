@@ -144,6 +144,8 @@ def doresetpass():
             session['business'] = emulatebusiness
             email = email.replace("['", '')
             email = email.replace("']", '')
+            email = [email]
+            email = email[0]
             session['username'] = email
             session['validated'] = 1
             session['logged_in'] = True
