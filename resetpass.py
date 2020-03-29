@@ -137,17 +137,14 @@ def doresetpass():
         timestamp = timestamp.replace(' ', '-')
         if '@' in email:
             emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness = userlookup(email)
-            print(emulatefname)
-            print(emulatelname)
-            print(emulatedept)
-            print(emulaterole)
-            print(emulatebusiness)
             session['fname'] = emulatefname
             session['lname'] = emulatelname
             session['department'] = emulatedept
             session['role'] = emulaterole
             session['business'] = emulatebusiness
-            session['username'] = email[0]
+            email = email.replace("['", '')
+            email = email.replace("']", '')
+            session['username'] = email
             session['validated'] = 1
             session['logged_in'] = True
             return redirect('/profile')
