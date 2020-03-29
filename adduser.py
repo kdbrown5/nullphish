@@ -76,7 +76,7 @@ def addnewuser():
             convertimport = []
             for row in imported:
                 print('rowtest >>')
-                print(row[0])
+                print(row)
                 convertimport.append(row)
             print('convertimport >>')
             for i in convertimport:
@@ -86,21 +86,23 @@ def addnewuser():
                 print(i[3])
                 print(i[4])
                 print(i[5])
+
                 print('after')
-                print(stoptthis)
-                iterateusername = [iterateusername]
-                iteratefname = [iteratefname]
-                iteratelname = [iteratelname]
-                iteratedept = [iteratedept]
-                iteraterole = [iteraterole]
-                iteratemobph = [iteratemobph]
-                if checkifexist(iterateusername) == 0:
-                    con = sqlite.connect('db/db1.db')
-                    with con:
-                        cur = con.cursor()
-                        cur.execute('PRAGMA key = '+dbkey+';')
-                        cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (iterateusername, iteratefirstname, iteratelastname, session['business'], iteratedept, iteraterole, iteratemobph))
-                    con.close()
+                #print(stoptthis)
+                #iterateusername = [iterateusername]
+                #iteratefname = [iteratefname]
+                #iteratelname = [iteratelname]
+                #iteratedept = [iteratedept]
+                #iteraterole = [iteraterole]
+                #iteratemobph = [iteratemobph]
+                #if checkifexist(iterateusername) == 0:
+                #    con = sqlite.connect('db/db1.db')
+                #    with con:
+                #        cur = con.cursor()
+                #        cur.execute('PRAGMA key = '+dbkey+';')
+                #        cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (iterateusername, iteratefirstname, iteratelastname, session['business'], iteratedept, iteraterole, iteratemobph))
+                #    con.close()
+                
             flash('Import complete', 'category2')
             
 
