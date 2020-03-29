@@ -56,10 +56,11 @@ def doresetpass():
     def userlookup(username):
         con = sqlite.connect('db/db1.db')
         print(username)
-        username = [username]
         username = username[0]
         username = username.replace("['", '')
         username = username.replace("']", '')
+        username = [username]
+        print(username)
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
