@@ -141,30 +141,33 @@ def doresetpass():
             )
 
     if request.method == 'GET':
-        usertoken = (processtoken())
-        email = str(confirm_15mtoken(usertoken))
-        if '@' in email:
-            timestamp = (datetime.now())
-            timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
-            timestamp = timestamp.replace(' ', '-')
-            emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness = userlookup(email)
-            session['fname'] = emulatefname
-            session['lname'] = emulatelname
-            session['department'] = emulatedept
-            session['role'] = emulaterole
-            session['business'] = emulatebusiness
-            email = email.replace("['", '')
-            email = email.replace("']", '')
-            email = [email]
-            email = email[0]
-            logpwreset(email)
-            session['username'] = email
-            session['validated'] = 1
-            session['logged_in'] = True
-            return redirect('/profile')
-        else:
-            flash('Not a valid user, or token has expired', 'category2')
+        if request.args.get('id'[:]) == None:
             return render_template('resetpassform.html')
+        else:
+            usertoken = (processtoken())
+            email = str(confirm_15mtoken(usertoken))
+            if '@' in email:
+                timestamp = (datetime.now())
+                timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+                timestamp = timestamp.replace(' ', '-')
+                emulatefname, emulatelname, emulatedept, emulaterole, emulatebusiness = userlookup(email)
+                session['fname'] = emulatefname
+                session['lname'] = emulatelname
+                session['department'] = emulatedept
+                session['role'] = emulaterole
+                session['business'] = emulatebusiness
+                email = email.replace("['", '')
+                email = email.replace("']", '')
+                email = [email]
+                email = email[0]
+                logpwreset(email)
+                session['username'] = email
+                session['validated'] = 1
+                session['logged_in'] = True
+                return redirect('/profile')
+            else:
+                flash('Not a valid user, or token has expired', 'category2')
+                return render_template('resetpassform.html')
 
     if request.method == 'POST':
         username = request.form.to_dict()['username']
