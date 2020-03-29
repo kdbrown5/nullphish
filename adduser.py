@@ -33,7 +33,7 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select EXISTS ( select placeholder from users where username = (?);', (username))
+            cur.execute('select EXISTS ( select placeholder from users where username = (?));', (username))
             if cur.fetchone()[0] == 1:
                 doesitexist = 1
             else:
