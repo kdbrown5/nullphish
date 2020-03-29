@@ -31,6 +31,7 @@ def addnewuser():
         con = sqlite.connect('db/db1.db')
         with con:
             username = [username]
+            username = username[0]
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
