@@ -17,6 +17,7 @@ import os.path
 from pathlib import Path
 from datetime import datetime
 import csv
+from werkzeug.utils import secure_filename
 
 db = SQLAlchemy()
 
@@ -24,9 +25,13 @@ loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
 loadkey.close()
 
+ALLOWED_EXTENSIONS = set(['csv'])
+
 adduser = Blueprint('adduser', __name__, url_prefix='/adduser', template_folder='templates')
 @adduser.route("/adduser", subdomain='app', methods=['GET', 'POST'])
 def addnewuser():
+    def allowed_file(filename):
+        return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     def checkifexist(username):
         con = sqlite.connect('db/db1.db')
         with con:
@@ -86,11 +91,6 @@ def addnewuser():
                         cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?), (?));', (i[0], i[1], i[2], session['business'], i[3], i[4], i[5]))
                     con.close()                  
         flash('Import complete', 'category2')
-            
-
-
-
-
 
     def regsend(emailrecip, link, firstname):
         sender_email = "donotreply@nullphish.com"
@@ -193,11 +193,26 @@ def addnewuser():
             flash('Please enter first name', 'category2')
             return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
 
+    businessdir = './reports/businesses/'+session['business']+'/'
     usernamelookup, firstname, lastname, department, role =  reguserlookup()
-    importusers()
-    usernamelookup, firstname, lastname, department, role =  reguserlookup()
+    #importusers()
+    #usernamelookup, firstname, lastname, department, role =  reguserlookup()
+
 
     if request.method == "POST":
+		file = request.files['file']
+		if file.filename == '':
+			flash('No file selected for uploading', 'category2')
+			return redirect(request.url)
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			file.save(os.path.join(businessdir, filename))
+			flash('File successfully uploaded')
+			return render_html('adduser.html')
+		else:
+			flash('Uploaded File must be CSV')
+			return render_html('adduser.html')
+
         if 'emailaddr' in request.form:
             rfname = request.form['firstname']
             rlname = request.form['lastname']
