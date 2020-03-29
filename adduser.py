@@ -201,21 +201,22 @@ def addnewuser():
         print(request.files['file'])
         print('dict')
         print(request.form.to_dict()['file'])
-            businessdir = './reports/businesses/'+session['business']+'/'
-            if not os.path.exists(businessdir):
-                os.makedirs(businessdir)      
-            submitted_file = request.files['file']
-            if submitted_file and allowed_file(submitted_file.filename):
-                filename = secure_filename(submitted_file.filename)
-                timestamp = (datetime.now())
-                timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
-                timestamp = timestamp.replace(' ', '-')
-                filename = timestamp+filename
-                submitted_file.save(os.path.join(businessdir, filename))
-                importusers(filename)
-                usernamelookup, firstname, lastname, department, role =  reguserlookup()
-                flash('Import complete', 'category2')
-                return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
+
+        businessdir = './reports/businesses/'+session['business']+'/'
+        if not os.path.exists(businessdir):
+            os.makedirs(businessdir)      
+        submitted_file = request.files['file']
+        if submitted_file and allowed_file(submitted_file.filename):
+            filename = secure_filename(submitted_file.filename)
+            timestamp = (datetime.now())
+            timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
+            timestamp = timestamp.replace(' ', '-')
+            filename = timestamp+filename
+            submitted_file.save(os.path.join(businessdir, filename))
+            importusers(filename)
+            usernamelookup, firstname, lastname, department, role =  reguserlookup()
+            flash('Import complete', 'category2')
+            return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
 
         if 'emailaddr' in request.form:
             rfname = request.form['firstname']
