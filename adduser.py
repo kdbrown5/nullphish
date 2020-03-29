@@ -30,8 +30,6 @@ def addnewuser():
     def checkifexist(username):
         con = sqlite.connect('db/db1.db')
         with con:
-            username = [username]
-            username = username[0]
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
@@ -90,6 +88,7 @@ def addnewuser():
                 importmobph.append(row[5]) # mobile phone
             for i in importusername:
                 if checkifexist(i) == 0:
+                    i = [i]
                     con = sqlite.connect('db/db1.db')
                     with con:
                         cur = con.cursor()
