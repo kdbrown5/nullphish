@@ -147,7 +147,7 @@ def doresetpass():
             session['department'] = emulatedept
             session['role'] = emulaterole
             session['business'] = emulatebusiness
-            session['username'] = email
+            session['username'] = email[0]
             session['validated'] = 1
             session['logged_in'] = True
             return redirect('/profile')
