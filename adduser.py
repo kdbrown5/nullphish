@@ -205,6 +205,7 @@ def addnewuser():
                 timestamp = (datetime.now())
                 timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
                 timestamp = timestamp.replace(' ', '-')
+                timestamp = timestamp.replace('/', '-')
                 filename = timestamp+filename
                 print(filename)
                 submitted_file.save(os.path.join(businessdir, filename))
