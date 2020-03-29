@@ -33,11 +33,11 @@ def addnewuser():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
-            cur.execute('select EXISTS ( select placeholder from users where username = (?) and business = (?));', (username, session['business'],))
+            cur.execute('select EXISTS ( select placeholder from users where username = (?);', (username))
             if cur.fetchone()[0] == 1:
-                doesitexist = 0
-            else:
                 doesitexist = 1
+            else:
+                doesitexist = 0
         con.close()
         return doesitexist
 
@@ -87,8 +87,14 @@ def addnewuser():
                 importrole.append(row[4]) # role
                 importmobph.append(row[5]) # mobile phone
             for i in importusername:
-                checkifexist(i)
-                print(checkifexist(i))
+                if checkifexist(i) == 0:
+                    con = sqlite.connect('db/db1.db')
+                    with con:
+                        cur = con.cursor()
+                        cur.execute('PRAGMA key = '+dbkey+';')
+                        cur.execute('insert into users (username) values ((?));', i)
+                    con.close()
+            flash('Import complete', 'category2')
             
 
 
@@ -207,7 +213,7 @@ def addnewuser():
             emailaddr = request.form['emailaddr']
             rrole = request.form['addrole']
             doesitexist = checkifexist(emailaddr)
-            if doesitexist == 0:
+            if doesitexist == 1:
                 flash('this user already exists', 'category2')
             else:
                 if rrole == 'Admin':
