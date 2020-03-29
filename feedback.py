@@ -67,4 +67,4 @@ def getfeedback():
                 pass
 
 
-    return render_template("addtemplate.html")
+    return render_template("feedback.html")
