@@ -194,15 +194,12 @@ def addnewuser():
     #importusers()
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
-    if request.method == "POST":
-        print('dict')
-        print(request.form.to_dict()['file'])
-
-        businessdir = './reports/businesses/'+session['business']+'/'
-        if not os.path.exists(businessdir):
-            os.makedirs(businessdir)      
+    if request.method == "POST":   
         submitted_file = request.files['file']
         if submitted_file and allowed_file(submitted_file.filename):
+            businessdir = './reports/businesses/'+session['business']+'/'
+            if not os.path.exists(businessdir):
+                os.makedirs(businessdir)   
             filename = secure_filename(submitted_file.filename)
             timestamp = (datetime.now())
             timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
