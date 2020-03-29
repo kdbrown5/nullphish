@@ -79,12 +79,11 @@ def addnewuser():
 
             for i in convertimport:
                 print(i[0])
-                print(i[0][0])
-                print(i[0][1])
-                print(i[0][2])
-                print(i[0][3])
-                print(i[0][4])
-                print(i[0][5])
+                print(i[1])
+                print(i[2])
+                print(i[3])
+                print(i[4])
+                print(i[5])
                 print('after')
                 print(stoptthis)
                 iterateusername = [iterateusername]
