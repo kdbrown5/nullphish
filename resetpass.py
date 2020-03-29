@@ -55,6 +55,7 @@ def doresetpass():
 
     def userlookup(username):
         con = sqlite.connect('db/db1.db')
+        print(username)
         username = [username]
         username = username[0]
         username = username.replace("['", '')
