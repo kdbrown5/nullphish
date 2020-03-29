@@ -30,11 +30,7 @@ def addnewuser():
     def checkifexist(username):
         con = sqlite.connect('db/db1.db')
         with con:
-            print(username)
             username = ''.join(username)
-            print(username)
-            username = username[0]
-            print(username)
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             con.row_factory = sqlite.Row
