@@ -154,7 +154,7 @@ def loginemulate():
         return loginpage() # else redirect to login page
 
 @app.route('/feedback', subdomain="app", methods=['GET', 'POST']) # redirect to feedback if logged in
-def loggedin():
+def beginfeedback():
     if session.get('logged_in') == True: # 
         return getfeedback()
     else:
