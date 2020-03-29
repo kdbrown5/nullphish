@@ -86,7 +86,10 @@ def addnewuser():
                 importdept.append(row[3]) # dept
                 importrole.append(row[4]) # role
                 importmobph.append(row[5]) # mobile phone
-            for iterateusername, iteratefname, iteratelname, iteratedept, iteraterole, iteratemobph in importusername, importfname, importlname, importdept, importrole, importmobph:
+            for i in importusername, importfname, importlname, importdept, importrole, importmobph:
+                print(i)
+                print(i[0])
+                print('after')
                 iterateusername = [iterateusername]
                 iteratefname = [iteratefname]
                 iteratelname = [iteratelname]
