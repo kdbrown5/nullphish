@@ -8,6 +8,9 @@ from flask import Flask, flash, session, render_template, render_template_string
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
 from pysqlcipher3 import dbapi2 as sqlite
 from bs4 import BeautifulSoup as bs4
+import smtplib, ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 db = SQLAlchemy()
 
