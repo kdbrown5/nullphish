@@ -77,7 +77,9 @@ def addnewuser():
             for row in imported:
                 convertimport.append(row)
             for i in convertimport:
-                if checkifexist(i[0]) == 0:
+                print(i)
+                print(i[0])
+                if checkifexist(i) == 0:
                     con = sqlite.connect('db/db1.db')
                     with con:
                         cur = con.cursor()
