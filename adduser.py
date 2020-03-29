@@ -195,46 +195,47 @@ def addnewuser():
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":   
-        submitted_file = request.files['file']
-        if submitted_file and allowed_file(submitted_file.filename):
-            businessdir = './reports/businesses/'+session['business']+'/'
-            if not os.path.exists(businessdir):
-                os.makedirs(businessdir)   
-            filename = secure_filename(submitted_file.filename)
-            timestamp = (datetime.now())
-            timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
-            timestamp = timestamp.replace(' ', '-')
-            filename = timestamp+filename
-            submitted_file.save(os.path.join(businessdir, filename))
-            importusers(filename)
-            usernamelookup, firstname, lastname, department, role =  reguserlookup()
-            flash('Import complete', 'category2')
-            return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
-
-        if 'emailaddr' in request.form:
-            rfname = request.form['firstname']
-            rlname = request.form['lastname']
-            rdpt = request.form['department']
-            emailaddr = request.form['emailaddr']
-            rrole = request.form['addrole']
-            doesitexist = checkifexist(emailaddr)
-            if doesitexist == 1:
-                flash('this user already exists', 'category2')
-            else:
-                if rrole == 'Admin':
-                    rrole = 'admin'
-                    if request.form['sendreg'] == 'Send A Registration E-Mail':
-                        registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
-                    else:
-                        registernosend(rfname, rlname, rdpt, emailaddr, rrole)
-                if rrole == 'User':
-                    rrole = 'user'
-                    if request.form['sendreg'] == 'Send A Registration E-Mail':
-                        registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
-                    else:
-                        registernosend(rfname, rlname, rdpt, emailaddr, rrole)
+        try:
+            submitted_file = request.files['file']
+            if submitted_file and allowed_file(submitted_file.filename):
+                businessdir = './reports/businesses/'+session['business']+'/'
+                if not os.path.exists(businessdir):
+                    os.makedirs(businessdir)   
+                filename = secure_filename(submitted_file.filename)
+                timestamp = (datetime.now())
+                timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
+                timestamp = timestamp.replace(' ', '-')
+                filename = timestamp+filename
+                submitted_file.save(os.path.join(businessdir, filename))
+                importusers(filename)
+                usernamelookup, firstname, lastname, department, role =  reguserlookup()
+                flash('Import complete', 'category2')
+                return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
+        except:
+            if 'emailaddr' in request.form:
+                rfname = request.form['firstname']
+                rlname = request.form['lastname']
+                rdpt = request.form['department']
+                emailaddr = request.form['emailaddr']
+                rrole = request.form['addrole']
+                doesitexist = checkifexist(emailaddr)
+                if doesitexist == 1:
+                    flash('this user already exists', 'category2')
                 else:
-                    flash('this is not a defined role', 'category2')
-                    return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
+                    if rrole == 'Admin':
+                        rrole = 'admin'
+                        if request.form['sendreg'] == 'Send A Registration E-Mail':
+                            registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                        else:
+                            registernosend(rfname, rlname, rdpt, emailaddr, rrole)
+                    if rrole == 'User':
+                        rrole = 'user'
+                        if request.form['sendreg'] == 'Send A Registration E-Mail':
+                            registerreguser(rfname, rlname, rdpt, emailaddr, rrole)
+                        else:
+                            registernosend(rfname, rlname, rdpt, emailaddr, rrole)
+                    else:
+                        flash('this is not a defined role', 'category2')
+                        return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
             
     return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
