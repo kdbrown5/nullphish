@@ -67,12 +67,9 @@ def addnewuser():
         con.close()
         return reguserquery, firstname, lastname, department, role
 
-    def importusers():
-        # columns - username , firstname, lastname, department, role, mobilephone
-        businessdir = './reports/businesses/'+session['business']
-        if not os.path.exists(businessdir):
-            os.makedirs(businessdir)        
-        with open(businessdir+'/'+'import2.csv', encoding="utf8") as csvfile:
+    def importusers(filename):
+        businessdir = './reports/businesses/'+session['business']+'/'   
+        with open(businessdir+filename, encoding="utf8") as csvfile:
             csvreader = csv.reader(csvfile, delimiter=",")
             imported = []
             for row in csvreader:
@@ -193,16 +190,23 @@ def addnewuser():
             flash('Please enter first name', 'category2')
             return render_template('adduser.html', lookup=zip(usernamelookup,firstname,lastname,department,role))
 
-    businessdir = './reports/businesses/'+session['business']+'/'
+
     usernamelookup, firstname, lastname, department, role =  reguserlookup()
     #importusers()
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":
-        submitted_file = request.files['file']
-        if submitted_file and allowed_file(submitted_file.filename):
-            filename = secure_filename(submitted_file.filename)
-            submitted_file.save(os.path.join(businessdir, filename))
+        print(request.files)
+        print(request.files['file'])
+        if request.files['file'] != '':
+            businessdir = './reports/businesses/'+session['business']+'/'
+            if not os.path.exists(businessdir):
+                os.makedirs(businessdir)      
+            submitted_file = request.files['file']
+            if submitted_file and allowed_file(submitted_file.filename):
+                filename = secure_filename(submitted_file.filename)
+                submitted_file.save(os.path.join(businessdir, filename))
+                importusers(filename)
 
         if 'emailaddr' in request.form:
             rfname = request.form['firstname']
@@ -230,25 +234,4 @@ def addnewuser():
                     flash('this is not a defined role', 'category2')
                     return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
             
-        if 'password' in request.form:
-            if len(str(request.form['password'])) > 8:
-                if request.form['password'] != request.form['repeat']:
-                    flash('Your passwords do not match.  Please try again.', 'category2')
-                    return render_template("adduser.html")
-                else:
-                    password = argon2.using(rounds=4).hash(request.form.get('password'))
-                    repeat = password = argon2.using(rounds=4).hash(request.form.get('repeat'))
-                    con = sqlite.connect('db/db1.db')
-                    with con:
-                        cur = con.cursor()
-                        cur.execute('PRAGMA key = '+dbkey+';')
-                        cur.execute("UPDATE users set password = (?) WHERE username = (?);", (password, session['username'],))
-                        con.commit()
-                        gc.collect()
-                        flash('Password Changed!', 'category2')       
-                        return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
-            else:
-                flash('Password must be 8 characters or more.', 'category2')
-                return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
-
     return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
