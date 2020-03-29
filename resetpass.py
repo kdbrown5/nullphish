@@ -40,6 +40,17 @@ def doresetpass():
                 validusername = False
             return validusername
 
+    def logpwreset(username):
+        timestamp = (datetime.now())
+        timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+        timestamp = timestamp.replace(' ', '-')
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('insert into passreset (username, date) values ((?), (?));', username, timestamp)
+        con.close()
+
     def lookupfirstname(username):
         con = sqlite.connect('db/db1.db')
         with con:
@@ -146,6 +157,7 @@ def doresetpass():
             email = email.replace("']", '')
             email = [email]
             email = email[0]
+            logpwreset(email)
             session['username'] = email
             session['validated'] = 1
             session['logged_in'] = True
@@ -163,9 +175,9 @@ def doresetpass():
                 sendreset(firstname, username, link)
                 flash('Reset sent!  Check your inbox for reset link', 'category2')
                 return render_template('resetpassform.html')
-            else:
-                flash('Not a valid user, or token has expired', 'category2')
-                return render_template('resetpassform.html')
+        else:
+            flash('Not a valid user, or token has expired', 'category2')
+            return render_template('resetpassform.html')
 
 
     return render_template('resetpassform.html')
