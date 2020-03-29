@@ -75,34 +75,15 @@ def addnewuser():
                 del imported[0]
             convertimport = []
             for row in imported:
-                print('rowtest >>')
-                print(row)
                 convertimport.append(row)
-            print('convertimport >>')
             for i in convertimport:
-                print(i[0])
-                print(i[1])
-                print(i[2])
-                print(i[3])
-                print(i[4])
-                print(i[5])
-
-                print('after')
-                #print(stoptthis)
-                #iterateusername = [iterateusername]
-                #iteratefname = [iteratefname]
-                #iteratelname = [iteratelname]
-                #iteratedept = [iteratedept]
-                #iteraterole = [iteraterole]
-                #iteratemobph = [iteratemobph]
-                #if checkifexist(iterateusername) == 0:
-                #    con = sqlite.connect('db/db1.db')
-                #    with con:
-                #        cur = con.cursor()
-                #        cur.execute('PRAGMA key = '+dbkey+';')
-                #        cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (iterateusername, iteratefirstname, iteratelastname, session['business'], iteratedept, iteraterole, iteratemobph))
-                #    con.close()
-                
+                if checkifexist(i) == 0:
+                con = sqlite.connect('db/db1.db')
+                with con:
+                    cur = con.cursor()
+                    cur.execute('PRAGMA key = '+dbkey+';')
+                    cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?));', (i[0], i[1], i[2], session['business'], i[3], i[4], i[5]))
+                con.close()                  
             flash('Import complete', 'category2')
             
 
@@ -213,6 +194,7 @@ def addnewuser():
 
     usernamelookup, firstname, lastname, department, role =  reguserlookup()
     importusers()
+    usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":
         if 'emailaddr' in request.form:
