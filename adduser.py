@@ -87,7 +87,6 @@ def addnewuser():
                         cur.execute('PRAGMA key = '+dbkey+';')
                         cur.execute('insert into users (username, firstname, lastname, business, department, role, phone) values ((?), (?), (?), (?), (?), (?), (?));', (i[0], i[1], i[2], session['business'], i[3], i[4], i[5]))
                     con.close()                  
-        flash('Import complete', 'category2')
 
     def regsend(emailrecip, link, firstname):
         sender_email = "donotreply@nullphish.com"
@@ -196,7 +195,9 @@ def addnewuser():
     #usernamelookup, firstname, lastname, department, role =  reguserlookup()
 
     if request.method == "POST":
+        print('request.files >')
         print(request.files)
+        print('request.files[file]')
         print(request.files['file'])
         if request.files['file'] != '':
             businessdir = './reports/businesses/'+session['business']+'/'
@@ -205,8 +206,15 @@ def addnewuser():
             submitted_file = request.files['file']
             if submitted_file and allowed_file(submitted_file.filename):
                 filename = secure_filename(submitted_file.filename)
+                timestamp = (datetime.now())
+                timestamp = timestamp.strftime("%m/%d/%Y-%I-%M-%S")
+                timestamp = timestamp.replace(' ', '-')
+                filename = timestamp+filename
                 submitted_file.save(os.path.join(businessdir, filename))
                 importusers(filename)
+                usernamelookup, firstname, lastname, department, role =  reguserlookup()
+                flash('Import complete', 'category2')
+                return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
 
         if 'emailaddr' in request.form:
             rfname = request.form['firstname']
