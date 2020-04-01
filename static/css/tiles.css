@@ -34,7 +34,7 @@ Color Palette Hex Codes:
   border-radius: 25px;
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
-  min-width: 500px;
+  min-width: 700px;
   max-width: 2500px;
   min-height: 500px;
   margin-left: auto;
@@ -139,8 +139,8 @@ Color Palette Hex Codes:
   position: absolute;
   top: 120px;
   bottom: 90px;
-  left: 180px;
-  right: 180px;
+  left: 90px;
+  right: 90px;
   width: auto;
   height: auto;
   margin: 0px;
@@ -149,9 +149,9 @@ Color Palette Hex Codes:
   border-radius: 25px;
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
-  min-width: 250px;
-  max-width: 500px;
-  min-height: 250px;
+  min-width: 200px;
+  max-width: 700px;
+  min-height: 200px;
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(0,0,0,0.5);
@@ -179,15 +179,19 @@ Color Palette Hex Codes:
 }
 #tilelist td{
   background-color: none;
+  color: #E0E0E0;
 }
 #tilelist td .todo{
-  color: #721817;
+  background-color: #721817;
+  color: #0D1126;
 }
 #tilelist td .inprogress{
-  color: #ECA400;
+  background-color: #ECA400;
+  color: #0D1126;
 }
 #tilelist td .done{
-  color: #49A355;
+  background-color: #49A355;
+  color: #0D1126;
 }
 #tilelist a{
   text-decoration: underline;

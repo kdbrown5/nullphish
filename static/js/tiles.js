@@ -1,7 +1,7 @@
 function checkcontainers() {
   var w = window.innerWidth;
   var h = window.innerHeight;
-  if (w < 500) {
+  if (w < 700) {
     document.getElementById("tilecontainer").style.display = "none"; 
     document.getElementById("tilelist").style.display = "block"; 
   }
