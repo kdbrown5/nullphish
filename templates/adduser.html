@@ -17,10 +17,6 @@
         margin: 0px;
         position: absolute;
       }
-      .input-element{
-        font-size: 30px;
-        width: 400px;
-      }
       .contentcontainer{
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
@@ -54,24 +50,23 @@
     </nav>
     <div class="contentcontainer">
       <div class="row">
-      <h1>Import users</h1>
-      <form method="post" enctype="multipart/form-data">
-        <dl>
-        <p>
-          <input type="file" name="file" autocomplete="off" required>
-        </p>
-        </dl>
-        <p>
-        <input type="submit" value="Upload">
-      </p>
-    </form>
-    <hr>
-    <form method="POST">
-					<button name="Download" type="submit" class="btn btn-primary btn-block">Download Example CSV</button>
-    </form>
-    <hr>
-  </div>
-
+        <h1>Import users</h1>
+        <form method="post" enctype="multipart/form-data">
+          <dl>
+          <p>
+            <input type="file" name="file" autocomplete="off" required>
+          </p>
+          </dl>
+          <p>
+            <input type="submit" value="Upload">
+          </p>
+        </form>
+        <hr>
+        <form method="POST">
+          <button name="Download" type="submit" class="btn btn-primary btn-block">Download Example CSV</button>
+        </form>
+        <hr>
+      </div>
       <div><h1>Edit Users</h1></div>
       <div>
         <h2>View Users</h2>

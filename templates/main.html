@@ -15,7 +15,7 @@
       }
     </style>
   </head>
-  <body id="particles-js">
+  <body id="particles-js" onresize="checkcontainers()" onload="checkcontainers()">
     <nav>
       <table>
           <tr>
@@ -49,7 +49,41 @@
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
     </div>
-    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
-    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <div id="tilelist">
+      <h1>Select Your Module To Begin</h1>
+      <table>
+        <tr>
+          <th>Module:</th>
+          <th>Status:</th>
+        </tr>
+        <tr>
+          <td><a href="/education/intro">Introduction</a></td>
+          <td class="done">Done</td>
+        </tr>
+        <tr>
+          <td><a href="/education/intro">Emails</a></td>
+          <td class="inprogress">In-Progress</td>
+        </tr>
+        <tr>
+          <td><a href="/education/intro">Module 3</a></td>
+          <td class="todo">Not Started</td>
+        </tr>
+        <tr>
+          <td><a href="/education/intro">Module 4</a></td>
+          <td class="todo">Not Started</td>
+        </tr>
+        <tr>
+          <td><a href="/education/intro">Module 5</a></td>
+          <td class="todo">Not Started</td>
+        </tr>
+        <tr>
+          <td><a href="/education/intro">Module 6</a></td>
+          <td class="todo">Not Started</td>
+        </tr>
+      </table>
+    </div>
+    <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript" src="https://app.nullphish.com/static/js/tiles.js"></script>
   </body>
 </html>

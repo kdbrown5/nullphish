@@ -113,6 +113,10 @@ h1{
   font-weight: bold;
 }
 
+hr{
+  border-top: 1px solid #E0E0E0;
+}
+
 input[type=text]{
   background-color: #E0E0E0;
   border: 1px solid #E0E0E0;
@@ -128,8 +132,8 @@ input[type=text]{
   font-family: opensans;
   margin: 10px;
 }
-input[type=text]:active{
-  border-color: #ECA400;
+input[type=text]:focus{
+  border-color: #49A355;
 }
 input[type=password]{
   background-color: #E0E0E0;
@@ -146,8 +150,8 @@ input[type=password]{
   font-family: opensans;
   margin: 10px;
 }
-input[type=password]:active{
-  border-color: #ECA400;
+input[type=password]:focus{
+  border-color: #49A355;
 }
 input[type=submit]{
   background-color: #49A355;
@@ -164,7 +168,7 @@ input[type=submit]{
   margin: 10px;
 }
 input[type=submit]:hover{
-  border-color: #E0E0E0;
+  border-color: #49A355;
 }
 
 nav{
@@ -236,8 +240,6 @@ nav a:hover{
 }
 nav a:focus{
   outline: none;
-  text-decoration: underline;
-  text-decoration-color: #E0E0E0;
 }
 nav a.current{
   color: #ECA400;

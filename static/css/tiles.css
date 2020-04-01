@@ -132,4 +132,70 @@ Color Palette Hex Codes:
 }
 #tilecontainer a:hover .tooltiptext {
   visibility: visible;
+} 
+
+#tilelist{
+  z-index: 999;
+  position: absolute;
+  top: 120px;
+  bottom: 90px;
+  left: 180px;
+  right: 180px;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding: 5px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: 2px solid #E0E0E0;
+  color: #E0E0E0;
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /*display: none;*/
+}
+#tilelist h1{
+  font-size: calc(24px + 0.5vw);
+  max-height: 100px;
+  vertical-align: middle;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+#tilelist table{
+  border: none;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+#tilelist th{
+ font-weight: bold; 
+}
+#tilelist td{
+  background-color: none;
+}
+#tilelist td .todo{
+  color: #721817;
+}
+#tilelist td .inprogress{
+  color: #ECA400;
+}
+#tilelist td .done{
+  color: #49A355;
+}
+#tilelist a{
+  text-decoration: underline;
+  text-decoration-color: #E0E0E0;
+  color: #E0E0E0;
+}
+#tilelist a:hover{
+  text-decoration: underline;
+  text-decoration-color: #ECA400;
+  color: #ECA400;
 }
