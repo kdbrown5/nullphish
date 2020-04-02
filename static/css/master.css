@@ -245,11 +245,11 @@ nav a.current{
   color: #ECA400;
 }
 nav #dropdown{
-  position: relative;
   display: inline-block;
+  margin-left: 15px;
+  width: 100px;
 }
 nav #dropbtn{
-  margin-left: 15px;
   width: 100px;
   color: #E0E0E0;
   font-weight: bold;
@@ -306,8 +306,8 @@ select:focus{
   position: absolute;
   top: 120px;
   bottom: 90px;
-  left: 180px;
-  right: 180px;
+  left: 90px;
+  right: 90px;
   width: auto;
   height: auto;
   margin: 0px;
