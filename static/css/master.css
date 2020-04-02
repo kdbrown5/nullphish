@@ -284,11 +284,9 @@ nav #dropcontent a:hover{
   color: #ECA400;
   background-color: rgba(0,0,0,0.25);
 }
-/*
 nav #dropdown:hover #dropcontent {
   display: block;
 }
-*/
 
 select{
   background-color: #E0E0E0;
