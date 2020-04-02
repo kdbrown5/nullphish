@@ -1,8 +1,12 @@
-function showAppDescription() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-  } 
+function checknav() {
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  if (w < 1080) {
+    document.getElementById("menu").style.display = "none"; 
+    document.getElementById("dropdown").style.display = "inline-block"; 
+  }
+  else {
+    document.getElementById("menu").style.display = "table"; 
+    document.getElementById("dropdown").style.display = "none"; 
+  }
+}

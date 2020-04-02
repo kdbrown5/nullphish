@@ -34,7 +34,7 @@ Color Palette Hex Codes:
   border-radius: 25px;
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
-  min-width: 700px;
+  min-width: 1080px;
   max-width: 2500px;
   min-height: 500px;
   margin-left: auto;
@@ -138,9 +138,9 @@ Color Palette Hex Codes:
   z-index: 999;
   position: absolute;
   top: 120px;
-  bottom: 90px;
-  left: 90px;
-  right: 90px;
+  bottom: 60px;
+  left: 30px;
+  right: 30px;
   width: auto;
   height: auto;
   margin: 0px;
@@ -150,7 +150,7 @@ Color Palette Hex Codes:
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
   min-width: 200px;
-  max-width: 700px;
+  max-width: 1080px;
   min-height: 200px;
   margin-left: auto;
   margin-right: auto;

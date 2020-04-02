@@ -244,6 +244,35 @@ nav a:focus{
 nav a.current{
   color: #ECA400;
 }
+nav #dropdown{
+  position: relative;
+  display: inline-block;
+}
+nav #dropbtn{
+  margin-left: 15px;
+  width: 100px;
+  color: #E0E0E0;
+  font-weight: bold;
+  font-size: xx-large;
+  display: none;
+}
+nav #dropcontent{
+  display: none;
+  position: absolute;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #E0E0E0;
+  min-width: 160px;
+  z-index: 2;
+}
+nav #dropcontent a{
+  color: #E0E0E0;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+nav #dropdown:hover #dropcontent {
+  display: block;
+}
 
 select{
   background-color: #E0E0E0;

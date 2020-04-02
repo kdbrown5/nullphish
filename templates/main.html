@@ -17,7 +17,16 @@
   </head>
   <body id="particles-js" onresize="checkcontainers()" onload="checkcontainers()">
     <nav>
-      <table>
+      <div id="dropdown">
+        <button id="dropbtn">NullPhish</button>
+        <div id="dropcontent">
+          <a href="/main">Modules</a>
+          <a href="/stats">Results</a>
+          <a href="/profile">Profile</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <table id="menu">
           <tr>
             <td><a href="/main">Modules</a></td>
             <td><a href="/stats">Results</a></td>
@@ -26,7 +35,7 @@
         </tr>
       </table>
     </nav>
-    <div id="tilecontainer">
+    <div id="tilecontainer" style="display: none;">
       <h1>Select Your Module To Begin</h1>
       <!--Row 1-->
       <a href="/education/intro" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module1.svg');">
@@ -49,7 +58,7 @@
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
     </div>
-    <div id="tilelist">
+    <div id="tilelist" style="display: none;">
       <h1>Select Your Module To Begin</h1>
       <table>
         <tr>
