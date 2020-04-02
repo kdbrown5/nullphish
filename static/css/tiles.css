@@ -175,23 +175,25 @@ Color Palette Hex Codes:
   vertical-align: middle;
 }
 #tilelist th{
- font-weight: bold; 
+  font-weight: bold; 
+  text-decoration: underline;
+  text-decoration-color: #E0E0E0;
 }
 #tilelist td{
   background-color: none;
   color: #E0E0E0;
 }
 #tilelist td .todo{
-  background-color: #721817;
-  color: #0D1126;
+  color: #721817;
+  font-weight: bold;
 }
 #tilelist td .inprogress{
-  background-color: #ECA400;
-  color: #0D1126;
+  color: #ECA400;
+  font-weight: bold;
 }
 #tilelist td .done{
-  background-color: #49A355;
-  color: #0D1126;
+  color: #49A355;
+  font-weight: bold;
 }
 #tilelist a{
   text-decoration: underline;
