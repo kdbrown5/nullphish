@@ -9,46 +9,175 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>NullPhish: Intro </title>
-        <style>
 
-        </style>
-      </head>
-      <body>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+<!-- Carousel 100% Fullscreen -->
+<style>
+  /** TIPS: 
+1. The carousel shouldn't be in any other div, like for example div with class container. 
+2. You can align image position in classes bg1, bg2, bg3 using css background-position.
+*/
 
+/* Carousel 100% Fullscreen */
+html, body {
+height:100%;
+margin:0;
+padding:0;
+}
+.carousel, .item, .active {
+height:100%;
+}
+.carousel-inner {
+height:100%;
+}
+.carousel {
+margin-bottom: 60px;
+}
+.carousel-caption {
+z-index: 10;
+}
+.carousel .item {
+background-color: #777;
+}
+.carousel .carousel-inner .bg {
+background-repeat:no-repeat;
+background-size:cover;
+}
+.carousel .carousel-inner .bg1 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro1.jpg');
+background-position: center top;
+}
+.carousel .carousel-inner .bg2 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro2.jpg');
+background-position: center center;
+}
+.carousel .carousel-inner .bg3 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro3.jpg');
+background-position: center bottom;
+}
+.carousel .carousel-inner .bg4 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro4.jpg');
+background-position: center bottom;
+}
+.carousel .carousel-inner .bg5 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro5.jpg');
+background-position: center bottom;
+}
+.carousel .carousel-inner .bg6 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro6.jpg');
+background-position: center bottom;
+}
+.carousel .carousel-inner .bg7 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro7.jpg');
+background-position: center bottom;
+}
+.carousel .carousel-inner .bg8 {
+background-image:url('https://app.nullphish.com/static/res/intro/intro8.jpg');
+background-position: center bottom;
+}
+</style>
 
-        Some ideas:
-<br>
-What is a domain name?
-<br>
-<br>
-To put it simply, a domain name is basically internet realty.  Domain names regulated by ICANN (The Internet Corporation for Assigned Names and Numbers) - whom I like to think of as the internet's librarians.  Domain registrars such as GoDaddy are ICANN accredited sellers of these domain names.  
-<br>As an example, http://www.google.com is a URL (web address) for Google's main domain name.  Google.com would be the domain name.  The domain name can be used to describe the main name (part after https://), combined with the domain suffix (or TLD if you are savvy).  By domain suffix, we are inferring to .com , .net , .live , .org , .edu , as well as the hundreds of others.
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+    <li data-target="#myCarousel" data-slide-to="5"></li>
+    <li data-target="#myCarousel" data-slide-to="6"></li>
+    <li data-target="#myCarousel" data-slide-to="7"></li>
 
-<br>
-<br>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item bg bg1 active">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1></h1>
+        
 
-What is a subdomain?
+          <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item bg bg2">
+      <div class="container">
+        <div class="carousel-caption">
+          <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+        </div>
+      </div>
+    </div>
+  
+  <div class="item bg bg3">
+    <div class="container">
+      <div class="carousel-caption">
+        <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+      </div>
+    </div>
+  </div>
 
+<div class="item bg bg4">
+  <div class="container">
+    <div class="carousel-caption">
+      <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+    </div>
+  </div>
+</div>
+<div class="item bg bg5">
+  <div class="container">
+    <div class="carousel-caption">
+      <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+    </div>
+  </div>
+</div>
+<div class="item bg bg6">
+  <div class="container">
+    <div class="carousel-caption">
+      <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+    </div>
+  </div>
+</div>
+<div class="item bg bg7">
+  <div class="container">
+    <div class="carousel-caption">
+      <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+    </div>
+  </div>
+</div>
+<div class="item bg bg8">
+  <div class="container">
+    <div class="carousel-caption">
+      <p><a class="btn btn-lg btn-primary" href="#" role="button"></a></p>
+    </div>
+  </div>
+</div>
 
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+</div>
 
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+<!-- /end Carousel 100% Fullscreen -->
 
-Terms:
-Domain
-Subdomain
-Phishing
-Spear Phishing
-Clone Phishing
-Smishing (SMS phishing)
-Malicious
-Spoof
-Header
-Send As permissions
-Send on behalf
-URL
-hyperlink
-Url Shortener
-E-Mail Spoofing ( name )
-
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>  
+<![endif]-->
   </body>
 
 </html>
