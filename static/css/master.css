@@ -249,15 +249,14 @@ nav #dropdown{
   width: 100px;
   color: #E0E0E0;
   font-weight: bold;
-  font-size: medium;
   height: 100%;
   margin: 0px;
+  float: left;
 }
 nav #dropbtn{
   width: 100px;
   color: #E0E0E0;
   font-weight: bold;
-  font-size: medium;
   background-color: none;
 }
 nav #dropcontent{
@@ -267,10 +266,13 @@ nav #dropcontent{
   border: 1px solid #E0E0E0;
   min-width: 160px;
   z-index: 999;
+  overflow: hidden;
 }
 nav #dropcontent a{
   color: #E0E0E0;
-  padding: 12px 16px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: auto;
   text-decoration: none;
   display: block;
 }
