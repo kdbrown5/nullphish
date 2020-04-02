@@ -173,7 +173,7 @@ input[type=submit]:hover{
 
 nav{
   margin: 0;
-  z-index: 999;
+  z-index: 998;
   height: 60px;
   width: 100%;
   top: 0px;
@@ -253,7 +253,8 @@ nav #dropbtn{
   width: 100px;
   color: #E0E0E0;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: large;
+  background-color: none;
 }
 nav #dropcontent{
   display: none;
@@ -261,7 +262,7 @@ nav #dropcontent{
   background-color: rgba(0,0,0,0.5);
   border: 1px solid #E0E0E0;
   min-width: 160px;
-  z-index: 2;
+  z-index: 999;
 }
 nav #dropcontent a{
   color: #E0E0E0;
@@ -301,7 +302,7 @@ select:focus{
 
 /* Classes: */
 .contentcontainer{
-  z-index: 999;
+  z-index: 5;
   position: absolute;
   top: 120px;
   bottom: 90px;

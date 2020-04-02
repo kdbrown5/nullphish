@@ -20,7 +20,7 @@ Color Palette Hex Codes:
 
 /* Styles */
 #tilecontainer{
-  z-index: 999;
+  z-index: 5;
   position: absolute;
   top: 120px;
   bottom: 90px;
@@ -135,7 +135,7 @@ Color Palette Hex Codes:
 } 
 
 #tilelist{
-  z-index: 999;
+  z-index: 5;
   position: absolute;
   top: 120px;
   bottom: 60px;
