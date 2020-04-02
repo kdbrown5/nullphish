@@ -15,9 +15,9 @@
       }
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontainers()" onload="checkcontainers()">
+  <body id="particles-js" onresize="checkcontainers();checknav()" onload="checkcontainers();checknav()">
     <nav>
-      <div id="dropdown">
+      <div id="dropdown" style="display: none;">
         <button id="dropbtn">NullPhish</button>
         <div id="dropcontent">
           <a href="/main">Modules</a>
@@ -26,7 +26,7 @@
           <a href="/logout">Log Out</a>
         </div>
       </div>
-      <table id="menu">
+      <table id="mainmenu">
           <tr>
             <td><a href="/main">Modules</a></td>
             <td><a href="/stats">Results</a></td>
@@ -94,5 +94,6 @@
     <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript" src="https://app.nullphish.com/static/js/tiles.js"></script>
+    <script type="text/javascript" src="https://app.nullphish.com/static/js/master.js"></script>
   </body>
 </html>
