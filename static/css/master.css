@@ -246,7 +246,7 @@ nav a.current{
 }
 nav #dropdown{
   position: absolute;
-  left: 0px;
+  left: 5px;
   top: 0px;
   height: 60px;
   width: 60px;
@@ -259,10 +259,13 @@ nav #dropdown{
   background-repeat: no-repeat;
   background-position-x: left;
   background-position-y: top;
+  cursor: pointer;
 }
 nav #dropcontent{
   display: none;
   position: absolute;
+  top: 60px;
+  left: 5px;
   background-color: rgba(0,0,0,0.5);
   border: 1px solid #E0E0E0;
   min-width: 160px;
