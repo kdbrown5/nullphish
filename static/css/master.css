@@ -245,12 +245,13 @@ nav a.current{
   color: #ECA400;
 }
 nav #dropdown{
+  display: inline-block;
   width: 100px;
   color: #E0E0E0;
   font-weight: bold;
   font-size: medium;
   background-color: none;
-  position: absolute;
+  position: relative;
   text-align: right;
 }
 nav #dropbtn{
