@@ -245,19 +245,20 @@ nav a.current{
   color: #ECA400;
 }
 nav #dropdown{
-  display: inline-block;
-  width: 100px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 60px;
+  width: 60px;
   color: #E0E0E0;
   font-weight: bold;
   height: 100%;
   margin: 0px;
-  float: left;
-}
-nav #dropbtn{
-  width: 100px;
-  color: #E0E0E0;
-  font-weight: bold;
-  background-color: none;
+  background-image: URL('https://app.nullphish.com/static/res/menudropdown.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: top;
 }
 nav #dropcontent{
   display: none;
@@ -280,9 +281,11 @@ nav #dropcontent a:hover{
   color: #ECA400;
   background-color: rgba(0,0,0,0.25);
 }
+/*
 nav #dropdown:hover #dropcontent {
   display: block;
 }
+*/
 
 select{
   background-color: #E0E0E0;

@@ -1,4 +1,4 @@
-function checkcontainers() {
+function checktilecontainers() {
   var w = window.outerWidth;
   var h = window.outerHeight;
   if (w < 1080) {
