@@ -250,9 +250,8 @@ nav #dropdown{
   color: #E0E0E0;
   font-weight: bold;
   font-size: medium;
-  background-color: none;
-  position: relative;
-  text-align: right;
+  height: 100%;
+  margin: 0px;
 }
 nav #dropbtn{
   width: 100px;
@@ -277,6 +276,7 @@ nav #dropcontent a{
 }
 nav #dropcontent a:hover{
   color: #ECA400;
+  background-color: rgba(0,0,0,0.25);
 }
 nav #dropdown:hover #dropcontent {
   display: block;
