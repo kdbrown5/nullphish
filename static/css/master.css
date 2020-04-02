@@ -254,7 +254,6 @@ nav #dropbtn{
   color: #E0E0E0;
   font-weight: bold;
   font-size: xx-large;
-  display: none;
 }
 nav #dropcontent{
   display: none;
@@ -316,7 +315,7 @@ select:focus{
   border-radius: 25px;
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
-  min-width: 500px;
+  min-width: 900px;
   max-width: 2500px;
   min-height: 500px;
   margin-left: auto;

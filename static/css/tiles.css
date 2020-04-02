@@ -34,7 +34,7 @@ Color Palette Hex Codes:
   border-radius: 25px;
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
-  min-width: 1080px;
+  min-width: 900px;
   max-width: 2500px;
   min-height: 500px;
   margin-left: auto;
@@ -81,38 +81,38 @@ Color Palette Hex Codes:
   box-shadow: 0px 0px 10px 5px #E0E0E0;
   background-color: #E0E0E0;
 }
-#tilecontainer a .todo{ /* Tiles marked 'to-do' show a red border and shadow */
+#tilecontainer a .tile-todo{ /* Tiles marked 'to-do' show a red border and shadow */
   border: 5px solid #721817;
 }
-#tilecontainer a .todo:hover{
+#tilecontainer a .tile-todo:hover{
   border-color: #721817;
   box-shadow: 0px 0px 10px 5px #721817;
 }
-#tilecontainer a .todo:active{
+#tilecontainer a .tile-todo:active{
   border-color: #721817;
   box-shadow: 0px 0px 10px 5px #721817;
   background-color: #721817;
 }
-#tilecontainer a .inprogress{ /* Tiles marked 'in-progress' show a platinum border and shadow */
+#tilecontainer a .tile-inprogress{ /* Tiles marked 'in-progress' show a platinum border and shadow */
   border: 5px solid #E0E0E0;
 }
-#tilecontainer a .inprogress:hover{
+#tilecontainer a .tile-inprogress:hover{
   border-color: #E0E0E0;
   box-shadow: 0px 0px 10px 5px #E0E0E0;
 }
-#tilecontainer a .inprogress:active{
+#tilecontainer a .tile-inprogress:active{
   border-color: #E0E0E0;
   box-shadow: 0px 0px 10px 5px #E0E0E0;
   background-color: #E0E0E0;
 }
-#tilecontainer a .done{ /* Tiles marked 'done' show a gold border and shadow */
+#tilecontainer a .tile-done{ /* Tiles marked 'done' show a gold border and shadow */
   border: 5px solid #ECA400;
 }
-#tilecontainer a .done:hover{
+#tilecontainer a .tile-done:hover{
   border-color: #ECA400;
   box-shadow: 0px 0px 10px 5px #ECA400;
 }
-#tilecontainer a .done:active{
+#tilecontainer a .tile-done:active{
   border-color: #ECA400;
   box-shadow: 0px 0px 10px 5px #ECA400;
   background-color: #ECA400;
@@ -183,15 +183,15 @@ Color Palette Hex Codes:
   background-color: none;
   color: #E0E0E0;
 }
-#tilelist td .todo{
+#tilelist td .list-todo{
   color: #721817;
   font-weight: bold;
 }
-#tilelist td .inprogress{
+#tilelist td .list-inprogress{
   color: #ECA400;
   font-weight: bold;
 }
-#tilelist td .done{
+#tilelist td .list-done{
   color: #49A355;
   font-weight: bold;
 }
