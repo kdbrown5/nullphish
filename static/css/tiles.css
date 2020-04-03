@@ -49,13 +49,13 @@ Color Palette Hex Codes:
   align-content: center;
 }
 #tilecontainer h1{
-  font-size: calc(24px + 0.5vw);
+  font-size: calc(18px + 0.75vw);
   max-height: 100px;
   vertical-align: middle;
 }
 #tilecontainer h2{
-  font-size: calc(14px + 0.5vw);
-  max-height: 100px;
+  font-size: calc(14px + 0.75vw);
+  max-height: 80px;
   vertical-align: middle;
 }
 #tilecontainer a{ /* This is what a regular tile will look like */

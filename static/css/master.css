@@ -328,10 +328,11 @@ select:focus{
   font-size: calc(24px + 0.5vw);
   max-height: 40px;
   vertical-align: middle;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
+}
+.contentcontainer h2{
+  font-size: calc(14px + 0.75vw);
+  max-height: 80px;
+  vertical-align: middle;
 }
 .contentcontainer.scrollable{
   overflow-y: scroll;
@@ -340,6 +341,12 @@ select:focus{
 .contentcontainer div.bordered{
   border-top: 1px solid #E0E0E0;
   padding-top: 15px;
+}
+.contentcontainer #header{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 #dropdown{
