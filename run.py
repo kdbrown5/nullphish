@@ -81,7 +81,7 @@ def loginb():
         elif session.get('role') == 'superadmin':
             return render_template('superadminlobby.html')
         else:
-            return render_template('main.html')
+            return render_template('main.html',firstname=session['fname'], lastname=session['lname'])
     else:
         return loginpage()
 

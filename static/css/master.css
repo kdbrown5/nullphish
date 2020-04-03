@@ -244,48 +244,28 @@ nav a:focus{
 nav a.current{
   color: #ECA400;
 }
-nav #dropdown{
-  position: absolute;
-  left: 5px;
-  top: 0px;
+nav .presenter{
+  margin: 0;
+  z-index: 998;
   height: 60px;
-  width: 60px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
   color: #E0E0E0;
-  font-weight: bold;
-  height: 100%;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
   margin: 0px;
-  background-image: URL('https://app.nullphish.com/static/res/menudropdown.svg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position-x: left;
-  background-position-y: top;
-  cursor: pointer;
-}
-nav #dropcontent{
-  display: none;
-  position: absolute;
-  top: 60px;
-  left: 5px;
-  background-color: rgba(0,0,0,0.5);
-  border: 1px solid #E0E0E0;
-  min-width: 160px;
-  z-index: 999;
-  overflow: hidden;
-}
-nav #dropcontent a{
-  color: #E0E0E0;
-  padding-left: 5px;
-  padding-right: 5px;
-  width: auto;
   text-decoration: none;
-  display: block;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  opacity: 0.25;
 }
-nav #dropcontent a:hover{
-  color: #ECA400;
-  background-color: rgba(0,0,0,0.25);
-}
-nav #dropdown:hover #dropcontent {
-  display: block;
+nav .presenter:hover{
+  opacity: 1;
 }
 
 select{
@@ -362,10 +342,48 @@ select:focus{
   padding-top: 15px;
 }
 
-.fader{
-  opacity: 0;
-  transition: opacity 0.6s ease-out, transform 1.2s ease-out;
-  will-change: opacity;
+#dropdown{
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  height: 60px;
+  width: 60px;
+  color: #E0E0E0;
+  font-weight: bold;
+  height: 100%;
+  margin: 0px;
+  background-image: URL('https://app.nullphish.com/static/res/menudropdown.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: top;
+  cursor: pointer;
+}
+#dropcontent{
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #E0E0E0;
+  min-width: 160px;
+  z-index: 999;
+  overflow: hidden;
+}
+#dropcontent a{
+  color: #E0E0E0;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: auto;
+  text-decoration: none;
+  display: block;
+}
+#dropcontent a:hover{
+  color: #ECA400;
+  background-color: rgba(0,0,0,0.25);
+}
+#dropdown:hover #dropcontent {
+  display: block;
 }
 
 .logo-sm{

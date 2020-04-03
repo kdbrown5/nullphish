@@ -3,7 +3,7 @@ function checknav() {
   var h = window.outerHeight;
   if (w < 1200) {
     document.getElementById("mainmenu").style.display = "none"; 
-    document.getElementById("dropdown").style.display = "inline-block"; 
+    document.getElementById("dropdown").style.display = "block"; 
   }
   else {
     document.getElementById("mainmenu").style.display = "initial"; 

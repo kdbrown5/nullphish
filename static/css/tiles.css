@@ -55,6 +55,13 @@ Color Palette Hex Codes:
   grid-column-start: 1;
   grid-column-end: 4;
 }
+#tilecontainer h2{
+  font-size: calc(18px + 0.5vw);
+  max-height: 100px;
+  vertical-align: middle;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
 #tilecontainer a{ /* This is what a regular tile will look like */
   border-radius: 15px;
   border: 5px solid #49A355;
