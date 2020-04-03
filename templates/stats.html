@@ -26,10 +26,11 @@
       .contentcontainer{
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
-        row-gap: 30px;
+        row-gap: 0px;
         z-index: 999;
-		height: 1300px;
+		padding-bottom: 200px;
 		color: black;
+		margin-top: 0px;
       }
 	  .mainmenu { 
 		  background-color: transparent;
@@ -43,6 +44,18 @@
         grid-row-start: 1;
         grid-row-end: 2;
       }
+	  table.dataframe, .dataframe th, .dataframe td {
+  border: line;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  border-collapse: collapse;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 0px;
+  font-size: 1.1em;
+}
 tr:first-child { background-color: transparent;}
 tr:first { background-color: transparent; }
 tr:hover:first-child { background-color: transparent; }
@@ -70,15 +83,14 @@ tr:hover            { background-color: lightskyblue;}
       </table>
     </nav>
     <div class="contentcontainer">
-	  <div><h1 style="color: white;">Education Statistics</h1></div>
+	 <h1 style="color: white;">Education Statistics</h1>
 	  <center>
-		<form method="post">
-			<h2 class="heade"> <input class="btn btn-secondary btn-block" type="submit" name="modifyrecord" value="Modify Records"></h2></form>
+		<form method="post"><h2 class="heade"> <input class="btn btn-secondary btn-block" type="submit" name="modifyrecord" value="Modify Records"></h2></form>
 	</center>
 	<center>
 		<h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
 			{% if messages %}
-			  <ul class="flashes w3-jumbo" style="color: Black">
+			  <ul class="" style="color: white">
 			  {% for message in messages %}
 			{{ message }}
 			  {% endfor %}
@@ -89,7 +101,7 @@ tr:hover            { background-color: lightskyblue;}
 					{% if businessdata %}
 		<h1><u><b>Business Exam Results</b></u></h1>
 	<br>
-		<table class="table table-hover dataframe" align="center">
+		<table class="table table-hover dataframe">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
 				<td width="5%">Department</td>
