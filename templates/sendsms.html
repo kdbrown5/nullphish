@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <style>
 a, h1, h2       { color: #2196F3; }
 h1, h2          { margin: 0; }
@@ -44,7 +46,8 @@ div.ex2 {
 }
 tr:nth-child(odd)		{ background-color: lightgrey; }
 tr:nth-child(even)	{ background-color:grey; }
-
+tr:first-child { background-color: transparent;}
+tr:hover:first-child { background-color: transparent; } 
 tr:hover            { background-color: #b4ecb4;}
 h2.heade {
   text-align: center;
@@ -60,11 +63,12 @@ body {
   all: unset;
 }
 </style>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> 
+
 </head>
+<body>
 <nav>
   <table>
-    <tr>
+    <tr bg-color="#eee">
       <td><a href="https://app.nullphish.com">Modules</a></td>
       <td><a href="/results">Results</a></td>
       <td><a href="/gophishing">Phishing</a></td>
@@ -117,4 +121,5 @@ body {
 	</tr>
 	</table>
       <br>
+    </body>
 </html>
