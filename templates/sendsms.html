@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <head>
 <html lang="en">
-		<title>Go Phishing!</title> 
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> 
-		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Go Phishing!</title> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
 <style>
-body            { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
 a, h1, h2       { color: #2196F3; }
 h1, h2          { margin: 0; }
 h1              { border-bottom: 0px solid #eee; }
@@ -41,16 +42,17 @@ div.ex2 {
     height: auto;
     min-height: 36px;
 }
-tr:nth-child(odd)		{ background-color: #fff; }
-tr:nth-child(even)	{ background-color:#eeeeee; }
+tr:nth-child(odd)		{ background-color: lightgrey; }
+tr:nth-child(even)	{ background-color:grey; }
 
-tr:hover            { background-color: rgba(255, 0, 0, 0.185);}
+tr:hover            { background-color: #b4ecb4;}
 h2.heade {
   text-align: center;
 }
 
 body {
-  background-color: Lightgrey;
+  background-color: #0D1126;
+  margin-top: 5%;
 }
 .buttonHolder{ text-align: center; }
 
@@ -60,17 +62,18 @@ body {
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> 
 </head>
-<div class="w3-top">
-		<div class="w3-bar w3-blue w3-card w3-left-align w3-large">
-		  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-		  <a href="/main" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-          <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Profile</a>
-          <a href="/stats" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Stats</a>
-          <a href="/gophishing" class="w3-bar-item w3-button w3-padding-large w3-white">Go Phishing</a>
-          <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Log Out</a>
-		  <!-- <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Link 4</a> -->
-		</div></div>
-<br>
+<nav>
+  <table>
+    <tr>
+      <td><a href="https://app.nullphish.com">Modules</a></td>
+      <td><a href="/results">Results</a></td>
+      <td><a href="/gophishing">Phishing</a></td>
+      <td><a href="/stats">Stats</a></td>
+      <td><a href="/profile">Profile</a></td>
+      <td><a href="/logout">Log Out</a></td>
+    </tr>
+  </table>
+</nav>
 <br>
 <center>
 	
@@ -91,7 +94,7 @@ body {
 <br>
 	<table class="table table-hover dataframe" align="center">
 		<thead>
-			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+			<tr style="background-color: #49A355; text-align:center; " class="border_bottom" >
 			<td width="5%">Department</td>
 			<td>First</td>
 			<td>Last</td>
@@ -112,13 +115,6 @@ body {
         <td><button type="submit" class="btn btn-primary">Phish!</button></form></td>
         {% endfor %}
 	</tr>
-	
 	</table>
-
       <br>
-      
-
-
-
-
 </html>
