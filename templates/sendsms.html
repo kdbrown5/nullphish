@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 <html lang="en">
-    <title>Go Phishing!</title> 
+    <title>SMS Phishing</title> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
@@ -52,10 +52,16 @@ tr:hover            { background-color: #b4ecb4;}
 h2.heade {
   text-align: center;
 }
+.button { 
+  width: 150px;
+  text-align: center;
+  display: block;
 
+}
 body {
   background-color: #0D1126;
   margin-top: 5%;
+  color: #0D1126;
 }
 .buttonHolder{ text-align: center; }
 
@@ -68,7 +74,7 @@ body {
 <body>
 <nav>
   <table>
-    <tr bg-color="#eee">
+    <tr>
       <td><a href="https://app.nullphish.com">Modules</a></td>
       <td><a href="/results">Results</a></td>
       <td><a href="/gophishing">Phishing</a></td>
@@ -83,7 +89,7 @@ body {
 	
     <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
-          <ul class="flashes w3-jumbo" style="color: Black">
+          <ul class="flashes w3-jumbo" style="color: white">
           {% for message in messages %}
         {{ message }}
           {% endfor %}
@@ -96,9 +102,9 @@ body {
         Send Your users practice phishing text messages<br>
     </b></u></h1>
 <br>
-	<table class="table table-hover dataframe" align="center">
+	<table class="table table-hover dataframe">
 		<thead>
-			<tr style="background-color: #49A355; text-align:center; " class="border_bottom" >
+			<tr style="background-color: #2196F3; text-align:center; " class="border_bottom" >
 			<td width="5%">Department</td>
 			<td>First</td>
 			<td>Last</td>
@@ -116,7 +122,7 @@ body {
         <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
         <td name="phonenumber"><input name="phonenumber" placeholder="numbers only"></td>
         <td name="txtmessage"><input name="txtmessage" placeholder="Message here"></td>
-        <td><button type="submit" class="btn btn-primary">Phish!</button></form></td>
+        <td width="3%"><button type="submit" class="button">Phish!</button></form></td>
         {% endfor %}
 	</tr>
 	</table>
