@@ -35,8 +35,10 @@
       </table>
     </nav>
     <div id="tilecontainer" style="display: none;">
-      <h2>Welcome &nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}</h2>
-      <h1>Select Your Module To Begin</h1>
+      <div id="header">
+        <h2>Welcome &nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}</h2>
+        <h1>Select Your Module To Begin</h1>
+      </div>
       <!--Row 1-->
       <a href="/education/intro" style="background-image:url('https://app.nullphish.com/static/res/modules/main/module1.svg');">
         <span class="tooltiptext">Tooltip text here!</span>
