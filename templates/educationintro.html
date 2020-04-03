@@ -25,8 +25,10 @@
 html, body {
 height:100%;
 margin:0;
-padding:0;
+padding-top:25px;
+background-color: #0E293C;
 }
+
 .carousel, .item, .active {
 height:100%;
 }
@@ -34,7 +36,7 @@ height:100%;
 height:100%;
 }
 .carousel {
-margin-bottom: 60px;
+margin-bottom: 0px;
 }
 .carousel-caption {
 z-index: 10;
@@ -49,34 +51,42 @@ background-size:cover;
 .carousel .carousel-inner .bg1 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro1.png');
 background-position: center top;
+background-size: cover;
 }
 .carousel .carousel-inner .bg2 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro2.png');
 background-position: center center;
+background-size: cover;
 }
 .carousel .carousel-inner .bg3 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro3.png');
 background-position: center bottom;
+background-size: cover;
 }
 .carousel .carousel-inner .bg4 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro4.png');
 background-position: center bottom;
+background-size: cover;
 }
 .carousel .carousel-inner .bg5 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro5.png');
 background-position: center bottom;
+background-size: cover;
 }
 .carousel .carousel-inner .bg6 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro6.png');
 background-position: center bottom;
+background-size: cover;
 }
 .carousel .carousel-inner .bg7 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro7.png');
 background-position: center bottom;
+background-size: cover;
 }
 .carousel .carousel-inner .bg8 {
 background-image:url('https://app.nullphish.com/static/res/intro/educationintro8.png');
 background-position: center bottom;
+background-size: cover;
 }
 </style>
 
@@ -89,6 +99,24 @@ background-position: center bottom;
   }
 </script>
 </head>
+<nav>
+  <div id="dropdown" style="display: none;">
+    <div id="dropcontent">
+      <a href="/main">Modules</a>
+      <a href="/progress">Progress</a>
+      <a href="/profile">Profile</a>
+      <a href="/logout">Log Out</a>
+    </div>
+  </div>
+  <table id="mainmenu" >
+      <tr>
+        <td><a href="/main">Modules</a></td>
+        <td><a href="/progress">Progress</a></td>
+        <td><a href="/profile">Profile</a></td>
+        <td><a href="/logout">Log Out</a></td>
+    </tr>
+  </table>
+</nav>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
