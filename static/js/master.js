@@ -25,7 +25,9 @@ function checkcontentontainers() {
 function showpolicy() {
   var accepted = getCookie("acceptedpolicy");
   if (accepted = "") {
-    document.getElementById("policycontainer").style.display = "block"; 
+    document.getElementById("policycontainer").style.visibility = "visible"; 
+  } else {
+    document.getElementById("policycontainer").style.visibility = "hidden"; 
   }
 }
 

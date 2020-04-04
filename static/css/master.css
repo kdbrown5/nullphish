@@ -395,10 +395,10 @@ select:focus{
 
 #policycontainer{
   margin: 0;
-  z-index: 998;
+  z-index: 999;
   height: 60px;
   width: 100%;
-  bottom: 0px;
+  top: 60px;
   left: 0px;
   position: fixed;
   color: #E0E0E0;
@@ -411,8 +411,8 @@ select:focus{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   vertical-align: top;
-  border-top: 2px solid #E0E0E0;
-  display: none;
+  border-bottom: 2px solid #E0E0E0;
+  visibility: hidden;
 }
 
 .logo-sm{
