@@ -25,13 +25,13 @@ function checkcontentontainers() {
 function showpolicy() {
   var accepted = getCookie("acceptedpolicy");
   if (accepted = "") {
-    document.getElementById("policycontainer").style.visibility = "visible"; 
+    document.getElementById("policycontainer").style.display = "block"
   } else {
-    document.getElementById("policycontainer").style.visibility = "hidden"; 
+    document.getElementById("policycontainer").style.display = "none"
   }
 }
 
 function acceptpolicy() {
-  document.cookie = "acceptedpolicy=True"; 
-  document.getElementById("policycontainer").style.display = "block"; 
+  document.cookie = "acceptedpolicy=1"; 
+  document.getElementById("policycontainer").style.display = "none"
 }
