@@ -393,6 +393,28 @@ select:focus{
   display: block;
 }
 
+#policycontainer{
+  margin: 0;
+  z-index: 998;
+  height: 60px;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  border-top: 2px solid #E0E0E0;
+  display: none;
+}
+
 .logo-sm{
   height: 50px;
   width: auto;
