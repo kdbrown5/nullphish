@@ -147,7 +147,8 @@ nav .presenter:hover{
   opacity: 1;
 }
 .contentcontainer{
-  z-index: 5;
+  z-index: 999999;
+  color: black;
   position: absolute;
   top: 120px;
   bottom: 90px;
@@ -161,7 +162,6 @@ nav .presenter:hover{
   overflow: visible;
   border-radius: 25px;
   border: 2px solid #E0E0E0;
-  color: #E0E0E0;
   min-width: 900px;
   max-width: 2500px;
   min-height: 500px;
@@ -281,7 +281,7 @@ body{
       </table>
     </nav>
     <div class="contentcontainer">
-      <div><h1>Add E-Mail Templates</h1></div>
+      <div><h1 style="color: white">Add E-Mail Templates</h1></div>
 
       <h1 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
