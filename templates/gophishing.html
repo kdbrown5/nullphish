@@ -69,6 +69,7 @@
     tr:hover:first-child { background-color: transparent; }
     tr:hover            { background-color: #d5e9f9;}
     </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> 
   </head>
   <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
     <div id="particles-js"></div>
@@ -167,7 +168,7 @@ $('#templateview').change(function() {
 });
 </script>
 </div>
-<center>
+<center></center>
 {% if templateview %}
 <iframe height="1000px" width="1200px" src="{{ templateview }}">
 </iframe>
