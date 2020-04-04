@@ -24,7 +24,7 @@ function checkcontentontainers() {
 
 function showpolicy() {
   var accepted = getCookie("acceptedpolicy");
-  if (accepted = "") {
+  if (accepted != "1") {
     document.getElementById("policycontainer").style.display = "block"
   } else {
     document.getElementById("policycontainer").style.display = "none"
