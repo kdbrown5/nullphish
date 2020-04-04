@@ -1,194 +1,370 @@
+<!--   NOTE: This document is here as a template/placeholder for future pages      -->
+<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <title>E-mail Templates</title> 
 
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
-    <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
-    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://nullphish.com/static/summernote/googlematerialicons.css">
     <link href="https://nullphish.com/static/summernote/bootstrap337min.css" rel="stylesheet">
     <script src="https://nullphish.com/static/summernote/jquery341min.js"></script>
     <script src="https://nullphish.com/static/summernote/bootstrap337min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
     <script src="https://nullphish.com/static/summernote/summernote.min.js"></script>
-<!--- 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
---->
-<style>
-	div.ex2 {
-  max-width:500px;
-  margin: auto;
-  opacity: 1
-	}
-  .form-control {
-    height: auto;
-    min-height: 36px;
-    opacity: 1
-}
 
-.header-site {
-  content: "Profile";
-  opacity: 1
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NullPhish: Add E-Mail Templates</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: visible;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+
+nav{
+  margin: 0;
+  z-index: 998;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  border-bottom: 2px solid #E0E0E0;
 }
-h2.heade {
+nav table{
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  line-height: 60px;
+  width: 50%;
+  text-align: center;
+  table-layout: auto;
+  min-width: 800px;
+  max-width: 2160px;
+  text-decoration: none;
+}
+nav tr{
+  line-height: 60px;
+  margin: 0px;
+  padding: 0px;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+}
+nav td{
+  width: 300px;
+  padding: 5px;
+  height: 50px;
+  vertical-align: top;
+  top: 0px;
   text-align: center;
 }
-.center-div
-{
-     margin: 0 auto;
-     width: 100px; 
+nav a{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  line-height: 50px;
+  border-radius: 15px;
+  display: block;
+  min-width: 150px;
 }
-form {
+nav a:hover{
+  color: #ECA400;
+}
+nav a:focus{
+  outline: none;
+}
+nav a.current{
+  color: #ECA400;
+}
+nav .presenter{
+  margin: 0;
+  z-index: 998;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  opacity: 0.25;
+}
+nav .presenter:hover{
+  opacity: 1;
+}
+.contentcontainer{
+  z-index: 5;
+  position: absolute;
+  top: 120px;
+  bottom: 90px;
+  left: 90px;
+  right: 90px;
+  width: auto;
+  height: auto;
+  padding-bottom: 2000px;
+  margin: 0px;
+  padding-top: 30px;
+  overflow: visible;
+  border-radius: 25px;
+  border: 2px solid #E0E0E0;
+  color: #E0E0E0;
+  min-width: 900px;
+  max-width: 2500px;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: center;
   text-align: center;
-  opacity: 1
 }
-
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-.bgg {font-size:75px}
-body {
+.contentcontainer h1{
+  font-size: calc(24px + 0.5vw);
+  max-height: 40px;
+  vertical-align: middle;
+}
+.contentcontainer h2{
+  font-size: calc(14px + 0.75vw);
+  max-height: 80px;
+  vertical-align: middle;
+}
+.contentcontainer.scrollable{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.contentcontainer div.bordered{
+  border-top: 1px solid #E0E0E0;
+  padding-top: 15px;
+}
+.contentcontainer #header{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+body{
+  margin: 0;
+  overflow-x: hidden;
   background-color: #0D1126;
-  margin-top: 5%;
+  background-repeat: repeat;
+  background-size: cover;
+  font-family: opensans;
+  color: #ECA400;
+  text-align: center;
+  text-decoration: none;
 }
-.header {
+#dropdown{
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  height: 60px;
+  width: 60px;
+  color: #E0E0E0;
+  font-weight: bold;
+  height: 100%;
+  margin: 0px;
+  background-image: URL('https://app.nullphish.com/static/res/menudropdown.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: top;
+  cursor: pointer;
+}
+#dropcontent{
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #E0E0E0;
+  min-width: 160px;
+  z-index: 999;
+  overflow: hidden;
+}
+#dropcontent a{
+  color: #E0E0E0;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: auto;
+  text-decoration: none;
+  display: block;
+}
+#dropcontent a:hover{
+  color: #ECA400;
+  background-color: rgba(0,0,0,0.25);
+}
+#dropdown:hover #dropcontent {
+  display: block;
+}
 
+.logo-sm{
+  height: 50px;
+  width: auto;
+  line-height: 60px;
+  padding: 0px;
+  margin: auto;
 }
     </style>
-    <body>
-                      <nav>
-                        <table class="header">
-                          <tr style="color: white">
-                            <td><a href="https://app.nullphish.com">Modules</a></td>
-                            <td><a href="/results">Results</a></td>
-                            <td><a href="/gophishing">Phishing</a></td>
-                            <td><a href="/stats">Stats</a></td>
-                            <td><a href="/profile">Profile</a></td>
-                            <td><a href="/logout">Log Out</a></td>
-                          </tr>
-                        </table>
-                      </nav>
-                   
-<center>
+  </head>
+  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
+    <div id="particles-js"></div>
+    <nav>
+      <div id="dropdown">
+        <div id="dropcontent">
+          <a href="/main">Modules</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <table id="mainmenu">
+          <tr>
+            <td><a href="/main">Modules</a></td>
+            <td><a href="/logout">Log Out</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <div><h1>Add E-Mail Templates</h1></div>
 
-    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+      <h1 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
-          <ul class="flashes w3-jumbo" style="color: white">
+
           {% for message in messages %}
         {{ message }}
           {% endfor %}
-          </ul>
         {% endif %}
         {% endwith %}</h1>
-
-    </center>
-   
-<div class="container">
-  <div class="row">
-    <div class="col-md">
-<center>
-
-
-</h3>
-<h1 style="color: white">
-Add New Template:
-</h1>
-    <form method="post">
-      <textarea id="summernote" name="editordata"></textarea>
-      <input name='templatename' type="text" class="form-control" placeholder="Template Name:" required></input>
-      <input name='templatesubject' type="text" class="form-control" placeholder="Email Subject:" required></input>
-      <button name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
-    </form>
-  <script>
-    $(document).ready(function() {
-        $('#summernote').summernote();
-    });
-  </script>
-
-
-  <h4 style="color: white">
-   <br>Links will be scrubbed and replaced with an API token for reporting.
-    <br>Please ensure text and images are as you would like them to appear.
-    <br>If any of following keywords are used in the template,
-    <br>they will be replaced with information related to the recipient.
-    <br>firstname
-    <br>lastname
-    <br>receiveremail
-    <br>datestamp<br>
-    </h4>
-
-    {% if searchtemplates %}
-    <form method="post">
-    <div class="col-md" style="form">
-      <hr>
-      <h3 style="color: white" class="w3-xlarge">Delete Templates:</h3>
-      <div class="ex2">
-        <div class="form-group">
-            <label for="exampleFormControlSelect1"></label>
-            <select name= 'selecttemplate' class="form-control" id="selecttemplate">
+        <form method="post">
+          <textarea id="summernote" name="editordata"></textarea>
+          <input name='templatename' type="text" class="form-control" placeholder="Template Name:" required></input>
+          <input name='templatesubject' type="text" class="form-control" placeholder="Email Subject:" required></input>
+          <button name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
+        </form>
+      <script>
+        $(document).ready(function() {
+            $('#summernote').summernote();
+        });
+      </script>
+    
+    
+      <h4 style="color: white">
+       <br>Links will be scrubbed and replaced with an API token for reporting.
+        <br>Please ensure text and images are as you would like them to appear.
+        <br>If any of following keywords are used in the template,
+        <br>they will be replaced with information related to the recipient.
+        <br>firstname
+        <br>lastname
+        <br>receiveremail
+        <br>datestamp<br>
+        </h4>
+    
+        {% if searchtemplates %}
+        <form method="post">
+          <hr>
+          <h3 style="color: white" class="w3-xlarge">Delete Templates:</h3>
+                <label for="exampleFormControlSelect1"></label>
+                <select name= 'selecttemplate' class="form-control" id="selecttemplate">
+                    <option>Templates</option>
+                        {% for row in searchtemplates %}
+                            <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
+                        {% endfor %}     
+                </select>
+                <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
+              
+        </form>    
+        {% endif %}
+    
+        <br>
+        <hr>
+        <br>
+        <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
+          <form method="POST">
+              <td>        <select name= "templateview" class="form-control" id="templateview">
                 <option>Templates</option>
                     {% for row in searchtemplates %}
-                        <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
-                    {% endfor %}     
+                        <option>{{ row }}</option>
+                    {% endfor %}
             </select>
-            <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
-            </div>
-          </div>
-          
-    </div>
-    </form>    
-    {% endif %}
+        </td>
+        </form>
+        <script>
+        $(function() {
+          $('#templateview').change(function() {
+              this.form.submit();
+          });
+        });
+        </script>
 
-    <br>
-    <hr>
-    <br>
-    <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
-    <div class="ex2">
-      <form method="POST">
-          <td>        <select name= "templateview" class="form-control" id="templateview">
-            <option>Templates</option>
-                {% for row in searchtemplates %}
-                    <option>{{ row }}</option>
-                {% endfor %}
-        </select>
-    </td>
-    </form>
-    <script>
-    $(function() {
-      $('#templateview').change(function() {
-          this.form.submit();
-      });
-    });
-    </script>
-    </div>
-    {% if templateview %}
-    <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="{{ templateview }}">
-    </iframe>
-    {% endif %}
-    {% if templatecustom %}
-    <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
-    </iframe>
-    {% endif %}
+        {% if templateview %}
+        <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="{{ templateview }}">
+        </iframe>
+        {% endif %}
+        {% if templatecustom %}
+        <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
+        </iframe>
+        {% endif %}
+    
+      </div>
 
-  </div>
-<center>
-
-
-  </div>
-</div>
-  </center>
-    <br><br>
-
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
   </body>
-  </html>
-</center>
-
+</html> 
