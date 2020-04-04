@@ -1,190 +1,168 @@
+<!--   NOTE: This document is here as a template/placeholder for future pages      -->
+<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>E-Mail Phishing</title> 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
-  <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
-  <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>E-Mail Phishing</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: visible;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+        height: 120%;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+      table.dataframe, .dataframe th, .dataframe td {
+      border: line;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      border-collapse: collapse;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      text-align: center;
+      padding: 10px;
+      margin-bottom: 0px;
+      font-size: 0.95em;
+      color: black;
+    }
 
+    tr.border_bottom td {
+      border-bottom:1pt solid black;
+    }
+    .table {
+      
+      width: 90%;
+      margin-bottom: 0px;
+    }
 
-<style>
-body            { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-color: #0D1126;
-
-}
-a, h1, h2       { color: #49A355; }
-h1, h2          { margin: 0; }
-h1              { border-bottom: 0px solid #eee; }
-h2              { font-size: 1.2em; }
-
-table.dataframe, .dataframe th, .dataframe td {
-  border: line;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
-  border-collapse: collapse;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 40px;
-  font-size: 0.95em;
-}
-
-tr.border_bottom td {
-  border-bottom:1pt solid black;
-}
-.table {
-	
-  width: 90%;
-  margin-bottom: 0px;
-}
-div.ex2 {
-  max-width:500px;
-  margin: auto;
-	}
-  .form-control {
-    height: auto;
-    min-height: 36px;
-}
-tr:nth-child(odd)		{ background-color: lightgrey; }
-tr:nth-child(even)	{ background-color:darkgrey; }
-tr:first-child { background-color: transparent;}
-tr:hover:first-child { background-color: transparent; }
-tr:hover            { background-color: #d5e9f9;}
-h2.heade {
-  text-align: center;
-}
-
-body {
-  background-color: #0D1126;
-  margin-top: 5%;
-}
-.buttonHolder{ text-align: center; }
-.button { 
-  width: 150px;
-  text-align: center;
-  display: block;
-}
-.isolate * {
-  all: unset;
-}
-.center {
-    text-align: center;
-    vertical-align: middle;
-}
-input.checkbox {
-    width : 20px;
-    height : 20px;
-}
-td, th {
-    padding: 5px;   
-}
-tr {
-    height: 25px;   
-}
-td {
-  text-align: center; /* center checkbox horizontally */
-  vertical-align: middle; /* center checkbox vertically */
-}
-</style>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> 
-</head>
+    tr:nth-child(odd)		{ background-color: lightgrey; }
+    tr:nth-child(even)	{ background-color:darkgrey; }
+    tr:first-child { background-color: transparent;}
+    tr:hover:first-child { background-color: transparent; }
+    tr:hover            { background-color: #d5e9f9;}
+    </style>
+  </head>
+  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
+    <div id="particles-js"></div>
     <nav>
-      <table>
-        <tr>
-          <td><a href="https://app.nullphish.com">Modules</a></td>
-          <td><a href="/results">Results</a></td>
-          <td><a href="/gophishing">Phishing</a></td>
-          <td><a href="/stats">Stats</a></td>
-          <td><a href="/profile">Profile</a></td>
-          <td><a href="/logout">Log Out</a></td>
+      <div id="dropdown">
+        <div id="dropcontent">
+          <a href="/main">Modules</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <table id="mainmenu">
+          <tr>
+            <td><a href="/main">Modules</a></td>
+            <td><a href="/logout">Log Out</a></td>
         </tr>
       </table>
     </nav>
-<center>
-	
-    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
-        {% if messages %}
-          <ul class="flashes w3-jumbo" style="color: white">
-          {% for message in messages %}
-        {{ message }}
-          {% endfor %}
-          </ul>
-        {% endif %}
-        {% endwith %}</h1>
-        <br>
-	<h1><u><b>
-        Send Your users practice phishing emails
-    </b></u></h1>
-<br>
-	<table class="table table-hover dataframe" align="center">
-		<thead>
-			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-			<td width="5%">Department</td>
-			<td>First</td>
-			<td>Last</td>
-            <td>Email Address</td>
-            <td>Template</td>
-            <td>Mail Server</td>
-            <td>Shorten link</td>
-            <td>Phish!</td>
-		</tr>
-    {% for item in businessdata %}
-    <form method="POST">
-	<tr style="text-align:center;" class="border_bottom">
-			<td width="5%">{{item[8]}}</td>
-		<td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
-		<td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
-        <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
-        <td>        <select name="templates" class="form-control" id="templates">
-            <option>Templates</option>
-                {% for row in availtemplates %}
-                    <option>{{ row }}</option>
-                {% endfor %}
-        </select>
-        <td>
-          {% if serverlist %}
-          <select name="smtpserver" class="form-control" id="smtpserver">
-          <option>Mail Server</option>
-            {% for row in serverlist %}
-            <option id={{row}} name={{row}}>{{ row }}</option>
-            {% endfor %}
-          </select>
-        </td>
-        {% endif %}
-        <td>
-          <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
-<label for="shorten"></label>
-        </td>
-    </td>
+    <div class="contentcontainer">
+      <div><h1>E-Mail Phishing</h1></div>
 
-        <td width="3%"><button type="submit" class="btn button btn-primary">Phish!</button></form></td>
-        {% endfor %}
-	</tr>
-	
-	</table>
-
-      <br>
       
-<div class="ex2">
+    <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+      {% if messages %}
+        <ul class="flashes w3-jumbo" style="color: white">
+        {% for message in messages %}
+      {{ message }}
+        {% endfor %}
+        </ul>
+      {% endif %}
+      {% endwith %}</h1>
+
+<table class="table table-hover dataframe" align="center">
+  <thead>
+    <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+    <td width="5%">Department</td>
+    <td>First</td>
+    <td>Last</td>
+          <td>Email Address</td>
+          <td>Template</td>
+          <td>Mail Server</td>
+          <td>Shorten link</td>
+          <td>Phish!</td>
+  </tr>
+  {% for item in businessdata %}
   <form method="POST">
-      <td>        <select name= "templateview" class="form-control" id="templateview">
-        <option>Templates</option>
-            {% for row in availtemplates %}
-                <option>{{ row }}</option>
-            {% endfor %}
-    </select>
+<tr style="text-align:center;" class="border_bottom">
+    <td width="5%">{{item[8]}}</td>
+  <td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
+  <td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
+      <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
+      <td>        <select name="templates" class="form-control" id="templates">
+          <option>Templates</option>
+              {% for row in availtemplates %}
+                  <option>{{ row }}</option>
+              {% endfor %}
+      </select>
+      <td>
+        {% if serverlist %}
+        <select name="smtpserver" class="form-control" id="smtpserver">
+        <option>Mail Server</option>
+          {% for row in serverlist %}
+          <option id={{row}} name={{row}}>{{ row }}</option>
+          {% endfor %}
+        </select>
+      </td>
+      {% endif %}
+      <td>
+        <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
+<label for="shorten"></label>
+      </td>
+  </td>
+
+      <td width="3%"><button type="submit" class="btn button btn-primary">Phish!</button></form></td>
+      {% endfor %}
+</tr>
+
+</table>
+
+    <br>
+    
+<div class="ex2">
+<form method="POST">
+    <td>        <select name= "templateview" class="form-control" id="templateview">
+      <option>Templates</option>
+          {% for row in availtemplates %}
+              <option>{{ row }}</option>
+          {% endfor %}
+  </select>
 </td>
 </form>
 <script>
 $(function() {
-  $('#templateview').change(function() {
-      this.form.submit();
-  });
+$('#templateview').change(function() {
+    this.form.submit();
+});
 });
 </script>
 </div>
@@ -197,9 +175,11 @@ $(function() {
 </iframe>
 {% endif %}
 
-
 </center>
 
-	<br><br><br><br><br>
-
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
+  </body>
 </html>
