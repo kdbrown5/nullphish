@@ -52,15 +52,11 @@ Color Palette Hex Codes:
   font-size: calc(18px + 0.75vw);
   max-height: 100px;
   vertical-align: middle;
-  grid-column-start: 1;
-  grid-column-end: 3;
 }
 #tilecontainer h2{
   font-size: calc(14px + 0.75vw);
   max-height: 80px;
   vertical-align: middle;
-  grid-column-start: 1;
-  grid-column-end: 3;
 }
 #tilecontainer a{ /* This is what a regular tile will look like */
   border-radius: 15px;

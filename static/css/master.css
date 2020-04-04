@@ -95,10 +95,11 @@ button{
   text-decoration: none;
   display: inline-block;
   font-size: x-large;
-  width: 33%;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px;
+  width: auto;
+  height: auto;
 }
 button:hover{
   border-color: #E0E0E0;
@@ -398,7 +399,7 @@ select:focus{
   z-index: 999;
   height: 60px;
   width: 100%;
-  top: 60px;
+  bottom: 60px;
   left: 0px;
   position: fixed;
   color: #E0E0E0;
