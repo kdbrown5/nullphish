@@ -155,7 +155,7 @@ nav .presenter:hover{
   right: 90px;  
   width: auto;
   height: auto;
-  padding-bottom: 2000px;
+  padding-bottom: 92%;
   margin: 0px;
   padding-top: 30px;
   overflow: visible;
@@ -291,12 +291,14 @@ body{
           {% endfor %}
         {% endif %}
         {% endwith %}</h1>
-        <form method="post">
+        <center>
+        <form style="width: 95%;" method="post">
           <textarea id="summernote" name="editordata"></textarea>
-          <input name='templatename' type="text" class="form-control" placeholder="Template Name:" required></input>
-          <input name='templatesubject' type="text" class="form-control" placeholder="Email Subject:" required></input>
-          <button name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
+          <input name='templatename' style="width: 30%;" type="text" class="form-control" placeholder="Template Name:" required></input>
+          <input name='templatesubject' style="width: 30%;" type="text" class="form-control" placeholder="Email Subject:" required></input>
+          <button style="width: 30%;" name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
         </form>
+
       <script>
         $(document).ready(function() {
             $('#summernote').summernote();
@@ -316,17 +318,18 @@ body{
         </h4>
     
         {% if searchtemplates %}
+
         <form method="post">
           <hr>
           <h3 style="color: white" class="w3-xlarge">Delete Templates:</h3>
                 <label for="exampleFormControlSelect1"></label>
-                <select name= 'selecttemplate' class="form-control" id="selecttemplate">
+                <select style="width: 30%;" name= 'selecttemplate' class="form-control" id="selecttemplate">
                     <option>Templates</option>
                         {% for row in searchtemplates %}
                             <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
                         {% endfor %}     
                 </select>
-                <button name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
+                <button style="width: 30%" name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
               
         </form>    
         {% endif %}
@@ -334,9 +337,10 @@ body{
         <br>
         <hr>
         <br>
-        <h3 style="color: white" class="w3-xlarge">View Existing Templates:</h3>
+        
+        <h3 style="color: white;" class="w3-xlarge">View Existing Templates:</h3>
           <form method="POST">
-              <td>        <select name= "templateview" class="form-control" id="templateview">
+              <td>        <select style="width: 30%; text-align: center;" name= "templateview" class="form-control" id="templateview">
                 <option>Templates</option>
                     {% for row in searchtemplates %}
                         <option>{{ row }}</option>
@@ -344,6 +348,7 @@ body{
             </select>
         </td>
         </form>
+      </center>
         <script>
         $(function() {
           $('#templateview').change(function() {
