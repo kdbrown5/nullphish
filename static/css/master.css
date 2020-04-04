@@ -412,7 +412,7 @@ select:focus{
   -webkit-backdrop-filter: blur(10px);
   vertical-align: top;
   border-bottom: 2px solid #E0E0E0;
-  visibility: hidden;
+  visibility: visible;
 }
 
 .logo-sm{
