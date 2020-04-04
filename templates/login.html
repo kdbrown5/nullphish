@@ -38,7 +38,7 @@
       }
     </style>
   </head>
-  <body>
+  <body onresize="checknav()" onload="checknav(); showpolicy()">
     <div id="particles-js"></div>
     <nav>
       <table>
@@ -50,7 +50,7 @@
       </table>
     </nav>
     <div id="policycontainer">
-      <span>This is the temporary cookie and privacy policy display. CLick the button to hide this message and store a cookie to not see it again!</span>
+      <span>This is the temporary cookie and privacy policy display. Click the button to hide this message and store a cookie to not see it again!</span>
       <button onclick="acceptpolicy()">Click Me</button>
     </div>
     <div class="contentcontainer">

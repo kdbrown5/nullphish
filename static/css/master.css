@@ -397,9 +397,9 @@ select:focus{
 #policycontainer{
   margin: 0;
   z-index: 999;
-  height: 60px;
+  height: 80px;
   width: 100%;
-  bottom: 60px;
+  bottom: 0px;
   left: 0px;
   position: fixed;
   color: #E0E0E0;
@@ -412,7 +412,7 @@ select:focus{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   vertical-align: top;
-  border-bottom: 2px solid #E0E0E0;
+  border-top: 2px solid #E0E0E0;
   visibility: visible;
 }
 
