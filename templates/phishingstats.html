@@ -28,7 +28,7 @@
         grid-template-rows: auto auto auto;
         row-gap: 30px;
         z-index: 999;
-		padding-bottom: 50%;
+		padding-bottom: 23%;
 		overflow:visible ;
 
       }	
@@ -51,9 +51,9 @@ table.dataframe, .dataframe th, .dataframe td {
   border-left: 1px solid black;
   border-right: 1px solid black;
   text-align: center;
-  padding: 10px;
-  margin-bottom: 40px;
-  font-size: 0.95em;
+  padding: 0px;
+  margin-bottom: 0px;
+  font-size: 1.2em;
   color: black;
 }
 
@@ -62,7 +62,7 @@ tr.border_bottom td {
 }
 .table {
 	
-  width: 90%;
+  width: 100%;
   margin-bottom: 0px;
 }
 tr:nth-child(odd)		{ background-color: lightgrey; }
@@ -101,8 +101,6 @@ tr:hover:first-child { background-color: transparent; }
 			  </ul>
 			{% endif %}
 			{% endwith %}</h1>
-				
-			<br><br>
 	
 			<form method="POST">
 				<select name= 'report' class="form-control" id="report">
@@ -112,9 +110,10 @@ tr:hover:first-child { background-color: transparent; }
 						</select>
 						<button name="submit" type="submit" class="btn btn-primary btn-block">Download report</button>
 			</form>
-			<br><br>
+			
 					{% if emailquery %}
-		<h1><u><b>User Phished via E-Mail</b></u></h1>
+					<br><br>
+		<h1><u><b>Users Phished via E-Mail</b></u></h1>
 	<br>
 		<table class="table table-hover dataframe" align="center">
 			<thead>
@@ -141,13 +140,11 @@ tr:hover:first-child { background-color: transparent; }
 		{% endfor %}
 		</table>
 		{% endif %}
-	
-	
-	
-		<br><br><br>
+		
 	
 		{% if smsquery %}
-		<h1><u><b>User Phished via SMS</b></u></h1>
+		<br><br>
+		<h1><u><b>Users Phished via SMS</b></u></h1>
 	<br>
 		<table class="table table-hover dataframe" align="center">
 			<thead>
