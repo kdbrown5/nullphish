@@ -27,6 +27,7 @@
         color: black;
         overflow: visible;
         padding-bottom: 20%;
+        margin-top: 0px;
       }
       .contentcontainer h1{
         font-size: calc(24px + 0.5vw);
@@ -85,13 +86,12 @@
     </nav>
     <div class="contentcontainer">
       <div><h1 style="color: white;">SMS Phishing</h1></div>
-      <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+      <h1 style="color: white">
+        {% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
-          <ul class="flashes" style="color: white">
           {% for message in messages %}
         {{ message }}
           {% endfor %}
-          </ul>
         {% endif %}
         {% endwith %}</h1>
     
