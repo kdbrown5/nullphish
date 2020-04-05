@@ -79,7 +79,7 @@ def checkschedule():
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
         for row in cur.execute('select * from schedule where date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and scheduled = 0;'):
-            pullschedule.append[row[:]]
+            pullschedule.append(row[:])
     con.close()
     print(pullschedule)
 
