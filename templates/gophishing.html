@@ -48,9 +48,9 @@
       border-left: 1px solid black;
       border-right: 1px solid black;
       text-align: center;
-      padding: 0px;
+      padding: .8%;
       margin-bottom: 0px;
-      font-size: 0.95em;
+      font-size: 1em;
       color: black;
     }
 
@@ -60,9 +60,14 @@
     .table {
       
       width: 100%;
-      margin-bottom: 0px;
+     
     }
+    .checkbox {
 
+      height:3vh;
+      width:3vh;
+
+    }
     tr:nth-child(odd)		{ background-color: lightgrey; }
     tr:nth-child(even)	{ background-color:darkgrey; }
     tr:first-child { background-color: transparent;}
@@ -101,22 +106,22 @@
       {% endif %}
       {% endwith %}</h1>
 
-<table class="table table-hover dataframe" align="center">
+<table class="table table-hover dataframe">
   <thead>
     <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-    <td width="5%">Department</td>
+    <td style="border-radius: 25px 0px 0px 0px;">Department</td>
     <td>First</td>
     <td>Last</td>
           <td>Email Address</td>
           <td>Template</td>
           <td>Mail Server</td>
           <td>Shorten URL</td>
-          <td>Phish!</td>
+          <td style="border-radius: 0px 25px 0px 0px;">Phish!</td>
   </tr>
   {% for item in businessdata %}
   <form method="POST">
 <tr style="text-align:center;" class="border_bottom">
-    <td width="5%">{{item[8]}}</td>
+    <td>{{item[8]}}</td>
   <td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
   <td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
       <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
@@ -142,17 +147,19 @@
       </td>
   </td>
 
-      <td><button style="width: 60%;" type="submit" class="btn button btn-primary">Phish!</button></form></td>
+      <td><button style="width: 6.5vw;" type="submit" class="btn button btn-primary">Phish!</button></form></td>
       {% endfor %}
 </tr>
 
 </table>
 
     <br>
-    
+      
 <div class="ex2">
+  <center>
 <form method="POST">
-    <td>        <select name= "templateview" class="form-control" id="templateview">
+  
+    <td>        <select style="width: 30%" name= "templateview" class="form-control" id="templateview">
       <option>Templates</option>
           {% for row in availtemplates %}
               <option>{{ row }}</option>
@@ -168,7 +175,7 @@ $('#templateview').change(function() {
 });
 </script>
 </div>
-<center></center>
+
 {% if templateview %}
 <iframe height="1000px" width="1200px" src="{{ templateview }}">
 </iframe>
