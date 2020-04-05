@@ -27,7 +27,7 @@
       </div>
       <table id="mainmenu">
           <tr>
-            <td><a href="/main">Modules</a></td>
+            <td><a href="/main" class="current">Modules</a></td>
             <td><a href="/stats">Results</a></td>
             <td><a href="/profile">Profile</a></td>
             <td><a href="/logout">Log Out</a></td>
@@ -36,7 +36,7 @@
     </nav>
     <div id="tilecontainer" style="display: none;">
       <div id="header">
-        <h2>Welcome&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;{% if lastname %}{{ lastname }}{% endif %}!</h2>
+        <h2>Welcome,&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;{% if lastname %}{{ lastname }}{% endif %}!</h2>
         <h1>Select Your Module To Begin</h1>
       </div>
       <!--Row 1-->
@@ -92,6 +92,10 @@
           <td class="list-todo">Not Started</td>
         </tr>
       </table>
+    </div>
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span>
+      <a href="/logout">Log Out</a>
     </div>
     <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>

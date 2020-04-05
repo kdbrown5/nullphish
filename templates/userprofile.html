@@ -56,18 +56,52 @@
   <body>
     <div id="particles-js"></div>
     <nav>
-      <table>
-        <tr>
-          <td><a href="/main">Modules</a></td>
-          <td><a href="/stats">Results</a></td>
-          <td><a href="/profile" class="current">Profile</a></td>
-          <td><a href="/logout">Log Out</a></td>
+      <div id="dropdown" style="display: none;">
+        <div id="dropcontent">
+          <a href="/main">Modules</a>
+          <a href="/stats">Results</a>
+          <a href="/profile">Profile</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <table id="mainmenu">
+          <tr>
+            <td><a href="/main">Modules</a></td>
+            <td><a href="/stats">Results</a></td>
+            <td><a href="/profile" class="current">Profile</a></td>
+            <td><a href="/logout">Log Out</a></td>
         </tr>
       </table>
     </nav>
     <div class="contentcontainer">
       <div><h1><span class="nullmention">NullPhish</span> User Profile</h1></div>
       <div class="bordered">
+        <h2>User Details</h2>
+        Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
+        <br>
+        Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}
+        <br>
+        Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}
+        <br>
+        Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
+        <br>
+        Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
+      </div>
+      <div class="bordered">
+        <h2>Password Change</h2>
+        <form method="POST">
+          <div class="form-group">
+            <span class=""> <i class="fa fa-lock"></i> </span>
+            <input name="password" class="nulltxt" placeholder="Enter password:" type="password" style="padding: 5px;">
+            <span class=""> <i class="fa fa-lock"></i> </span>
+            <input name="repeat" class="nulltxt" placeholder="Repeat password:" type="password" style="padding: 5px;">
+            <button type="submit" class="nullbtn" style="padding: 5px;"> Choose a new password</button>
+          </div>
+        </form>
+      </div>
+    </div>
+      <div class="bordered">
+        <h2>Messages</h2>
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
         <ul class="flashes w3-jumbo" style="color: white">
@@ -87,30 +121,7 @@
         {% endif %}
         {% endwith %}
       </div>
-      <div class="bordered">
-        Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
-        <br>
-        Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}
-        <br>
-        Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}
-        <br>
-        Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
-        <br>
-        Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
-      </div>
-      <div class="bordered">
-        <h2>Password Change:</h2>
-        <form method="POST">
-          <div class="form-group">
-            <span class=""> <i class="fa fa-lock"></i> </span>
-            <input name="password" class="nulltxt" placeholder="Enter password:" type="password" style="padding: 5px;">
-            <span class=""> <i class="fa fa-lock"></i> </span>
-            <input name="repeat" class="nulltxt" placeholder="Repeat password:" type="password" style="padding: 5px;">
-            <button type="submit" class="nullbtn" style="padding: 5px;"> Choose a new password</button>
-          </div>
-        </form>
-      </div>
-    </div>
+      
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
