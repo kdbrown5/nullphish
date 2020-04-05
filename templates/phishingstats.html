@@ -90,6 +90,7 @@ tr:hover:first-child { background-color: transparent; }
       </table>
     </nav>
     <div class="contentcontainer">
+		<center> 
 	  <div><h1>Phishing Stats</h1>
 	
 		<h2 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
@@ -114,21 +115,21 @@ tr:hover:first-child { background-color: transparent; }
 					<br><br>
 		<h1><u><b>Users Phished via E-Mail</b></u></h1>
 	<br>
-		<table class="table table-hover dataframe" align="center">
+		<table class="table table-hover dataframe" style="text-align: center">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td width="5%">Department</td>
-				<td width="5%">Method</td>
+				<td>Department</td>
+				<td>Method</td>
 				<td>User Phished</td>
 				<td>Template used</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td>Date</td>
+				<td width="20%;">Date</td>
 				
 			</tr>
 		{% for item in emailquery %}
 		<tr style="text-align:center;" class="border_bottom">
-				<td width="5%">{{item[7]}}</td>
+				<td>{{item[7]}}</td>
 				<td>{{item[10]}}</td>
 				<td>{{item[1]}}</td>
 				<td>{{item[2]}}</td>
@@ -145,21 +146,21 @@ tr:hover:first-child { background-color: transparent; }
 		<br><br>
 		<h1><u><b>Users Phished via SMS</b></u></h1>
 	<br>
-		<table class="table table-hover dataframe" align="center">
+		<table class="table table-hover dataframe" style="text-align:center; width: 95%;">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td width="5%">Department</td>
-				<td width="5%">Method</td>
+				<td>Department</td>
+				<td>Method</td>
 				<td>User Phished</td>
 				<td>Phone Number</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td>Date</td>
+				<td style="width: min-conent;">Date</td>
 				
 			</tr>
 		{% for item in smsquery %}
 		<tr style="text-align:center;" class="border_bottom">
-				<td width="5%">{{item[7]}}</td>
+				<td>{{item[7]}}</td>
 				<td>{{item[10]}}</td>
 				<td>{{item[1]}}</td>
 				<td>{{item[12]}}</td>
