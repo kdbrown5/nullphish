@@ -62,7 +62,7 @@
 
       <center>
 
-        <h1 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        <h1 style="color: white;">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
             {% if messages %}
               {% for message in messages %}
             {{ message }}
@@ -88,14 +88,15 @@
     Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
     
     <br>
-    
+  </h1>
+  <h1 style="margin-bottom: 0px;">
     Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
-    
+  </h1>
   
-    </h1>
+   
     
     <form method="POST">
-    <div class="container" style="max-width: 600px; padding-top: 40%;">
+    <div class="container" style="max-width: 600px; padding-top: 35%;">
       
       
     <div class="form-group">
