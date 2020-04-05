@@ -29,7 +29,7 @@
         row-gap: 30px;
         z-index: 999;
         height: 100%;
-        padding-bottom: 50vw;
+        padding-bottom: 800px;
       }
       .contentcontainer h1{
         font-size: calc(24px + 0.5vw);
@@ -92,7 +92,7 @@
         </tr>
       </table>
     </nav>
-    <div class="contentcontainer">
+    <div class="contentcontainer" style="justify-items: center;">
       <div><h1>E-Mail Phishing</h1></div>
 
       
@@ -159,10 +159,10 @@
   <center>
 <form method="POST">
   
-    <td>        <select style="width: 30%" name= "templateview" class="form-control" id="templateview">
-      <option>Templates</option>
+    <td>        <select style="width: 15vw; text-align:center" name= "templateview" class="form-control" id="templateview">
+      <option style="text-align: center;">Templates</option>
           {% for row in availtemplates %}
-              <option>{{ row }}</option>
+              <option style="text-align:center">{{ row }}</option>
           {% endfor %}
   </select>
 </td>
