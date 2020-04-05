@@ -68,13 +68,9 @@
             {{ message }}
               {% endfor %}
             {% endif %}
-            {% endwith %}</h1>
-    <br>
+            {% endwith %}
         
-    <div class="container">
-      <div class="row">
-        <div class="col-md">
-    <h1  style="color: white">
+
 
     
     Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
@@ -97,10 +93,9 @@
     
     <hr>
     </h1>
-
-    <br><br>
-    <form method="POST">
-    <div class="container" style="max-width: 600px; margin-top: 7%;">
+    
+    <form method="POST" style="padding-top: 10%;">
+    <div class="container" style="max-width: 600px; margin-top: 0px;">
       <h1>Password Change:</h1>
     <div class="form-group">
           <span class=""> <i class="fa fa-lock"></i> </span>
@@ -109,9 +104,9 @@
           <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
           <button type="submit" class="btn btn-primary btn-block"> Change Password  </button>
     </form>
-  </center>
-    </div></div></div>
-
+      </center>
+ 
+</h1>
 
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
