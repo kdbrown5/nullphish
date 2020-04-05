@@ -56,13 +56,14 @@ table.dataframe, .dataframe th, .dataframe td {
   margin-bottom: 0px;
   font-size: 1em;
   color: black;
+  
 }
 
 tr.border_bottom td {
   border-bottom:1pt solid black;
 }
 .table {
-	
+
   width: 100%;
 }
 tr:nth-child(odd)		{ background-color: lightgrey; }
@@ -116,16 +117,16 @@ tr:hover:first-child { background-color: transparent; }
 					<div style="width: 95%">
 		<h1><u><b>Users Phished via E-Mail</b></u></h1>
 	<br>
-		<table class="table table-hover dataframe" style="text-align: center">
+		<table class="table table-hover dataframe" style="text-align: center;">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td>Department</td>
+				<td style="border-radius: 25px 0px 0px 0px;">Department</td>
 				<td>Method</td>
 				<td>User Phished</td>
 				<td>Template used</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td>Date</td>
+				<td style="border-radius: 0px 25px 0px 0px;">Date</td>
 				
 			</tr>
 		{% for item in emailquery %}
@@ -150,13 +151,13 @@ tr:hover:first-child { background-color: transparent; }
 		<table class="table table-hover dataframe" style="text-align:center; width: 100%;">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td>Department</td>
+				<td style="border-radius: 25px 0px 0px 0px;">Department</td>
 				<td>Method</td>
 				<td>User Phished</td>
 				<td>Phone Number</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td>Date</td>
+				<td style="border-radius: 0px 25px 0px 0px;">Date</td>
 				
 			</tr>
 		{% for item in smsquery %}
