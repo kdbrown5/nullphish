@@ -90,7 +90,7 @@ tr:hover:first-child { background-color: transparent; }
     </nav>
     <div class="contentcontainer">
 		<center> 
-	  <div><h1>Phishing Stats</h1>
+	  <div><h1>Phishing Stats</h1></div>
 	
 		<h2 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
 			{% if messages %}
@@ -112,6 +112,7 @@ tr:hover:first-child { background-color: transparent; }
 			
 					{% if emailquery %}
 					<br><br>
+					<div style="width: 95%">
 		<h1><u><b>Users Phished via E-Mail</b></u></h1>
 	<br>
 		<table class="table table-hover dataframe" style="text-align: center">
@@ -123,7 +124,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>Template used</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td width="20%;">Date</td>
+				<td>Date</td>
 				
 			</tr>
 		{% for item in emailquery %}
@@ -145,7 +146,7 @@ tr:hover:first-child { background-color: transparent; }
 		<br><br>
 		<h1><u><b>Users Phished via SMS</b></u></h1>
 	<br>
-		<table class="table table-hover dataframe" style="text-align:center; width: 95%;">
+		<table class="table table-hover dataframe" style="text-align:center; width: 100%;">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
 				<td>Department</td>
@@ -173,8 +174,8 @@ tr:hover:first-child { background-color: transparent; }
 		<div style="padding-bottom: 20%"></div>
 				<br>
 		</center>
-		
-		</form></div>
+	</div>
+		</form>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
