@@ -105,7 +105,7 @@ def registration():
                 password = argon2.using(rounds=4).hash(request.form.get('password'))
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role, validated) VALUES (?, ?, ?, ?, ?, 'admin', 0);", (username, password, firstname, lastname, business,))
+                cur.execute("INSERT INTO users (username, password, firstname, lastname, business, role, validated, notify) VALUES (?, ?, ?, ?, ?, 'admin', 0, 1);", (username, password, firstname, lastname, business,))
                 cur.execute("INSERT INTO userperm (username, role, enroll, view, remove, email) VALUES (?, 'admin', 1, 1, 1, 1);", (username,))
                 con.commit()
                 con.close()
