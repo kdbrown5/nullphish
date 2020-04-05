@@ -125,7 +125,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>Template used</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td style="width: fit-content">Date</td>
+				<td>Date</td>
 				
 			</tr>
 		{% for item in emailquery %}
@@ -136,7 +136,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>{{item[2]}}</td>
 			<td>{{item[4]}}</td>
 			<td>{{item[6]}}</td>
-			<td>{{item[3]}}</td>
+			<td style="width: 100%;">{{item[3]}}</td>
 		</tr>
 		{% endfor %}
 		</table>
@@ -156,7 +156,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>Phone Number</td>
 				<td>Business</td>
 				<td>Admin Notified</td>
-				<td style="width: 10%;">Date</td>
+				<td>Date</td>
 				
 			</tr>
 		{% for item in smsquery %}
@@ -167,7 +167,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>{{item[12]}}</td>
 			<td>{{item[4]}}</td>
 			<td>{{item[6]}}</td>
-			<td>{{item[3]}}</td>
+			<td style="width: fit-content">{{item[3]}}</td>
 		</tr>
 		{% endfor %}
 		</table>
