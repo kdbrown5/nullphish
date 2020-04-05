@@ -51,6 +51,8 @@
       </table>
     </nav>
     <div class="contentcontainer test3">
+      <center>
+      <div style="max-width: 50%;">
       <div class="row">
         <h1>Import users</h1>
         <form method="post" enctype="multipart/form-data">
@@ -98,10 +100,12 @@
             <option>User</option>
             <option>Admin</option>
           </select>
+          <div style="max-width: 90%; padding-right: 10%">
           <input name='firstname' type="text" placeholder="First Name" required></input>
           <input name='lastname' type="text" placeholder="Last Name" required></input>
           <input name='department' placeholder="Department (Optional)" type="text"></input>
           <input name='emailaddr' placeholder="Email Address" type="text" required></input>
+        </div>
           <select name= 'sendreg' class="form-control" id="sendreg" required>
             <option>Send A Registration E-Mail</option>
             <option>Do Not Send Registration E-Mail</option>
@@ -110,6 +114,8 @@
         </form>
       </div>
     </div>
+  </div>
+</center>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
   </body>
