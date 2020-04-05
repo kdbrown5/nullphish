@@ -24,6 +24,8 @@ from sendsms import sendsms, sendtxt
 from fysms import fysms, smsapiid
 from resetpass import resetpass, doresetpass
 from feedback import feedback, getfeedback
+from apscheduler.schedulers.background import BackgroundScheduler
+from pysqlcipher3 import dbapi2 as sqlite
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -33,6 +35,10 @@ for extra_dir in extra_dirs:
             filename = path.join(dirname, filename)
             if path.isfile(filename):
                 extra_files.append(filename)
+
+loadkey=open('../topseekrit', 'r')
+dbkey=loadkey.read()
+loadkey.close()
 
 app = Flask(__name__, static_url_path='', static_folder="static", template_folder="templates", subdomain_matching=True)
 
@@ -63,6 +69,26 @@ app.register_blueprint(resetpass)
 app.register_blueprint(feedback)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
+
+
+def checkschedule():
+    print('test')
+    con = sqlite.connect('db/db1.db')
+    with con:
+        pullschedule = []
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        for row in cur.execute('select * from schedule where date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and scheduled = 0;'):
+            pullschedule.append[row[:]]
+    con.close()
+    print(pullschedule)
+
+
+#cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
+
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(checkschedule,'interval',minutes=1)
+sched.start()
 
 @app.errorhandler(404) # redirect to main page if not found
 def page_not_found_public(e):

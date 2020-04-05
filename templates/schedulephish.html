@@ -1,0 +1,89 @@
+<!--   NOTE: This document is here as a template/placeholder for future pages      -->
+<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+    <title>Phishing Scheduler</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+      }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+    </style>
+  </head>
+  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
+    <div id="particles-js"></div>
+    <nav>
+      <div id="dropdown">
+        <div id="dropcontent">
+          <a href="/main">Modules</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <table id="mainmenu">
+          <tr>
+            <td><a href="/main">Modules</a></td>
+            <td><a href="/logout">Log Out</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <div><h1>Schedule Phishing</h1></div>
+        <form method="POST">
+      <input style="max-height:10%; width: 50%;" id="datetimepicker" type="text" readonly><br>
+      <button type="submit" name="submit">Submit</button>
+    </form>
+
+      <script>
+        $(function () {
+          $("#datetimepicker").datetimepicker(
+              {
+                  hours24: true,
+                format: 'Y-m-d H:i',
+                  step:15,
+                  
+              }
+          );
+        });
+      </script>
+
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
+  </body>
+</html>
