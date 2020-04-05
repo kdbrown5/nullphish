@@ -62,7 +62,7 @@
 
       <center>
 
-        <h1 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        <h1 style="color: white; padding-bottom: 2%;">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
             {% if messages %}
               {% for message in messages %}
             {{ message }}
@@ -93,6 +93,7 @@
     
   
     </h1>
+    <br>
     
     <form method="POST">
     <div class="container" style="max-width: 600px; padding-top: 20%;">
