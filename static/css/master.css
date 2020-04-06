@@ -309,7 +309,7 @@ select:focus{
   color: #E0E0E0;
   margin: 0px;
   padding: 0px;
-  visibility: hidden;
+  visibility: visible;
 }
 #confirmoverlay a{
   background-color: #721817;
