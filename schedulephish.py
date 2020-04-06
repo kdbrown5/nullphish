@@ -46,7 +46,7 @@ def checkschedule():
             zbusiness = email[8]
             zbusiness = [zbusiness]
             zbusiness = zbusiness[0]
-            ztemplate = '/home/nullphish/prod/templates/businesses/'+zbusiness+'/'+ztemplate
+            ztemplate = '/home/nullphish/prod/templates/businesses/'+zbusiness+'/'+ztemplate+'.html'
             zsubject = email[9]
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
