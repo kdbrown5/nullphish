@@ -25,13 +25,21 @@ function checkcontentontainers() {
 function showpolicy() {
   var accepted = getCookie("acceptedpolicy");
   if (accepted != "1") {
-    document.getElementById("policycontainer").style.display = "block"
+    document.getElementById("policycontainer").style.visibility = "visible"
   } else {
-    document.getElementById("policycontainer").style.display = "none"
+    document.getElementById("policycontainer").style.visibility = "hidden"
   }
 }
 
 function acceptpolicy() {
   document.cookie = "acceptedpolicy=1"; 
-  document.getElementById("policycontainer").style.display = "none"
+  document.getElementById("policycontainer").style.visibility = "hidden"
+}
+
+function showlogoutconfirmation() {
+  document.getElementById("confirmoverlay").style.visibility = "visible"
+}
+
+function hidelogoutconfirmation() {
+  document.getElementById("confirmoverlay").style.visibility = "hidden"
 }

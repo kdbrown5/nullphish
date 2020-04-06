@@ -127,7 +127,7 @@ input[type=text]{
   text-decoration: none;
   display: inline-block;
   font-size: x-large;
-  width: 100%;
+  width: auto;
   margin: auto;
   border-radius: 5px;
   font-family: opensans;
@@ -145,7 +145,7 @@ input[type=password]{
   text-decoration: none;
   display: inline-block;
   font-size: x-large;
-  width: 100%;
+  width: auto;
   margin: auto;
   border-radius: 5px;
   font-family: opensans;
@@ -163,13 +163,17 @@ input[type=submit]{
   text-decoration: none;
   display: inline-block;
   font-size: x-large;
-  width: 33%;
+  width: auto;
   border-radius: 5px;
   cursor: pointer;
   margin: 10px;
 }
 input[type=submit]:hover{
-  border-color: #49A355;
+  border-color: #E0E0E0;
+}
+input[type=submit]:active{
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
 }
 
 nav{
@@ -305,7 +309,7 @@ select:focus{
   color: #E0E0E0;
   margin: 0px;
   padding: 0px;
-  display: none;
+  visibility: hidden;
 }
 #confirmoverlay a{
   background-color: #721817;
@@ -397,7 +401,7 @@ select:focus{
   -webkit-backdrop-filter: blur(10px);
   vertical-align: top;
   border-top: 2px solid #E0E0E0;
-  display: none;
+  visibility: hidden;
 }
 
 /* Classes: */

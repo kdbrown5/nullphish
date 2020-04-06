@@ -77,15 +77,11 @@
       <div><h1><span class="nullmention">NullPhish</span> User Profile</h1></div>
       <div class="bordered">
         <h2>User Details</h2>
-        Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
-        <br>
-        Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}
-        <br>
-        Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}
-        <br>
-        Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
-        <br>
-        Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
+        <p>Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;{% if lastname %}{{ lastname }}{% endif %}</p>
+        <p>Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}</p>
+        <p>Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}</p>
+        <p>Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}</p>
+        <p>Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}</p>
       </div>
       <div class="bordered">
         <h2>Password Change</h2>
@@ -102,22 +98,24 @@
       <div class="bordered">
         <h2>Messages</h2>
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
-        {% if messages %}
-        <ul class="flashes w3-jumbo" style="color: white">
-          {% for message in messages %}
-          {{ message }}
-          {% endfor %}
-        </ul>
-        {% endif %}
+          {% if messages %}
+            <ul class="flashes w3-jumbo" style="color: white">
+              {% for message in messages %}
+              {{ message }}
+              {% endfor %}
+            </ul>
+          {% endif %}
         {% endwith %}
         {% with messages = get_flashed_messages(category_filter=["category1"]) %}
-        {% if messages %}
-        <ul class="flashes w3-jumbo" style="color: white">
-          {% for message in messages %}
-          {{ message }}
-          {% endfor %}
-        </ul>
-        {% endif %}
+          {% if messages %}
+            <ul class="flashes w3-jumbo" style="color: white">
+              {% for message in messages %}
+              {{ message }}
+              {% endfor %}
+            </ul>
+          {% else %}
+            No new messages!
+          {% endif %}
         {% endwith %}
       </div>
     </div>

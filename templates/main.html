@@ -30,7 +30,7 @@
             <td><a href="/main" class="current">Modules</a></td>
             <td><a href="/stats">Results</a></td>
             <td><a href="/profile">Profile</a></td>
-            <td><a href="/logout">Log Out</a></td>
+            <td><a onclick="showlogoutconfirmation()">Log Out</a></td>
         </tr>
       </table>
     </nav>
@@ -95,7 +95,8 @@
     </div>
     <div id="confirmoverlay">
       <span>Are you sure you want to log out?</span>
-      <a href="/logout">Log Out</a>
+      <a href="/logout">Yes</a>
+      <a onclick="hidelogoutconfirmation()">No</a>
     </div>
     <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript" src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
