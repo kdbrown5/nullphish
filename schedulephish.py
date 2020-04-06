@@ -56,7 +56,7 @@ def checkschedule():
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
             zfirstname = str(zfirstname[0])
-            zfirstname = zfirstname.replace("('",replace("('", '') '')
+            zfirstname = zfirstname.replace("('", '')
             zfirstname = zfirstname.replace("',)", '')
             cur.execute('select lastname from users where username = (?);', (zemail,))
             zlastname = cur.fetchall()
