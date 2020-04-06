@@ -75,7 +75,6 @@ def checkschedule():
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
-                cur.execute('update phishsched set altid = "1" where id = (?);', str(zid,))
                 cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
@@ -83,7 +82,6 @@ def checkschedule():
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
-                cur.execute('update phishsched set altid = "1" where id = (?);', (zid,))
                 cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))        
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')

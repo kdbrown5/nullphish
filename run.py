@@ -68,9 +68,9 @@ app.register_blueprint(schedulephish)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
-sched = BackgroundScheduler(daemon=True)
-sched.add_job(checkschedule,'interval',minutes=1)
-sched.start()
+#sched = BackgroundScheduler(daemon=True)
+#sched.add_job(checkschedule,'interval',minutes=1)
+#sched.start()
 
 @app.errorhandler(404) # redirect to main page if not found
 def page_not_found_public(e):
