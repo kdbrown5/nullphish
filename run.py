@@ -26,6 +26,7 @@ from resetpass import resetpass, doresetpass
 from feedback import feedback, getfeedback
 from apscheduler.schedulers.background import BackgroundScheduler
 from pysqlcipher3 import dbapi2 as sqlite
+from schedulephish import schedulephish, phishschedule, checkschedule
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -35,10 +36,6 @@ for extra_dir in extra_dirs:
             filename = path.join(dirname, filename)
             if path.isfile(filename):
                 extra_files.append(filename)
-
-loadkey=open('../topseekrit', 'r')
-dbkey=loadkey.read()
-loadkey.close()
 
 app = Flask(__name__, static_url_path='', static_folder="static", template_folder="templates", subdomain_matching=True)
 
@@ -67,30 +64,9 @@ app.register_blueprint(addtemplate)
 app.register_blueprint(sendsms)
 app.register_blueprint(resetpass)
 app.register_blueprint(feedback)
+app.register_blueprint(schedulephish)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
-
-
-def checkschedule():
-    print('test')
-    con = sqlite.connect('db/db1.db')
-    with con:
-        pullschedule = []
-        cur = con.cursor()
-        cur.execute('PRAGMA key = '+dbkey+';')
-        for row in cur.execute('select * from schedule where date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and scheduled = 0;'):
-            pullschedule.append(row[:])
-    con.close()
-    print(pullschedule)
-    print(pullschedule[0][0])
-    print(pullschedule[0][1])
-    print(pullschedule[0][2])
-    print(pullschedule[0][3])
-    print(pullschedule[0][4])
-    print(pullschedule[0][5])
-
-
-#cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(checkschedule,'interval',minutes=1)
@@ -250,6 +226,14 @@ def beginresetpass():
         return redirect ('/profile')
     else:
         return doresetpass()
+
+@app.route('/schedulephish', subdomain="app", methods=['GET', 'POST'])
+def beginschedphish():
+    if session.get('logged_in'):
+        if session['role'] == 'superadmin' or session['role'] == 'admin':
+            return phishschedule()
+    else:
+        return redirect('/')
 
 @app.route('/stats', subdomain="app", methods=['GET', 'POST'])
 def beginst():
