@@ -16,6 +16,10 @@ loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
 loadkey.close()
 
+def convertTuple(tup): 
+    str =  ''.join(tup) 
+    return str
+
 def checkschedule():
     print('test')
     con = sqlite.connect('db/db1.db')
@@ -30,20 +34,22 @@ def checkschedule():
             timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
             timestamp = timestamp.replace(' ', '-')
             zid = email[0]
-            ztype = email[1]
+            #ztype = email[1]
             zemail = email[2]
             ztemplate = email[3]
             zsender = email[4]
-            zdate = email[5]
+            #zdate = email[5]
             zbitly = email[7]
             zbusiness = email[8]
             zsubject = email[9]
             cur.execute('select firstname from users where username = (?);', zemail)
             zfirstname = cur.fetchall()
             zfirstname = zfirstname[0]
+            zfirstname = convertTuple(zfirstname)
             cur.execute('select lastname from users where username = (?);', zemail)
             zlastname = cur.fetchall()
             zlastname = zlastname[0]
+            zlastname = convertTuple(zlastname)
             ztoken = generate_confirmation_token(zemail)
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
