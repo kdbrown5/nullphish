@@ -61,7 +61,8 @@ def checkschedule():
             zlastname = zlastname.replace("',)", '')
             ztoken = generate_confirmation_token(zemail)
             timestamp = [timestamp]
-            timestamp = timestamp[0]
+            print(timestamp)
+            timestamp = convertTuple(timestamp[0])
             print('\\\\\\\\\\\\\\\\\\\\\\\\\\')
             print(timestamp)
             if zbitly == 1:
@@ -70,14 +71,14 @@ def checkschedule():
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set scheduled = 1 where id = (?);', str(zid))
+                cur.execute('update schedule set scheduled = scheduled +1 where id = (?);', str(zid))
                 cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), str(zid))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set scheduled = 1 where id = (?);', str(zid))
+                cur.execute('update schedule set scheduled = scheduled +1 where id = (?);', str(zid))
                 cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), str(zid))        
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
