@@ -36,7 +36,6 @@ def checkschedule():
             zid = email[0]
             #ztype = email[1]
             zemail = email[2]
-            zemail = convertTuple(zemail)
             zemail = [zemail]
             zemail = zemail[0]
             ztemplate = email[3]
