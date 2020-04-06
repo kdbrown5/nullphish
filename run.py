@@ -82,6 +82,12 @@ def checkschedule():
             pullschedule.append(row[:])
     con.close()
     print(pullschedule)
+    print(pullschedule[0][0])
+    print(pullschedule[0][1])
+    print(pullschedule[0][2])
+    print(pullschedule[0][3])
+    print(pullschedule[0][4])
+    print(pullschedule[0][5])
 
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
