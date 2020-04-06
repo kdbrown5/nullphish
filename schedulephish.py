@@ -15,22 +15,25 @@ loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
 loadkey.close()
 
+def checkschedule():
+    print('test')
+    con = sqlite.connect('db/db1.db')
+    with con:
+        emailsched = []
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        for row in cur.execute('select * from schedule where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and scheduled = 0;'):
+            emailsched.append(row[:])
+    con.close()
+    for email in emailsched:
+        print(email)
+#cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
+
+
+
+
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
-    def checkschedule():
-        print('test')
-        con = sqlite.connect('db/db1.db')
-        with con:
-            emailsched = []
-            cur = con.cursor()
-            cur.execute('PRAGMA key = '+dbkey+';')
-            for row in cur.execute('select * from schedule where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and scheduled = 0;'):
-                emailsched.append(row[:])
-        con.close()
-        for email in emailsched:
-            print(email)
-    #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
-
     def businesslookup():
         con = sqlite.connect('db/db1.db')
         business = str(session['business'])
