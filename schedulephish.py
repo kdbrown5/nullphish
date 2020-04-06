@@ -54,10 +54,12 @@ def checkschedule():
             zsubject = email[9]
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
+            zfirstname = zfirstname[0]
             zfirstname = [zfirstname]
             zfirstname = str(zfirstname[0])
             cur.execute('select lastname from users where username = (?);', (zemail,))
             zlastname = cur.fetchall()
+            zlastname = zlastname[0]
             zlastname = [zlastname]
             zlastname = str(zlastname[0])
             ztoken = generate_confirmation_token(zemail)
