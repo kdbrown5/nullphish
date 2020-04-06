@@ -50,6 +50,7 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
 def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, business):
     con = sqlite.connect('db/db1.db')
+    print(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, business)
     with con:
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
