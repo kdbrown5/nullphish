@@ -38,6 +38,7 @@ def checkschedule():
             zemail = email[2]
             zemail = convertTuple(zemail)
             zemail = [zemail]
+            zemail = zemail[0]
             ztemplate = email[3]
             zsender = email[4]
             zsender = convertTuple(zsender)
@@ -45,6 +46,7 @@ def checkschedule():
             zbitly = email[7]
             zbusiness = email[8]
             zbusiness = [zbusiness]
+            zbusiness = zbusiness[0]
             ztemplate = '/home/nullphish/prod/templates/businesses/'+zbusiness[0]+'/'+ztemplate
             zsubject = email[9]
             cur.execute('select firstname from users where username = (?);', zemail)
@@ -59,12 +61,15 @@ def checkschedule():
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = linkshorten(zlink)
+                zlink = [zlink]
+                zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update schedule set scheduled = 1 where id = (?);', zid)
                 cur.execute('update schedule set sent = (?) where id = (?);', timestamp,)
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
+                zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update schedule set scheduled = 1 where id = (?);', zid)
                 cur.execute('update schedule set sent = (?) where id = (?);', timestamp,)        
