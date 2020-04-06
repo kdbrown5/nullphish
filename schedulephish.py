@@ -50,14 +50,11 @@ def checkschedule():
             zsubject = email[9]
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
-            zfirstname = zfirstname[0]
-            zfirstname = [zfirstname]
-            zfirstname = zfirstname[0]
+            zfirstname = str(zfirstname[0])
             cur.execute('select lastname from users where username = (?);', (zemail,))
             zlastname = cur.fetchall()
-            zlastname = zlastname[0]
-            zlastname = [zlastname]
-            zlastname = zlastname[0]
+            zlastname = str(zlastname[0])
+
             ztoken = generate_confirmation_token(zemail)
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
