@@ -56,11 +56,15 @@ def checkschedule():
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
             zfirstname = zfirstname[0]
+            zfirstname = zfirstname.replace("('", '')
+            zfirstname = zfirstname.replace("',)", '')
             zfirstname = [zfirstname]
             zfirstname = str(zfirstname[0])
             cur.execute('select lastname from users where username = (?);', (zemail,))
             zlastname = cur.fetchall()
             zlastname = zlastname[0]
+            zlastname = zlastname.replace("('", '')
+            zlastname = zlastname.replace("',)", '')
             zlastname = [zlastname] 
             zlastname = str(zlastname[0])
             ztoken = generate_confirmation_token(zemail)
@@ -80,7 +84,7 @@ def checkschedule():
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set scheduled = 1 where id = (?);', (zid,))
+                cur.execute('update schedule set scheduled = 1 where id = (?);', (int(zid,)))
                 cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid,))        
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
