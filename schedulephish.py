@@ -34,6 +34,8 @@ def checkschedule():
             timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
             timestamp = timestamp.replace(' ', '-')
             zid = email[0]
+            zid = [zid]
+            zid = zid[0]
             #ztype = email[1]
             zemail = email[2]
             zemail = [zemail]
@@ -50,9 +52,11 @@ def checkschedule():
             zsubject = email[9]
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
+            zfirstname = [zfirstname]
             zfirstname = str(zfirstname[0])
             cur.execute('select lastname from users where username = (?);', (zemail,))
             zlastname = cur.fetchall()
+            zlastname = [zlastname]
             zlastname = str(zlastname[0])
 
             ztoken = generate_confirmation_token(zemail)
