@@ -1,5 +1,6 @@
 <!--   NOTE: This document is here as a template/placeholder for future pages      -->
 <!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!--      Please remove all generic/instructional comments before publishing!      -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,6 +25,7 @@
         width: 400px;
       }
       .contentcontainer{
+        /* Want more columns or rows? Fix them here! */
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
         row-gap: 30px;
@@ -33,6 +35,7 @@
         font-size: calc(24px + 0.5vw);
         max-height: 40px;
         vertical-align: middle;
+        /* Change the column/row definitions as needed based on contentcontainer templates */
         grid-column-start: 1;
         grid-column-end: 2;
         grid-row-start: 1;
@@ -41,24 +44,34 @@
     </style>
   </head>
   <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <div id="particles-js"></div>
     <nav>
-      <div id="dropdown">
+      <!-- This is where the navbar is generated, make sure both dropdown and main menu are setup similarly! -->
+      <div id="dropdown" style="display: none;">
         <div id="dropcontent">
           <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
+          <a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a>
         </div>
       </div>
       <table id="mainmenu">
           <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
+            <td><a href="/main" class="current">Modules</a></td>
+            <td><a href="/stats">Results</a></td>
+            <td><a href="/profile">Profile</a></td>
+            <td><a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a></td>
         </tr>
       </table>
     </nav>
     <div class="contentcontainer">
       <div><h1>Content Title</h1></div>
+      <!-- Put Content Here! -->
     </div>
+    <!-- Logout confirmation overlay -->
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <!-- Put more Javascript stuff here if you need -->
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
