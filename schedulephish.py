@@ -68,8 +68,6 @@ def checkschedule():
             print('zid before')
             print(zid)
             print(type(zid))
-            print(len(zid))
-            print('^ len')
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = linkshorten(zlink)
