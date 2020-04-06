@@ -21,7 +21,7 @@ def convertTuple(tup):
     return str
 
 def checkschedule():
-    print('test')
+    print('Checking database for scheduled items...')
     con = sqlite.connect('db/db1.db')
     with con:
         emailsched = []
@@ -30,6 +30,7 @@ def checkschedule():
         for row in cur.execute('select * from schedule where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and scheduled = 0;'):
             emailsched.append(row[:])
         for email in emailsched:
+            print(email)
             timestamp = (datetime.now())
             timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
             timestamp = timestamp.replace(' ', '-')
@@ -67,14 +68,14 @@ def checkschedule():
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update schedule set scheduled = 1 where id = (?);', (zid,))
-                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,))
+                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid,))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update schedule set scheduled = 1 where id = (?);', (zid,))
-                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,))        
+                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid,))        
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
 
