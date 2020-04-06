@@ -27,7 +27,7 @@ def checkschedule():
         emailsched = []
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        for row in cur.execute('select * from schedule where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentout = 0;'):
+        for row in cur.execute('select * from phishsched where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentout = 0;'):
             emailsched.append(row[:])
         for email in emailsched:
             print(email)
@@ -76,17 +76,17 @@ def checkschedule():
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set sentout = 1 where id = (?);', str(zid,))
-                cur.execute('update schedule set altid = "1" where id = (?);', str(zid,))
-                cur.execute('update schedule set sentout = (?) where id = (?);', (timestamp,), (zid))
+                cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
+                cur.execute('update phishsched set altid = "1" where id = (?);', str(zid,))
+                cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set sentout = 1 where id = (?);', str(zid,))
-                cur.execute('update schedule set altid = "1" where id = (?);', (zid,))
-                cur.execute('update schedule set sentout = (?) where id = (?);', (timestamp,), (zid))        
+                cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
+                cur.execute('update phishsched set altid = "1" where id = (?);', (zid,))
+                cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))        
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
 
