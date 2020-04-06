@@ -36,6 +36,10 @@ def checkschedule():
             zid = email[0]
             zid = [zid]
             zid = zid[0]
+            print('zids')
+            print(zid)
+            zid = int(zid)
+            print(zid)
             #ztype = email[1]
             zemail = email[2]
             zemail = [zemail]
