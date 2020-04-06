@@ -38,6 +38,7 @@ def checkschedule():
             zid = [zid]
             zid = zid[0]
             zid = int(zid)
+            print(zid)
             #ztype = email[1]
             zemail = email[2]
             zemail = [zemail]
@@ -60,24 +61,26 @@ def checkschedule():
             cur.execute('select lastname from users where username = (?);', (zemail,))
             zlastname = cur.fetchall()
             zlastname = zlastname[0]
-            zlastname = [zlastname]
+            zlastname = [zlastname] 
             zlastname = str(zlastname[0])
             ztoken = generate_confirmation_token(zemail)
+            print(timestamp)
+            print(timestamp[0])
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = linkshorten(zlink)
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set scheduled = 1 where id = (?);', (zid,))
-                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid,))
+                cur.execute('update schedule set scheduled = 1 where id = (?);', (zid))
+                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update schedule set scheduled = 1 where id = (?);', (zid,))
-                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid,))        
+                cur.execute('update schedule set scheduled = 1 where id = (?);', (zid))
+                cur.execute('update schedule set sent = (?) where id = (?);', (timestamp,), (zid))        
 
 #cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
 
