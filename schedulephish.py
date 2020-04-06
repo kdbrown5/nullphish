@@ -73,9 +73,11 @@ def checkschedule():
                 zlink = linkshorten(zlink)
                 zlink = [zlink]
                 zlink = zlink[0]
+                print('zid------')
+                print(zid)
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
-                cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))
+                print(cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid)))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
