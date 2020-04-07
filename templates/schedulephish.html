@@ -127,10 +127,10 @@
                 </td>
                 {% endif %}
                 <td>
-                  <input id="datetimepicker" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
+                  <input id="datetimepicker-{{ row }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
                         <script>
         $(function () {
-          $("#datetimepicker").datetimepicker(
+          $("#datetimepicker-{{ row }}").datetimepicker(
               {
                   hours24: true,
                 format: 'Y-m-d H:i',
