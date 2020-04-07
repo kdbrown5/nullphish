@@ -127,10 +127,10 @@
                 </td>
                 {% endif %}
                 <td>
-                  <input id="{{ row }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
+                  <input id="datetimepicker" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
                         <script>
         $(function () {
-          $("#{{ row }}").datetimepicker(
+          $("#datetimepicker").datetimepicker(
               {
                   hours24: true,
                 format: 'Y-m-d H:i',
@@ -150,6 +150,8 @@
           </table>
           <button style="width: 20%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
     </form>
+
+
 
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
