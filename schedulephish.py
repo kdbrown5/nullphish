@@ -64,20 +64,21 @@ def checkschedule():
             print(timestamp)
             timestamp = convertTuple(timestamp[0])
             print('\\\\\\\\\\\\\\\\\\\\\\\\\\')
-            print(timestamp)
-            print('zid before')
-            print(zid)
-            print(type(zid))
+            #print(timestamp)
+            #print('zid before')
+            #print(zid)
+            #print(type(zid))
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = linkshorten(zlink)
                 zlink = [zlink]
                 zlink = zlink[0]
-                print('zid------')
-                print(zid)
+                #print('zid------')
+                #print(zid)
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
-                print(cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid)))
+                #cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
+                cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))
+                #print(cur.execute('update phishsched set sentdate = (?) where id = (?);', (timestamp,), (zid)))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
