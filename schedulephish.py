@@ -21,16 +21,14 @@ def convertTuple(tup):
     return str
 
 def checkschedule():
-    print('Checking database for scheduled items...')
     con = sqlite.connect('db/db1.db')
     with con:
         emailsched = []
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        for row in cur.execute('select * from phishsched where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentout = 0;'):
+        for row in cur.execute('select * from phishsched where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentdate = "null";'):
             emailsched.append(row[:])
         for email in emailsched:
-            print(email)
             timestamp = (datetime.now())
             timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
             timestamp = timestamp.replace(' ', '-')
@@ -61,24 +59,14 @@ def checkschedule():
             zlastname = zlastname.replace("',)", '')
             ztoken = generate_confirmation_token(zemail)
             timestamp = [timestamp]
-            print(timestamp)
             timestamp = convertTuple(timestamp[0])
-            print('\\\\\\\\\\\\\\\\\\\\\\\\\\')
-            #print(timestamp)
-            #print('zid before')
-            #print(zid)
-            #print(type(zid))
             if zbitly == 1:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = linkshorten(zlink)
                 zlink = [zlink]
                 zlink = zlink[0]
-                #print('zid------')
-                #print(zid)
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                #cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
                 cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))
-                #print(cur.execute('update phishsched set sentdate = (?) where id = (?);', (timestamp,), (zid)))
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
@@ -86,8 +74,6 @@ def checkschedule():
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
                 cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))        
-
-#cur.execute(insert into schedule (type, username, template, mailname, date) values ('email', 'kdbrown5@gmail.com', 'Refund', 'donotreply@transactiondetails.com', '2020-04-05 17:30')
 
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
