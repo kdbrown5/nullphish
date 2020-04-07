@@ -127,18 +127,18 @@
                 </td>
                 {% endif %}
                 <td>
-                  <input name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
+                  <input class="datepicker" id="datetimepicker" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
                         <script>
-        $(function () {
-          $("#datetimepicker").datetimepicker(
-              {
-                  hours24: true,
+                          $('.datepicker').each(function(){
+    $(this).datepicker(
+      {
+        hours24: true,
                 format: 'Y-m-d H:i',
                   step:15,
-              }
-          );
-        });
-      </script>
+      }
+    );
+});
+   </script>
                 </td>
                 <td>
                   <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
