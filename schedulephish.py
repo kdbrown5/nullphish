@@ -26,7 +26,7 @@ def checkschedule():
         emailsched = []
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        for row in cur.execute('select * from phishsched where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentdate = "null";'):
+        for row in cur.execute('select * from phishsched where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentdate = "none";'):
             emailsched.append(row[:])
         for email in emailsched:
             timestamp = (datetime.now())
@@ -72,8 +72,7 @@ def checkschedule():
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update phishsched set sentout = 1 where id = (?);', str(zid,))
-                cur.execute('update phishsched set sentout = (?) where id = (?);', (timestamp,), (zid))        
+                cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))     
 
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
