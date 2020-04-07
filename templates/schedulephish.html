@@ -127,18 +127,18 @@
                 </td>
                 {% endif %}
                 <td>
-                  <input class="datepicker" id="{{row}}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
+                  <input id="{{ row }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
                         <script>
-                          $('.datepicker').each(function(){
-    $(this).{{row}}(
-      {
-        hours24: true,
+        $(function () {
+          $("#{{ row }}").datetimepicker(
+              {
+                  hours24: true,
                 format: 'Y-m-d H:i',
                   step:15,
-      }
-    );
-});
-   </script>
+              }
+          );
+        });
+      </script>
                 </td>
                 <td>
                   <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
@@ -150,18 +150,6 @@
           </table>
           <button style="width: 20%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
     </form>
-
-      <script>
-        $(function () {
-          $("#datetimepicker").datetimepicker(
-              {
-                  hours24: true,
-                format: 'Y-m-d H:i',
-                  step:15,
-              }
-          );
-        });
-      </script>
 
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
