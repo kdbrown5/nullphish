@@ -43,6 +43,33 @@
         grid-row-start: 1;
         grid-row-end: 2;
       }
+      table.dataframe, .dataframe th, .dataframe td {
+      border: line;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      border-collapse: collapse;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      text-align: center;
+      padding: .8%;
+      margin-bottom: 0px;
+      font-size: 1em;
+      color: black;
+    }
+    .checkbox {
+
+    height:3vh;
+    width:3vh;
+
+    }
+    tr:nth-child(odd)		{ background-color: lightgrey; }
+    tr:nth-child(even)	{ background-color:darkgrey; }
+    tr:first-child { background-color: transparent;}
+    tr:hover:first-child { background-color: transparent; }
+    tr:hover            { background-color: #d5e9f9;}
+    tr.border_bottom td {
+      border-bottom:1pt solid black;
+    }
     </style>
   </head>
   <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
@@ -74,8 +101,7 @@
                     <td>Template</td>
                     <td>Mail Server</td>
                     <td>Date to send</td>
-                    <td>Shorten URL</td>
-                    <td style="border-radius: 0px 25px 0px 0px;">Phish!</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Shorten URL</td>
             </tr>
             {% for item in businessdata %}
             <form method="POST">
@@ -108,10 +134,10 @@
           <label for="shorten"></label>
                 </td>
             </td>
-                <td><button style="width: 6.5vw;" type="submit" class="btn button btn-primary">Phish!</button></form></td>
                 {% endfor %}
           </tr>
           </table>
+          <button style="width: 20%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
     </form>
 
       <script>
