@@ -135,7 +135,10 @@ def phishschedule():
     if request.method == 'POST':
         print(request.form)
         print(request.form.get('datetimepicker'))
+        testdate = request.form.get('datetimepicker')
+        print(testdate[0])
         if 0 == 1:
+            datesched = request.form.get('datetimepicker')
             mailservbusiness = session['business']              
             subject = lookupemailsubject(templatename)
             receiveremail = request.form.get('email')
