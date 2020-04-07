@@ -70,7 +70,6 @@ def checkschedule():
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
                 zlink = [zlink]
-                zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))     
 
@@ -145,7 +144,6 @@ def phishschedule():
             else:
                 link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
                 link = [link]
-                link = link[0]
                 customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
                 flash('Email sent to: '+receiveremail, 'category2')
 
