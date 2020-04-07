@@ -64,8 +64,54 @@
     <div class="contentcontainer">
       <div><h1>Schedule Phishing</h1></div>
         <form method="POST">
-      <input style="max-height:10%; width: 50%;" id="datetimepicker" type="text" readonly><br>
-      <button type="submit" name="submit">Submit</button>
+          <table class="table table-hover dataframe">
+            <thead>
+              <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+              <td style="border-radius: 25px 0px 0px 0px;">Department</td>
+              <td>First</td>
+              <td>Last</td>
+                    <td>Email Address</td>
+                    <td>Template</td>
+                    <td>Mail Server</td>
+                    <td>Date to send</td>
+                    <td>Shorten URL</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Phish!</td>
+            </tr>
+            {% for item in businessdata %}
+            <form method="POST">
+          <tr style="text-align:center;" class="border_bottom">
+              <td>{{item[8]}}</td>
+            <td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
+            <td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
+                <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
+                <td>        <select name="templates" class="form-control" id="templates">
+                    <option>Templates</option>
+                        {% for row in availtemplates %}
+                            <option>{{ row }}</option>
+                        {% endfor %}
+                </select>
+                <td>
+                  {% if serverlist %}
+                  <select name="smtpserver" class="form-control" id="smtpserver">
+                  <option>Mail Server</option>
+                    {% for row in serverlist %}
+                    <option id={{row}} name={{row}}>{{ row }}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+                {% endif %}
+                <td>
+                  <input id="datetimepicker" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
+                </td>
+                <td>
+                  <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
+          <label for="shorten"></label>
+                </td>
+            </td>
+                <td><button style="width: 6.5vw;" type="submit" class="btn button btn-primary">Phish!</button></form></td>
+                {% endfor %}
+          </tr>
+          </table>
     </form>
 
       <script>

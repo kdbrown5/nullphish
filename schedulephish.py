@@ -128,7 +128,12 @@ def phishschedule():
         emailsubject = convertTuple(emailsubject)
         return emailsubject
 
+    availtemplates = lookuptemplates()
+    businessdata = businesslookup()
+    serverlist = lookupmailserver()
+
     if request.method == 'POST':
+        print(request.form.get('datetimepicker'))
         if 0 == 1:
             mailservbusiness = session['business']              
             subject = lookupemailsubject(templatename)
@@ -147,4 +152,4 @@ def phishschedule():
                 customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
                 flash('Email sent to: '+receiveremail, 'category2')
 
-    return render_template('schedulephish.html')    
+    return render_template('schedulephish.html', businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
