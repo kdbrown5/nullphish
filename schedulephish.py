@@ -145,6 +145,7 @@ def phishschedule():
             else:
                 link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
                 link = [link]
+                link = link[0]
                 customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
                 flash('Email sent to: '+receiveremail, 'category2')
 
