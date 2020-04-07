@@ -42,6 +42,9 @@ def checkschedule():
             zsender = convertTuple(zsender)
             #zdate = email[5]
             zbitly = email[7]
+            print('zbitly type')
+            print(type(zbitly))
+            zbitly = int(zbitly)
             zbusiness = email[8]
             zbusiness = [zbusiness]
             zbusiness = zbusiness[0]
