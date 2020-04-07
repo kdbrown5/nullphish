@@ -119,7 +119,7 @@
                 </select>
                 <td>
                   {% if serverlist %}
-                  <select name="smtpserver" class="form-control" id="{{ id }}" >
+                  <select name="smtpserver" class="form-control" id="smtpserver" >
                   <option>Mail Server</option>
                     {% for row in serverlist %}
                     <option id="{{ id }}" name={{row}}>{{ row }}</option>

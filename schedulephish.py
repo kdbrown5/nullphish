@@ -132,7 +132,8 @@ def phishschedule():
         arrayid = []
         xid = 0
         for item in businessdata:
-            arrayid.append(xid+1)
+            xid = xid+1
+            arrayid.append(xid)
         return arrayid
 
     availtemplates = lookuptemplates()
