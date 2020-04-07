@@ -133,10 +133,10 @@ def phishschedule():
     serverlist = lookupmailserver()
 
     if request.method == 'POST':
-        print(request.form)
-        print(request.form.get('datetimepicker'))
-        testdate = request.form.get('datetimepicker')
+        testdate = request.form.to_dict()['datetimepicker']
+        print(testdate)
         print(testdate[0])
+        print(testdate[1])
         if 0 == 1:
             datesched = request.form.get('datetimepicker')
             mailservbusiness = session['business']              
