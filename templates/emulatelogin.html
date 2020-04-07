@@ -55,12 +55,18 @@
       }
     </style>
   </head>
-  <body>
-    <div id="particles-js"></div>
+  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
     <nav>
-      <table>
-        <tr>
-          <td><a href="https://app.nullphish.com">NullPhish &#169;</a></td>
+      <div id="dropdown" style="display: none;">
+        <div id="dropcontent">
+          <a href="/">SuperAdmin Controls</a>
+          <a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a>
+        </div>
+      </div>
+      <table id="mainmenu">
+          <tr>
+            <td><a href="/">SuperAdmin Controls</a></td>
+            <td><a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a></td>
         </tr>
       </table>
     </nav>
@@ -68,13 +74,13 @@
       <h1>Emulate User</h1>
       <div>
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
-        {% if messages %}
-        <ul>
-          {% for message in messages %}
-          {{ message }}
-          {% endfor %}
-        </ul>
-        {% endif %}
+          {% if messages %}
+            <ul>
+              {% for message in messages %}
+              {{ message }}
+              {% endfor %}
+            </ul>
+          {% endif %}
         {% endwith %}
         <h2 style="color: white">Select User:</h2>
         <div>
@@ -105,5 +111,6 @@
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
   </body>
 </html>
