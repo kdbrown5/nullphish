@@ -41,15 +41,12 @@ def checkschedule():
             zsender = email[4]
             zsender = convertTuple(zsender)
             #zdate = email[5]
-            zbitly = email[7]
-            print('zbitly type')
-            print(type(zbitly))
-            zbitly = int(zbitly)
-            zbusiness = email[8]
+            zbitly = email[6]
+            zbusiness = email[7]
             zbusiness = [zbusiness]
             zbusiness = zbusiness[0]
             ztemplate = '/home/nullphish/prod/templates/businesses/'+zbusiness+'/'+ztemplate+'.html'
-            zsubject = email[9]
+            zsubject = email[8]
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
             zfirstname = str(zfirstname[0])
