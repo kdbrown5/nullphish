@@ -93,12 +93,11 @@
 
       Begin
       <hr>
-      {% for i1,i2,i3,i4 in arrayid,businessdata,availtemplates,serverlist %}
-        {{i1}} |
-        <br> {{ i1[0] }} 
-        <br> {{i1[1][0]}}
-        <br> {{i2}}
+      {% for ziplist in arrayid,businessdata,availtemplates,serverlist %}
+      {% for ziprow in ziplist %}
+    <td> {{ row }}</td>
         <br>
+        {% endfor %}
         {% endfor %}
       <hr>
       end
