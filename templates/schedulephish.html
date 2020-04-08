@@ -95,7 +95,7 @@
       <hr>
       {% for ziplist in arrayid,businessdata,availtemplates,serverlist %}
       {% for ziprow in ziplist %}
-    <td> {{ ziprow }}</td>
+    <td> {{ ziprow[0] }}</td>
         <br>
         {% endfor %}
         {% endfor %}
