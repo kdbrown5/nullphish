@@ -88,6 +88,15 @@ def phishschedule():
         businessdata = businessquery
         return businessdata
 
+    def businessdict():
+        con = sqlite.connect('db/db1.db')
+        con.row_factory = sqlite.Row
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from users')
+        result = cur.fetchall()
+        return result
+
     def lookupmailserver():
         business = str(session['business'])
         con = sqlite.connect('db/db1.db')
@@ -140,8 +149,10 @@ def phishschedule():
     businessdata = businesslookup()
     serverlist = lookupmailserver()
     arrayid = generatearray()
-    print(arrayid)
+    busdict = businessdict()
 
+    print(busdict)
+    
     if request.method == 'POST':
         print(request.form)
         print('testdate')
