@@ -153,9 +153,10 @@ def phishschedule():
 
     print(busdict)
     try:
-        print(busdict['id'])
-        print(busdict['username'])
-        print(busdict[0])
+        for i in busdict:
+            print(i)
+            print(i['id'])
+            print(i['name'])
     except:
         pass
     
