@@ -93,10 +93,12 @@
 
       Begin
       <hr>
-      {% for asdf in arrayid,businessdata,availtemplates,serverlist %}
-        {{ asdf[0] }} | {{ asdf[1] }} | {{ asdf[2] }} | {{ asdf[3] }} | 
+      {% for i1,i2,i3,i4 in arrayid,businessdata,availtemplates,serverlist %}
+        {{i1}} |
+        <br> {{ i1[0] }} 
+        <br> {{i1[1][0]}}
+        <br> {{i2}}
         <br>
-        {{ asdf[0][0] }} | {{ asdf[0][1] }} || {{ asdf[0][2]}} || {{ asdf[0][3] }}
         {% endfor %}
       <hr>
       end
