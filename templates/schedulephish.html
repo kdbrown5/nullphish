@@ -94,7 +94,9 @@
       Begin
       <hr>
       {% for asdf in arrayid,businessdata,availtemplates,serverlist %}
-        {{ asdf[0] }} | {{ asdf[1] }}  {{ asdf[2] }} | {{ asdf[3] }} | 
+        {{ asdf[0] }} | {{ asdf[1] }} | {{ asdf[2] }} | {{ asdf[3] }} | 
+        <br>
+        {{ asdf[0][0] }} | {{ asdf[0][1] }} || {{ asdf[0][2]}} || {{ asdf[0][3] }}
         {% endfor %}
       <hr>
       end
