@@ -158,7 +158,7 @@ def phishschedule():
     print(busdict)
     x = 0
     for i in busdict:
-        busdict[i]['num'] = int(x)+1
+        i['num'] = int(x)+1
         print(i['num'])
         print(i['id'])
         print(i['username'])
