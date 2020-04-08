@@ -94,11 +94,11 @@
       Begin
       <hr>
       {% for dict in busdict %}
-      {% for key in dict.username %}
-      {{key}}
-        <br>
+    {{ dict.username }}
+    {{ dict.id }}
+    {{ dict.firstname }}
         {% endfor %}
-        {% endfor %}
+        
         <br>
 
       <hr>
