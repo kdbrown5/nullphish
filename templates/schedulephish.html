@@ -93,9 +93,9 @@
 
       Begin
       <hr>
-      {% for ziplist in arrayid,businessdata,availtemplates,serverlist %}
-      {% for ziprow in ziplist %}
-    <td> {{ ziprow[0] }}</td>
+      {% for dict in busdict %}
+      {% for key, value in dict.items() %}
+      {{key}} | {{value}}
         <br>
         {% endfor %}
         {% endfor %}

@@ -155,15 +155,7 @@ def phishschedule():
     arrayid = generatearray()
     busdict = businessdict()
 
-    print(busdict)
-    x = 0
-    for i in busdict:
-        i['num'] = int(x)+1
-        print(i['num'])
-        print(i['id'])
-        print(i['username'])
-        print(i['firstname'])
-        print(i['lastname'])
+
     
     
     if request.method == 'POST':
@@ -192,4 +184,4 @@ def phishschedule():
                 customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
                 flash('Email sent to: '+receiveremail, 'category2')
 
-    return render_template('schedulephish.html', lookup=zip(arrayid,businessdata,availtemplates,serverlist), arrayid=arrayid, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
+    return render_template('schedulephish.html', busdict=busdict, arrayid=arrayid, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
