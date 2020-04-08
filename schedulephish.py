@@ -156,18 +156,14 @@ def phishschedule():
     busdict = businessdict()
 
     print(busdict)
-    try:
-        x = 0
-        for i in busdict:
-            busdict[i]['num'] = x+1
-        print(i)
+    x = 0
+    for i in busdict:
+        busdict[i]['num'] = int(x)+1
         print(i['num'])
         print(i['id'])
         print(i['username'])
         print(i['firstname'])
         print(i['lastname'])
-    except:
-        pass
     
     
     if request.method == 'POST':
