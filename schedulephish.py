@@ -152,6 +152,10 @@ def phishschedule():
     busdict = businessdict()
 
     print(busdict)
+    try:
+        print(busdict['id'])
+        print(busdict['username'])
+        print(busdict[0])
     
     if request.method == 'POST':
         print(request.form)
