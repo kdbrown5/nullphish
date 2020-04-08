@@ -168,4 +168,4 @@ def phishschedule():
                 customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
                 flash('Email sent to: '+receiveremail, 'category2')
 
-    return render_template('schedulephish.html', arrayid=arrayid, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
+    return render_template('schedulephish.html', lookup=zip(arrayid,businessdata,availtemplates,serverlist), arrayid=arrayid, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
