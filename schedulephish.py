@@ -95,6 +95,10 @@ def phishschedule():
         cur.execute('PRAGMA key = '+dbkey+';')
         cur.execute('select * from users')
         result = cur.fetchall()
+        try:
+            con.close()
+        except:
+            pass
         return result
 
     def lookupmailserver():
@@ -153,12 +157,15 @@ def phishschedule():
 
     print(busdict)
     try:
+        x = 0
         for i in busdict:
-            print(i)
-            print(i['id'])
-            print(i['username'])
-            print(i['firstname'])
-            print(i['lastname'])
+            busdict[i]['num'] = x+1
+        print(i)
+        print(i['num'])
+        print(i['id'])
+        print(i['username'])
+        print(i['firstname'])
+        print(i['lastname'])
     except:
         pass
     
