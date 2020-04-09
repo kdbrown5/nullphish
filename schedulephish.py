@@ -160,11 +160,15 @@ def phishschedule():
     
     if request.method == 'POST':
         print(request.form)
+        print('testfname')
+        testfirstname = request.form.to_dict(flat=False)['firstname']
+        print(testfirstname)
         print('testdate')
-        testdate = request.form.to_dict()['datetimepicker']
+        testdate = request.form.to_dict(flat=False)['datetimepicker']
         print(testdate)
+        print('0 and 1')
         print(testdate[0])
-        print(testdate[1])
+        print(testdate[1])  
         if 0 == 1:
             datesched = request.form.get('datetimepicker')
             mailservbusiness = session['business']              
