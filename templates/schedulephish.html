@@ -90,20 +90,6 @@
     </nav>
     <div class="contentcontainer">
       <div><h1>Schedule Phishing</h1></div>
-
-      Begin
-      <hr>
-      {% for dict in busdict %}
-    {{ dict.username }}
-    {{ dict.id }}
-    {{ dict.firstname }}
-        {% endfor %}
-        
-        <br>
-
-      <hr>
-      end
-      <hr>
         <form method="POST">
           <table class="table table-hover dataframe">
             <thead>
@@ -117,14 +103,16 @@
                     <td>Date to send</td>
                     <td style="border-radius: 0px 25px 0px 0px;">Shorten URL</td>
             </tr>
-            {% for item in businessdata %}
+ 
+            {% for dict in busdict %}
             <form method="POST">
           <tr style="text-align:center;" class="border_bottom">
-              <td>{{item[8]}}</td>
-            <td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
-            <td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
-                <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
+              <td>{{ busdict.department }}</td>
+            <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ busdict.firstname }}</td>
+            <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ busdict.lastname }}">{{ busdict.lastname }}</td>
+                <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ busdict.username }}">{{ busdict.username }}</td>
                 <td>        <select name="templates" class="form-control" id="templates">
+                  {% endfor %}
                     <option>Templates</option>
                         {% for row in availtemplates %}
                             <option>{{ row }}</option>
@@ -140,8 +128,9 @@
                   </select>
                 </td>
                 {% endif %}
+                {% for dict in busdict %}
                 <td>
-                  <input id="{{ row }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
+                  <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
                         <script>
         $(function () {
           $(".dateTxt").datetimepicker(
@@ -155,7 +144,7 @@
       </script>
                 </td>
                 <td>
-                  <input type="checkbox" id="shorten" name="shorten" value="bitly" class="checkbox">
+                  <input type="checkbox" id="{{ dict.username}}" name="shorten" value="bitly" class="checkbox">
           <label for="shorten"></label>
                 </td>
             </td>
