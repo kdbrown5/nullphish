@@ -112,7 +112,7 @@
             <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ busdict.lastname }}">{{ busdict.lastname }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ busdict.username }}">{{ busdict.username }}</td>
                 <td>        <select name="templates" class="form-control" id="templates">
-                  {% endfor %}
+                  
                     <option>Templates</option>
                         {% for row in availtemplates %}
                             <option>{{ row }}</option>
@@ -128,7 +128,7 @@
                   </select>
                 </td>
                 {% endif %}
-                {% for dict in busdict %}
+ 
                 <td>
                   <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly><br>
                         <script>
