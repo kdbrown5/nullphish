@@ -170,6 +170,7 @@ def phishschedule():
             if g1 == "0":
                 pass
             else:
+                print(g2, g3, g4, g5, g6, g7, g8)
                 newtoken = generate_confirmation_token(g4)
                 subject = lookupemailsubject(g5)
                 if g7 == "short":
