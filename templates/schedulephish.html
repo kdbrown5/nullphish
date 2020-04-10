@@ -123,9 +123,9 @@
                 <td>
                   {% if serverlist %}
                   <select name="smtpserver" class="form-control" id="smtpserver">
-                  <option>Mail Server</option>
+                  <option value="{{ row }}">Mail Server</option>
                     {% for row in serverlist %}
-                    <option id="{{ dict.id }}" name="serverlist" value="{{ row }}">{{ row }}</option>
+                    <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
                     {% endfor %}
                   </select>
                 </td>
