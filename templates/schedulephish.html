@@ -146,8 +146,8 @@
       </script>
                 </td>
                <!-- <td><input type="checkbox" id="{{ dict.username }}" name="shorten" value="bitly" class="checkbox"><label for="shorten"></label></td> --->
-                <td><input type="radio" name="bitly" value="short" checked><label for="{{ dict.id }}">Short</label><br>
-                <input type="radio" name="bitly" value="long"><label for="{{ dict.id }}">Long</label><br></td>
+                <td><input type="radio" id="{{ dict.id }}" name="bitly" value="short" checked><label for="{{ dict.id }}">Short</label><br>
+                <input type="radio" id="{{ dict.id }}" name="bitly" value="long"><label for="{{ dict.id }}">Long</label><br></td>
               
             </td>
                 {% endfor %}
