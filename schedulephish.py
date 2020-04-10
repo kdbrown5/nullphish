@@ -157,7 +157,7 @@ def phishschedule():
     busdict = businessdict()
     
     if request.method == 'POST':
-        #print(request.form)
+        print(request.form)
         getfirstname = request.form.to_dict(flat=False)['firstname']
         getlastname = request.form.to_dict(flat=False)['lastname']
         getemail = request.form.to_dict(flat=False)['email']
@@ -166,6 +166,7 @@ def phishschedule():
         getselect = request.form.to_dict(flat=False)['select']
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
+        print('---------')
         for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
             if g1 == "0":
                 pass
