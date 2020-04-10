@@ -167,15 +167,18 @@ def phishschedule():
         print(gettemplates)
         print(getdate[0])
         print(getemail[0])
-        print('bitly')
+        
         try:
             print(request.form.get('bitly'))
+            print('bitly')
         except:
             print('bitly id ')
         try:
             print(request.form.get('shorten'))
+            print('shorten id')
         except:
             print('shorten id')
+            
 
         if 0 == 1:
             datesched = request.form.get('datetimepicker')
