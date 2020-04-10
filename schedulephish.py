@@ -163,15 +163,22 @@ def phishschedule():
         getdate = request.form.to_dict(flat=False)['datetimepicker']
         gettemplates = request.form.to_dict()['templates']
         getserver = request.form.to_dict()['serverlist']
-        getbitly = request.form.to_dict()['bitly']
         print(getserver)
         print(gettemplates)
         print(getserver[0])
         print(gettemplates[0])
         print(getdate[0])
         print(getemail[0])
-        print(getbitly)
-        print(getbitly[0])
+        print('bitly')
+        try:
+            print(request.form.get('bitly'))
+        except:
+            pass
+        try:
+            print(request.form.get('shorten'))
+        except:
+            pass
+
         if 0 == 1:
             datesched = request.form.get('datetimepicker')
             mailservbusiness = session['business']              
