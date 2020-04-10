@@ -166,32 +166,20 @@ def phishschedule():
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
         for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
-            print('test')
-            print(type(g1))
-            print('endtest')
             if g1 == "0":
                 pass
             else:
-                print(g2, g3, g4, g5, g6, g7, g8)
-                
-
-        if 0 == 1:
-            datesched = request.form.get('datetimepicker')
-            mailservbusiness = session['business']              
-            subject = lookupemailsubject(templatename)
-            receiveremail = request.form.get('email')
-            newtoken = generate_confirmation_token(receiveremail)
-            firstname = request.form.get('firstname')
-            lastname = request.form.get('lastname')
-            if request.form.get('shorten') == 'bitly':  
-                link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
-                link = linkshorten(link)
-                customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
-                flash('Email sent to: '+receiveremail, 'category2')
-            else:
-                link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
-                link = [link]
-                customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, mailservbusiness)
-                flash('Email sent to: '+receiveremail, 'category2')
+                newtoken = generate_confirmation_token(g4)
+                subject = lookupemailsubject(g5)
+                if g7 == "short":
+                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
+                    link = linkshorten(link)
+                    customsendphish(g6, g5, g4, g2, g3, subject, link, g6)
+                    flash('Email sent to: '+g6, 'category2')
+                else:
+                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
+                    link = [link]
+                    customsendphish(g6, g5, g4, g2, g3, subject, link, g6)
+                    flash('Email sent to: '+g6, 'category2')
 
     return render_template('schedulephish.html', busdict=busdict, arrayid=arrayid, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
