@@ -145,8 +145,11 @@
         });
       </script>
                 </td>
-                <td><input id="{{ dict.id }}" type="checkbox" name="shorten" value="bitly" class="checkbox"><label for="shorten"></label></td>
-                
+                <!-- <td><input id="{{ dict.id }}" type="checkbox" name="shorten" value="bitly" class="checkbox"><label for="shorten"></label></td> -->
+                <td><select name="bitly" class="form-control" id="bitly">                  
+                  <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
+                          <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
+              </select>
             </td>
                 {% endfor %}
           </tr>
