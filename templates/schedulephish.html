@@ -94,7 +94,8 @@
           <table class="table table-hover dataframe">
             <thead>
               <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-              <td style="border-radius: 25px 0px 0px 0px;">Department</td>
+              <td style="border-radius: 25px 0px 0px 0px;">Select</td>
+              <td>Department</td>
               <td>First</td>
               <td>Last</td>
                     <td>Email Address</td>
@@ -107,6 +108,7 @@
             {% for dict in busdict %}
             <form method="POST">
           <tr style="text-align:center;" class="border_bottom">
+            <td><input type="checkbox" id="select" name="select" value="{{ dict.username }}" class="checkbox"><label for="select"></label></td>
               <td>{{ dict.department }}</td>
             <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
             <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
@@ -123,7 +125,7 @@
                   <select name="smtpserver" class="form-control" id="smtpserver">
                   <option>Mail Server</option>
                     {% for row in serverlist %}
-                    <option id={{row}} name={{row}}>{{ row }}</option>
+                    <option id={{row}} name="serverlist" value="{{ row }}">{{ row }}</option>
                     {% endfor %}
                   </select>
                 </td>
@@ -143,10 +145,10 @@
         });
       </script>
                 </td>
-                <td>
-                  <input type="checkbox" id="{{ dict.username}}" name="shorten" value="bitly" class="checkbox">
-          <label for="shorten"></label>
-                </td>
+               <!-- <td><input type="checkbox" id="{{ dict.username }}" name="shorten" value="bitly" class="checkbox"><label for="shorten"></label></td> --->
+                <td><input type="radio" name="bitly" value="short" checked><label for="short">Short</label><br>
+                <input type="radio" name="bitly" value="long"><label for="long">Long</label><br></td>
+              
             </td>
                 {% endfor %}
           </tr>

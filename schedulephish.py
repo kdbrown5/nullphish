@@ -154,21 +154,24 @@ def phishschedule():
     serverlist = lookupmailserver()
     arrayid = generatearray()
     busdict = businessdict()
-
-
-    
     
     if request.method == 'POST':
         print(request.form)
-        print('testfname')
-        testfirstname = request.form.to_dict(flat=False)['firstname']
-        print(testfirstname)
-        print('testdate')
-        testdate = request.form.to_dict(flat=False)['datetimepicker']
-        print(testdate)
-        print('0 and 1')
-        print(testdate[0])
-        print(testdate[1])  
+        getfirstname = request.form.to_dict(flat=False)['firstname']
+        getlastname = request.form.to_dict(flat=False)['lastname']
+        getemail = request.form.to_dict(flat=False)['username']
+        getdate = request.form.to_dict(flat=False)['datetimepicker']
+        gettemplates = request.form.to_dict()['templates']
+        getserver = request.form.to_dict()['serverlist']
+        getbitly = request.form.to_dict()['bitly']
+        print(getserver)
+        print(gettemplates)
+        print(getserver[0])
+        print(gettemplates[0])
+        print(getdate[0])
+        print(getemail[0])
+        print(getbitly)
+        print(getbitly[0])
         if 0 == 1:
             datesched = request.form.get('datetimepicker')
             mailservbusiness = session['business']              
