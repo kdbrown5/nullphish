@@ -136,6 +136,7 @@ def phishschedule():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select emailsubject from templates where business LIKE (?) and name LIKE (?);', (business, templatename,))
+            print(cur.fetchall())
             emailsubject = cur.fetchall()[0]
         con.close
         emailsubject = convertTuple(emailsubject)
