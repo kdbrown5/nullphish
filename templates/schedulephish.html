@@ -117,7 +117,7 @@
                   
                     <option>Templates</option>
                         {% for row in availtemplates %}
-                            <option>{{ row }}</option>
+                            <option name="templates" value="{{ row }}">{{ row }}</option>
                         {% endfor %}
                 </select>
                 <td>
