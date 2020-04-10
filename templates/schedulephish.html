@@ -108,7 +108,7 @@
             {% for dict in busdict %}
             <form method="POST">
           <tr style="text-align:center;" class="border_bottom">
-            <td><input type='hidden' value='0' name='select'><input type="checkbox" id="select" name="select" value="{{ dict.username }}" class="checkbox"><label for="select"></label></td>
+            <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>
               <td>{{ dict.department }}</td>
             <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
             <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
