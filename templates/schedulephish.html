@@ -115,7 +115,7 @@
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
                 <td>        <select name="templates" class="form-control" id="templates">
                   
-                    <option>Templates</option>
+                    <option value="{{ row }}">Templates</option>
                         {% for row in availtemplates %}
                             <option id="{{ dict.id }}" name="templates" value="{{ row }}">{{ row }}</option>
                         {% endfor %}
