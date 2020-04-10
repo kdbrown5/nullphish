@@ -166,8 +166,11 @@ def phishschedule():
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
         for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
-            print(g1)
-            print(g1[0])
+            if g1 == 0:
+                pass
+            else:
+                print(g2, g3, g4, g5, g6, g7, g8)
+                
 
         if 0 == 1:
             datesched = request.form.get('datetimepicker')
