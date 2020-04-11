@@ -138,7 +138,6 @@ def phishschedule():
             cur.execute('select emailsubject from templates where business LIKE (?) and name LIKE (?);', (business, templatename,))
             emailsubject = cur.fetchone()
         con.close
-        #emailsubject = convertTuple(emailsubject)
         return emailsubject
     
     def generatearray():
@@ -175,6 +174,7 @@ def phishschedule():
                 subject = lookupemailsubject(g5)
                 print('sub')
                 print(subject)
+                print(subject[0])
                 print('end sub')
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
