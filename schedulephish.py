@@ -174,12 +174,12 @@ def phishschedule():
                 subject = lookupemailsubject(g5)
                 subject = subject[0]
                 if g7 == "short":
-                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
+                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = linkshorten(link)
                     customsendphish(g6, g5, g4, g2, g3, subject, link, g6)
                     flash('Email sent to: '+g6, 'category2')
                 else:
-                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
+                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = [link]
                     customsendphish(g6, g5, g4, g2, g3, subject, link, g6)
                     flash('Email sent to: '+g6, 'category2')
