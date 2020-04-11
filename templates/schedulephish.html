@@ -90,8 +90,9 @@
     </nav>
     <div class="contentcontainer">
       <div><h1>Schedule Phishing</h1></div>
-      {% if messages %}
+      
       <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        {% if messages %}
           <ul class="flashes w3-jumbo" style="color: white">
           {% for message in messages %}
         {{ message }}
