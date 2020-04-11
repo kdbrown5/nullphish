@@ -155,10 +155,8 @@ def phishschedule():
             if g1 == "0":
                 pass
             else:
-                print(g4)
-                print(type(g4))
-                print(errorrr)
-                sentlist.append(g4)
+                g4a = [g4]
+                sentlist.append(g4a)
                 newtoken = generate_confirmation_token(g4)
                 subject = lookupemailsubject(g5)
                 subject = subject[0]
