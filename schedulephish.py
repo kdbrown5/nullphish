@@ -173,7 +173,7 @@ def phishschedule():
         sentlist = (''.join(str(sentlist)))
         sentlist = sentlist.replace("],", '')
         sentlist = sentlist.replace ("'", '')
-        sentlist = sentlist.replacet(']', '')
+        sentlist = sentlist.replace(']', '')
         sentlist = sentlist.replace('[', '')
         flash('Emails scheduled for: '+sentlist, 'category2')
         
