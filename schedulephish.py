@@ -75,19 +75,6 @@ def checkschedule():
 
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
-    def businesslookup():
-        con = sqlite.connect('db/db1.db')
-        business = str(session['business'])
-        with con:
-            cur = con.cursor()
-            cur.execute('PRAGMA key = '+dbkey+';')
-            businessquery = []
-            for row in cur.execute('select * from users where business LIKE (?);', (business,)):
-                businessquery.append(row[:])
-        con.close()
-        businessdata = businessquery
-        return businessdata
-
     def businessdict():
         con = sqlite.connect('db/db1.db')
         con.row_factory = sqlite.Row
@@ -151,12 +138,10 @@ def phishschedule():
         con.close()
 
     availtemplates = lookuptemplates()
-    businessdata = businesslookup()
     serverlist = lookupmailserver()
     busdict = businessdict()
     
     if request.method == 'POST':
-        print(request.form)
         getfirstname = request.form.to_dict(flat=False)['firstname']
         getlastname = request.form.to_dict(flat=False)['lastname']
         getemail = request.form.to_dict(flat=False)['email']
@@ -165,28 +150,27 @@ def phishschedule():
         getselect = request.form.to_dict(flat=False)['select']
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
+        sentlist = []
         for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
             if g1 == "0":
                 pass
             else:
+                sentlist.append(g4)
                 newtoken = generate_confirmation_token(g4)
                 subject = lookupemailsubject(g5)
                 subject = subject[0]
-                template = str(g5)+'.html'
-                if template == "prototype2.html":
-                    template = 'templates/'+template
-                else:
-                    template = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+template
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = linkshorten(link)
-                    scheduledb(g4, template, g6, g8, g7, session['business'], subject )
+                    scheduledb(g4, g5, g6, g8, "1", session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                 else:
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = [link]
-                    scheduledb(g4, template, g6, g8, g7, session['business'], subject )
+                    scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
-        flash('Email sent to: '+g4  , 'category2')
+                flash('Email sent to: '+sentlist, 'category2')
+                
+        
 
-    return render_template('schedulephish.html', busdict=busdict, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
+    return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
