@@ -155,6 +155,7 @@ def phishschedule():
             if g1 == "0":
                 pass
             else:
+                print(g1, g2, g3, g4, g5, g6, g7, g8)
                 g4a = [g4]
                 sentlist.append(g4a)
                 newtoken = generate_confirmation_token(g4)
@@ -171,7 +172,7 @@ def phishschedule():
                     scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
         sentlist = (''.join(str(sentlist)))
-        sentlist = sentlist.replace("],", '')
+        sentlist = sentlist.replace("],", ',')
         sentlist = sentlist.replace ("'", '')
         sentlist = sentlist.replace(']', '')
         sentlist = sentlist.replace('[', '')
