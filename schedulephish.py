@@ -165,14 +165,12 @@ def phishschedule():
                     link = linkshorten(link)
                     scheduledb(g4, g5, g6, g8, "1", session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
-                    sentlist = (', '.join(str(sentlist)))
-                    flash('Email sent to: '+sentlist, 'category2')
                 else:
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = [link]
                     scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
-                    sentlist = (', '.join(str(sentlist)))
-                    flash('Email sent to: '+sentlist, 'category2')
+                sentlist = (', '.join(str(sentlist)))
+                flash('Email sent to: '+sentlist, 'category2')
         
     return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
