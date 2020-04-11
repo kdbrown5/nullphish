@@ -141,6 +141,8 @@ def phishschedule():
         return emailsubject
 
     def scheduledb(username, template, mailname, date, bitly, business, subject):
+        print('sched')
+        print(username, template, mailname, date, bitly, business, subject)
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
@@ -185,6 +187,6 @@ def phishschedule():
                     link = [link]
                     customsendphish(g6, template, g4, g2, g3, subject, link, g6)
                     flash('Email sent to: '+g6, 'category2')
-        flash('Email sent to: '+g4, 'category2')
+        flash('Email sent to: '+g4  , 'category2')
 
     return render_template('schedulephish.html', busdict=busdict, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
