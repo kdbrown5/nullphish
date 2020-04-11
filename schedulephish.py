@@ -139,19 +139,18 @@ def phishschedule():
             emailsubject = cur.fetchone()
         con.close
         return emailsubject
-    
-    def generatearray():
-        arrayid = []
-        xid = 0
-        for item in businessdata:
-            xid = xid+1
-            arrayid.append(xid)
-        return arrayid
+
+    def scheduledb(username, template, mailname, date, bitly, business, subject):
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject) values ( "email", ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject))
+        con.close()
 
     availtemplates = lookuptemplates()
     businessdata = businesslookup()
     serverlist = lookupmailserver()
-    arrayid = generatearray()
     busdict = businessdict()
     
     if request.method == 'POST':
@@ -164,12 +163,10 @@ def phishschedule():
         getselect = request.form.to_dict(flat=False)['select']
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
-        print('---------')
         for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
             if g1 == "0":
                 pass
             else:
-                print(g2, g3, g4, g5, g6, g7, g8)
                 newtoken = generate_confirmation_token(g4)
                 subject = lookupemailsubject(g5)
                 subject = subject[0]
@@ -181,12 +178,13 @@ def phishschedule():
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = linkshorten(link)
-                    customsendphish(g6, template, g4, g2, g3, subject, link, g6)
-                    flash('Email sent to: '+g6, 'category2')
+                    scheduledb(g4, template, getserver, g8, g7, session['business'], subject )
+                    #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                 else:
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = [link]
                     customsendphish(g6, template, g4, g2, g3, subject, link, g6)
                     flash('Email sent to: '+g6, 'category2')
+        flash('Email sent to: '+g4, 'category2')
 
-    return render_template('schedulephish.html', busdict=busdict, arrayid=arrayid, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
+    return render_template('schedulephish.html', busdict=busdict, businessdata=businessdata, availtemplates=availtemplates, serverlist=serverlist)    
