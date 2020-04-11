@@ -139,7 +139,7 @@ def phishschedule():
             print(cur.fetchall())
             emailsubject = cur.fetchone()
         con.close
-        emailsubject = convertTuple(emailsubject)
+        #emailsubject = convertTuple(emailsubject)
         return emailsubject
     
     def generatearray():
