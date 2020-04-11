@@ -171,6 +171,10 @@ def phishschedule():
                     scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
         sentlist = (''.join(str(sentlist)))
-        flash('Email sent to: '+sentlist, 'category2')
+        sentlist = sentlist.replace("],", '')
+        sentlist = sentlist.replace ("'", '')
+        sentlist = sentlist.replacet(']', '')
+        sentlist = sentlist.replace('[', '')
+        flash('Emails scheduled for: '+sentlist, 'category2')
         
     return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
