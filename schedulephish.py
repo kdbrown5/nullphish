@@ -180,7 +180,7 @@ def phishschedule():
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = linkshorten(link)
-                    scheduledb(g4, template, getserver, g8, g7, session['business'], subject )
+                    scheduledb(g4, template, g6, g8, g7, session['business'], subject )
                     #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                 else:
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
