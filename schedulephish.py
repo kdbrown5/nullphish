@@ -174,6 +174,10 @@ def phishschedule():
                 subject = lookupemailsubject(g5)
                 subject = subject[0]
                 template = str(g5)+'.html'
+                if template == "prototype2.html":
+                    template = 'templates/'+template
+                else:
+                    template = '/home/nullphish/prod/templates/businesses/'+session['business']+'/'+template
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = linkshorten(link)
