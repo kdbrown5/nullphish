@@ -156,6 +156,7 @@ def phishschedule():
                 pass
             else:
                 print(g4)
+                print(type(g4))
                 print(errorrr)
                 sentlist.append(g4)
                 newtoken = generate_confirmation_token(g4)
