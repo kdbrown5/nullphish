@@ -137,7 +137,7 @@ def phishschedule():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select emailsubject from templates where business LIKE (?) and name LIKE (?);', (business, templatename,))
             print(cur.fetchall())
-            emailsubject = cur.fetchall()[0]
+            emailsubject = cur.fetchone()
         con.close
         emailsubject = convertTuple(emailsubject)
         return emailsubject
@@ -174,8 +174,8 @@ def phishschedule():
                 print(g2, g3, g4, g5, g6, g7, g8)
                 newtoken = generate_confirmation_token(g4)
                 subject = lookupemailsubject(g5)
-                subject = subject[0]
                 print(subject)
+                print(subject[0])
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(templatename))
                     link = linkshorten(link)
