@@ -173,7 +173,7 @@ def phishschedule():
                 newtoken = generate_confirmation_token(g4)
                 subject = lookupemailsubject(g5)
                 subject = subject[0]
-                template = str(g5)+'html'
+                template = str(g5)+'.html'
                 if g7 == "short":
                     link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                     link = linkshorten(link)
