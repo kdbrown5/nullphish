@@ -160,19 +160,23 @@ def phishschedule():
                 if g6 == '':
                     #g4 = [g4]
                     errcount = errcount+1
-                    errlist.append('Err:'+g4+'has no server<br>')
+                    errlist.append('Err:'+g4+'has no server')
                     pass
                 if g8 == '':
                     #g4 = [g4]
                     errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no date<br>')
+                    errlist.append('Err: '+g4+' has no date')
                     pass
                 if g5 == '':
                     #g4 = [g4]
                     errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no template<br>')
+                    errlist.append('Err: '+g4+' has no template')
                     pass
                 if errcount != 0:
+                    errlist = str(errlist)
+                    errlist = errlist.replace("'", '')
+                    errlist = errlist.replace("[", '')
+                    errlist = errlist.replace("]", '')
                     flash(errlist, 'category2')
                     return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
                 g4a = [g4]
