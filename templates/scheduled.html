@@ -177,7 +177,7 @@
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
                 <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
                 <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
-                <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly }}</td>
+                <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
                 <td name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
                 
                 {% endfor %}
