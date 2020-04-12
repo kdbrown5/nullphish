@@ -23,7 +23,7 @@ def viewschedule():
         con.row_factory = sqlite.Row
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from phishsched where business = (?);', session['business'],)
+        cur.execute('select * from phishsched where business = (?);', (session['business'],),)
         result = cur.fetchall()
         try:
             con.close()
