@@ -34,7 +34,8 @@ def viewschedule():
     scheduleddata = getschedule()
     print(scheduleddata)
     for i in scheduleddata:
-        print(i)
+        for x in i:
+            print(x)
     
     if request.method == 'POST':
         getfirstname = request.form.to_dict(flat=False)['firstname']
