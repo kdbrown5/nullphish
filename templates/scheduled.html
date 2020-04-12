@@ -165,7 +165,9 @@
                     <td>Template</td>
                     <td>Mail Server</td>
                     <td>Link</td>
-                    <td style="border-radius: 0px 25px 0px 0px;">Date Scheduled</td>
+                    <td>Date Scheduled</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Created&nbsp;by</td>
+                
             </tr>
  
             {% for dict in busdict %}
@@ -179,7 +181,7 @@
                 <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
                 <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
                 <td name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
-                
+                <td name="sceduler"><input type="hidden" id="{{ dict.scheduler }}" name="scheduler" value="{{ dict.scheduler }}">{{ dict.scheduler }}</td>
                 {% endfor %}
           </tr>
           </table>
