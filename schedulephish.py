@@ -173,6 +173,10 @@ def phishschedule():
                     errlist.append('Err: '+g4+' has no template')
                     pass
                 if errcount != 0:
+                    errlist = str(errlist)
+                    errlist = errlist.replace("'", '')
+                    errlist = errlist.replace("[", '')
+                    errlist = errlist.replace("]", '')
                     flash(errlist, 'category2')
                     return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
                 g4a = [g4]
