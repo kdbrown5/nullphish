@@ -160,17 +160,17 @@ def phishschedule():
                 if g6 == '':
                     #g4 = [g4]
                     errcount = errcount+1
-                    errlist.append('Err:'+g4+'has no server')
+                    errlist.append('Err: '+g4+' has no server assigned<br/>')
                     pass
                 if g8 == '':
                     #g4 = [g4]
                     errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no date')
+                    errlist.append('Err: '+g4+' has no date<br/>')
                     pass
                 if g5 == '':
                     #g4 = [g4]
                     errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no template')
+                    errlist.append('Err: '+g4+' has no template<br/>')
                     pass
                 if errcount != 0:
                     errlist = str(errlist)
