@@ -56,12 +56,17 @@
       font-size: 1em;
       color: black;
     }
+    input.largerCheckbox { 
+            transform : scale(2); 
+        } 
     .checkbox {
 
     height:3vh;
     width:3vh;
 
     }
+    
+
     tr:nth-child(odd)		{ background-color: lightgrey; }
     tr:nth-child(even)	{ background-color:darkgrey; }
     tr:first-child { background-color: transparent;}
@@ -118,7 +123,7 @@
             {% for dict in busdict %}
             <form method="POST">
           <tr style="text-align:center;" class="border_bottom">
-            <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
+            <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
               <td>{{ dict.department }}</td>
             <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
