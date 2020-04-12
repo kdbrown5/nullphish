@@ -161,17 +161,17 @@ def phishschedule():
                     #g4 = [g4]
                     errcount = errcount+1
                     errlist.append('Err:'+g4+'has no'+'server')
-                    break
+                    pass
                 if g8 == '':
                     #g4 = [g4]
                     errcount = errcount+1
                     errlist.append('Err:'+g4+'has no'+'date')
-                    break
+                    pass
                 if g5 == '':
                     #g4 = [g4]
                     errcount = errcount+1
                     errlist.append('Err:'+g4+'has no'+'template')
-                    break
+                    pass
                 if errcount != 0:
                     flash(errlist, 'category2')
                     return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
