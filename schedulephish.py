@@ -45,6 +45,7 @@ def checkschedule():
             zbusiness = email[7]
             zbusiness = [zbusiness]
             zbusiness = zbusiness[0]
+            xtemplate = ztemplate
             ztemplate = '/home/nullphish/prod/templates/businesses/'+zbusiness+'/'+ztemplate+'.html'
             zsubject = email[8]
             cur.execute('select firstname from users where username = (?);', (zemail,))
@@ -61,14 +62,14 @@ def checkschedule():
             timestamp = [timestamp]
             timestamp = convertTuple(timestamp[0])
             if zbitly == 1:
-                zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
+                zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(xtemplate))
                 zlink = linkshorten(zlink)
                 zlink = [zlink]
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))
             else:
-                zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(ztemplate))
+                zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(xtemplate))
                 zlink = [zlink]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))     
