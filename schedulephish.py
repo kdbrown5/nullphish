@@ -155,13 +155,8 @@ def phishschedule():
             if g1 == "0":
                 pass
             else:
-                
-                if g6 is None:
-                    print('g6 - none')
-                if g7 is None:
-                    print('g7 - none')
-                if g9 is None:
-                    print('g9 - none')
+                print('g6-'+g6)
+                print('g8-'+g8)
                 g4a = [g4]
                 sentlist.append(g4a)
                 newtoken = generate_confirmation_token(g4)
