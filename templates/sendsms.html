@@ -39,6 +39,19 @@
         grid-row-end: 2;
         
       }
+      input[type="text"] { 
+        text-align: center;
+        border-radius: .5em;
+        line-height: 1.0;
+        display: block;
+	font-size: 16px;
+  box-sizing: border-box;
+  color: #444;
+	border: 1px solid rgb(117, 117, 117);
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  width: 90%;
+  color: black;
+        }
       table.dataframe, .dataframe th, .dataframe td {
         border: line;
         border-bottom: 1px solid black;
@@ -98,13 +111,13 @@
 	<table class="table table-hover dataframe">
 		<thead>
 			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-			<td width="5%">Department</td>
+			<td style="border-top-left-radius: 15px;" width="5%">Department</td>
 			<td>First</td>
 			<td>Last</td>
             <td>Email Address</td>
             <td>Phone Number</td>
             <td>Message Contents</td>
-            <td>Phish!</td>
+            <td style="border-top-right-radius: 15px;">Phish!</td>
 		</tr>
     {% for item in businessdata %}
     <form method="POST">
@@ -113,8 +126,8 @@
 		<td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
 		<td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
         <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
-        <td name="phonenumber"><input style="font-size: 1em; text-align:center; background-color: transparent; color: black; width: 90%;" name="phonenumber" placeholder="Numbers only"></td>
-        <td name="txtmessage"><input name="txtmessage" style="width: 90%; font-size: 1em; text-align:center; color: black; background-color: transparent;" placeholder="Message here"></td>
+        <td style="width: 13%;" name="phonenumber"><input type="text" name="phonenumber" placeholder="Numbers only"></td>
+        <td name="txtmessage"><input type="text" name="txtmessage" placeholder="Message here"></td>
         <td width="1%"><button type="submit" style="width: 80%" class="button">Phish!</button></form></td>
         {% endfor %}
 	</tr>
