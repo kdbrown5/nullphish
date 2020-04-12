@@ -67,7 +67,44 @@
     width:3vh;
 
     }
-    
+    .select-css {
+	display: block;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+	color: #444;
+	line-height: 1.0;
+	
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid rgb(117, 117, 117);
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+
+  text-align: center;
+
+}
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+	border-color: black;
+}
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+.select-css option {
+	font-weight:normal;
+}
 
     tr:nth-child(odd)		{ background-color: lightgrey; }
     tr:nth-child(even)	{ background-color:darkgrey; }
@@ -131,7 +168,7 @@
             <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
             <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-                <td>        <select name="templates" class="form-control" id="templates">
+                <td>        <select name="templates" class="form-control select-css" id="templates">
                   
                     <option value="{{ row }}">Templates</option>
                         {% for row in availtemplates %}
@@ -139,16 +176,16 @@
                         {% endfor %}
                 </select>
                 <td>
-                  {% if serverlist %}
-                  <select name="smtpserver" class="form-control" id="smtpserver">
+                  
+                  <select name="smtpserver" class="form-control select-css" id="smtpserver">
                   <option value="{{ row }}">Mail Server</option>
                     {% for row in serverlist %}
                     <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
                     {% endfor %}
                   </select>
                 </td>
-                {% endif %}
-                <td><select name="bitly" class="form-control" id="bitly">                  
+                
+                <td><select name="bitly" class="form-control select-css" id="bitly">                  
                   <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
                           <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
               </select>
