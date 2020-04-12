@@ -27,6 +27,7 @@ from feedback import feedback, getfeedback
 from apscheduler.schedulers.background import BackgroundScheduler
 from pysqlcipher3 import dbapi2 as sqlite
 from schedulephish import schedulephish, phishschedule, checkschedule
+from scheduled import scheduled, viewschedule
 
 extra_dirs = ['templates/', ] #reload html templates when saved, while app is running
 extra_files = extra_dirs[:]
@@ -65,6 +66,7 @@ app.register_blueprint(sendsms)
 app.register_blueprint(resetpass)
 app.register_blueprint(feedback)
 app.register_blueprint(schedulephish)
+app.register_blueprint(scheduled)
 
 routes = Blueprint('routes', __name__) # support for addtl py pages
 
@@ -232,6 +234,14 @@ def beginschedphish():
     if session.get('logged_in'):
         if session['role'] == 'superadmin' or session['role'] == 'admin':
             return phishschedule()
+    else:
+        return redirect('/')
+
+@app.route('/scheduled', subdomain="app", methods=['GET', 'POST'])
+def beginviewsched():
+    if session.get('logged_in'):
+        if session['role'] == 'superadmin' or session['role'] == 'admin':
+            return viewschedule()
     else:
         return redirect('/')
 

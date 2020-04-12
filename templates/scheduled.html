@@ -1,0 +1,231 @@
+<!--   NOTE: This document is here as a template/placeholder for future pages      -->
+<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- XDSoft DateTimePicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+    <title>Phishing Scheduler</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: visible;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .input-element{
+        font-size: 30px;
+        width: 400px;
+      }
+      .contentcontainer{
+        grid-template-columns: auto;
+        grid-template-rows: auto auto auto;
+        row-gap: 30px;
+        z-index: 999;
+        padding-bottom: 40%;
+      }
+      input[type="text"] { 
+        text-align: center;
+        border-radius: .5em;
+        line-height: 1.0;
+        display: block;
+	font-size: 16px;
+  box-sizing: border-box;
+  color: #444;
+	border: 1px solid rgb(117, 117, 117);
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        }
+      .contentcontainer h1{
+        font-size: calc(24px + 0.5vw);
+        max-height: 40px;
+        vertical-align: middle;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+      table.dataframe, .dataframe th, .dataframe td {
+      border: line;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      border-collapse: collapse;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      text-align: center;
+      padding: .8%;
+      margin-bottom: 0px;
+      font-size: 1em;
+      color: black;
+    }
+    input.largerCheckbox { 
+            transform : scale(2.2); 
+            color: black;
+        } 
+    .checkbox {
+
+    height:3vh;
+    width:3vh;
+
+    }
+    .select-css {
+	display: block;
+	font-size: 16px;
+	font-family: sans-serif;
+	font-weight: 700;
+
+	line-height: 1.0;
+	
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+  color: #444;
+	border: 1px solid rgb(117, 117, 117);
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+  text-align: center;
+
+}
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+	border-color: black;
+}
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #222;
+	outline: none;
+}
+.select-css option {
+	font-weight:normal;
+}
+
+    tr:nth-child(odd)		{ background-color: lightgrey; }
+    tr:nth-child(even)	{ background-color:darkgrey; }
+    tr:first-child { background-color: transparent;}
+    tr:hover:first-child { background-color: transparent; }
+    tr:hover            { background-color: #d5e9f9;}
+    tr.border_bottom td {
+      border-bottom:1pt solid black;
+    }
+    </style>
+  </head>
+  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
+    <div id="particles-js"></div>
+    <nav>
+      <div id="dropdown">
+        <div id="dropcontent">
+          <a href="/main">Modules</a>
+          <a href="/logout">Log Out</a>
+        </div>
+      </div>
+      <table id="mainmenu">
+          <tr>
+            <td><a href="/main">Modules</a></td>
+            <td><a href="/logout">Log Out</a></td>
+        </tr>
+      </table>
+    </nav>
+    <div class="contentcontainer">
+      <div><h1>Schedule Phishing</h1></div>
+      
+      <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        {% if messages %}
+          <ul class="flashes w3-jumbo" style="color: white">
+          {% for message in messages %}
+        {{ message }}
+          {% endfor %}
+          </ul>
+        {% endif %}
+        {% endwith %}</h1>
+        <form method="POST">
+          <table class="table table-hover dataframe">
+            <thead>
+              <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+              <td style="border-radius: 25px 0px 0px 0px;">Select</td>
+              <td>Department</td>
+              <td>First</td>
+              <td>Last</td>
+                    <td>Email Address</td>
+                    <td>Template</td>
+                    <td>Mail Server</td>
+                    <td>Date to send</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Shorten URL</td>
+            </tr>
+ 
+            {% for dict in busdict %}
+            <form method="POST">
+          <tr style="text-align:center;" class="border_bottom">
+            <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
+      <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
+              <td>{{ dict.department }}</td>
+            <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
+            <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
+                <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
+                <td>        <select name="templates" class="form-control select-css" id="templates">
+                  
+                    <option value="{{ row }}">Templates</option>
+                        {% for row in availtemplates %}
+                            <option id="{{ dict.id }}" name="templates" value="{{ row }}">{{ row }}</option>
+                        {% endfor %}
+                </select>
+                <td>
+                  
+                  <select name="smtpserver" class="form-control select-css" id="smtpserver">
+                  <option value="{{ row }}">Mail Server</option>
+                    {% for row in serverlist %}
+                    <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+                
+                <td><select name="bitly" class="form-control select-css" id="bitly">                  
+                  <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
+                          <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
+              </select>
+            </td>
+                <td>
+                  <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly>
+                        <script>
+        $(function () {
+          $(".dateTxt").datetimepicker(
+              {
+                  hours24: true,
+                format: 'Y-m-d H:i',
+                  step:15,
+              }
+          );
+        });
+      </script>
+                </td>
+                {% endfor %}
+          </tr>
+          </table>
+          <button style="width: 50%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
+    </form>
+
+
+
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
+  </body>
+</html>
