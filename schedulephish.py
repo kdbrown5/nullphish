@@ -151,17 +151,23 @@ def phishschedule():
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
         sentlist = []
+        errlist = []
         for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
             if g1 == "0":
                 pass
             else:
-                print('g6-'+g6)
-                print('g8-'+g8)
                 if g6 == '':
-                    print('g6 is blank')
+                    g4 = [g4]
+                    errlist.append('Err:'+g4+'has no'+'server')
+                    break
                 if g8 == '':
-                    print('g8 is blank')
-                                        
+                    g4 = [g4]
+                    errlist.append('Err:'+g4+'has no'+'date')
+                    break
+                if g5 == '':
+                    g4 = [g4]
+                    errlist.append('Err:'+g4+'has no'+'template')
+                    break                
                 g4a = [g4]
                 sentlist.append(g4a)
                 newtoken = generate_confirmation_token(g4)
