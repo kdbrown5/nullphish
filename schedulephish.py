@@ -157,6 +157,11 @@ def phishschedule():
             else:
                 print('g6-'+g6)
                 print('g8-'+g8)
+                if g6 == '':
+                    print('g6 is blank')
+                if g8 == '':
+                    print('g8 is blank')
+                                        
                 g4a = [g4]
                 sentlist.append(g4a)
                 newtoken = generate_confirmation_token(g4)
