@@ -23,7 +23,7 @@ def viewschedule():
         con.row_factory = sqlite.Row
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from phishsched where business = (?) and sentdate = "none";', (session['business'],),)
+        cur.execute('select id, username, template, mailname, date, bitly, subject, scheduler from phishsched where business = (?) and sentdate = "none";', (session['business'],),)
         result = cur.fetchall()
         try:
             con.close()
@@ -31,9 +31,8 @@ def viewschedule():
             pass
         return result
 
-    scheduleddata = getschedule()
-    print(scheduleddata)
-    for i in scheduleddata:
+    busdict = getschedule()
+    for i in busdict:
         for x in i:
             print(x)
     
@@ -47,4 +46,4 @@ def viewschedule():
         getserver = request.form.to_dict(flat=False)['smtpserver']
         getbitly = request.form.to_dict(flat=False)['bitly']
 
-    return render_template('scheduled.html', scheduleddata=scheduleddata)    
+    return render_template('scheduled.html', busdict=busdict)    

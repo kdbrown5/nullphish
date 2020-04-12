@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
-    <title>Phishing Scheduler</title>
+    <title>Scheduled tasks</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
@@ -160,14 +160,12 @@
             <thead>
               <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
               <td style="border-radius: 25px 0px 0px 0px;">Select</td>
-              <td>Department</td>
-              <td>First</td>
-              <td>Last</td>
+              <td hidden>id</td>
                     <td>Email Address</td>
                     <td>Template</td>
                     <td>Mail Server</td>
-                    <td>Date to send</td>
-                    <td style="border-radius: 0px 25px 0px 0px;">Shorten URL</td>
+                    <td>Link</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Date Scheduled</td>
             </tr>
  
             {% for dict in busdict %}
@@ -175,50 +173,17 @@
           <tr style="text-align:center;" class="border_bottom">
             <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
-              <td>{{ dict.department }}</td>
-            <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
-            <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
+              <td hidden>{{ dict.id }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-                <td>        <select name="templates" class="form-control select-css" id="templates">
-                  
-                    <option value="{{ row }}">Templates</option>
-                        {% for row in availtemplates %}
-                            <option id="{{ dict.id }}" name="templates" value="{{ row }}">{{ row }}</option>
-                        {% endfor %}
-                </select>
-                <td>
-                  
-                  <select name="smtpserver" class="form-control select-css" id="smtpserver">
-                  <option value="{{ row }}">Mail Server</option>
-                    {% for row in serverlist %}
-                    <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
-                    {% endfor %}
-                  </select>
-                </td>
+                <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
+                <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
+                <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly }}</td>
+                <td name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
                 
-                <td><select name="bitly" class="form-control select-css" id="bitly">                  
-                  <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
-                          <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
-              </select>
-            </td>
-                <td>
-                  <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly>
-                        <script>
-        $(function () {
-          $(".dateTxt").datetimepicker(
-              {
-                  hours24: true,
-                format: 'Y-m-d H:i',
-                  step:15,
-              }
-          );
-        });
-      </script>
-                </td>
                 {% endfor %}
           </tr>
           </table>
-          <button style="width: 50%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
+          <button style="width: 50%" type="submit" class="btn button btn-primary">Remove from schedule</button>
     </form>
 
 
