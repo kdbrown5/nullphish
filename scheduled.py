@@ -38,7 +38,7 @@ def viewschedule():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('delete from phishsched where id = (?) and business = (?);', (rowid, session['business'],))
         con.close()
-        dellist.append('Scheduled send for: '+email+' at'+date)
+        dellist.append('Scheduled send for: '+email+' at'+date+' - deleted!')
 
     busdict = getschedule()
     
@@ -57,7 +57,7 @@ def viewschedule():
             if g0 == "0":
                 pass
             else:
-                deleteDBrow(g1, session['business'], g3, g6)
+                deleteDBrow(g1, session['business'], g2, g6)
                 for x in dellist:
                     flash(x, 'category2')
 
