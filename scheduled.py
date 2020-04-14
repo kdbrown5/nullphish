@@ -53,12 +53,15 @@ def viewschedule():
         dellist = []
         errlist = []
         errcount = 0
-        for (g0, g1, g2, g3, g4, g5, g6) in zip(getselect, getid, getemail, gettemplates, getserver, getbitly, getdate):
-            if g0 == "0":
-                pass
-            else:
-                deleteDBrow(g1, session['business'], g2, g6)
-                for x in dellist:
-                    flash(x, 'category2')
+        try:
+            for (g0, g1, g2, g3, g4, g5, g6) in zip(getselect, getid, getemail, gettemplates, getserver, getbitly, getdate):
+                if g0 == "0":
+                    pass
+                else:
+                    deleteDBrow(g1, session['business'], g2, g6)
+                    for x in dellist:
+                        flash(x, 'category2')
+        except:
+            flash('No records to delete', 'category2')
 
     return render_template('scheduled.html', busdict=busdict)    
