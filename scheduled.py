@@ -39,18 +39,18 @@ def viewschedule():
     if request.method == 'POST':
         getemail = request.form.to_dict(flat=False)['email']
         getdate = request.form.to_dict(flat=False)['date']
-        gettemplates = request.form.to_dict(flat=False)['templates']
+        gettemplates = request.form.to_dict(flat=False)['template']
         getselect = request.form.to_dict(flat=False)['select']
-        getserver = request.form.to_dict(flat=False)['smtpserver']
+        getserver = request.form.to_dict(flat=False)['mailname']
         getbitly = request.form.to_dict(flat=False)['bitly']
         getid = request.form.to_dict(flat=False)['id']
         sentlist = []
         errlist = []
         errcount = 0
-        for (g0, g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getid, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
-            if g1 == "0":
+        for (g0, g1, g2, g3, g4, g5, g6) in zip(getselect, getid, getemail, gettemplates, getserver, getbitly, getdate):
+            if g0 == "0":
                 pass
             else:
-                print(g0, g1, g2, g3, g4, g5, g6, g7, g8)
+                print(g0, g1, g2, g3, g4, g5, g6)
 
     return render_template('scheduled.html', busdict=busdict)    
