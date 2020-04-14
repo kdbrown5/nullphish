@@ -38,7 +38,7 @@ def viewschedule():
     
     if request.method == 'POST':
         getemail = request.form.to_dict(flat=False)['email']
-        getdate = request.form.to_dict(flat=False)['datetimepicker']
+        getdate = request.form.to_dict(flat=False)['date']
         gettemplates = request.form.to_dict(flat=False)['templates']
         getselect = request.form.to_dict(flat=False)['select']
         getserver = request.form.to_dict(flat=False)['smtpserver']
