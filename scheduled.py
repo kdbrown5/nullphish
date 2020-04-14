@@ -43,7 +43,7 @@ def viewschedule():
     busdict = getschedule()
     
     if request.method == 'POST':
-        if 'email' in request.post:
+        if 'email' in request.method.get('email'):
             getemail = request.form.to_dict(flat=False)['email']
             getdate = request.form.to_dict(flat=False)['date']
             gettemplates = request.form.to_dict(flat=False)['template']
