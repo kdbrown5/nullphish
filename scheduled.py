@@ -31,10 +31,16 @@ def viewschedule():
             pass
         return result
 
+    def deleteDBrow(rowid, business, email, date):
+        con = sqlite.connect('db/db1.db')
+        cur = con.cursor()
+        with con:
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('delete from phishsched where id = (?) and business = (?);', (rowid, session['business'],))
+        con.close()
+        dellist.append('Scheduled send for: '+email+' at'+date)
+
     busdict = getschedule()
-    for i in busdict:
-        for x in i:
-            print(x)
     
     if request.method == 'POST':
         getemail = request.form.to_dict(flat=False)['email']
@@ -44,13 +50,15 @@ def viewschedule():
         getserver = request.form.to_dict(flat=False)['mailname']
         getbitly = request.form.to_dict(flat=False)['bitly']
         getid = request.form.to_dict(flat=False)['id']
-        sentlist = []
+        dellist = []
         errlist = []
         errcount = 0
         for (g0, g1, g2, g3, g4, g5, g6) in zip(getselect, getid, getemail, gettemplates, getserver, getbitly, getdate):
             if g0 == "0":
                 pass
             else:
-                print(g0, g1, g2, g3, g4, g5, g6)
+                deleteDBrow(g1, session['business'], g3, g6)
+                for x in dellist:
+                    flash(x, 'category2')
 
     return render_template('scheduled.html', busdict=busdict)    
