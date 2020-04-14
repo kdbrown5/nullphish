@@ -35,6 +35,116 @@
         grid-row-end: 2;
       }
 
+
+
+      .collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+.wrap-collabsible {
+  margin-bottom: 1.2rem 0;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  padding: 1rem;
+
+  color: black;
+  background: #5cb85c;
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+  color: slategrey;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+
+  transition: transform .2s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 100vh;
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+  background: rgba(66, 78, 250, 0);
+  border-bottom: 1px solid rgba(250, 225, 66, 0);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+
     </style>
   </head>
   <body>
@@ -92,28 +202,65 @@
           {% endfor %}     
         </select>
       </div>
+      <br>
+      <hr>
+      <br>
       <div>
-        <h2>Add User</h2>
-        <form method="POST">
-          <select name= 'addrole' class="form-control" id="addrole" required>
-            <option>Select Role</option>
-            <option>User</option>
-            <option>Admin</option>
-          </select>
-          <div style="max-width: 90%; padding-right: 10%">
-          <input name='firstname' type="text" placeholder="First Name" required></input>
-          <input name='lastname' type="text" placeholder="Last Name" required></input>
-          <input name='department' placeholder="Department (Optional)" type="text"></input>
-          <input name='emailaddr' placeholder="Email Address" type="text" required></input>
+
+        <div class="wrap-collabsible">
+
+          
+          <input id="collapsible" class="toggle" type="checkbox">
+          <label for="collapsible" class="lbl-toggle">Add User</label>
+          <div class="collapsible-content">
+            <div class="content-inner">
+              <form method="POST">
+                <select name= 'addrole' class="form-control" id="addrole" required>
+                  <option>Select Role</option>
+                  <option>User</option>
+                  <option>Admin</option>
+                </select>
+                <div style="max-width: 90%; padding-right: 10%">
+                <input name='firstname' type="text" placeholder="First Name" required></input>
+                <input name='lastname' type="text" placeholder="Last Name" required></input>
+                <input name='department' placeholder="Department (Optional)" type="text"></input>
+                <input name='emailaddr' placeholder="Email Address" type="text" required></input>
+              </div>
+                <select name= 'sendreg' class="form-control" id="sendreg" required>
+                  <option>Send A Registration E-Mail</option>
+                  <option>Do Not Send Registration E-Mail</option>
+                </select>
+                <button name="adduser">Add User</button>
+    
+              </form>
+
+            </div>
+          </div>
         </div>
-          <select name= 'sendreg' class="form-control" id="sendreg" required>
-            <option>Send A Registration E-Mail</option>
-            <option>Do Not Send Registration E-Mail</option>
-          </select>
-          <button name="adduser">Add User</button>
-        </form>
+
+
+
+        </div>
+        
       </div>
+      <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
     </div>
+    
   </div>
 </center>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
