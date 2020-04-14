@@ -43,17 +43,17 @@ def viewschedule():
     busdict = getschedule()
     
     if request.method == 'POST':
-        getemail = request.form.to_dict(flat=False)['email']
-        getdate = request.form.to_dict(flat=False)['date']
-        gettemplates = request.form.to_dict(flat=False)['template']
-        getselect = request.form.to_dict(flat=False)['select']
-        getserver = request.form.to_dict(flat=False)['mailname']
-        getbitly = request.form.to_dict(flat=False)['bitly']
-        getid = request.form.to_dict(flat=False)['id']
-        dellist = []
-        errlist = []
-        errcount = 0
-        try:
+        if 'email' in request.post:
+            getemail = request.form.to_dict(flat=False)['email']
+            getdate = request.form.to_dict(flat=False)['date']
+            gettemplates = request.form.to_dict(flat=False)['template']
+            getselect = request.form.to_dict(flat=False)['select']
+            getserver = request.form.to_dict(flat=False)['mailname']
+            getbitly = request.form.to_dict(flat=False)['bitly']
+            getid = request.form.to_dict(flat=False)['id']
+            dellist = []
+            errlist = []
+            errcount = 0
             for (g0, g1, g2, g3, g4, g5, g6) in zip(getselect, getid, getemail, gettemplates, getserver, getbitly, getdate):
                 if g0 == "0":
                     pass
@@ -61,7 +61,7 @@ def viewschedule():
                     deleteDBrow(g1, session['business'], g2, g6)
                     for x in dellist:
                         flash(x, 'category2')
-        except:
+        else:
             flash('No records to delete', 'category2')
 
     return render_template('scheduled.html', busdict=busdict)    
