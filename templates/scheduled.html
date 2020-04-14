@@ -162,8 +162,6 @@
               <td style="border-radius: 25px 0px 0px 0px;">Select</td>
               <td hidden>id</td>
                     <td>Email Address</td>
-                    <td>First&nbsp;Name</td>
-                    <td>Lastname&nbsp;Name</td>
                     <td>Template</td>
                     <td>Mail Server</td>
                     <td>Link</td>
@@ -179,8 +177,6 @@
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
               <td name="id" value="{{ dict.id }}" hidden>{{ dict.id }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-                <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
-                <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
                 <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
                 <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
                 <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
