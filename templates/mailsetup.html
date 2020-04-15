@@ -3,12 +3,356 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
     <title>NullPhish: Mail Settings</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
+      nav{
+  margin: 0;
+  z-index: 998;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  border-bottom: 2px solid #E0E0E0;
+}
+nav table{
+  margin: 0px;
+  padding: 0px;
+  top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 60px;
+  line-height: 60px;
+  width: 50%;
+  text-align: center;
+  table-layout: auto;
+  min-width: 800px;
+  max-width: 2160px;
+  text-decoration: none;
+}
+nav tr{
+  line-height: 60px;
+  margin: 0px;
+  padding: 0px;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+}
+nav td{
+  width: 300px;
+  padding: 5px;
+  height: 50px;
+  vertical-align: top;
+  top: 0px;
+  text-align: center;
+}
+nav a{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  line-height: 50px;
+  border-radius: 15px;
+  display: block;
+  min-width: 150px;
+}
+nav a:hover{
+  color: #ECA400;
+}
+nav a:focus{
+  outline: none;
+}
+nav a.current{
+  color: #ECA400;
+}
+a{
+  outline: none;
+  color: inherit;
+}
+
+body{
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #0D1126;
+  background-repeat: repeat;
+  background-size: cover;
+  font-family: opensans;
+  color: #ECA400;
+  text-align: center;
+  text-decoration: none;
+}
+
+button{
+  background-color: #49A355;
+  border: 2px solid #49A355;
+  color: #0D1126;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: x-large;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  width: auto;
+  height: auto;
+}
+
+
+/* Font Declarations */
+@font-face{
+  font-family: 'opensans';
+  src:  url('/static/css/fonts/OpenSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'opensans';
+  src:  url('/static/css/fonts/OpenSans-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: 'clearsans';
+  src:  url('/static/css/fonts/ClearSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'clearsans';
+  src:  url('/static/css/fonts/ClearSans-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+@font-face{
+  font-family: 'clearsans';
+  src:  url('/static/css/fonts/ClearSans-Light-webfont.woff') format('woff');
+  font-weight: lighter;
+}
+
+@font-face{
+  font-family: 'colab';
+  src:  url('/static/css/fonts/ColabReg-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'colab';
+  src:  url('/static/css/fonts/ColabBol-webfont.woff') format('woff');
+  font-weight: bold;
+}
+
+@font-face{
+  font-family: 'junction';
+  src:  url('/static/css/fonts/Junction-regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'junction';
+  src:  url('/static/css/fonts/Junction-bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+@font-face{
+  font-family: 'junction';
+  src:  url('/static/css/fonts/Junction-light-webfont.woff') format('woff');
+  font-weight: lighter;
+}
+
+@font-face{
+  font-family: 'tuffy';
+  src:  url('/static/css/fonts/Tuffy-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'tuffy';
+  src:  url('/static/css/fonts/Tuffy_Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+#confirmoverlay{
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: fixed;
+  z-index: 999;
+  background-color: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: middle;
+  font-size: calc(24px + 0.5vw);
+  color: #E0E0E0;
+  margin: 0px;
+  padding: 0px;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#confirmoverlay a{
+  background-color: #721817;
+  border: 2px solid #721817;
+  color: #0D1126;
+  font-weight: bold;
+  width: auto;
+  height: auto;
+  margin: 10px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: x-large;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#confirmoverlay a:hover{
+  border-color: #E0E0E0;
+}
+
+#dropdown{
+  position: absolute;
+  left: 5px;
+  top: 0px;
+  height: 60px;
+  width: 60px;
+  color: #E0E0E0;
+  font-weight: bold;
+  height: 100%;
+  margin: 0px;
+  background-image: URL('https://app.nullphish.com/static/res/menudropdown.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: top;
+  cursor: pointer;
+}
+#dropcontent{
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  background-color: rgba(0,0,0,0.5);
+  border: 1px solid #E0E0E0;
+  min-width: 160px;
+  z-index: 10;
+  overflow: hidden;
+}
+#dropcontent a{
+  color: #E0E0E0;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: auto;
+  text-decoration: none;
+  display: block;
+}
+#dropcontent a:hover{
+  color: #ECA400;
+  background-color: rgba(0,0,0,0.25);
+}
+#dropdown:hover #dropcontent {
+  display: block;
+}
+
+.contentcontainer{
+  z-index: 5;
+  position: absolute;
+  top: 120px;
+  bottom: 90px;
+  left: 90px;
+  right: 90px;
+  width: auto;
+  height: auto;
+  margin: 0px;
+  padding-top: 30px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: 2px solid #E0E0E0;
+  color: #E0E0E0;
+  min-width: 900px;
+  max-width: 2500px;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  justify-content: center;
+  text-align: center;
+}
+.contentcontainer h1{
+  font-size: calc(24px + 0.5vw);
+  max-height: 40px;
+  vertical-align: middle;
+}
+.contentcontainer h2{
+  font-size: calc(14px + 0.75vw);
+  max-height: 80px;
+  vertical-align: middle;
+}
+.contentcontainer.scrollable{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.contentcontainer div.bordered{
+  border-top: 1px solid #E0E0E0;
+  padding-top: 15px;
+}
+.contentcontainer #header{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+button:hover{
+  border-color: #E0E0E0;
+}
+button:active{
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
+}
+
+h1{
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+hr{
+  border-top: 1px solid #E0E0E0;
+}
+nav .presenter{
+  margin: 0;
+  z-index: 998;
+  height: 60px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  opacity: 0.25;
+}
+nav .presenter:hover{
+  opacity: 1;
+}
       #particles-js{
         height: 100%;
         overflow: hidden;
@@ -17,14 +361,27 @@
         margin: 0px;
         position: absolute;
       }
+
+      input[type="text"] { 
+        text-align: center;
+        border-radius: .5em;
+        line-height: 3.0;
+        display: inline-block;
+        font-size: 2em;
+        box-sizing: border-box;
+        color: #444;
+        border: 1px solid rgb(117, 117, 117);
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        }
       .input-element{
         font-size: 2em;
+     
         width: 400px;
       }
       .contentcontainer{
         grid-template-columns: auto;
         grid-template-rows: auto auto auto;
-        row-gap: 30px;
+   
         z-index: 999;
         padding-bottom: 100px;
       }
@@ -37,6 +394,44 @@
         grid-row-start: 1;
         grid-row-end: 3;
       }
+      .select-css {
+	display: inline-block;
+	font-size: 2em;
+  color: rgb(107, 107, 107);
+	line-height: 2.0;
+
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid rgb(117, 117, 117);
+	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+	border-radius: .5em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+  
+  text-align-last: center;
+
+}
+.select-css::-ms-expand {
+	display: none;
+
+}
+.select-css:hover {
+	border-color: black;
+}
+.select-css:focus {
+	border-color: #aaa;
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	color: #444;
+	outline: none;
+  
+}
+.select-css option {
+	font-weight:normal;
+}
     </style>
   </head>
   <body>
@@ -70,17 +465,17 @@
       </div>
       <div>
         <form method="POST"></form>
-          <input name="mailname" class="nulltxt input-element" style="width: 50%; background-color: lightgrey; font-size: em1; height: 10%" placeholder="What would you like to call this mailserver?" type="" required>
-          <input name="mailhost" class="nulltxt input-element" style="width: 50%; background-color: lightgrey; font-size: em1; height: 10%" placeholder="Mail Server Hostname:" type="" required>
-          <input name="mailuser" class="nulltxt input-element" style="width: 50%; background-color: lightgrey; font-size: em1; height: 10%" placeholder="Mailbox Username:" type="" required>
-          <input name="mailpass" class="nulltxt input-element" style="width: 50%; background-color: lightgrey; font-size: em1; height: 10%" placeholder="Mailbox Password:" type="" required>
-          <select name='mailtype' class="nullselect input-element" style="width: 50%; background-color: lightgrey;" id="mailtype" required>
-            <option class=>Select Security Type:</option>
+          <input name="mailname" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="What would you like to call this mailserver?" type="" required>
+          <input name="mailhost" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mail Server Hostname:" type="" required>
+          <input name="mailuser" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mailbox Username:" type="" required>
+          <input name="mailpass" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mailbox Password:" type="" required>
+          <select name='mailtype' class="select-css input-element" type="text" style="text-align:center; width: 50%; background-color: lightgrey; font-size: 1em;" id="mailtype" required>
+            <option style="text-align-last: center;" class=>Select Security Type:</option>
             <option value="none">None</option>
             <option value="ssl">SSL</option>
             <option value="tls">TLS</option>
           </select>
-          <input name="mailport" class="nulltxt input-element" style="width: 50%; background-color: lightgrey; height: 10%" placeholder="Port:" type="" required>
+          <input name="mailport" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; height: 10%; font-size: 1em;" placeholder="Port:" type="" required>
           <button type="submit" class="nullbtn" style="width: 50%;">Submit</button>
         </form>
       </div>
