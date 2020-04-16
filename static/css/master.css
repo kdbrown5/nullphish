@@ -275,7 +275,6 @@ select:focus{
 }
 #navigation a:hover{
   background-color: rgba(0,0,0,0.3);
-  font-weight: bold;
 }
 #navigation a.active{
   color: #ECA400;
