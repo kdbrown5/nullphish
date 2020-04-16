@@ -340,8 +340,7 @@ select:focus{
   background-repeat: no-repeat;
   width: calc(150px + 0.5vh);
   height: calc(150px + 0.5vh);
-  flex-grow: 1;
-  flex-basis: 0;  
+  padding: 10px 5vw 10px 5vw;
 }
 .tile:hover span {
   visibility: visible;
