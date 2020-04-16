@@ -275,6 +275,7 @@ select:focus{
 }
 #navigation a:hover{
   background-color: rgba(0,0,0,0.3);
+  font-weight: bold;
 }
 #navigation a.active{
   color: #ECA400;
@@ -347,7 +348,6 @@ select:focus{
 } 
 .tile span{
   visibility: hidden;
-  width: 120px;
   background-color: #0D1126;
   color: #E0E0E0;
   text-align: center;
