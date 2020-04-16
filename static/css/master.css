@@ -419,7 +419,6 @@ select:focus{
   height: auto;
   margin: 0px;
   padding-top: 30px;
-  overflow: hidden;
   border-radius: 25px;
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
@@ -436,6 +435,8 @@ select:focus{
   -webkit-backdrop-filter: blur(10px);
   justify-content: center;
   text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .contentcontainer h1{
   font-size: calc(24px + 0.5vw);
@@ -446,10 +447,6 @@ select:focus{
   font-size: calc(14px + 0.75vw);
   max-height: 80px;
   vertical-align: middle;
-}
-.contentcontainer.scrollable{
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 .contentcontainer div.bordered{
   border-top: 1px solid #E0E0E0;
