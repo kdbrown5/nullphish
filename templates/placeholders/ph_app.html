@@ -20,47 +20,16 @@
         margin: 0px;
         position: absolute;
       }
-      .input-element{
-        font-size: 30px;
-        width: 400px;
-      }
-      .contentcontainer{
-        /* Want more columns or rows? Fix them here! */
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-        z-index: 999;
-      }
-      .contentcontainer h1{
-        font-size: calc(24px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        /* Change the column/row definitions as needed based on contentcontainer templates */
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <nav>
-      <!-- This is where the navbar is generated, make sure both dropdown and main menu are setup similarly! -->
-      <div id="dropdown" style="display: none;">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main" class="current">Modules</a></td>
-            <td><a href="/stats">Results</a></td>
-            <td><a href="/profile">Profile</a></td>
-            <td><a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
+  <body id="particles-js">
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="/logout">Log Out</a>
+    </div>
     <div class="contentcontainer">
       <div><h1>Content Title</h1></div>
       <!-- Put Content Here! -->

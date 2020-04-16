@@ -17,42 +17,21 @@
         margin: 0px;
         position: absolute;
       }
-      .input-element{
-        font-size: 30px;
-        width: 400px;
-      }
-      .contentcontainer{
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-        z-index: 999;
-      }
-      .contentcontainer h1{
-        font-size: calc(24px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
     </style>
   </head>
   <body>
     <div id="particles-js"></div>
-    <nav>
-      <table>
-        <tr>
-          <td><a href="https://app.nullphish.com/register">Sign Up</a></td>
-          <td><a href="https://nullphish.com">NullPhish &#169;</a></td>
-          <td><a href="https://app.nullphish.com/login">Log In</a></td>
-        </tr>
-      </table>
-    </nav>
+    <div id="navigation">
+      <a href="https://app.nullphish.com/register">Sign Up</a>
+      <a href="https://nullphish.com">NullPhish &#169;</a>
+      <a href="https://app.nullphish.com/login">Log In</a>
+    </div>
     <div class="contentcontainer">
-      <div><h1><span class="nullmention">NullPhish</span><br><br>Reset Password</h1></div>
       <div>
-        <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+        <h1>Reset Password</h1>
+      </div>
+      <div>
+        <span>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
           {% if messages %}
             <ul class="flashes w3-jumbo" style="color: white">
             {% for message in messages %}
@@ -60,7 +39,10 @@
             {% endfor %}
             </ul>
           {% endif %}
-          {% endwith %}</h1>
+          {% endwith %}
+        </span>
+      </div>
+      <div>
         <form class="" action="" method="post">
           <input type="text" placeholder="Email Address" name="username" value="{{
             request.form.username }}">
@@ -68,10 +50,8 @@
         </form>
       </div>
       <div>
-        {% if error %}
-        <p><strong>Error:</strong> {{ error }}</p>
-        {% endif %}
-        <p>Don't have an account? <a href="/register"><strong>Register</strong></a></p> 
+        <p>Don't have an account?</p>
+        <p><a href="/register"><strong>Register Now</strong></a></p>
       </div>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>

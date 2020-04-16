@@ -18,63 +18,19 @@
         margin: 0px;
         position: absolute;
       }
-      .input-element{
-        font-size: 30px;
-        width: 400px;
-      }
-      .contentcontainer{
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-        z-index: 999;
-      }
-      .contentcontainer h1{
-        font-size: calc(24px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
-      .contentcontainer h2{
-        font-size: calc(18px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-      }
-      .contentcontainer hr{
-        color: #E0E0E0;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: auto;
-        margin-right: auto;
-      }
     </style>
   </head>
-  <body id="particles-js" onresize="checktilecontainers();checknav();" onload="checktilecontainers();checknav();">
-    <nav>
-      <div id="dropdown" style="display: none;">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/stats">Results</a>
-          <a href="/profile">Profile</a>
-          <a href="/logout">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/stats">Results</a></td>
-            <td><a href="/profile" class="current">Profile</a></td>
-            <td><a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
+  <body id="particles-js">
+    <div id="navigation">
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="/logout">Log Out</a>
+    </div>
     <div class="contentcontainer">
-      <div><h1><span class="nullmention">NullPhish</span> User Profile</h1></div>
-      <div class="bordered">
+      <div>
+        <h1>User Profile</h1>
+      </div>
+      <div style="border-bottom: 1px solid #E0E0E0;">
         <h2>User Details</h2>
         <p>Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;{% if lastname %}{{ lastname }}{% endif %}</p>
         <p>Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}</p>
@@ -82,7 +38,7 @@
         <p>Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}</p>
         <p>Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}</p>
       </div>
-      <div class="bordered">
+      <div style="border-bottom: 1px solid #E0E0E0;">
         <h2>Password Change</h2>
         <form method="POST">
           <div class="form-group">
@@ -94,11 +50,11 @@
           </div>
         </form>
       </div>
-      <div class="bordered">
+      <div>
         <h2>Messages</h2>
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
           {% if messages %}
-            <ul class="flashes w3-jumbo" style="color: white">
+            <ul>
               {% for message in messages %}
               {{ message }}
               {% endfor %}
@@ -107,7 +63,7 @@
         {% endwith %}
         {% with messages = get_flashed_messages(category_filter=["category1"]) %}
           {% if messages %}
-            <ul class="flashes w3-jumbo" style="color: white">
+            <ul>
               {% for message in messages %}
               {{ message }}
               {% endfor %}

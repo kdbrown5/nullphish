@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/static/css/style441.css">
-    <link rel="stylesheet" href="/static/css/style400.css">
-    <link rel="stylesheet" href="/static/css/style320.css">
     <link rel="stylesheet" href="/static/css/master.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,11 +16,6 @@
         margin: 0px;
         position: absolute;
       }
-      div.ex2 {
-        max-width:500px;
-        margin: auto;
-        opacity: 1
-      }
     </style>
   </head>
   <body>
@@ -34,75 +26,83 @@
       <a href="https://app.nullphish.com/login">Log In</a>
     </div>
     <div class="contentcontainer">
-      <hr>
-      <h4 style="color: white" class="card-title mt-3 text-center">Create Account</h4>
-      <p style="color: white" class="text-center">*Beta* - Completely <b>Free</b> !</p>
-      <p style="color: white" class="text-center">Let's get started!</p>
-      <p style="color: white" class="text-center">Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
-      <center>
-        <h1>{% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-              {{ message }}
-            {% endfor %}
-            </ul>
-            {% endif %}
-          {% endwith %}
-        </h1>
-      </center>
-      <br>
-      <div class="ex2">
-      <form method="POST">
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fas fa-key"></i> </span>
-          </div>
-          <input name="code" class="form-control" placeholder="Beta registration code:" type="text">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-user"></i></span>
-          </div>
-          <input name="firstname" class="form-control" placeholder="First name:" type="text">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-          </div>
-          <input name="lastname" class="form-control" placeholder="Last name:" type="text">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-          </div>
-            <input name="email" class="form-control" placeholder="Email address:" type="email">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-          </div>
-          <input name="business" class="form-control" placeholder="Business:" type="text">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-          </div>
-          <input name="password" class="form-control" placeholder="Create password:" type="password">
-        </div> <!-- form-group// -->
-        <div class="form-group input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-          </div>
-          <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
-        </div> <!-- form-group// -->                                      
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-        </div> <!-- form-group// -->      
-        <p style="color: white" class="text-center">Have an account? <a href="/"><b>Log In</b></a> </p>  
-        <p style="color: white" class="text-center">Forgot Password? -<a href="/resetpass"><strong>Reset Pass</strong></a></p>                                                                
-      </form>
-    </div>
+      <div>
+        <h1 style="color: white" class="card-title mt-3 text-center">Create Account</h1>
+        <p style="color: white" class="text-center">*Beta* - Completely <b>Free</b> !</p>
+        <p style="color: white" class="text-center">Let's get started!</p>
+        <p style="color: white" class="text-center">Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
+        <span>
+          <center>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                  {{ message }}
+                {% endfor %}
+                </ul>
+                {% endif %}
+              {% endwith %}
+          </center>
+        </span>
+      </div>
+      <div>
+        <form method="POST">
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fas fa-key"></i> </span>
+            </div>
+            <input name="code" class="form-control" placeholder="Beta registration code:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i></span>
+            </div>
+            <input name="firstname" class="form-control" placeholder="First name:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            </div>
+            <input name="lastname" class="form-control" placeholder="Last name:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+            </div>
+              <input name="email" class="form-control" placeholder="Email address:" type="email">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+            </div>
+            <input name="business" class="form-control" placeholder="Business:" type="text">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input name="password" class="form-control" placeholder="Create password:" type="password">
+          </div> <!-- form-group// -->
+          <div class="form-group input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+            </div>
+            <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
+          </div> <!-- form-group// -->                                      
+          <div class="form-group">
+            <button type="submit"> Create Account  </button>
+          </div> <!-- form-group// -->      
+          <p> </p>  
+          <p>Forgot Password? -<a href="/resetpass"><strong>Reset Pass</strong></a></p>                                                                
+        </form>
+      </div>
+      <div>
+        <p>Have an account?</p>
+        <p><a href="/"><strong>Log In</strong></a></p>
+        <br>
+        <p>Forgot Your Password?</p>
+        <p><a href="/resetpass"><strong>Reset Password</strong></a></p> 
+      </div>
     </div>
     <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://nullphish.com/js/particlesjs/app.js"></script>
