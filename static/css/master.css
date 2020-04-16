@@ -336,11 +336,11 @@ select:focus{
   border-radius: 15px;
   background-image: none;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  width: calc(150px + 0.5vh);
-  height: calc(150px + 0.5vh);
-  margin: 10px 10vw 10px 10vw;
+  width: calc(200px + 0.5vh);
+  height: calc(200px + 0.5vh);
+  margin: 10px 5vw 10px 5vw;
 }
 .tile:hover span {
   visibility: visible;
