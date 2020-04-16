@@ -375,7 +375,7 @@ select:focus{
   color: #E0E0E0;
   min-width: 900px;
   max-width: 2500px;
-  min-height: 500px;
+  min-height: calc(100vh - 210px);
   margin-left: auto;
   margin-right: auto;
   display: flex;
