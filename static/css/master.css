@@ -338,8 +338,10 @@ select:focus{
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: calc(300px + 0.5vh);
-  height: calc(300px + 0.5vh);
+  width: calc(150px + 0.5vh);
+  height: calc(150px + 0.5vh);
+  flex-grow: 1;
+  flex-basis: 0;  
 }
 .tile:hover span {
   visibility: visible;
@@ -354,6 +356,9 @@ select:focus{
   border-radius: 6px;
   font-family: opensans;
   position: relative;
-  bottom: 10px;
+  vertical-align: middle;
   z-index: 1;
+  width: 50%;
+  height: 50%;
+  text-align: center;
 }
