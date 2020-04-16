@@ -342,6 +342,15 @@ select:focus{
   height: calc(200px + 0.5vh);
   margin: 10px 5vw 10px 5vw;
 }
+.tile.todo{
+  background-color: #721817;
+}
+.tile.inprogress{
+  background-color: #ECA400;
+}
+.tile.done{
+  background-color: #49A355;
+}
 .tile:hover span {
   visibility: visible;
 } 
@@ -356,7 +365,11 @@ select:focus{
   position: relative;
   vertical-align: middle;
   z-index: 1;
-  width: 50%;
-  height: 50%;
+  width: auto;
+  height: auto;
   text-align: center;
+  top: 10%;
+  bottom: 10%;
+  left: 10%;
+  right: 10%;
 }

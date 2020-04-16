@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
-    <link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">
+    <!--<link rel="stylesheet" href="https://app.nullphish.com/static/css/tiles.css">-->
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,47 +16,41 @@
     </style>
   </head>
   <body id="particles-js" onload="">
-    <nav>
-      <table>
-        <tr>
-          <td><a href="https://app.nullphish.com">Modules</a></td>
-          <td><a href="/profile">Profile</a></td>
-          <td><a href="/feedback">Feedback</a></td>
-          <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
-    <div id="tilecontainer" style="height: 100%">
-      <div id="header"><h1 style="color: #721817">Admin Modules</h1></div>
-      <!--Row 1-->
-      <a href="/adduser" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module1.svg')">
+    <div id="navigation">
+      <a href="/main">Tools</a>
+      <a href="/stats">Results</a>
+      <a href="/profile">Profile</a>
+      <a href="/logout">Log Out</a>
+    </div>
+    <div id="contentcontainer" style="height: 100%">
+      <div id="header">
+        <h1 style="color: #721817">Admin Modules</h1>
+      </div>
+      <a class="tile" href="/adduser" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module1.svg')">
         <span class="tooltiptext">User Management</span>
       </a>
-      <a href="/mailsetup" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module2.svg')">
+      <a class="tile" href="/mailsetup" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module2.svg')">
         <span class="tooltiptext">Mail Settings</span>
       </a>
-      <a href="/addtemplate" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module3.svg')">
+      <a class="tile" href="/addtemplate" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module3.svg')">
         <span class="tooltiptext">Add Templates</span>
       </a>
-      <!--Row 2-->
-      <a href="/gophishing" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module4.svg')">
+      <a class="tile" href="/gophishing" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module4.svg')">
         <span class="tooltiptext">E-Mail Phishing</span>
       </a>
-      <a href="/scheduled" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module5.svg')">
+      <a class="tile" href="/scheduled" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module5.svg')">
         <span class="tooltiptext">View Scheduled Items</span>
       </a>
-        <a href="/schedulephish" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
-          <span class="tooltiptext">Schedule Phishing</span>
-        </a>
-      
-      <a href="/emulateuser" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
+      <a class="tile" href="/schedulephish" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
+        <span class="tooltiptext">Schedule Phishing</span>
+      </a>
+      <a class="tile" href="/emulateuser" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
         <span class="tooltiptext">Emulate User</span>
       </a>
-      <!--Row 3 -->
-      <a href="/phishingstats" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
+      <a class="tile" href="/phishingstats" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
         <span class="tooltiptext">Phishing Stats</span>
       </a>
-      <a href="/stats" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
+      <a class="tile" href="/stats" style="background-image:url('https://app.nullphish.com/static/res/modules/admin/module6.svg')">
         <span class="tooltiptext">Education Stats</span>
       </a>
     </div>
