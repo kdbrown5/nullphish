@@ -305,8 +305,6 @@ select:focus{
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
-  flex-basis: 0;
 }
 #navigation a{
   color: inherit;
@@ -315,13 +313,18 @@ select:focus{
   margin: 0px;
   vertical-align: middle;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
 }
 #navigation a:hover{
   background-color: #000;
 }
 #navigation a.active{
   color: #ECA400;
+}
+#navigation span{
+  width: 5px;
+  margin: 0px;
+  padding: 0px;
 }
 
 #fineprint{
