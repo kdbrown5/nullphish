@@ -300,24 +300,24 @@ select:focus{
   -webkit-backdrop-filter: blur(10px);
   vertical-align: top;
   border-bottom: 2px solid #E0E0E0;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
-#navigation ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 60px;
-}
-#navigation li{
-  display: inline;
-}
-#navigation li a{
+#navigation a{
   color: inherit;
   text-decoration: none;
+  height: 100%;
+  margin: 0px;
+  vertical-align: middle;
+  text-align: center;
 }
-#navigation li a:hover{
+#navigation a:hover{
   background-color: #000;
 }
-#navigation li a.active{
+#navigation a.active{
   color: #ECA400;
 }
 
