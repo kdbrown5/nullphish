@@ -338,8 +338,8 @@ select:focus{
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  width: calc(200px + 0.5vh);
-  height: calc(200px + 0.5vh);
+  width: calc(200px + 3vh);
+  height: calc(200px + 3vh);
   margin: 10px 5vw 10px 5vw;
 }
 .tile.todo{
