@@ -55,21 +55,12 @@
       }
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <nav>
-      <div id="dropdown" style="display: none;">
-        <div id="dropcontent">
-          <a href="/">SuperAdmin Controls</a>
-          <a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/">SuperAdmin Controls</a></td>
-            <td><a style="cursor: pointer" href="#" onclick="showlogoutconfirmation();">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
+  <body id="particles-js">
+    <div id="navigation">
+      <a href="/main">Tools</a>
+      <a href="/emulateuser" >Emulate User</a>
+      <a href="/logout">Log Out</a>
+    </div>
     <div class="contentcontainer">
       <h1>Emulate User</h1>
       <div>
