@@ -108,28 +108,29 @@ def loginpage():
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
         completion = validate(username, password)
-        if session['validated'] == 0:
-            error = 'It looks like your account is not yet activated. Please contact your administrator'
-        elif session['validated'] == 2:
-            error = 'It looks like your account has been suspended.  Please contact your administrator'
-        elif completion == False:
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            session['username'] = (username)
-            session['logged_in'] = True
-            role = setrole(username)
-            session['role'] = role
-            business = setbusiness(username)
-            session['business'] = business
-            department = setdept(username)
-            session['department'] = department
-            session['fname'], session['lname'] = setname(username)
-
-
-            if session['role'] == 'superadmin':
-                return redirect('/')
-                #return redirect('/emulateuser')
+        try:
+            if session['validated'] == 0:
+                error = 'It looks like your account is not yet activated. Please contact your administrator'
+            elif session['validated'] == 2:
+                error = 'It looks like your account has been suspended.  Please contact your administrator'
+            elif completion == False:
+                error = 'Invalid Credentials. Please try again.'
             else:
-                return redirect('/')
+                session['username'] = (username)
+                session['logged_in'] = True
+                role = setrole(username)
+                session['role'] = role
+                business = setbusiness(username)
+                session['business'] = business
+                department = setdept(username)
+                session['department'] = department
+                session['fname'], session['lname'] = setname(username)
+                if session['role'] == 'superadmin':
+                    return redirect('/')
+                    #return redirect('/emulateuser')
+                else:
+                    return redirect('/')
+        except:
+            error = 'Invalid Credentials. Please try again.'
 
     return render_template("login.html", error=error)
