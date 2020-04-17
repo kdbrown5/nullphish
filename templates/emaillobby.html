@@ -15,39 +15,35 @@
     </style>
   </head>
   <body id="particles-js">
-    <nav>
-      <table>
-          <td><a href="/main">Modules</a></td>
-          <td><a href="/education">Education</a></td>
-          <td><a href="">Testing</a></td>
-          <td><a href="/stats">Results</a></td>
-          <td><a href="">NullPhish &#169;</a></td>
-          <td><a href="/profile">Profile</a></td>
-          <td><a href="">Admin</a></td>
-          <td><a href="/gophishing">Phishing</a></td>
-          <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
-    <div id="tilecontainer">
-      <h1>Choose a module</h1>
-      <!--Row 1-->
-      <a href="/education/email/1" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module1.svg');">
+    <div id="navigation">
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
+    <div class="contentcontainer">
+      <div id="header">
+        <h1>Choose a module</h1>
+      </div>
+      <a class="tile" href="/education/email/1" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module1.svg');">
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module2.svg');">
+      <a class="tile" href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module2.svg');">
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <a href="/education/email/2" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module3.svg');">
+      <a class="tile" href="/education/email/2" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module3.svg');">
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <!--Row 2-->
-      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module4.svg');">
+      <a class="tile" href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module4.svg');">
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
-      <a href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module5.svg');">
+      <a class="tile" href="/" style="background-image:url('https://app.nullphish.com/static/res/modules/email/module5.svg');">
         <span class="tooltiptext">Tooltip text here!</span>
       </a>
+    </div>
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>

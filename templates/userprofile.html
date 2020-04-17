@@ -23,10 +23,10 @@
   <body id="particles-js">
     <div id="navigation">
       <a href="/main">Modules</a>
-      <a href="/profile">Profile</a>
-      <a href="/logout">Log Out</a>
+      <a href="/profile" class="active">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
-    <div class="contentcontainer">
+    <div class="contentcontainer" style="flex-direction: column;">
       <div>
         <h1>User Profile</h1>
       </div>
@@ -43,10 +43,10 @@
         <form method="POST">
           <div class="form-group">
             <span class=""> <i class="fa fa-lock"></i> </span>
-            <input name="password" class="nulltxt" placeholder="Enter password:" type="password" style="padding: 5px;">
+            <input name="password" placeholder="Enter password:" type="password" style="padding: 5px;">
             <span class=""> <i class="fa fa-lock"></i> </span>
-            <input name="repeat" class="nulltxt" placeholder="Repeat password:" type="password" style="padding: 5px;">
-            <button type="submit" class="nullbtn" style="padding: 5px;"> Choose a new password</button>
+            <input name="repeat" placeholder="Repeat password:" type="password" style="padding: 5px;">
+            <button type="submit" style="padding: 5px;">Update Password</button>
           </div>
         </form>
       </div>
@@ -73,6 +73,11 @@
           {% endif %}
         {% endwith %}
       </div>
+    </div>
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>

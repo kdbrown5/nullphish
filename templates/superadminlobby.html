@@ -17,12 +17,12 @@
   </head>
   <body id="particles-js" onload="">
     <div id="navigation">
-      <a href="/main">Tools</a>
+      <a href="/main" class="active">Tools</a>
       <a href="/gophishing">Phishing</a>
       <a href="/stats">Stats</a>
       <a href="/profile">Profile</a>
       <a href="/emulateuser" >Emulate User</a>
-      <a href="/logout">Log Out</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     <div class="contentcontainer" style="border-color: #721817">
       <div id="header"><h1 style="color: #721817">SuperAdmin Controls</h1></div>
@@ -44,6 +44,11 @@
       <a class="tile" href="/sendsms" style="background-image:url('https://app.nullphish.com/static/res/modules/superadmin/module6.svg')">
         <span class="tooltiptext">SMS</span>
       </a>
+    </div>
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
