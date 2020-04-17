@@ -259,8 +259,6 @@ select:focus{
   overflow: hidden;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
 }
 #navigation a{
   color: inherit;
@@ -270,8 +268,7 @@ select:focus{
   vertical-align: middle;
   text-align: center;
   padding: 8px 10px 8px 10px;
-  flex-grow: 1;
-  flex-basis: 0;
+  float: left;
 }
 #navigation a:hover{
   background-color: rgba(0,0,0,0.3);
