@@ -48,6 +48,13 @@ def checkschedule():
             xtemplate = ztemplate
             ztemplate = '/home/nullphish/prod/templates/businesses/'+zbusiness+'/'+ztemplate+'.html'
             zsubject = email[8]
+            #zscheduler = email[10]
+            #print('zscheduler')
+            #print(zscheduler)
+            #zadmin = email[11]
+            #zdept = email[12]
+            #print('zadmin')
+            #print(zadmin)
             cur.execute('select firstname from users where username = (?);', (zemail,))
             zfirstname = cur.fetchall()
             zfirstname = str(zfirstname[0])
@@ -68,6 +75,8 @@ def checkschedule():
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))
+                #zemail, xtemplate, zsender, zdate, zbitly, zbusiness, zsubject, timestamp, zadmin, 
+                #cur.execute('insert into emailpending (username, template, mailname, datesched, bitly, business, subject, sentdate, admin, department, idsched, token, phished) values (?,?,?,?,?,?,?,?,?,?,?,?,?);', ()
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(xtemplate))
                 zlink = [zlink]
@@ -117,6 +126,18 @@ def phishschedule():
         str =  ''.join(tup) 
         return str
 
+    def lookupadmin():
+        business = str(session['business'])
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('select username from users where notify = 1 and business = (?);', (business,))
+            admins = cur.fetchone()
+            admins = admins[0]
+        con.close
+        return admins
+
     def lookupemailsubject(templatename):
         business = str(session['business'])
         con = sqlite.connect('db/db1.db')
@@ -128,14 +149,15 @@ def phishschedule():
         con.close
         return emailsubject
 
-    def scheduledb(username, template, mailname, date, bitly, business, subject):
+    def scheduledb(username, template, mailname, date, bitly, business, subject, dept):
         print('sched')
-        print(username, template, mailname, date, bitly, business, subject)
+        print(username, template, mailname, date, bitly, business, subject, dept)
+        admins = lookupadmin()
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject) values ( "email", ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject))
+            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
         con.close()
 
     availtemplates = lookuptemplates()
@@ -160,10 +182,11 @@ def phishschedule():
             getselect = request.form.to_dict(flat=False)['select']
             getserver = request.form.to_dict(flat=False)['smtpserver']
             getbitly = request.form.to_dict(flat=False)['bitly']
+            getdept = request.form.to_dict(flat=False)['dept']
             sentlist = []
             errlist = []
             errcount = 0
-            for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
+            for (g1, g2, g3, g4, g5, g6, g7, g8, g9) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate, getdept):
                 if g1 == "0":
                     pass
                 else:
@@ -197,12 +220,12 @@ def phishschedule():
                     if g7 == "short":
                         link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                         link = linkshorten(link)
-                        scheduledb(g4, g5, g6, g8, "1", session['business'], subject )
+                        scheduledb(g4, g5, g6, g8, "1", session['business'], subject, g9 )
                         #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                     else:
                         link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                         link = [link]
-                        scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
+                        scheduledb(g4, g5, g6, g8, "0", session['business'], subject, g9 )
                         #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
             sentlist = (''.join(str(sentlist)))
             sentlist = sentlist.replace("],", ',')

@@ -92,6 +92,7 @@ def apiid():
                 cur.execute('insert into phished (username, business, token, method) select (?), (?), (?), "E-MAIL" where (Select changes() = 0);', (email, business, usertoken))
                 cur.execute('select hit from phished where token = (?);', (usertoken,))
                 hitcount = cur.fetchone()[0]
+                cur.execute('UPDATE phishsched set activetime = (?) where token = (?);', (timestamp, usertoken,))
             con.close()
             hitcount = int(hitcount)
             if hitcount > 0:
