@@ -29,6 +29,7 @@ def checkschedule():
         for row in cur.execute('select * from phishsched where type = "email" and date between "2020-04-01" and DATETIME("now", "localtime", "+5 minutes") and sentdate = "none";'):
             emailsched.append(row[:])
         for email in emailsched:
+            print(email)
             timestamp = (datetime.now())
             timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
             timestamp = timestamp.replace(' ', '-')
