@@ -48,6 +48,7 @@ def mailconfig():
         if session['logged_in'] == True:
             if 'mailhost' in request.form:
                 mailname = request.form['mailname']
+                mailname = mailname.replace(' ', '_')
                 mailhost = request.form['mailhost']
                 mailuser = request.form['mailuser']
                 mailpass = request.form['mailpass']
