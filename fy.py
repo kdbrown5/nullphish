@@ -87,6 +87,10 @@ def apiid():
                 cur.execute('select username from users where notify = 1 and business = (?);', (business,))
                 admins = cur.fetchone()
                 admins = admins[0]
+                print(type(admins))
+                print(admins)
+                print(type(timestamp))
+                print(timestamp)
                 cur.execute('update phished set admin = (?) where date = (?);', (admins,), timestamp,)
                 cur.execute('select department from users where username = (?);', (email,))
                 userdept = cur.fetchone()[0]
