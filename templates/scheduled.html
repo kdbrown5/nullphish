@@ -136,8 +136,7 @@
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     <div class="contentcontainer">
-      <div><h1>Last sent - Awaiting open</h1></div>
-      
+
       <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
           <ul class="flashes w3-jumbo" style="color: white">
@@ -147,22 +146,27 @@
           </ul>
         {% endif %}
         {% endwith %}</h1>
-
-        <table class="table table-hover dataframe">
-          <thead>
-            <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-            <td style="border-radius: 25px 0px 0px 0px;">Email Address</td>
-                  <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
-              
-          </tr>
-
-          {% for pending in lastsent %}
-        <tr style="text-align:center;" class="border_bottom">
-              <td name="email"><input type="hidden" id="{{ pending.username }}" name="email" value="{{ pending.username }}">{{ pending[1] }}</td>
-              <td name="sendate"><input type="hidden" id="placeholder" name="sentdate" value="placeholder">placeholder</td>
-              {% endfor %}
+        <br>
+      <div><h1>Last sent - Awaiting open</h1></div>
+      
+      <table class="table table-hover dataframe">
+        <thead>
+          <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+          <td style="border-radius: 25px 0px 0px 0px;">Email Address</td>
+                <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
+            
         </tr>
-        </table>
+
+        {% for pending in lastsent %}
+      <tr style="text-align:center;" class="border_bottom">
+            <td name="email"><input type="hidden" id="{{ pending.username }}" name="email" value="{{ pending.username }}">{{ pending[1] }}</td>
+            <td name="sendate"><input type="hidden" id="placeholder" name="sentdate" value="placeholder">placeholder</td>
+            {% endfor %}
+      </tr>
+      </table>
+
+
+
 <br>
 
         <hr>
@@ -205,6 +209,7 @@
       <span>Are you sure you want to log out?</span><br>
       <a href="/logout">Yes</a>
       <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
     </div>
 
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
