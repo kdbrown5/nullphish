@@ -1,5 +1,6 @@
 <!--   NOTE: This document is here as a template/placeholder for future pages      -->
 <!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!--      Please remove all generic/instructional comments before publishing!      -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,13 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
 
-    <title>Phishing Scheduler</title>
+    <title>NullPhish: Login to Your Account</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
       #particles-js{
         height: 100%;
-        overflow: visible;
+        overflow: hidden;
         width: 100%;
         padding: 0px;
         margin: 0px;
@@ -127,25 +128,16 @@
     }
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <div id="particles-js"></div>
-    <nav>
-      <div id="dropdown">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
+  <body id="particles-js">
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
     <div class="contentcontainer">
-      <div><h1>Schedule Phishing</h1></div>
-      
+      <div><h1>Content Title</h1></div>
       <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
           <ul class="flashes w3-jumbo" style="color: white">
@@ -249,13 +241,20 @@ $('#templateview').change(function() {
 </iframe>
 {% endif %}
 {% if templatecustom %}
-<iframe height="1000px" width="1200px" src="https://app.nullphish.com/gophishing/{{ templatecustom }}">
+<iframe height="1000px" width="1200px" src="https://app.nullphish.com/schedulephish/{{ templatecustom }}">
 </iframe>
 {% endif %}
 
 </center>
-
+      <!-- Put Content Here! -->
     </div>
+    <!-- Logout confirmation overlay -->
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <!-- Put more Javascript stuff here if you need -->
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
