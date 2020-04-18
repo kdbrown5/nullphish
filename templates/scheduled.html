@@ -153,24 +153,32 @@
       <table class="table table-hover dataframe">
         <thead>
           <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-          <td style="border-radius: 25px 0px 0px 0px;">Email Address</td>
-                <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
+          <td style="border-radius: 25px 0px 0px 0px;">Department</td>
+          <td>Username</td>
+          <td>Template</td>
+          <td>Sender</td>
+          <td>Hyperlink</td>
+          <td>Notify</td>
+          <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
             
         </tr>
 
         {% for pending in lastsent %}
       <tr style="text-align:center;" class="border_bottom">
-            <td name="email"><input type="hidden" id="{{ pending.username }}" name="email" value="{{ pending.username }}">{{ pending[1] }}</td>
-            <td name="sendate"><input type="hidden" id="placeholder" name="sentdate" value="placeholder">placeholder</td>
+        <td name="dept">{{ pending[1] }}</td>
+            <td name="username">{{ pending[2] }}</td>
+            <td name="template">{{ pending[3]}}</td>
+            <td name="sender">{{ pending[4]}}</td>
+            <td name="bitly">{{ pending[5]}}</td>
+            <td name="admin">{{ pending[5]}}</td>
+            <td name="datesent">{{ pending[6]}}</td>
             {% endfor %}
       </tr>
       </table>
 
-
-
 <br>
 
-        <hr>
+        <hr style="width: 50%">
       <div><h1>Scheduled Tasks</h1></div>
         <form method="POST">
           <table class="table table-hover dataframe">
