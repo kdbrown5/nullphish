@@ -126,6 +126,7 @@
     tr.border_bottom td {
       border-bottom:1pt solid black;
     }
+    span::before {content: '\A\A\A\A\A\A\A\A\A\A\A'; white-space: pre; text-align:center; content:center}
     </style>
   </head>
   <body id="particles-js">
@@ -137,7 +138,7 @@
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     <div class="contentcontainer">
-      <div><h1>Content Title</h1></div>
+      <div><h1>Schedule Phishing</h1></div>
       <h1>{% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
           <ul class="flashes w3-jumbo" style="color: white">
@@ -212,14 +213,13 @@
           </table>
           <button style="width: 50%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
     </form>
-
-    <br>
       
 <div class="ex2">
   <center>
+    <span></span><span></span>
 <form method="POST">
   
-    <td>        <select style="width: 15vw; text-align:center" name= "templateview" class="form-control" id="templateview">
+    <td >        <select style="width: 15vw; text-align:center" name= "templateview" class="form-control" id="templateview">
       <option style="text-align: center;">Templates</option>
           {% for row in availtemplates %}
               <option style="text-align:center">{{ row }}</option>
