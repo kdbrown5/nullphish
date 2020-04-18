@@ -63,6 +63,7 @@ def addnewtemplate():
                     a['data-saferedirecturl'] = 'replacelink'
                 savehtml = str(soup)
                 savehtmlnam = str(request.form.get('templatename'))
+                savehtmlnam = savehtmlnam.replace(' ', '_')
                 savehtmlname = savehtmlnam+'.html'
                 templatesubject = request.form.get('templatesubject')
                 if os.path.isfile('./templates/businesses/'+session['business']+'/'+savehtmlname):
