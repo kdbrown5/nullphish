@@ -59,7 +59,6 @@ def apiid():
                 sender_email, receiver_email, message.as_string()
             )
 
-
     def processtoken():
         if request.method == 'GET':
             if request.args.get('id'[:]) != None:
