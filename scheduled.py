@@ -57,8 +57,10 @@ def viewschedule():
     busdict = getschedule()
     lastsent = getlastsent()
     print(lastsent)
+    print(type(lastsent))
     try:
         for i in lastsent:
+            print(type(i))
             print(i)
     except:
         print('cant print i in lastsent')
