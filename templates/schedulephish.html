@@ -50,16 +50,16 @@
       }
       table.dataframe, .dataframe th, .dataframe td {
         border: line;
-        border-bottom: 1px solid black;
-        border-top: 1px solid black;
+        border-bottom: 1px solid #49A355;
+        border-top: 1px solid #49A355;
         border-collapse: collapse;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border-left: 1px solid #49A355;
+        border-right: 1px solid #49A355;
         text-align: center;
         padding: .8%;
         margin-bottom: 0px;
         font-size: 1em;
-        color: black;
+        color: #49A355;
       }
       input.largerCheckbox { 
         transform : scale(2.2); 
@@ -104,13 +104,13 @@
       .select-css option {
         font-weight:normal;
       }
-      tr:nth-child(odd)		{ background-color: lightgrey; }
-      tr:nth-child(even)	{ background-color:darkgrey; }
+      tr:nth-child(odd)		{ background-color: rgba(0,0,0,0.75); }
+      tr:nth-child(even)	{ background-color:rgba(0,0,0,.25); }
       tr:first-child { background-color: transparent;}
       tr:hover:first-child { background-color: transparent; }
-      tr:hover            { background-color: #d5e9f9;}
+      tr:hover            { background-color: #E0E0E0; color: #0D1126;}
       tr.border_bottom td {
-        border-bottom:1pt solid black;
+        border-bottom:1pt solid #0D1126;
       }
       span::before {content: '\A\A\A\A\A\A\A\A\A\A\A'; white-space: pre; text-align:center; content:center}
     </style>
@@ -124,7 +124,7 @@
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     <div class="contentcontainer">
-      <div><h1>Schedule Phishing</h1></div>
+      <div id="header"><h1>Schedule Phishing</h1></div>
       <div>
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
           {% if messages %}
