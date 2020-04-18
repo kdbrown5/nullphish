@@ -156,9 +156,9 @@
               
           </tr>
 
-          {% for dict in lastsent %}
+          {% for pending in lastsent %}
         <tr style="text-align:center;" class="border_bottom">
-              <td name="email"><input type="hidden" id="{{ lastsent.username }}" name="email" value="{{ lastsent.username }}">{{ lastsent.username }}</td>
+              <td name="email"><input type="hidden" id="{{ pending.username }}" name="email" value="{{ pending.username }}">{{ pending.username }}</td>
               <td name="sendate"><input type="hidden" id="placeholder" name="sentdate" value="placeholder">placeholder</td>
               {% endfor %}
         </tr>
