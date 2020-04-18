@@ -249,7 +249,7 @@ def schedulephishdonothing():
     else:
         return redirect("/")
 
-@app.route('/phishschedule/<templateview>', subdomain="app", methods=['GET', 'POST'])# this is for iframed business templates
+@app.route('/schedulephish/<templateview>', subdomain="app", methods=['GET', 'POST'])# this is for iframed business templates
 def dynamicphishschedload(templateview):
     if session.get('logged_in'):
         if session.get('role') == 'superadmin':
