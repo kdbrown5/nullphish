@@ -21,12 +21,15 @@ def viewschedule():
     def getlastsent():
         con = sqlite.connect('db/db1.db')
         cur = con.cursor()
-        with con:
-            cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('select * from (select * from phished where business = (?) and hit = 0 ORDER BY ID DESC LIMIT 5) order by id asc;', (session['business'],))
-            testing = cur.fetchall()
-            print(testing)
-        con.close()
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from (select * from phished where business = (?) and hit = 0 ORDER BY ID DESC LIMIT 5) order by id asc;', (session['business'],))
+        lastsent = cur.fetchall()
+        try:
+            con.close()
+        except:
+            pass
+        return lastsent
 
 
     def getschedule():
@@ -52,7 +55,7 @@ def viewschedule():
         dellist.append('Scheduled send for: '+email+' at'+date+' - deleted!')
 
     busdict = getschedule()
-    getlastsent()
+    lastsent = getlastsent()
     
     if request.method == 'POST':
         if 'email' in request.form:
@@ -76,4 +79,4 @@ def viewschedule():
         else:
             flash('No records to delete', 'category2')
 
-    return render_template('scheduled.html', busdict=busdict)    
+    return render_template('scheduled.html', busdict=busdict, lastsent=lastsent)    
