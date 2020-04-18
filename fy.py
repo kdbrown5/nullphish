@@ -72,7 +72,6 @@ def apiid():
         timestamp = (datetime.now())
         timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
         timestamp = timestamp.replace(' ', '-')
-        timestamp = [timestamp]
         if '@' in email:
             template = request.args.get('template')
             con = sqlite.connect('db/db1.db')
@@ -86,10 +85,8 @@ def apiid():
                 business = cur.fetchone()[0]
                 cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
                 cur.execute('select username from users where notify = 1 and business = (?);', (business,))
-                admins = cur.fetchone()
-                admins = admins[0]
-                admins = [admins]
-                cur.execute('update phished set admin = (?) where date = (?);', (admins,), timestamp,)
+                admins = cur.fetchone()[0]
+                cur.execute('update phished set admin = (?) where date = (?);', (str(admins[0]),), timestamp,)
                 cur.execute('select department from users where username = (?);', (email,))
                 userdept = cur.fetchone()[0]
                 cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
