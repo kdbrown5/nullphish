@@ -23,7 +23,7 @@ def viewschedule():
         cur = con.cursor()
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from (select username from phished where business = (?) and hit = 0 ORDER BY ID DESC LIMIT 5) order by id asc;', (session['business'],))
+        cur.execute('select * from (select id, username from phished where business = (?) and hit = 0 ORDER BY ID DESC LIMIT 5) order by id asc;', (session['business'],))
         lastsent = cur.fetchall()
         try:
             con.close()
