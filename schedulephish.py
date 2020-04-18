@@ -147,8 +147,10 @@ def phishschedule():
             templateview = request.form.get('templateview')
             if templateview == 'prototype2':
                 templateview = '/templates/prototype2.html'
+                busdict = businessdict()
                 return render_template('gophishing.html', busdict=busdict, availtemplates=availtemplates, templateview=templateview, serverlist=serverlist)
             else:
+                busdict = businessdict()
                 templatecustom = 'businesses+^+'+session['business']+'+^+'+templateview+'.html'
                 return render_template('gophishing.html', busdict=busdict, availtemplates=availtemplates, templatecustom=templatecustom, serverlist=serverlist)
         else:
