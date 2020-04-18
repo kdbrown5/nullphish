@@ -132,6 +132,16 @@ input[type='checkbox'] {
 
   flex-direction: column;
 }
+.parentrow {
+  display: flex;
+  flex-wrap: wrap;
+}
+.childrow {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+  height: 100px;
+
+}
     </style>
   </head>
   <body id="particles-js"  style="height:auto; min-height:100%">
@@ -144,27 +154,36 @@ input[type='checkbox'] {
     </div>
     <div class="contentcontainer">
       <div><h1>User Management</h1></div>
-      
+      <hr style="width: 500px;">
       <center>
         <div style="max-width: 50%;">
-        <div class="row">
+        
+          
           <h1>Import users</h1>
+          <div class="parentrow">
+          <div class="childrow">
           <form method="post" enctype="multipart/form-data">
             <dl>
-  
-              <input type="file" name="file" autocomplete="off" required>
-  
+              <br>
+              <input style="display:none;" id="upload" type="file" name="file" autocomplete="off" required>
+              <label style="border-color: white;" for="upload">Click to <br>Import CSV</label>
             </dl>
-  
+          </div>
+
+          <div class="childrow">
               <input type="submit" value="Upload">
-  
           </form>
-          <hr>
+        </div>
+        <hr>
+        <div class="childrow">
           <form method="POST">
             <button name="Download" type="submit" class="btn btn-primary btn-block">Download Example CSV</button>
           </form>
-          <hr>
         </div>
+      </div>
+          <hr>
+
+
         <div>
           <h2>View Users</h2>
           {% with messages = get_flashed_messages(category_filter=["category2"]) %}
