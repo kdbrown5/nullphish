@@ -162,16 +162,16 @@
           <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
             
         </tr>
-
+        
         {% for pending in lastsent %}
       <tr style="text-align:center;" class="border_bottom">
         <td name="dept">{{ pending[1] }}</td>
             <td name="username">{{ pending[2] }}</td>
             <td name="template">{{ pending[3]}}</td>
             <td name="sender">{{ pending[4]}}</td>
-            <td name="bitly">{{ pending[5]}}</td>
-            <td name="admin">{{ pending[5]}}</td>
-            <td name="datesent">{{ pending[6]}}</td>
+            <td name="bitly">{{ pending[6]}}</td>
+            <td name="admin">{{ pending[7]}}</td>
+            <td name="datesent">{{ pending[5]}}</td>
             {% endfor %}
       </tr>
       </table>
