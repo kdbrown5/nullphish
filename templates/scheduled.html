@@ -148,7 +148,7 @@
         {% endif %}
         {% endwith %}</h1>
         <br>
-      <div><h1>Last sent - Awaiting open</h1></div>
+      <div><h1>Last 10 sent - Awaiting open</h1></div>
       
       <table class="table table-hover dataframe">
         <thead>
@@ -158,6 +158,7 @@
           <td>Template</td>
           <td>Sender</td>
           <td>Hyperlink</td>
+          <td>Scheduler</td>
           <td>Notify</td>
           <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
             
@@ -169,7 +170,8 @@
             <td name="username">{{ pending[2] }}</td>
             <td name="template">{{ pending[3]}}</td>
             <td name="sender">{{ pending[4]}}</td>
-            <td name="bitly">{{ pending[5]}}</td>
+            <td name="bitly">{{ pending[5] | replace('1','Short') | replace('0','Long')}}</td>
+            <td name="scheduler">{{ pending[8]}}</td>
             <td name="admin">{{ pending[6]}}</td>
             <td name="datesent">{{ pending[7]}}</td>
             {% endfor %}
@@ -191,7 +193,7 @@
                     <td>Mail Server</td>
                     <td>Link</td>
                     <td>Date Scheduled</td>
-                    <td style="border-radius: 0px 25px 0px 0px;">Created&nbsp;by</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Scheduler</td>
                 
             </tr>
  
