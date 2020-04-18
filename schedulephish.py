@@ -143,63 +143,72 @@ def phishschedule():
     busdict = businessdict()
     
     if request.method == 'POST':
-        getfirstname = request.form.to_dict(flat=False)['firstname']
-        getlastname = request.form.to_dict(flat=False)['lastname']
-        getemail = request.form.to_dict(flat=False)['email']
-        getdate = request.form.to_dict(flat=False)['datetimepicker']
-        gettemplates = request.form.to_dict(flat=False)['templates']
-        getselect = request.form.to_dict(flat=False)['select']
-        getserver = request.form.to_dict(flat=False)['smtpserver']
-        getbitly = request.form.to_dict(flat=False)['bitly']
-        sentlist = []
-        errlist = []
-        errcount = 0
-        for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
-            if g1 == "0":
-                pass
+        if str(request.form.get('templateview')) != 'None':
+            templateview = request.form.get('templateview')
+            if templateview == 'prototype2':
+                templateview = '/templates/prototype2.html'
+                return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templateview=templateview, serverlist=serverlist)
             else:
-                if g6 == '':
-                    #g4 = [g4]
-                    errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no server assigned')
+                templatecustom = 'businesses+^+'+session['business']+'+^+'+templateview+'.html'
+                return render_template('gophishing.html', businessdata=businessdata, availtemplates=availtemplates, templatecustom=templatecustom, serverlist=serverlist)
+        else:
+            getfirstname = request.form.to_dict(flat=False)['firstname']
+            getlastname = request.form.to_dict(flat=False)['lastname']
+            getemail = request.form.to_dict(flat=False)['email']
+            getdate = request.form.to_dict(flat=False)['datetimepicker']
+            gettemplates = request.form.to_dict(flat=False)['templates']
+            getselect = request.form.to_dict(flat=False)['select']
+            getserver = request.form.to_dict(flat=False)['smtpserver']
+            getbitly = request.form.to_dict(flat=False)['bitly']
+            sentlist = []
+            errlist = []
+            errcount = 0
+            for (g1, g2, g3, g4, g5, g6, g7, g8) in zip(getselect, getfirstname, getlastname, getemail, gettemplates, getserver, getbitly, getdate):
+                if g1 == "0":
                     pass
-                if g8 == '':
-                    #g4 = [g4]
-                    errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no date')
-                    pass
-                if g5 == '':
-                    #g4 = [g4]
-                    errcount = errcount+1
-                    errlist.append('Err: '+g4+' has no template')
-                    pass
-                if errcount != 0:
-                    errlist = str(errlist)
-                    errlist = errlist.replace("'", '')
-                    errlist = errlist.replace("[", '')
-                    errlist = errlist.replace("]", '')
-                    flash(errlist, 'category2')
-                    return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
-                g4a = [g4]
-                sentlist.append(g4a)
-                newtoken = generate_confirmation_token(g4)
-                subject = lookupemailsubject(g5)
-                subject = subject[0]
-                if g7 == "short":
-                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
-                    link = linkshorten(link)
-                    scheduledb(g4, g5, g6, g8, "1", session['business'], subject )
-                    #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                 else:
-                    link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
-                    link = [link]
-                    scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
-                    #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
-        sentlist = (''.join(str(sentlist)))
-        sentlist = sentlist.replace("],", ',')
-        sentlist = sentlist.replace ("'", '')
-        sentlist = sentlist.replace(']', '')
-        sentlist = sentlist.replace('[', '')
-        flash('Emails scheduled for: '+sentlist, 'category2')
+                    if g6 == '':
+                        #g4 = [g4]
+                        errcount = errcount+1
+                        errlist.append('Err: '+g4+' has no server assigned')
+                        pass
+                    if g8 == '':
+                        #g4 = [g4]
+                        errcount = errcount+1
+                        errlist.append('Err: '+g4+' has no date')
+                        pass
+                    if g5 == '':
+                        #g4 = [g4]
+                        errcount = errcount+1
+                        errlist.append('Err: '+g4+' has no template')
+                        pass
+                    if errcount != 0:
+                        errlist = str(errlist)
+                        errlist = errlist.replace("'", '')
+                        errlist = errlist.replace("[", '')
+                        errlist = errlist.replace("]", '')
+                        flash(errlist, 'category2')
+                        return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    
+                    g4a = [g4]
+                    sentlist.append(g4a)
+                    newtoken = generate_confirmation_token(g4)
+                    subject = lookupemailsubject(g5)
+                    subject = subject[0]
+                    if g7 == "short":
+                        link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
+                        link = linkshorten(link)
+                        scheduledb(g4, g5, g6, g8, "1", session['business'], subject )
+                        #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
+                    else:
+                        link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
+                        link = [link]
+                        scheduledb(g4, g5, g6, g8, "0", session['business'], subject )
+                        #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
+            sentlist = (''.join(str(sentlist)))
+            sentlist = sentlist.replace("],", ',')
+            sentlist = sentlist.replace ("'", '')
+            sentlist = sentlist.replace(']', '')
+            sentlist = sentlist.replace('[', '')
+            flash('Emails scheduled for: '+sentlist, 'category2')
         
     return render_template('schedulephish.html', busdict=busdict, availtemplates=availtemplates, serverlist=serverlist)    

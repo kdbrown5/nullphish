@@ -237,6 +237,30 @@ def beginschedphish():
     else:
         return redirect('/')
 
+@app.route('/schedulephish/replacelink', subdomain="app", methods=['GET', 'POST']) # main page route
+def schedulephishdonothing():
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            return phishschedule()
+        elif session.get('role') == 'admin':
+            return phishschedule()
+        else:
+            return redirect('/')
+    else:
+        return redirect("/")
+
+@app.route('/phishschedule/<templateview>', subdomain="app", methods=['GET', 'POST'])# this is for iframed business templates
+def dynamicphishschedload(templateview):
+    if session.get('logged_in'):
+        if session.get('role') == 'superadmin':
+            templateview = templateview.replace('+^+', '/')
+            return render_template(templateview)
+        elif session.get('role') == 'admin':
+            templateview = templateview.replace('+^+', '/')
+            return render_template(templateview)
+    else:
+        return redirect('/')
+
 @app.route('/scheduled', subdomain="app", methods=['GET', 'POST'])
 def beginviewsched():
     if session.get('logged_in'):

@@ -221,7 +221,39 @@
           <button style="width: 50%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
     </form>
 
+    <br>
+      
+<div class="ex2">
+  <center>
+<form method="POST">
+  
+    <td>        <select style="width: 15vw; text-align:center" name= "templateview" class="form-control" id="templateview">
+      <option style="text-align: center;">Templates</option>
+          {% for row in availtemplates %}
+              <option style="text-align:center">{{ row }}</option>
+          {% endfor %}
+  </select>
+</td>
+</form>
+<script>
+$(function() {
+$('#templateview').change(function() {
+    this.form.submit();
+});
+});
+</script>
+</div>
 
+{% if templateview %}
+<iframe height="1000px" width="1200px" src="{{ templateview }}">
+</iframe>
+{% endif %}
+{% if templatecustom %}
+<iframe height="1000px" width="1200px" src="https://app.nullphish.com/gophishing/{{ templatecustom }}">
+</iframe>
+{% endif %}
+
+</center>
 
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
