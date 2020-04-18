@@ -18,6 +18,17 @@ loadkey.close()
 
 @scheduled.route('/scheduled', methods=['GET', 'POST'])
 def viewschedule():
+    def getlastsent():
+        con = sqlite.connect('db/db1.db')
+        cur = con.cursor()
+        with con:
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('select * from (select * from phished where business = (?) and hit = 0 ORDER BY ID DESC LIMIT 5) order by id asc;', (session['business'],))
+            testing = cur.fetchall()
+            print(testing)
+        con.close()
+
+
     def getschedule():
         con = sqlite.connect('db/db1.db')
         con.row_factory = sqlite.Row
@@ -41,6 +52,7 @@ def viewschedule():
         dellist.append('Scheduled send for: '+email+' at'+date+' - deleted!')
 
     busdict = getschedule()
+    getlastsent()
     
     if request.method == 'POST':
         if 'email' in request.form:

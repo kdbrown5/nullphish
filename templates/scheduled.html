@@ -127,22 +127,14 @@
     }
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <div id="particles-js"></div>
-    <nav>
-      <div id="dropdown">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
+  <body id="particles-js">
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
     <div class="contentcontainer">
       <div><h1>Scheduled Tasks</h1></div>
       
@@ -189,9 +181,12 @@
           <button style="width: 50%" type="submit" class="btn button btn-primary">Remove from schedule</button>
     </form>
 
-
-
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
     </div>
+
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
