@@ -192,8 +192,8 @@
                     <td>Template</td>
                     <td>Mail Server</td>
                     <td>Link</td>
-                    <td>Date Scheduled</td>
-                    <td style="border-radius: 0px 25px 0px 0px;">Scheduler</td>
+                    <td>Scheduler</td>
+                    <td style="border-radius: 0px 25px 0px 0px;">Date Scheduled</td>
                 
             </tr>
  
@@ -202,13 +202,14 @@
           <tr style="text-align:center;" class="border_bottom">
             <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
-
+                <td name="department"><input type="hidden" id="{{ dict.department }}" name="department" value="{{ dict.department }}">{{ dict.department }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
                 <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
                 <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
                 <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
-                <td name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
+                <td name="admin"><input type="hidden" id="{{ dict.admin }}" name="date" value="{{ dict.admin }}">{{ dict.admin }}</td>
                 <td name="sceduler"><input type="hidden" id="{{ dict.scheduler }}" name="scheduler" value="{{ dict.scheduler }}">{{ dict.scheduler }}</td>
+                <td name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
                 <td name="id" type="hidden" hidden><input type="hidden" id="{{ dict.id }}" name="id" value="{{ dict.id }}" hidden></td>
                 {% endfor %}
           </tr>
