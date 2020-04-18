@@ -75,13 +75,15 @@ def checkschedule():
                 zlink = zlink[0]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
                 cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))
+                cur.execute('update phishsched set token = (?) where id = (?);', (ztoken, zid,))
                 #zemail, xtemplate, zsender, zdate, zbitly, zbusiness, zsubject, timestamp, zadmin, 
                 #cur.execute('insert into emailpending (username, template, mailname, datesched, bitly, business, subject, sentdate, admin, department, idsched, token, phished) values (?,?,?,?,?,?,?,?,?,?,?,?,?);', ()
             else:
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(xtemplate))
                 zlink = [zlink]
                 customsendphish(zsender, ztemplate, zemail, zfirstname, zlastname, zsubject, zlink, zbusiness)
-                cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))     
+                cur.execute('update phishsched set sentdate = (datetime("now", "localtime")) where id = (?);', (zid,))
+                cur.execute('update phishsched set token = (?) where id = (?);', (ztoken, zid,))
 
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
@@ -149,15 +151,15 @@ def phishschedule():
         con.close
         return emailsubject
 
-    def scheduledb(username, template, mailname, date, bitly, business, subject, dept, newtoken):
+    def scheduledb(username, template, mailname, date, bitly, business, subject, dept):
         print('sched')
-        print(username, template, mailname, date, bitly, business, subject, dept, newtoken)
+        print(username, template, mailname, date, bitly, business, subject, dept)
         admins = lookupadmin()
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department, token) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept, newtoken))
+            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
         con.close()
 
     availtemplates = lookuptemplates()
@@ -218,14 +220,14 @@ def phishschedule():
                     subject = lookupemailsubject(g5)
                     subject = subject[0]
                     if g7 == "short":
-                        link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
-                        link = linkshorten(link)
-                        scheduledb(g4, g5, g6, g8, "1", session['business'], subject, g9, newtoken )
+                        #link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
+                        #link = linkshorten(link)
+                        scheduledb(g4, g5, g6, g8, "1", session['business'], subject, g9 )
                         #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                     else:
-                        link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
-                        link = [link]
-                        scheduledb(g4, g5, g6, g8, "0", session['business'], subject, g9, newtoken )
+                        #link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
+                        #link = [link]
+                        scheduledb(g4, g5, g6, g8, "0", session['business'], subject, g9 )
                         #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
             sentlist = (''.join(str(sentlist)))
             sentlist = sentlist.replace("],", ',')
