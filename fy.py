@@ -83,14 +83,14 @@ def apiid():
                 cur.execute('UPDATE phished set template = (?) where token = (?) and username = (?);', (template, usertoken, email,))
                 cur.execute('select business from users where username = (?);', (email,))
                 business = cur.fetchone()[0]
-                cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
+                #cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))# changing to have business name done in insert
                 cur.execute('select username from users where notify = 1 and business = (?);', (business,))
                 admins = cur.fetchone()[0]
                 cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
                 cur.execute('select department from users where username = (?);', (email,))
                 userdept = cur.fetchone()[0]
                 cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
-                cur.execute('insert into phished (username, token, method) select (?), (?), "E-MAIL" where (Select changes() = 0);', (email, usertoken))
+                cur.execute('insert into phished (username, business, token, method) select (?), (?), (?), "E-MAIL" where (Select changes() = 0);', (email, business, usertoken))
                 cur.execute('select hit from phished where token = (?);', (usertoken,))
                 hitcount = cur.fetchone()[0]
             con.close()
