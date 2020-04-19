@@ -168,7 +168,7 @@
         {% for pending in lastsent %}
       <tr style="text-align:center;" class="border_bottom">
         <td name="dept">{{ pending[1] }}</td>
-        <td name="type">{{ pending[9] }} | replace('email','E-Mail') | replace('sms','SMS')</td>
+        <td name="type">{{ pending[9] | replace('email','E-Mail') | replace('sms','SMS')}}</td>
             <td name="username">{{ pending[2] }}</td>
             <td name="template">{{ pending[3]}}</td>
             <td name="sender">{{ pending[4]}}</td>
