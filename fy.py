@@ -78,7 +78,7 @@ def apiid():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where token = (?) and sentdate < DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
+                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where token = (?) and activetime = "none" and sentdate < DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
                 cur.execute('select admin from phishsched where token = (?) and (select changes() = 1);', (usertoken,))
                 #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
                 #cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))

@@ -83,7 +83,7 @@ def smsapiid():
                 print('usertoken')
                 print(usertoken)
                 print(type(usertoken))
-                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where token = (?) and sentdate < DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
+                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where token = (?) and activetime = "none" and sentdate < DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
                 #cur.execute('select id from phishsched where token = (?) and sentdate > DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
                 #getid = cur.fectchone()
                 #print('getid')
