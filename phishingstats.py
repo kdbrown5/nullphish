@@ -29,9 +29,9 @@ def phishingstatsload():
         con.row_factory = sqlite.Row
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from phishsched where activetime != "" and business = (?) and type = "email";', (session['business'],),)
+        cur.execute('select * from phishsched where activetime != "none" and business = (?) and type = "email";', (session['business'],),)
         emailquery = cur.fetchall()
-        cur.execute('select * from phishsched where activetime != "" and business = (?) and type = "sms";', (session['business'],),)
+        cur.execute('select * from phishsched where activetime != "none" and business = (?) and type = "sms";', (session['business'],),)
         smsquery = cur.fetchall()      
             #for row in cur.execute('select * from phishsched where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
             #    smsquery.append(row[:])            
@@ -47,7 +47,7 @@ def phishingstatsload():
         con.row_factory = dict_factory
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from phishsched where activetime != "" and business = (?) and type = "email";', (session['business'],),)
+        cur.execute('select * from phishsched where activetime != "none" and business = (?) and type = "email";', (session['business'],),)
         emaildict = cur.fetchall()
             #for row in cur.execute('select * from phishsched where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
             #    smsquery.append(row[:])            
