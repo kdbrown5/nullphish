@@ -92,13 +92,7 @@ def smsapiid():
                 cur.execute('select admin from phishsched where token = (?) and (select changes() = 1);', (usertoken,))
                 try:
                     emailrecip = cur.fetchall()
-                    print('emailrecip')
-                    print(emailrecip)
                     emailrecip = emailrecip[0]
-                    print(emailrecip)
-                    emailrecip = str(emailrecip)
-                    emailrecip = emailrecip.replace("('", '')
-                    emailrecip = emailrecip.replace("',)", '')
                     sendtattle = True
                 except:
                     print('no update made - no admin received')
