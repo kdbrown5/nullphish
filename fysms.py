@@ -83,13 +83,26 @@ def smsapiid():
                 print('usertoken')
                 print(usertoken)
                 print(type(usertoken))
-                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where type = "sms" and token = (?);', (usertoken,))
-                cur.execute('select admin from phishsched where token = (?);', (usertoken,))
-                emailrecip = cur.fetchall()
-                print('emailrecip')
-                print(emailrecip)
-                emailrecip = emailrecip[0]
-                print(emailrecip)
+                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where token = (?) and sentdate > DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
+                #cur.execute('select id from phishsched where token = (?) and sentdate > DATETIME("now", "localtime", "-20 seconds");', (usertoken,))
+                #getid = cur.fectchone()
+                #print('getid')
+                #print(getid)
+                #cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where type = "sms" and token = (?);', (usertoken,))
+                cur.execute('select admin from phishsched where token = (?) and (select changes() = 1);', (usertoken,))
+                try:
+                    emailrecip = cur.fetchall()
+                    print('emailrecip')
+                    print(emailrecip)
+                    emailrecip = emailrecip[0]
+                    print(emailrecip)
+                    emailrecip = str(emailrecip)
+                    emailrecip = emailrecip.replace("('", '')
+                    emailrecip = emailrecip.replace("',)", '')
+                    sendtattle = True
+                except:
+                    print('no update made - no admin received')
+                    sendtattle = False
                 #cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where id = (?);', (getid,))
                 #
                 #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
@@ -116,7 +129,8 @@ def smsapiid():
             con.close()
             #if hitcount > 1:
             #    emailrecip = admins
-            tattletale(emailrecip, email)
+            if sendtattle == True:
+                tattletale(emailrecip, email)
             return redirect('https://google.com')
 
         else:
