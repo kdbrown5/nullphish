@@ -153,21 +153,27 @@ tr:hover:first-child { background-color: transparent; }
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
 				<td style="border-radius: 25px 0px 0px 0px;">Department</td>
 				<td>Method</td>
+				<td>Business</td>
 				<td>User&nbsp;Phished</td>
 				<td>Phone&nbsp;Number</td>
-				<td>Business</td>
+				<td>Message</td>
+				<td>Scheduler</td>
 				<td>Admin&nbsp;Notified</td>
-				<td style="border-radius: 0px 25px 0px 0px;">Date</td>
+				<td>Date&nbsp;Sent</td>
+				<td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
 				
 			</tr>
 		{% for item in smsquery %}
 		<tr style="text-align:center;" class="border_bottom">
 				<td>{{item.department}}</td>
 				<td>{{item.type}}</td>
+				<td>{{item.business}}</td>
 				<td>{{item.username}}</td>
 				<td>{{item.phonedid}}</td>
-			<td>{{item.business}}</td>
+				<td>{{item.message}}</td>
+			<td>{{item.scheduler}}</td>
 			<td>{{item.admin}}</td>
+			<td>{{item.sentdate}}</td>
 			<td style="width: fit-content">{{item.activetime}}</td>
 		</tr>
 		{% endfor %}
