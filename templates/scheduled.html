@@ -170,8 +170,8 @@
         <td name="dept">{{ pending[1] }}</td>
         <td name="type">{{ pending[9] | replace('email','E-Mail') | replace('sms','SMS')}}</td>
             <td name="username">{{ pending[2] }}</td>
-            <td name="template">{{ pending[3]}}</td>
-            <td name="sender">{{ pending[4]}}</td>
+            <td name="template">{{ pending[3]  if pending[3] is not none else '-'}}</td>
+            <td name="sender">{{ pending[4] | replace('None','-')}}</td>
             <td name="bitly">{{ pending[5] | replace('1','Short') | replace('0','Long')}}</td>
             <td name="scheduler">{{ pending[8]}}</td>
             <td name="admin">{{ pending[6]}}</td>
@@ -208,8 +208,8 @@
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
                 <td name="department"><input type="hidden" id="{{ dict.department }}" name="department" value="{{ dict.department }}">{{ dict.department }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-                <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.mailname if dict.mailname is not none else '-' }}</td>
-                <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname if dict.mailname is not none else '-' }}</td>
+                <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
+                <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
                 <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
                 <td name="sceduler"><input type="hidden" id="{{ dict.scheduler }}" name="scheduler" value="{{ dict.scheduler }}">{{ dict.scheduler }}</td>
                 <td name="admin"><input type="hidden" id="{{ dict.admin }}" name="date" value="{{ dict.admin }}">{{ dict.admin }}</td>
