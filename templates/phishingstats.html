@@ -131,13 +131,13 @@ tr:hover:first-child { background-color: transparent; }
 			</tr>
 		{% for item in emailquery %}
 		<tr style="text-align:center;" class="border_bottom">
-				<td>{{item[7]}}</td>
-				<td>{{item[10]}}</td>
+				<td>{{item[0]}}</td>
 				<td>{{item[1]}}</td>
 				<td>{{item[2]}}</td>
+				<td>{{item[3]}}</td>
 			<td>{{item[4]}}</td>
-			<td>{{item[6]}}</td>
-			<td style="width: 100%;">{{item[3]}}</td>
+			<td>{{item[5]}}</td>
+			<td style="width: 100%;">{{item[6]}}</td>
 		</tr>
 		{% endfor %}
 		</table>

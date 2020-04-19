@@ -29,7 +29,7 @@ def phishingstatsload():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             emailquery = []
-            for row in cur.execute('select * from phished where business LIKE (?) and method = "E-MAIL" and date != "";', (business,)):## populate tables with user data from same business
+            for row in cur.execute('select department, type, username, template, business, admin, activetime from phishsched where activetime != "" and type = "email" and business = (?);', (business,)):
                 emailquery.append(row[:])
             smsquery = []
             for row in cur.execute('select * from phished where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
