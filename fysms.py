@@ -93,6 +93,10 @@ def smsapiid():
                 try:
                     emailrecip = cur.fetchall()
                     emailrecip = emailrecip[0]
+                    emailrecip = str(emailrecip)
+                    print('fysms emailrecip')
+                    print(emailrecip)
+
                     sendtattle = True
                 except:
                     print('no update made - no admin received')
