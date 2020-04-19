@@ -67,6 +67,8 @@ def smsapiid():
                 return usertoken
                 
     if request.method == 'GET':
+        print('api test')
+        print(request.args.get('id'))
         usertoken = (processtoken())
         email = str(confirm_twoweektoken(usertoken))
         #timestamp = (datetime.now())
@@ -82,7 +84,12 @@ def smsapiid():
                 print(usertoken)
                 print(type(usertoken))
                 cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where type = "sms" and token = (?);', (usertoken,))
-
+                cur.execute('select admin from phishsched where token = (?);', (usertoken,))
+                emailrecip = cur.fetchall()
+                print('emailrecip')
+                print(emailrecip)
+                emailrecip = emailrecip[0]
+                print(emailrecip)
                 #cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where id = (?);', (getid,))
                 #
                 #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
