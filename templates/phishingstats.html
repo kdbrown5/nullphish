@@ -161,6 +161,7 @@ tr:hover:first-child { background-color: transparent; }
 				
 			</tr>
 		{% for item in smsquery %}
+		{{ item.username }}
 		<tr style="text-align:center;" class="border_bottom">
 				<td>{{item[7]}}</td>
 				<td>{{item[10]}}</td>

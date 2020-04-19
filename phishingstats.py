@@ -32,8 +32,12 @@ def phishingstatsload():
             for row in cur.execute('select department, type, username, template, business, admin, activetime from phishsched where activetime != "" and type = "email" and business = (?);', (business,)):
                 emailquery.append(row[:])
             smsquery = []
-            for row in cur.execute('select * from phished where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
-                smsquery.append(row[:])            
+        con.row_factory = sqlite.Row
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from phishsched where activetime != '' and business = (?);', (session['business'],),)
+        smsquery = cur.fetchall()      
+            #for row in cur.execute('select * from phishsched where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
+            #    smsquery.append(row[:])            
         con.close()
         return emailquery, smsquery
         
