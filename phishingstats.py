@@ -57,19 +57,19 @@ def phishingstatsload():
             zscheduleddate = []
             for row in emailquery:
                 for item in row:
-                    zbusiness.append(item[7])
+                    zbusiness.append(str(item[7]))
                     #zdepartment.append(item[])
-                    ztype.append(item[1])
-                    zusername.append(item[2])
-                    ztemplate.append(item[3])
-                    zbitly.append(item[6])
-                    zmailname.append(item[4])
+                    ztype.append(str(item[1]))
+                    zusername.append(str(item[2]))
+                    ztemplate.append(str(item[3]))
+                    zbitly.append(str(item[6]))
+                    zmailname.append(str(item[4]))
                     #zscheduler.append(item[])
                    # zadmin.append(item[])
                     #zscheduleddate.append(item[5])
-                    zsentdate.append(item[10])
+                    zsentdate.append(str(item[10]))
                     #zactivetime.append(item[])
-                    zsubject.append(item[8])
+                    zsubject.append(str(item[8]))
 
             newrow = zip(zbusiness, ztype, zusername, ztemplate, zbitly, zmailname, zsentdate, zsubject)
             for item in newrow:
