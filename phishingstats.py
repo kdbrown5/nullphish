@@ -32,7 +32,10 @@ def phishingstatsload():
             for row in cur.execute('select department, type, username, template, business, admin, activetime from phishsched where activetime != "" and type = "email" and business = (?);', (business,)):
                 emailquery.append(row[:])
             smsquery = []
+        con.close()
+        con = sqlite.connect('db/db1.db')
         con.row_factory = sqlite.Row
+        cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
         cur.execute('select * from phishsched where activetime != "" and business = (?);', (session['business'],),)
         smsquery = cur.fetchall()      
