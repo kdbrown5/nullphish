@@ -78,7 +78,7 @@ def sendtxt():
         phonenumber = request.form.get('phonenumber')
         print(phonenumber)
         if len(phonenumber) == 10:
-            username = request.form.get('username')
+            username = request.form.get('email')
             messagecontent = request.form.get('txtmessage')
             department = request.form.get('department')
             phonenumber = re.sub(r"\D", "", phonenumber)
