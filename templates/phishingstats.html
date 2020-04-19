@@ -120,24 +120,29 @@ tr:hover:first-child { background-color: transparent; }
 		<table class="table table-hover dataframe" style="text-align: center;">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td style="border-radius: 25px 0px 0px 0px;">Department</td>
+				<td style="border-radius: 25px 0px 0px 0px;">Business</td>
+				<td>Department</td>
 				<td>Method</td>
-				<td>User Phished</td>
-				<td>Template used</td>
-				<td>Business</td>
-				<td>Admin Notified</td>
-				<td style="border-radius: 0px 25px 0px 0px;">Date</td>
-				
+				<td>User&nbsp;Phished</td>
+				<td>Template</td>
+				<td>Sender</td>
+				<td>Scheduler</td>
+				<td>Admin&nbsp;Notified</td>
+				<td>Date&nbsp;Sent</td>
+				<td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
 			</tr>
 		{% for item in emailquery %}
 		<tr style="text-align:center;" class="border_bottom">
-				<td>{{item[0]}}</td>
-				<td>{{item[1]}}</td>
-				<td>{{item[2]}}</td>
-				<td>{{item[3]}}</td>
-			<td>{{item[4]}}</td>
-			<td>{{item[5]}}</td>
-			<td style="width: 100%;">{{item[6]}}</td>
+			<td>{{item.business}}</td>
+				<td>{{item.department}}</td>
+				<td>{{item.type}}</td>
+				<td>{{item.username}}</td>
+			<td>{{item.template}}</td>
+			<td>{{item.mailname}}</td>
+			<td>{{item.scheduler}}</td>
+			<td>{{item.admin}}</td>
+			<td>{{ item.datesent }}</td>
+			<td>{{ item.activetime }}</td>
 		</tr>
 		{% endfor %}
 		</table>
@@ -151,9 +156,9 @@ tr:hover:first-child { background-color: transparent; }
 		<table class="table table-hover dataframe" style="text-align:center; width: 100%;">
 			<thead>
 				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td style="border-radius: 25px 0px 0px 0px;">Department</td>
+				<td style="border-radius: 25px 0px 0px 0px;">Business</td>
+				<td>Department</td>
 				<td>Method</td>
-				<td>Business</td>
 				<td>User&nbsp;Phished</td>
 				<td>Phone&nbsp;Number</td>
 				<td>Message</td>
@@ -165,9 +170,9 @@ tr:hover:first-child { background-color: transparent; }
 			</tr>
 		{% for item in smsquery %}
 		<tr style="text-align:center;" class="border_bottom">
+				<td>{{item.business}}</td>
 				<td>{{item.department}}</td>
 				<td>{{item.type}}</td>
-				<td>{{item.business}}</td>
 				<td>{{item.username}}</td>
 				<td>{{item.phonedid}}</td>
 				<td>{{item.message}}</td>
