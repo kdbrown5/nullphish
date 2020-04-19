@@ -59,7 +59,7 @@ def phishingstatsload():
         cur.execute('PRAGMA key = '+dbkey+';')
         cur.execute('select * from phishsched where activetime != "none" and business = (?) and type = "sms";', (session['business'],),)
         smsdict = cur.fetchall()
-       con.close()
+        con.close()
         return smsdict
 
     def dict_factory(cursor, row):
