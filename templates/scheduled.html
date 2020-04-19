@@ -208,8 +208,8 @@
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
                 <td name="department"><input type="hidden" id="{{ dict.department }}" name="department" value="{{ dict.department }}">{{ dict.department }}</td>
                 <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-                <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template | replace('None','-')}}</td>
-                <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname | replace('None','-') }}</td>
+                <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template | replace('','-')}}</td>
+                <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname | replace('','-') }}</td>
                 <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
                 <td name="sceduler"><input type="hidden" id="{{ dict.scheduler }}" name="scheduler" value="{{ dict.scheduler }}">{{ dict.scheduler }}</td>
                 <td name="admin"><input type="hidden" id="{{ dict.admin }}" name="date" value="{{ dict.admin }}">{{ dict.admin }}</td>
