@@ -125,6 +125,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>Method</td>
 				<td>User&nbsp;Phished</td>
 				<td>Template</td>
+				<td>Hyperlink</td>
 				<td>Sender</td>
 				<td>Scheduler</td>
 				<td>Admin&nbsp;Notified</td>
@@ -138,6 +139,7 @@ tr:hover:first-child { background-color: transparent; }
 				<td>{{item.type}}</td>
 				<td>{{item.username}}</td>
 			<td>{{item.template}}</td>
+			<td>{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
 			<td>{{item.mailname}}</td>
 			<td>{{item.scheduler}}</td>
 			<td>{{item.admin}}</td>
