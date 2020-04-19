@@ -81,6 +81,10 @@ def smsapiid():
                 cur.execute('select id from phishsched where type = "sms" and token = (?);', (usertoken,))
                 getid = cur.fetchall()
                 getid = getid[0]
+                print(getid)
+                print(type(getid))
+                getid = str(getid)
+                print(getid)
                 cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where id = (?);', (getid,))
                 #
                 #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
