@@ -69,7 +69,7 @@ def sendtxt():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into phishsched ( type, bitly, sentdate, phonedid, scheduler, username, business, message, admin, department, token, smsconfirmation) values ( "sms", 1, datetime("now", "localtime"), ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], phonedid, username, business, messagecontent, admins, department, token, confirmation))
+            cur.execute('insert into phishsched ( type, bitly, sentdate, scheduler, phonedid, username, business, message, admin, department, token, smsconfirmation) values ( "sms", 1, datetime("now", "localtime"), ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], phonedid, username, business, messagecontent, admins, department, token, confirmation))
         con.close()
 
     businessdata = businesslookup()
