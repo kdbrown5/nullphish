@@ -78,27 +78,44 @@ def apiid():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
-                cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
-                cur.execute('UPDATE phished set template = (?) where token = (?) and username = (?);', (template, usertoken, email,))
-                cur.execute('select business from users where username = (?);', (email,))
-                business = cur.fetchone()[0]
+                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where token = (?) and sentdate < DATETIME("now", "localtime", "+20 seconds");', (usertoken,))
+                cur.execute('select admin from phishsched where token = (?) and (select changes() = 1);', (usertoken,))
+                #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
+                #cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
+                #cur.execute('UPDATE phished set template = (?) where token = (?) and username = (?);', (template, usertoken, email,))
+                #cur.execute('select business from users where username = (?);', (email,))
+                #business = cur.fetchone()[0]
                 #cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))# changing to have business name done in insert
-                cur.execute('select username from users where notify = 1 and business = (?);', (business,))
-                admins = cur.fetchone()[0]
-                cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
-                cur.execute('select department from users where username = (?);', (email,))
-                userdept = cur.fetchone()[0]
-                cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
-                cur.execute('insert into phished (username, business, token, method) select (?), (?), (?), "E-MAIL" where (Select changes() = 0);', (email, business, usertoken))
-                cur.execute('select hit from phished where token = (?);', (usertoken,))
-                hitcount = cur.fetchone()[0]
-                cur.execute('UPDATE phishsched set activetime = (?) where token = (?);', (timestamp, vanillatoken,))
+                #cur.execute('select username from users where notify = 1 and business = (?);', (business,))
+                #admins = cur.fetchone()[0]
+                ###cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
+                #cur.execute('select department from users where username = (?);', (email,))
+                #userdept = cur.fetchone()[0]
+                #cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
+                ##cur.execute('insert into phished (username, business, token, method) select (?), (?), (?), "E-MAIL" where (Select changes() = 0);', (email, business, usertoken))
+                #cur.execute('select hit from phished where token = (?);', (usertoken,))
+                #hitcount = cur.fetchone()[0]
+                #cur.execute('UPDATE phishsched set activetime = (?) where token = (?);', (timestamp, vanillatoken,))
+                try:
+                    emailrecip = cur.fetchall()
+                    emailrecip = emailrecip[0]
+                    emailrecip = str(emailrecip)
+                    emailrecip = emailrecip.replace("('", '')
+                    emailrecip = emailrecip.replace("',)", '')
+                    print('fysms emailrecip')
+                    print(emailrecip)
+
+                    sendtattle = True
+                except:
+                    print('no update made - no admin received')
+                    sendtattle = False
             con.close()
-            hitcount = int(hitcount)
-            if hitcount > 0:
-                emailrecip = admins
+            if sendtattle == True:
                 tattletale(emailrecip, email)
+            #hitcount = int(hitcount)
+            #if hitcount > 0:
+                #emailrecip = admins
+                #tattletale(emailrecip, email)
                 return redirect('https://google.com')
             else:
                 return redirect('https://google.com')
