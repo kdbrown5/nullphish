@@ -37,7 +37,25 @@ def phishingstatsload():
             #    smsquery.append(row[:])            
         con.close()
         return emailquery, smsquery
+
+    def emaillookup():
+        con = sqlite.connect('db/db1.db')
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
+        con = sqlite.connect('db/db1.db')
+        con.row_factory = sqlite.Row
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from phishsched where activetime != "" and business = (?) and type = "email";', (session['business'],),)
+        for r in cur.fetchall():
+            print(dict(r))
+            #for row in cur.execute('select * from phishsched where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
+            #    smsquery.append(row[:])            
+        con.close()
+        return emailquery
         
+
     def exportemail(newreport):
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
@@ -50,6 +68,7 @@ def phishingstatsload():
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(('Department', 'Method', 'User_Phished', 'Phone_Number', 'Business', 'Admin_Notified', 'Date'))
+            emaillookup()
             for item in smsquery:
                 print(item)
                 writer.writerow((item[7], item[10], item[1], item[12], item[4], item[6], item[3]))
