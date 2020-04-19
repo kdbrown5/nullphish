@@ -94,6 +94,8 @@ def smsapiid():
                     emailrecip = cur.fetchall()
                     emailrecip = emailrecip[0]
                     emailrecip = str(emailrecip)
+                    emailrecip = emailrecip.replace("('", '')
+                    emailrecip = emailrecip.replace("',)", '')
                     print('fysms emailrecip')
                     print(emailrecip)
 
