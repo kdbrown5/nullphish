@@ -49,25 +49,52 @@ def sendtxt():
         str =  ''.join(tup) 
         return str
 
+    def lookupadmin():
+        business = str(session['business'])
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('select username from users where notify = 1 and business = (?);', (business,))
+            admins = cur.fetchone()
+            admins = admins[0]
+        con.close
+        return admins
+
+    def scheduledb(username, phonedid, messagecontent, department, token, confirmation):
+        print('sched')
+        admins = lookupadmin()
+        business = session['business']
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('insert into phishsched ( type, bitly, sentdate, scheduler, username, business, message, admin, department, token, smsconfirmation) values ( "sms", 1, datetime("now", "localtime"), ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, business, messagecontent, admins, dept, token, confirmation))
+        con.close()
+
     businessdata = businesslookup()
 
     if request.method == 'POST':
         phonenumber = request.form.get('phonenumber')
         print(phonenumber)
         if len(phonenumber) == 10:
+            username = request.form.get('username')
             messagecontent = request.form.get('txtmessage')
+            department = request.form.get('department')
             phonenumber = re.sub(r"\D", "", phonenumber)
             phonedid = phonenumber
             phonenumber = '1'+phonenumber
             phonenumber = int(phonenumber)
             receiveremail = request.form.get('email')
             newtoken = generate_confirmation_token(receiveremail)
-            link = 'https://app.nullphish.com/fysms?id='+newtoken+'&did='+(str(phonedid))
+            link = 'https://app.nullphish.com/fysms?id='+newtoken# +'&did='+(str(phonedid))
             link = linkshorten(link)
             link = link[0]
             messagecontent = messagecontent+' - '+link
             confirmation = sendsmspost(phonenumber, messagecontent)
+            scheduledb(username, phonenumber, messagecontent, department, newtoken, confirmation)
             flash('Sent! - confirmation '+confirmation, 'category2')
+
 
             #receiveremail = request.form.get('email')
             #newtoken = generate_confirmation_token(receiveremail)

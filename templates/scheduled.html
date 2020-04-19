@@ -154,6 +154,7 @@
         <thead>
           <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
           <td style="border-radius: 25px 0px 0px 0px;">Department</td>
+          <td>Type</td>
           <td>Username</td>
           <td>Template</td>
           <td>Sender</td>
@@ -167,6 +168,7 @@
         {% for pending in lastsent %}
       <tr style="text-align:center;" class="border_bottom">
         <td name="dept">{{ pending[1] }}</td>
+        <td name="type">{{ pending[9] }} | replace('email','E-Mail') | replace('sms','SMS')</td>
             <td name="username">{{ pending[2] }}</td>
             <td name="template">{{ pending[3]}}</td>
             <td name="sender">{{ pending[4]}}</td>

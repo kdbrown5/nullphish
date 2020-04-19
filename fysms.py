@@ -69,43 +69,47 @@ def smsapiid():
     if request.method == 'GET':
         usertoken = (processtoken())
         email = str(confirm_twoweektoken(usertoken))
-        timestamp = (datetime.now())
-        timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
-        timestamp = timestamp.replace(' ', '-')
+        #timestamp = (datetime.now())
+        #timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+        #timestamp = timestamp.replace(' ', '-')
         if '@' in email:
-            phonedid = request.args.get('did')
+            #phonedid = request.args.get('did')
             con = sqlite.connect('db/db1.db')
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
-                cur.execute('UPDATE phished set phonedid = (?) where token = (?);', (phonedid, usertoken,))
-                cur.execute('select hit from phished where token = (?);', (usertoken,))
-                try:
-                    hitcount = cur.fetchone()[0]
-                    hitcount = int(hitcount)
-                except:
-                    hitcount = 0
-                if hitcount > 1:
-                    cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
-                    cur.execute('select business from users where username = (?);', (email,))
-                    business = cur.fetchone()[0]
-                    cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
-                    cur.execute('select username from users where notify = 1 and business = (?);', (business,))
-                    admins = cur.fetchone()[0]
-                    cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
-                    cur.execute('select department from users where username = (?);', (email,))
-                    userdept = cur.fetchone()[0]
-                    cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
-                if hitcount == 0:
-                    cur.execute('insert into phished (username, token, method) values ((?), (?), "SMS");', (email, usertoken))
+                cur.execute('select id from phishsched where type = "sms" and token = (?);', (usertoken,))
+                getid = cur.fetchall()
+                getid = getid[0]
+                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where id = (?);', (getid,))
+                #
+                #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
+                #cur.execute('UPDATE phished set phonedid = (?) where token = (?);', (phonedid, usertoken,))
+                #cur.execute('select hit from phished where token = (?);', (usertoken,))
+                #try:
+                #    hitcount = cur.fetchone()[0]
+                #    hitcount = int(hitcount)
+                #except:
+                #    hitcount = 0
+                #if hitcount > 1:
+                #    cur.execute('UPDATE phished set date = (?) where token = (?) and username = (?);', (timestamp, usertoken, email,))
+                #    cur.execute('select business from users where username = (?);', (email,))
+                #    business = cur.fetchone()[0]
+                #    cur.execute('update phished set business = (?) where date = (?);', (business, timestamp,))
+                #    cur.execute('select username from users where notify = 1 and business = (?);', (business,))
+                #    admins = cur.fetchone()[0]
+                #    cur.execute('update phished set admin = (?) where date = (?);', (admins, timestamp,))
+                #    cur.execute('select department from users where username = (?);', (email,))
+                #    userdept = cur.fetchone()[0]
+                #    cur.execute('update phished set department = (?) where date = (?);', (userdept, timestamp,))
+                #if hitcount == 0:
+                #    cur.execute('insert into phished (username, token, method) values ((?), (?), "SMS");', (email, usertoken))
             con.close()
-            if hitcount > 1:
-                emailrecip = admins
-                tattletale(emailrecip, email)
-                return redirect('https://google.com')
-            else:
-                return redirect('https://google.com')
+            #if hitcount > 1:
+            #    emailrecip = admins
+            tattletale(emailrecip, email)
+            return redirect('https://google.com')
+
         else:
             return redirect('https://google.com')
 

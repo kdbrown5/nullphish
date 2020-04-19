@@ -122,7 +122,7 @@
     {% for item in businessdata %}
     <form method="POST">
 	<tr style="text-align:center;" class="border_bottom">
-			<td width="5%">{{item[8]}}</td>
+			<td width="5%" name="department"><input type="hidden" name="department" value="{{item[8]}}">{{item[8]}}</td>
 		<td name="firstname"><input type="hidden" name="firstname" value="{{item[3]}}">{{item[3]}}</td>
 		<td name="lastname"><input type="hidden" name="lastname" value="{{item[4]}}">{{item[4]}}</td>
         <td name="email"><input type="hidden" name="email" value="{{item[1]}}">{{item[1]}}</td>
