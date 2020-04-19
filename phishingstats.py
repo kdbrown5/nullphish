@@ -43,8 +43,16 @@ def phishingstatsload():
             writer = csv.writer(f)
             writer.writerow(('Business','Department', 'Method', 'User_Phished', 'Template_Used', 'Hyperlink', 'Sender_Email', 'Scheduler', 'Admin_Notified', 'Date_Sent', 'Date_Read'))
             for row in emailquery:
+                try:
+                    print(row.username)
+                except:
+                    print(' no row username')
                 for item in row:
                     print(item)
+                    try:
+                        print(item.username)
+                    except:
+                        print(' no item username')
                 #writer.writerow((item.business, item.department, item.type, item.username, item.template, item.bitly, item.mailname, item.scheduler, item.admin, item.sentdate, item.activetime))
 
     def exportsms(newreport):
