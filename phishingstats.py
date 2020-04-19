@@ -56,6 +56,7 @@ def phishingstatsload():
                 writer.writerow((item[7], item[10], item[1], item[12], item[4], item[6], item[3]))
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
+    print(smsquery)
     print(emailquery)
     print(type(emailquery))
 
