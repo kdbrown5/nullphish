@@ -161,15 +161,14 @@ tr:hover:first-child { background-color: transparent; }
 				
 			</tr>
 		{% for item in smsquery %}
-		{{ item.username }}
 		<tr style="text-align:center;" class="border_bottom">
-				<td>{{item[7]}}</td>
-				<td>{{item[10]}}</td>
-				<td>{{item[1]}}</td>
-				<td>{{item[12]}}</td>
-			<td>{{item[4]}}</td>
-			<td>{{item[6]}}</td>
-			<td style="width: fit-content">{{item[3]}}</td>
+				<td>{{item.department}}</td>
+				<td>{{item.type}}</td>
+				<td>{{item.username}}</td>
+				<td>{{item.phonedid}}</td>
+			<td>{{item.business}</td>
+			<td>{{item.admin}}</td>
+			<td style="width: fit-content">{{item.activetime}}</td>
 		</tr>
 		{% endfor %}
 		</table>
