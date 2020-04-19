@@ -44,19 +44,26 @@ def phishingstatsload():
         business = business.replace('[', '')
         business = business.replace(']', '')
         con = sqlite.connect('db/db1.db')
-        con.row_factory = sqlite.Row
+        con.row_factory = dict_factory
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
         cur.execute('select * from phishsched where activetime != "" and business = (?) and type = "email";', (session['business'],),)
         emaildict = cur.fetchall()
-        for r in emaildict:
-            r = (dict(r))
             #for row in cur.execute('select * from phishsched where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
             #    smsquery.append(row[:])            
         con.close()
+        print('emaildict')
         print(emaildict)
+        print('emaildict i ')
+        for i in emaildict:
+            print(i)
         return emaildict
-        
+
+    def dict_factory(cursor, row):
+        d = {}
+        for idx, col in enumerate(cursor.description):
+            d[col[0]] = row[idx]
+        return d       
 
     def exportemail(newreport):
         with open(newreport, 'w', newline='') as f:
