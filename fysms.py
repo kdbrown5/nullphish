@@ -80,7 +80,6 @@ def smsapiid():
                 cur.execute('PRAGMA key = '+dbkey+';')
                 cur.execute('select id from phishsched where type = "sms" and token = (?);', (usertoken,))
                 getid = cur.fetchall()
-                getid = getid[0]
                 print(getid)
                 print(type(getid))
                 getid = str(getid)
