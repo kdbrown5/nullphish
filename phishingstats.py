@@ -66,7 +66,7 @@ def phishingstatsload():
             writer.writerow(('Business','Department', 'Method', 'User_Phished', 'Template_Used', 'Hyperlink', 'Sender_Email', 'Scheduler', 'Admin_Notified', 'Date_Sent', 'Date_Read'))
             emailstats = emaillookup()
             for item in emailstats:
-                writer.writerow(item.get('business'), item.get('department'), item.get('username'))
+                writer.writerow((item.get('business'), item.get('department'), item.get('username')))
                 #writer.writerow((item.business, item.department, item.type, item.username, item.template, item.bitly, item.mailname, item.scheduler, item.admin, item.sentdate, item.activetime))
 
     def exportsms(newreport):
