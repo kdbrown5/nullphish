@@ -78,13 +78,12 @@ def smsapiid():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('select id from phishsched where type = "sms" and token = (?);', (usertoken,))
-                getid = cur.fetchall()
-                print(getid)
-                print(type(getid))
-                getid = str(getid)
-                print(getid)
-                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where id = (?);', (getid,))
+                print('usertoken')
+                print(usertoken)
+                print(type(usertoken))
+                cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where type = "sms" and token = (?);', (usertoken,))
+
+                #cur.execute('update phishsched set activetime = DATETIME("now", "localtime") where id = (?);', (getid,))
                 #
                 #cur.execute('UPDATE phished set hit = hit +1 where token = (?) and username = (?);', (usertoken, email,))
                 #cur.execute('UPDATE phished set phonedid = (?) where token = (?);', (phonedid, usertoken,))
