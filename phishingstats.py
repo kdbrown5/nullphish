@@ -52,11 +52,6 @@ def phishingstatsload():
             #for row in cur.execute('select * from phishsched where business LIKE (?) and method = "SMS";', (business,)):## populate tables with user data from same business
             #    smsquery.append(row[:])            
         con.close()
-        print('emaildict')
-        print(emaildict)
-        print('emaildict i ')
-        for i in emaildict:
-            print(i)
         return emaildict
 
     def dict_factory(cursor, row):
@@ -70,10 +65,9 @@ def phishingstatsload():
             writer = csv.writer(f)
             writer.writerow(('Business','Department', 'Method', 'User_Phished', 'Template_Used', 'Hyperlink', 'Sender_Email', 'Scheduler', 'Admin_Notified', 'Date_Sent', 'Date_Read'))
             emailstats = emaillookup()
-            for r in emailstats:
-                for x in r:
-                    print(x)
-            #writer.writerow((item.business, item.department, item.type, item.username, item.template, item.bitly, item.mailname, item.scheduler, item.admin, item.sentdate, item.activetime))
+            for item in emailstats:
+                #writer.writerow(item.business, item.department, item.)
+                writer.writerow((item.business, item.department, item.type, item.username, item.template, item.bitly, item.mailname, item.scheduler, item.admin, item.sentdate, item.activetime))
 
     def exportsms(newreport):
         with open(newreport, 'w', newline='') as f:
@@ -84,9 +78,6 @@ def phishingstatsload():
                 #writer.writerow((item[7], item[10], item[1], item[12], item[4], item[6], item[3]))
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
-    print(smsquery)
-    print(emailquery)
-    print(type(emailquery))
 
     if request.method == "POST":
         if request.form.get('report') == "E-Mail Report":
