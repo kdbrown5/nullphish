@@ -42,18 +42,39 @@ def phishingstatsload():
         with open(newreport, 'w', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(('Business','Department', 'Method', 'User_Phished', 'Template_Used', 'Hyperlink', 'Sender_Email', 'Scheduler', 'Admin_Notified', 'Date_Sent', 'Date_Read'))
+            zbusiness = []
+            zdepartment = []
+            ztype = []
+            zusername = []
+            ztemplate = []
+            zbitly = []
+            zmailname = []
+            zscheduler = []
+            zadmin = []
+            zsentdate = []
+            zactivetime = []
+            zsubject = []
+            zscheduleddate = []
             for row in emailquery:
-                try:
-                    print(row.username)
-                except:
-                    print(' no row username')
                 for item in row:
-                    print(item)
-                    try:
-                        print(item.username)
-                    except:
-                        print(' no item username')
-                #writer.writerow((item.business, item.department, item.type, item.username, item.template, item.bitly, item.mailname, item.scheduler, item.admin, item.sentdate, item.activetime))
+                    zbusiness.append(item[7])
+                    #zdepartment.append(item[])
+                    ztype.append(item[1])
+                    zusername.append(item[2])
+                    ztemplate.append(item[3])
+                    zbitly.append(item[6])
+                    zmailname.append(item[4])
+                    #zscheduler.append(item[])
+                   # zadmin.append(item[])
+                    #zscheduleddate.append(item[5])
+                    zsentdate.append(item[10])
+                    #zactivetime.append(item[])
+                    zsubject.append(item[8])
+
+            newrow = zip(zbusiness, ztype, zusername, ztemplate, zbitly, zmailname, zsentdate, zsubject)
+            for item in newrow:
+                writer.writerow((item[0], item[1], item[2], item[3], item[4], item[5], item[6], item[7]))
+            #writer.writerow((item.business, item.department, item.type, item.username, item.template, item.bitly, item.mailname, item.scheduler, item.admin, item.sentdate, item.activetime))
 
     def exportsms(newreport):
         with open(newreport, 'w', newline='') as f:
