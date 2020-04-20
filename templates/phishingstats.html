@@ -83,37 +83,37 @@ tr:hover:first-child { background-color: transparent; }
 		
 				{% if emailquery %}
 				<br><br>
-				<div style="width: 95%">
+				<div style="width: 100%">
 	<h1><u><b>Users Phished via E-Mail</b></u></h1>
 <br>
 	<table class="table table-hover dataframe" style="text-align: center;">
 		<thead>
 			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-			<td style="width: 10%; border-radius: 25px 0px 0px 0px;">Business</td>
-			<td style="width: 10%;">Department</td>
-			<td style="width: 10%;">Method</td>
-			<td style="width: 10%;">User&nbsp;Phished</td>
-			<td style="width: 10%;">Template</td>
-			<td style="width: 10%;">Hyperlink</td>
-			<td style="width: 10%;">Sender</td>
-			<td style="width: 10%;">Scheduler</td>
-			<td style="width: 10%;">Admin&nbsp;Notified</td>
-			<td style="width: 10%;">Date&nbsp;Sent</td>
-			<td style="width: 20%; border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
+			<td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Business</td>
+			<td style="width: fit-content;">Department</td>
+			<td style="width: fit-content;">Method</td>
+			<td style="width: fit-content;">User&nbsp;Phished</td>
+			<td style="width: fit-content;">Template</td>
+			<td style="width: fit-content;">Hyperlink</td>
+			<td style="width: fit-content;">Sender</td>
+			<td style="width: fit-content;">Scheduler</td>
+			<td style="width: fit-content;">Admin&nbsp;Notified</td>
+			<td style="width: fit-content;">Date&nbsp;Sent</td>
+			<td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
 		</tr>
 	{% for item in emailquery %}
 	<tr style="text-align:center;" class="border_bottom">
-		<td style="width: 10%;">{{item.business}}</td>
-			<td style="width: 10%;">{{item.department}}</td>
-			<td style="width: 10%;">{{item.type | replace('email','E-Mail')}}</td>
-			<td style="width: 10%;">{{item.username}}</td>
-		<td style="width: 10%;">{{item.template}}</td>
-		<td style="width: 10%;">{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
-		<td style="width: 10%;">{{item.mailname}}</td>
-		<td style="width: 10%;">{{item.scheduler}}</td>
-		<td style="width: 10%;">{{item.admin}}</td>
-		<td style="width: 10%;">{{ item.sentdate }}</td>
-		<td style="width: 20%;">{{ item.activetime }}</td>
+		<td style="width: fit-content;">{{item.business}}</td>
+			<td style="width: fit-content;">{{item.department}}</td>
+			<td style="width: fit-content;">{{item.type | replace('email','E-Mail')}}</td>
+			<td style="width: fit-content;">{{item.username}}</td>
+		<td style="width: fit-content;">{{item.template}}</td>
+		<td style="width: fit-content;">{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
+		<td style="width: fit-content;">{{item.mailname}}</td>
+		<td style="width: fit-content;">{{item.scheduler}}</td>
+		<td style="width: fit-content;">{{item.admin}}</td>
+		<td style="width: fit-content;">{{ item.sentdate }}</td>
+		<td style="width: fit-content;">{{ item.activetime }}</td>
 	</tr>
 	{% endfor %}
 	</table>
