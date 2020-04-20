@@ -74,7 +74,7 @@ def addnewuser():
             imported = []
             for row in csvreader:
                 imported.append(row)
-            if imported[0][0] == 'Username' or 'username':
+            if imported[0][0] == 'Username' or 'username' or 'Username(email-address)':
                 del imported[0]
             convertimport = []
             for row in imported:
