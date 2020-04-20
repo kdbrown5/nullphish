@@ -67,6 +67,7 @@
       margin-bottom: 0px;
       font-size: 1em;
       color: black;
+      width: fit-content;
     }
     input.largerCheckbox { 
             transform : scale(2.2); 
@@ -154,28 +155,28 @@
         <thead>
           <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
           <td style="border-radius: 25px 0px 0px 0px;">Department</td>
-          <td>Type</td>
-          <td>Username</td>
-          <td>Template</td>
-          <td>Sender</td>
-          <td>Hyperlink</td>
-          <td>Scheduler</td>
-          <td>Notify</td>
+          <td style="width: fit-content;" >Type</td>
+          <td style="width: fit-content;">Username</td>
+          <td style="width: fit-content;">Template</td>
+          <td style="width: fit-content;">Sender</td>
+          <td style="width: fit-content;">Hyperlink</td>
+          <td style="width: fit-content;">Scheduler</td>
+          <td style="width: fit-content;">Notify</td>
           <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
             
         </tr>
 
         {% for pending in lastsent %}
       <tr style="text-align:center;" class="border_bottom">
-        <td name="dept">{{ pending[1] }}</td>
-        <td name="type">{{ pending[9] | replace('email','E-Mail') | replace('sms','SMS')}}</td>
-            <td name="username">{{ pending[2] }}</td>
-            <td name="template">{{ pending[3]  if pending[3] is not none else '-'}}</td>
-            <td name="sender">{{ pending[4] | replace('None','-')}}</td>
-            <td name="bitly">{{ pending[5] | replace('1','Short') | replace('0','Long')}}</td>
-            <td name="scheduler">{{ pending[8]}}</td>
-            <td name="admin">{{ pending[6]}}</td>
-            <td name="datesent">{{ pending[7]}}</td>
+        <td style="width: fit-content;" name="dept">{{ pending[1] }}</td>
+        <td style="width: fit-content;" name="type">{{ pending[9] | replace('email','E-Mail') | replace('sms','SMS')}}</td>
+            <td style="width: fit-content;" name="username">{{ pending[2] }}</td>
+            <td style="width: fit-content;" name="template">{{ pending[3]  if pending[3] is not none else '-'}}</td>
+            <td style="width: fit-content;" name="sender">{{ pending[4] | replace('None','-')}}</td>
+            <td style="width: fit-content;" name="bitly">{{ pending[5] | replace('1','Short') | replace('0','Long')}}</td>
+            <td style="width: fit-content;" name="scheduler">{{ pending[8]}}</td>
+            <td style="width: fit-content;" name="admin">{{ pending[6]}}</td>
+            <td style="width: fit-content;" name="datesent">{{ pending[7]}}</td>
             {% endfor %}
       </tr>
       </table>
@@ -188,37 +189,37 @@
           <table class="table table-hover dataframe">
             <thead>
               <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-              <td style="border-radius: 25px 0px 0px 0px;">Select</td>
-              <td hidden>id</td>
-              <td>Department</td>
-                    <td>Email Address</td>
-                    <td>Template</td>
-                    <td>Mail Server</td>
-                    <td>Hyperlink</td>
-                    <td>Scheduler</td>
-                    <td>Notify</td>
-                    <td style="border-radius: 0px 25px 0px 0px;">Date Scheduled</td>
+              <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Select</td>
+              <td style="width: fit-content;" hidden>id</td>
+              <td style="width: fit-content;">Department</td>
+                    <td style="width: fit-content;">Username</td>
+                    <td style="width: fit-content;">Template</td>
+                    <td style="width: fit-content;">Mail Server</td>
+                    <td style="width: fit-content;">Hyperlink</td>
+                    <td style="width: fit-content;">Scheduler</td>
+                    <td style="width: fit-content;">Notify</td>
+                    <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date Scheduled</td>
                 
             </tr>
  
             {% for dict in busdict %}
             <form method="POST">
           <tr style="text-align:center;" class="border_bottom">
-            <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
+            <td style="width: fit-content;"><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
-                <td name="department"><input type="hidden" id="{{ dict.department }}" name="department" value="{{ dict.department }}">{{ dict.department }}</td>
-                <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-                <td name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
-                <td name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
-                <td name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
-                <td name="sceduler"><input type="hidden" id="{{ dict.scheduler }}" name="scheduler" value="{{ dict.scheduler }}">{{ dict.scheduler }}</td>
-                <td name="admin"><input type="hidden" id="{{ dict.admin }}" name="date" value="{{ dict.admin }}">{{ dict.admin }}</td>
-                <td name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
-                <td name="id" type="hidden" hidden><input type="hidden" id="{{ dict.id }}" name="id" value="{{ dict.id }}" hidden></td>
+                <td style="width: fit-content;" name="department"><input type="hidden" id="{{ dict.department }}" name="department" value="{{ dict.department }}">{{ dict.department }}</td>
+                <td style="width: fit-content;" name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
+                <td style="width: fit-content;" name="template"><input type="hidden" id="{{ dict.template }}" name="template" value="{{ dict.template }}">{{ dict.template }}</td>
+                <td style="width: fit-content;" name="mailname"><input type="hidden" id="{{ dict.template }}" name="mailname" value="{{ dict.mailname }}">{{ dict.mailname }}</td>
+                <td style="width: fit-content;" name="bitly"><input type="hidden" id="{{ dict.bitly }}" name="bitly" value="{{ dict.bitly }}">{{ dict.bitly | replace("1", "Short") | replace("0", "Long") }}</td>
+                <td style="width: fit-content;" name="sceduler"><input type="hidden" id="{{ dict.scheduler }}" name="scheduler" value="{{ dict.scheduler }}">{{ dict.scheduler }}</td>
+                <td style="width: fit-content;" name="admin"><input type="hidden" id="{{ dict.admin }}" name="date" value="{{ dict.admin }}">{{ dict.admin }}</td>
+                <td style="width: fit-content;" name="date"><input type="hidden" id="{{ dict.date }}" name="date" value="{{ dict.date }}">{{ dict.date }}</td>
+                <td style="width: fit-content;" name="id" type="hidden" hidden><input type="hidden" id="{{ dict.id }}" name="id" value="{{ dict.id }}" hidden></td>
                 {% endfor %}
           </tr>
           </table>
-          <button style="width: 50%" type="submit" class="btn button btn-primary">Remove from schedule</button>
+          <button style="width: fit-content;" type="submit" class="btn button btn-primary">Remove from schedule</button>
     </form>
 
     <div id="confirmoverlay">
