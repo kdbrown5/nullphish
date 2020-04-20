@@ -26,7 +26,7 @@
       }
       .input-element{
         font-size: 30px;
-        width: 400px;
+
       }
       input[type="text"] { 
         text-align: center;
@@ -39,6 +39,8 @@
         border: 1px solid rgb(117, 117, 117);
         box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
       }
+
+      
       .contentcontainer h1{
         font-size: calc(24px + 0.5vw);
         max-height: 40px;
@@ -48,19 +50,20 @@
         grid-row-start: 1;
         grid-row-end: 2;
       }
-      table.dataframe, .dataframe th, .dataframe td {
-        border: line;
-        border-bottom: 1px solid #49A355;
-        border-top: 1px solid #49A355;
-        border-collapse: collapse;
-        border-left: 1px solid #49A355;
-        border-right: 1px solid #49A355;
-        text-align: center;
-        padding: .8%;
-        margin-bottom: 0px;
-        font-size: 1em;
-        color: #49A355;
-      }
+      .table, table.dataframe, .dataframe th, .dataframe td {
+      border: line;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+      border-collapse: collapse;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+      text-align: center;
+      padding: .8%;
+      margin-bottom: 0px;
+      font-size: 1em;
+      color: black;
+      width: 95%;
+    }
       input.largerCheckbox { 
         transform : scale(2.2); 
         color: black;
@@ -75,8 +78,7 @@
         font-family: sans-serif;
         font-weight: 700;
         line-height: 1.0;
-        width: 100%;
-        max-width: 100%;
+
         box-sizing: border-box;
         margin: 0;
         color: #444;
@@ -104,14 +106,15 @@
       .select-css option {
         font-weight:normal;
       }
-      tr:nth-child(odd)		{ background-color: rgba(0,0,0,0.75); }
-      tr:nth-child(even)	{ background-color:rgba(0,0,0,.25); }
-      tr:first-child { background-color: transparent;}
-      tr:hover:first-child { background-color: transparent; }
-      tr:hover            { background-color: #E0E0E0; color: #0D1126;}
-      tr.border_bottom td {
-        border-bottom:1pt solid #0D1126;
-      }
+      tr:nth-child(odd)		{ background-color: lightgrey; }
+    tr:nth-child(even)	{ background-color:darkgrey; }
+    tr:first-child { background-color: transparent;}
+    tr:hover:first-child { background-color: transparent; }
+    tr:hover            { background-color: #d5e9f9;}
+    tr.border_bottom td {
+      border-bottom:1pt solid black;
+    }
+      
     </style>
   </head>
   <body id="particles-js" style="height:auto; min-height:100%">
@@ -139,27 +142,27 @@
         <form method="POST">
           <table class="table table-hover dataframe">
             <thead>
-            <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-              <td style="border-radius: 25px 0px 0px 0px;">Select</td>
-              <td>Department</td>
-              <td>First</td>
-              <td>Last</td>
-              <td>Email Address</td>
-              <td>Template</td>
-              <td>Mail Server</td>
-              <td>Hyperlinks</td>
-              <td style="border-radius: 0px 25px 0px 0px;">Date to Send</td>
+            <tr style="background-color: #97c8f0; text-align:center;" class="border_bottom" >
+              <td style="width:fit-content; border-radius: 25px 0px 0px 0px;">Select</td>
+              <td style="width: fit-content;">Department</td>
+              <td style="width: fit-content;">First</td>
+              <td style="width: fit-content;">Last</td>
+              <td style="width: fit-content;">Email Address</td>
+              <td style="width: fit-content;">Template</td>
+              <td style="width: fit-content;">Mail Server</td>
+              <td style="width: fit-content;">Hyperlinks</td>
+              <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date to Send</td>
             </tr>
             {% for dict in busdict %}
             <form method="POST">
             <tr style="text-align:center;" class="border_bottom">
-              <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
+              <td style="width: fit-content;"><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
               <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
-              <td name="dept"><input type="hidden" id="{{ dict.id }}" name="dept" value="{{ dict.department }}">{{ dict.department }}</td>
-              <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
-              <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
-              <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-              <td><select name="templates" class="form-control select-css" id="templates">
+              <td style="width: fit-content;" name="dept"><input type="hidden" id="{{ dict.id }}" name="dept" value="{{ dict.department }}">{{ dict.department }}</td>
+              <td style="width: fit-content;" name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
+              <td style="width: fit-content;" name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
+              <td style="width: fit-content;" name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
+              <td style="width: fit-content;"><select name="templates" class="form-control select-css" id="templates">
       
               <option value="{{ row }}">Templates</option>
               {% for row in availtemplates %}
@@ -176,12 +179,12 @@
               </select>
               </td>
       
-              <td><select name="bitly" class="form-control select-css" id="bitly">                  
+              <td style="width: fit-content;"><select name="bitly" class="form-control select-css" id="bitly">                  
               <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
               <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
               </select>
               </td>
-              <td>
+              <td style="width: fit-content;">
               <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly>
               <script>
               $(function () {
@@ -198,7 +201,7 @@
               {% endfor %}
             </tr>
           </table>
-          <button style="width: 50%" type="submit" class="btn button btn-primary">Schedule Phishing</button>
+          <button style="width: fit-content;" type="submit" class="btn button btn-primary">Schedule Phishing</button>
         </form>
       </div>
       <div class="ex2">
