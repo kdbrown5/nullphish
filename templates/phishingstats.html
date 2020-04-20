@@ -1,5 +1,6 @@
 <!--   NOTE: This document is here as a template/placeholder for future pages      -->
 <!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!--      Please remove all generic/instructional comments before publishing!      -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
-    <title>Phishing Stats</title>
+    <title>NullPhish: Login to Your Account</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
@@ -19,30 +20,9 @@
         margin: 0px;
         position: absolute;
       }
-      .input-element{
-        font-size: 30px;
-        width: 400px;
+	  .contentcontainer{
+        flex-direction: column;
       }
-      .contentcontainer{
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-        z-index: 999;
-		padding-bottom: 25%;
-		overflow:visible ;
-
-      }	
-      .contentcontainer h1{
-        font-size: calc(24px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-		
-      }
-
 table.dataframe, .dataframe th, .dataframe td {
   border: line;
   border-bottom: 1px solid black;
@@ -71,127 +51,124 @@ tr:nth-child(even)	{ background-color: grey; }
 tr:first-child { background-color: transparent;}
 tr:hover            { background-color: lightskyblue;}
 tr:hover:first-child { background-color: transparent; }
-
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <div id="particles-js"></div>
-    <nav>
-      <div id="dropdown">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
-    <div class="contentcontainer">
-		<center> 
-	  <div><h1>Phishing Stats</h1></div>
-	
-		<h2 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
-			{% if messages %}
-			  {% for message in messages %}
-			{{ message }}
-			  {% endfor %}
-			{% endif %}
-			{% endwith %}</h1>
-	
-			<form method="POST">
-				<select style="font-size:1.1em; text-align: center; width: 40%;" name= 'report' class="form-control" id="report">
-					<option style="text-align: center;">Select to download a report</option>
-							<option style="text-align: center;" id="E-MAIL" name="E-MAIL">E-Mail Report</option>
-							<option id="SMS" name="SMS">SMS Report</option>
-						</select>
-						<br>
-						<button style="width: 40%;" name="submit" type="submit" class="btn btn-primary btn-block">Download report</button>
-			</form>
-			
-					{% if emailquery %}
-					<br><br>
-					<div style="width: 95%">
-		<h1><u><b>Users Phished via E-Mail</b></u></h1>
-	<br>
-		<table class="table table-hover dataframe" style="text-align: center;">
-			<thead>
-				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td style="border-radius: 25px 0px 0px 0px;">Business</td>
-				<td>Department</td>
-				<td>Method</td>
-				<td>User&nbsp;Phished</td>
-				<td>Template</td>
-				<td>Hyperlink</td>
-				<td>Sender</td>
-				<td>Scheduler</td>
-				<td>Admin&nbsp;Notified</td>
-				<td>Date&nbsp;Sent</td>
-				<td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
-			</tr>
-		{% for item in emailquery %}
-		<tr style="text-align:center;" class="border_bottom">
-			<td>{{item.business}}</td>
-				<td>{{item.department}}</td>
-				<td>{{item.type | replace('email','E-Mail')}}</td>
-				<td>{{item.username}}</td>
-			<td>{{item.template}}</td>
-			<td>{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
-			<td>{{item.mailname}}</td>
-			<td>{{item.scheduler}}</td>
-			<td>{{item.admin}}</td>
-			<td>{{ item.sentdate }}</td>
-			<td>{{ item.activetime }}</td>
-		</tr>
-		{% endfor %}
-		</table>
-		{% endif %}
-		
-	
-		{% if smsquery %}
-		<br><br>
-		<h1><u><b>Users Phished via SMS</b></u></h1>
-	<br>
-		<table class="table table-hover dataframe" style="text-align:center; width: 100%;">
-			<thead>
-				<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-				<td style="border-radius: 25px 0px 0px 0px;">Business</td>
-				<td>Department</td>
-				<td>Method</td>
-				<td>User&nbsp;Phished</td>
-				<td>Phone&nbsp;Number</td>
-				<td>Message</td>
-				<td>Scheduler</td>
-				<td>Admin&nbsp;Notified</td>
-				<td>Date&nbsp;Sent</td>
-				<td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
-				
-			</tr>
-		{% for item in smsquery %}
-		<tr style="text-align:center;" class="border_bottom">
-				<td>{{item.business}}</td>
-				<td>{{item.department}}</td>
-				<td>{{item.type |replace('sms','SMS')}}</td>
-				<td>{{item.username}}</td>
-				<td>{{item.phonedid}}</td>
-				<td>{{item.message}}</td>
-			<td>{{item.scheduler}}</td>
-			<td>{{item.admin}}</td>
-			<td>{{item.sentdate}}</td>
-			<td style="width: fit-content">{{item.activetime}}</td>
-		</tr>
-		{% endfor %}
-		</table>
-		{% endif %}
-		<div style="padding-bottom: 20%"></div>
-				<br>
-		</center>
-	</div>
-		</form>
+  <body id="particles-js" style="height:auto; min-height:100%">
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
+    <div class="contentcontainer">
+	  <div><h1>Phishing Stats</h1></div>
+	  <h2 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+		{% if messages %}
+		  {% for message in messages %}
+		{{ message }}
+		  {% endfor %}
+		{% endif %}
+		{% endwith %}</h1>
+
+		<form method="POST">
+			<select style="font-size:1.1em; text-align: center; width: 40%;" name= 'report' class="form-control" id="report">
+				<option style="text-align: center;">Select to download a report</option>
+						<option style="text-align: center;" id="E-MAIL" name="E-MAIL">E-Mail Report</option>
+						<option id="SMS" name="SMS">SMS Report</option>
+					</select>
+					<br>
+					<button name="submit" type="submit" class="btn btn-primary btn-block">Download report</button>
+		</form>
+		
+				{% if emailquery %}
+				<br><br>
+				<div style="width: 95%">
+	<h1><u><b>Users Phished via E-Mail</b></u></h1>
+<br>
+	<table class="table table-hover dataframe" style="text-align: center;">
+		<thead>
+			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+			<td style="border-radius: 25px 0px 0px 0px;">Business</td>
+			<td>Department</td>
+			<td>Method</td>
+			<td>User&nbsp;Phished</td>
+			<td>Template</td>
+			<td>Hyperlink</td>
+			<td>Sender</td>
+			<td>Scheduler</td>
+			<td>Admin&nbsp;Notified</td>
+			<td>Date&nbsp;Sent</td>
+			<td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
+		</tr>
+	{% for item in emailquery %}
+	<tr style="text-align:center;" class="border_bottom">
+		<td>{{item.business}}</td>
+			<td>{{item.department}}</td>
+			<td>{{item.type | replace('email','E-Mail')}}</td>
+			<td>{{item.username}}</td>
+		<td>{{item.template}}</td>
+		<td>{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
+		<td>{{item.mailname}}</td>
+		<td>{{item.scheduler}}</td>
+		<td>{{item.admin}}</td>
+		<td>{{ item.sentdate }}</td>
+		<td>{{ item.activetime }}</td>
+	</tr>
+	{% endfor %}
+	</table>
+	{% endif %}
+	
+
+	{% if smsquery %}
+	<br><br>
+	<h1><u><b>Users Phished via SMS</b></u></h1>
+<br>
+	<table class="table table-hover dataframe" style="text-align:center; width: 100%;">
+		<thead>
+			<tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
+			<td style="border-radius: 25px 0px 0px 0px;">Business</td>
+			<td>Department</td>
+			<td>Method</td>
+			<td>User&nbsp;Phished</td>
+			<td>Phone&nbsp;Number</td>
+			<td>Message</td>
+			<td>Scheduler</td>
+			<td>Admin&nbsp;Notified</td>
+			<td>Date&nbsp;Sent</td>
+			<td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
+			
+		</tr>
+	{% for item in smsquery %}
+	<tr style="text-align:center;" class="border_bottom">
+			<td>{{item.business}}</td>
+			<td>{{item.department}}</td>
+			<td>{{item.type |replace('sms','SMS')}}</td>
+			<td>{{item.username}}</td>
+			<td>{{item.phonedid}}</td>
+			<td>{{item.message}}</td>
+		<td>{{item.scheduler}}</td>
+		<td>{{item.admin}}</td>
+		<td>{{item.sentdate}}</td>
+		<td style="width: fit-content">{{item.activetime}}</td>
+	</tr>
+	{% endfor %}
+	</table>
+	{% endif %}
+	<div style="padding-bottom: 20%"></div>
+			<br>
+	</center>
+</div>
+	</form>
+      <!-- Put Content Here! -->
+    </div>
+    <!-- Logout confirmation overlay -->
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <!-- Put more Javascript stuff here if you need -->
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
