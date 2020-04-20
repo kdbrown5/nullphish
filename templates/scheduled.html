@@ -154,7 +154,7 @@
       <table class="table table-hover dataframe">
         <thead>
           <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" style="width: 100%" >
-          <td style="border-radius: 25px 0px 0px 0px;">Department</td>
+          <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Department</td>
           <td style="width: fit-content;" >Type</td>
           <td style="width: fit-content;">Username</td>
           <td style="width: fit-content;">Template</td>
@@ -162,7 +162,7 @@
           <td style="width: fit-content;">Hyperlink</td>
           <td style="width: fit-content;">Scheduler</td>
           <td style="width: fit-content;">Notify</td>
-          <td style="border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
+          <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
             
         </tr>
 
@@ -183,12 +183,12 @@
 
 <br>
 
-        <hr style="width: 50%">
+        <hr style="width: 50%"></hr>
       <div><h1>Scheduled Tasks</h1></div>
         <form method="POST">
           <table class="table table-hover dataframe" style="width: 100%">
-            <thead style="width: 100%">
-              <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" style="width: 100%" >
+            <thead>
+              <tr style="background-color: #97c8f0; text-align:center; width: 100%; " class="border_bottom" style="width: 100%" >
               <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Select</td>
               <td style="width: fit-content;" hidden>id</td>
               <td style="width: fit-content;">Department</td>
@@ -204,7 +204,7 @@
  
             {% for dict in busdict %}
             <form method="POST">
-          <tr style="text-align:center;" class="border_bottom" >
+          <tr style="text-align:center; width:100%;" class="border_bottom" >
             <td style="width: fit-content;"><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
       <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
                 <td style="width: fit-content;" name="department"><input type="hidden" id="{{ dict.department }}" name="department" value="{{ dict.department }}">{{ dict.department }}</td>
