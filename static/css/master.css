@@ -69,11 +69,6 @@ Color Palette Hex Codes:
 }
 
 /* Global Styles: */
-a{
-  outline: none;
-  color: inherit;
-}
-
 body{
   margin: 0;
   overflow-x: hidden;
@@ -85,6 +80,8 @@ body{
   color: #ECA400;
   text-align: center;
   text-decoration: none;
+  min-height: 100%;
+  height: auto;
 }
 
 button{
@@ -121,7 +118,7 @@ hr{
 
 input[type=text]{
   background-color: #E0E0E0;
-  border: 1px solid #E0E0E0;
+  border: 2px solid #E0E0E0;
   color: #0D1126;
   padding: 15px 32px;
   text-align: left;
@@ -139,7 +136,7 @@ input[type=text]:focus{
 }
 input[type=password]{
   background-color: #E0E0E0;
-  border: 1px solid #E0E0E0;
+  border: 2px solid #E0E0E0;
   color: #0D1126;
   padding: 15px 32px;
   text-align: left;
@@ -215,13 +212,14 @@ select:focus{
   padding: 0px;
   visibility: hidden;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 #confirmoverlay a{
   background-color: #721817;
   border: 2px solid #721817;
-  color: #0D1126;
+  color: #E0E0E0;
   font-weight: bold;
   width: auto;
   height: auto;
@@ -269,7 +267,8 @@ select:focus{
   vertical-align: middle;
   text-align: center;
   padding: 8px 10px 8px 10px;
-  float: left;
+  flex-basis: 0;
+  flex-grow: 1;
 }
 #navigation a:hover{
   background-color: rgba(0,0,0,0.33);
@@ -293,7 +292,6 @@ select:focus{
   border: 2px solid #E0E0E0;
   color: #E0E0E0;
   min-width: 900px;
-  max-width: 2500px;
   min-height: calc(100vh - 210px);
   margin-left: auto;
   margin-right: auto;
@@ -306,6 +304,14 @@ select:focus{
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.contentcontainer a{
+  color: #E0E0E0;
+}
+.contentcontainer a:hover{
+  color: #ECA400
 }
 .contentcontainer #header{
   width: 100%;

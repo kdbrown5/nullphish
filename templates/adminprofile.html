@@ -1,6 +1,3 @@
-<!--   NOTE: This document is here as a template/placeholder for future pages      -->
-<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
-<!--      Please remove all generic/instructional comments before publishing!      -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,66 +20,58 @@
     </style>
   </head>
   <body id="particles-js">
-    <!-- Here's where the navigation bar is declared -->
     <div id="navigation">
-      <!-- Edit the entries below -->
       <a href="/main">Modules</a>
       <a href="/profile">Profile</a>
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     <div class="contentcontainer" style="flex-direction: column;">
-      <div><h1>Admin Profile</h1></div>
-      <center>
-
-        <h1 style="color: white; padding-bottom: 2%;">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
-            {% if messages %}
+      <div id="header">
+        <h1>Admin Profile</h1>
+      </div>
+      <div style="border-bottom: 1px solid #E0E0E0;">
+        <h2>User Details</h2>
+        <p>Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;{% if lastname %}{{ lastname }}{% endif %}</p>
+        <p>Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}</p>
+        <p>Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}</p>
+        <p>Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}</p>
+        <p>Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}</p>
+      </div>
+      <div style="border-bottom: 1px solid #E0E0E0;">
+        <h2>Password Change</h2>
+        <form method="POST">
+          <div class="form-group">
+            <span class=""> <i class="fa fa-lock"></i> </span>
+            <input name="password" placeholder="Enter password:" type="password" style="padding: 5px;">
+            <span class=""> <i class="fa fa-lock"></i> </span>
+            <input name="repeat" placeholder="Repeat password:" type="password" style="padding: 5px;">
+            <button type="submit" style="padding: 5px;">Update Password</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <h2>Messages</h2>
+        {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+          {% if messages %}
+            <ul>
               {% for message in messages %}
-            {{ message }}
+              {{ message }}
               {% endfor %}
-            {% endif %}
-            {% endwith %}
-        
-
-
-    
-    Name:&nbsp;&nbsp;{% if firstname %}{{ firstname }}{% endif %}&nbsp;&nbsp;{% if lastname %}{{ lastname }}{% endif %}
-    
-    <br>
-    
-    Business:&nbsp;&nbsp;{% if business %}{{ business }}{% endif %}
-    
-    <br>
-    
-    Department:&nbsp;&nbsp;{% if department %}{{ department }}{% endif %}
-    
-    <br>
-    
-    Role:&nbsp;&nbsp;{% if role %}{{ role }}{% endif %}
-    
-    <br>
-    
-    Email:&nbsp;&nbsp;{% if username %}{{ username }}{% endif %}
-    
-  
-    </h1>
-    <br>
-    
-    <form method="POST">
-    <div class="container" style="max-width: 600px; padding-top: 20%;">
-      
-      
-    <div class="form-group">
-      <hr>
-      <h1>Password Change:</h1>
-      
-          <span class=""> <i class="fa fa-lock"></i> </span>
-          <input name="password" class="form-control" placeholder="Change password:" type="password">
-          <span class=""> <i class="fa fa-lock"></i> </span>
-          <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
-          <button type="submit" class="btn btn-primary btn-block"> Change Password  </button>
-    </form>
-      </center>
-      <!-- Put Content Here! -->
+            </ul>
+          {% endif %}
+        {% endwith %}
+        {% with messages = get_flashed_messages(category_filter=["category1"]) %}
+          {% if messages %}
+            <ul>
+              {% for message in messages %}
+              {{ message }}
+              {% endfor %}
+            </ul>
+          {% else %}
+            No new messages!
+          {% endif %}
+        {% endwith %}
+      </div>
     </div>
     <!-- Logout confirmation overlay -->
     <div id="confirmoverlay">
@@ -90,7 +79,6 @@
       <a href="/logout">Yes</a>
       <a href="#" onclick="hidelogoutconfirmation();">No</a>
     </div>
-    <!-- Put more Javascript stuff here if you need -->
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
