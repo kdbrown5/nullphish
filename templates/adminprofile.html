@@ -1,5 +1,6 @@
 <!--   NOTE: This document is here as a template/placeholder for future pages      -->
 <!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!--      Please remove all generic/instructional comments before publishing!      -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
-    <title>Admin Profile</title>
+    <title>NullPhish: Admin Profile</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
@@ -19,47 +20,18 @@
         margin: 0px;
         position: absolute;
       }
-      .input-element{
-        font-size: 30px;
-        width: 400px;
-      }
-      .contentcontainer{
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-        z-index: 999;
-      }
-      .contentcontainer h1{
-        font-size: calc(18px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <div id="particles-js"></div>
-    <nav>
-      <div id="dropdown">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
-    <div class="contentcontainer">
+  <body id="particles-js">
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
+    <div class="contentcontainer" style="flex-direction: column;">
       <div><h1>Admin Profile</h1></div>
-
-
       <center>
 
         <h1 style="color: white; padding-bottom: 2%;">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
@@ -110,10 +82,15 @@
           <button type="submit" class="btn btn-primary btn-block"> Change Password  </button>
     </form>
       </center>
- 
-</h1>
-
+      <!-- Put Content Here! -->
     </div>
+    <!-- Logout confirmation overlay -->
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <!-- Put more Javascript stuff here if you need -->
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>

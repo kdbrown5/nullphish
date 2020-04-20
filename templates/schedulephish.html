@@ -62,15 +62,14 @@
       margin-bottom: 0px;
       font-size: 1em;
       color: black;
-      width: 95%;
     }
       input.largerCheckbox { 
-        transform : scale(2.2); 
+        transform : scale(2); 
         color: black;
       } 
       .checkbox {
-        height:3vh;
-        width:3vh;
+        height:2vh;
+        width:2vh;
       }
       .select-css {
         display: block;
@@ -109,6 +108,7 @@
       tr:nth-child(odd)		{ background-color: lightgrey; }
     tr:nth-child(even)	{ background-color:darkgrey; }
     tr:first-child { background-color: transparent;}
+    tr:last-child { border-radius: 0px .5em 0px .5em}
     tr:hover:first-child { background-color: transparent; }
     tr:hover            { background-color: #d5e9f9;}
     tr.border_bottom td {
@@ -118,6 +118,7 @@
     </style>
   </head>
   <body id="particles-js" style="height:auto; min-height:100%">
+
     <!-- Here's where the navigation bar is declared -->
     <div id="navigation">
       <!-- Edit the entries below -->
@@ -139,19 +140,20 @@
         {% endwith %}
       </div>
       <div>
+        <center>
         <form method="POST">
-          <table class="table table-hover dataframe">
+          <table class="table table-hover dataframe" style="width: 100%">
             <thead>
             <tr style="background-color: #97c8f0; text-align:center;" class="border_bottom" >
-              <td style="width:fit-content; border-radius: 25px 0px 0px 0px;">Select</td>
+              <td style="width:fit-content; border-radius: .5em 0px 0px 0px;">Select</td>
               <td style="width: fit-content;">Department</td>
               <td style="width: fit-content;">First</td>
               <td style="width: fit-content;">Last</td>
-              <td style="width: fit-content;">Email Address</td>
+              <td style="width: fit-content;">Email&nbsp;Address</td>
               <td style="width: fit-content;">Template</td>
-              <td style="width: fit-content;">Mail Server</td>
+              <td style="width: fit-content;">Mail&nbsp;Server</td>
               <td style="width: fit-content;">Hyperlinks</td>
-              <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date to Send</td>
+              <td style="width: fit-content; border-radius: 0px .5em 0px 0px;">Date to Send</td>
             </tr>
             {% for dict in busdict %}
             <form method="POST">
@@ -171,7 +173,7 @@
               </select>
               <td>
       
-              <select name="smtpserver" class="form-control select-css" id="smtpserver">
+              <select style="width: fit-content" name="smtpserver" class="form-control select-css" id="smtpserver">
               <option value="{{ row }}">Mail Server</option>
               {% for row in serverlist %}
               <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
@@ -203,6 +205,7 @@
           </table>
           <button style="width: fit-content;" type="submit" class="btn button btn-primary">Schedule Phishing</button>
         </form>
+      </center>
       </div>
       <div class="ex2">
 
@@ -233,6 +236,7 @@
         </iframe>
       {% endif %}
     </div>
+    
     <!-- Logout confirmation overlay -->
     <div id="confirmoverlay">
     <span>Are you sure you want to log out?</span><br>
