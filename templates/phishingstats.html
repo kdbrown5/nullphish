@@ -20,31 +20,6 @@
 	    .contentcontainer{
         flex-direction: column;
       }
-      table.dataframe, .dataframe th, .dataframe td {
-        border: line;
-        border-bottom: 1px solid black;
-        border-top: 1px solid black;
-        border-collapse: collapse;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-        width: 95%;
-        text-align: center;
-        padding: .5%;
-        margin-bottom: 0px;
-        font-size: 1em;
-        color: black;
-      }
-      tr.border_bottom td {
-        border-bottom:1pt solid black;
-      }
-      .table {
-        width: 100%;
-      }
-      tr:nth-child(odd)		{ background-color: lightgrey; }
-      tr:nth-child(even)	{ background-color: grey; }
-      tr:first-child { background-color: transparent;}
-      tr:hover            { background-color: lightskyblue;}
-      tr:hover:first-child { background-color: transparent; }
     </style>
   </head>
   <body id="particles-js">
@@ -75,39 +50,35 @@
         <div style="width: 100%">
           <h1>Users Phished via E-Mail</h1>
           <br>
-          <table class="table table-hover dataframe" style="text-align: center;">
-            <thead>
-              <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-                <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Business</td>
-                <td style="width: fit-content;">Department</td>
-                <td style="width: fit-content;">Method</td>
-                <td style="width: fit-content;">User&nbsp;Phished</td>
-                <td style="width: fit-content;">Template</td>
-                <td style="width: fit-content;">Hyperlink</td>
-                <td style="width: fit-content;">Sender</td>
-                <td style="width: fit-content;">Scheduler</td>
-                <td style="width: fit-content;">Admin&nbsp;Notified</td>
-                <td style="width: fit-content;">Date&nbsp;Sent</td>
-                <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
-              </tr>
-            </thead>
-            <tbody>
-              {% for item in emailquery %}
-              <tr style="text-align:center;" class="border_bottom">
-                <td style="width: fit-content;">{{item.business}}</td>
-                <td style="width: fit-content;">{{item.department}}</td>
-                <td style="width: fit-content;">{{item.type | replace('email','E-Mail')}}</td>
-                <td style="width: fit-content;">{{item.username}}</td>
-                <td style="width: fit-content;">{{item.template}}</td>
-                <td style="width: fit-content;">{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
-                <td style="width: fit-content;">{{item.mailname}}</td>
-                <td style="width: fit-content;">{{item.scheduler}}</td>
-                <td style="width: fit-content;">{{item.admin}}</td>
-                <td style="width: fit-content;">{{ item.sentdate }}</td>
-                <td style="width: fit-content;">{{ item.activetime }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
+          <table class="stats dataframe">
+            <th>
+              <td>Business</td>
+              <td>Department</td>
+              <td>Method</td>
+              <td>User&nbsp;Phished</td>
+              <td>Template</td>
+              <td>Hyperlink</td>
+              <td>Sender</td>
+              <td>Scheduler</td>
+              <td>Admin&nbsp;Notified</td>
+              <td>Date&nbsp;Sent</td>
+              <td>Date&nbsp;Read</td>
+            </th>
+            {% for item in emailquery %}
+            <tr>
+              <td>{{item.business}}</td>
+              <td>{{item.department}}</td>
+              <td>{{item.type | replace('email','E-Mail')}}</td>
+              <td>{{item.username}}</td>
+              <td>{{item.template}}</td>
+              <td>{{item.bitly | replace('0','Long')| replace('1', 'Short')}}</td>
+              <td>{{item.mailname}}</td>
+              <td>{{item.scheduler}}</td>
+              <td>{{item.admin}}</td>
+              <td>{{ item.sentdate }}</td>
+              <td>{{ item.activetime }}</td>
+            </tr>
+            {% endfor %}
           </table>
         </div>
       {% endif %}
@@ -117,37 +88,33 @@
         <div style="width: 100%">
           <h1>Users Phished via SMS</h1>
           <br>
-          <table class="table table-hover dataframe" style="text-align:center;">
-            <thead>
-              <tr style="background-color: #97c8f0; text-align:center; " class="border_bottom" >
-                <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Business</td>
-                <td style="width: fit-content;">Department</td>
-                <td style="width: fit-content;">Method</td>
-                <td style="width: fit-content;">User&nbsp;Phished</td>
-                <td style="width: fit-content;">Phone&nbsp;Number</td>
-                <td style="width: fit-content;">Message</td>
-                <td style="width: fit-content;">Scheduler</td>
-                <td style="width: fit-content;">Admin&nbsp;Notified</td>
-                <td style="width: fit-content;">Date&nbsp;Sent</td>
-                <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date&nbsp;Read</td>
+          <table class="stats dataframe">
+            <th>
+              <td>Business</td>
+              <td>Department</td>
+              <td>Method</td>
+              <td>User&nbsp;Phished</td>
+              <td>Phone&nbsp;Number</td>
+              <td>Message</td>
+              <td>Scheduler</td>
+              <td>Admin&nbsp;Notified</td>
+              <td>Date&nbsp;Sent</td>
+              <td>Date&nbsp;Read</td>
+            </th>
+            {% for item in smsquery %}
+              <tr>
+                <td>{{item.business}}</td>
+                <td>{{item.department}}</td>
+                <td>{{item.type |replace('sms','SMS')}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.phonedid}}</td>
+                <td>{{item.message}}</td>
+                <td>{{item.scheduler}}</td>
+                <td>{{item.admin}}</td>
+                <td>{{item.sentdate}}</td>
+                <td>{{item.activetime}}</td>
               </tr>
-            </thead>
-            <tbody>
-              {% for item in smsquery %}
-                <tr style="text-align:center;" class="border_bottom">
-                  <td style="width: fit-content;">{{item.business}}</td>
-                  <td style="width: fit-content;">{{item.department}}</td>
-                  <td style="width: fit-content;">{{item.type |replace('sms','SMS')}}</td>
-                  <td style="width: fit-content;">{{item.username}}</td>
-                  <td style="width: fit-content;">{{item.phonedid}}</td>
-                  <td style="width: fit-content;">{{item.message}}</td>
-                  <td style="width: 10%;">{{item.scheduler}}</td>
-                  <td style="width: fit-content;">{{item.admin}}</td>
-                  <td style="width: fit-content;">{{item.sentdate}}</td>
-                  <td style="width: fit-content">{{item.activetime}}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
+            {% endfor %}
           </table>
         </div>
         {% endif %}
@@ -163,7 +130,6 @@
       {% endwith %}</h1>
       -->
     </div>
-    <!-- Logout confirmation overlay -->
     <div id="confirmoverlay">
       <span>Are you sure you want to log out?</span><br>
       <a href="/logout">Yes</a>

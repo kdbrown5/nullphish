@@ -334,6 +334,39 @@ select:focus{
   margin: auto;
 }
 
+.stats{
+  border: 1px solid #49A355;
+  color: black;
+  text-align: center;
+  font-size: 1em;
+  width: 100%;
+}
+.stats td{
+  width: fit-content;
+}
+.stats th{
+  background-color: #49A355;
+  color: black;
+}
+.stats tr:nth-child(odd){ 
+  background-color: #E0E0E0;
+  color: black;
+}
+.stats tr:nth-child(even)	{ 
+  background-color: #9D9D9D; 
+  color: black;
+}
+.stats tr:first-child{ 
+  background-color: transparent;
+}
+.stats tr:hover{ 
+  background-color: #ECA400;
+  color: black;
+}
+.stats tr:hover:first-child{ 
+  background-color: transparent; 
+}
+
 .tile{
   background-color: #E0E0E0;
   color: #0D1126;
