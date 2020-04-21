@@ -133,16 +133,8 @@ def registration():
                             cur = con.cursor()
                             cur.execute('PRAGMA key = '+dbkey+';')
                             cur.execute('update users set validated = 1 where username = (?);', (email,))
-                            cur.execute('select business from users where username = (?);', (email,))
-                            business = cur.fetchone()[0]
-                            cur.execute('select firstname from users where username = (?);', (email,))
-                            session['fname'] = cur.fetchone()[0]
-                            session['lname'] = cur.fetchone()[0]
                         con.close()
-                        session['logged_in'] = True
-                        session['business'] = business
-                        session['username'] = email
-                        return redirect('/profile')
+                        return redirect('/login')
                     else:
                         flash('The confirmation link is invalid or has expired (60 minutes)')
                         return render_template("register.html")
