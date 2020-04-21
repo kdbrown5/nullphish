@@ -160,11 +160,18 @@ def phishschedule():
         admins = lookupadmin()
         bitly = int(bitly)
         con = sqlite.connect('db/db1.db')
-        with con:
-            cur = con.cursor()
-            cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
-        con.close()
+        if bitly == 0:
+            with con:
+                cur = con.cursor()
+                cur.execute('PRAGMA key = '+dbkey+';')
+                cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, 0, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, business, subject, admins, dept))
+            con.close()
+        else:
+            with con:
+                cur = con.cursor()
+                cur.execute('PRAGMA key = '+dbkey+';')
+                cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
+            con.close()
 
     availtemplates = lookuptemplates()
     serverlist = lookupmailserver()
