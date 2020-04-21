@@ -69,7 +69,7 @@ def checkschedule():
             ztoken = generate_confirmation_token(zemail)
             timestamp = [timestamp]
             timestamp = convertTuple(timestamp[0])
-            if zbitly == 1:
+            if zbitly == "1":
                 zlink = 'https://app.nullphish.com/fy?id='+ztoken+'&template='+(str(xtemplate))
                 zlink = linkshorten(zlink)
                 zlink = [zlink]
