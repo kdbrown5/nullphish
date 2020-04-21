@@ -339,7 +339,6 @@ select:focus{
   color: black;
   text-align: center;
   font-size: 1em;
-  width: 100%;
 }
 .stats td{
   width: fit-content;
