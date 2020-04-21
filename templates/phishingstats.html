@@ -51,19 +51,19 @@
           <h1>Users Phished via E-Mail</h1>
           <br>
           <table class="stats dataframe">
-            <th>
-              <td>Business</td>
-              <td>Department</td>
-              <td>Method</td>
-              <td>User&nbsp;Phished</td>
-              <td>Template</td>
-              <td>Hyperlink</td>
-              <td>Sender</td>
-              <td>Scheduler</td>
-              <td>Admin&nbsp;Notified</td>
-              <td>Date&nbsp;Sent</td>
-              <td>Date&nbsp;Read</td>
-            </th>
+            <tr>
+              <th>Business</th>
+              <th>Department</th>
+              <th>Method</th>
+              <th>User&nbsp;Phished</th>
+              <th>Template</th>
+              <th>Hyperlink</th>
+              <th>Sender</th>
+              <th>Scheduler</th>
+              <th>Admin&nbsp;Notified</th>
+              <th>Date&nbsp;Sent</th>
+              <th>Date&nbsp;Read</th>
+            </tr>
             {% for item in emailquery %}
             <tr>
               <td>{{item.business}}</td>
@@ -89,18 +89,18 @@
           <h1>Users Phished via SMS</h1>
           <br>
           <table class="stats dataframe">
-            <th>
-              <td>Business</td>
-              <td>Department</td>
-              <td>Method</td>
-              <td>User&nbsp;Phished</td>
-              <td>Phone&nbsp;Number</td>
-              <td>Message</td>
-              <td>Scheduler</td>
-              <td>Admin&nbsp;Notified</td>
-              <td>Date&nbsp;Sent</td>
-              <td>Date&nbsp;Read</td>
-            </th>
+            <tr>
+              <th>Business</th>
+              <th>Department</th>
+              <th>Method</th>
+              <th>User&nbsp;Phished</th>
+              <th>Phone&nbsp;Number</th>
+              <th>Message</th>
+              <th>Scheduler</th>
+              <th>Admin&nbsp;Notified</th>
+              <th>Date&nbsp;Sent</th>
+              <th>Date&nbsp;Read</th>
+            </tr>
             {% for item in smsquery %}
               <tr>
                 <td>{{item.business}}</td>
