@@ -154,7 +154,6 @@ nav .presenter:hover{
   right: 90px;  
   width: auto;
   height: auto;
-  padding-bottom: 96%;
   margin: 0px;
   padding-top: 30px;
   overflow: visible;
@@ -278,7 +277,7 @@ body{
         </tr>
       </table>
     </nav>
-    <div class="contentcontainer">
+    <div class="contentcontainer" style="min-height:100%; max-height:auto">
       <div><h1 style="color: white">Add E-Mail Templates</h1></div>
 
       <h1 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
@@ -294,7 +293,7 @@ body{
           <textarea id="summernote" name="editordata"></textarea>
           <input name='templatename' style="width: 30%;" type="text" class="form-control" placeholder="Template Name:" required></input>
           <input name='templatesubject' style="width: 30%;" type="text" class="form-control" placeholder="Email Subject:" required></input>
-          <button style="width: 30%;" name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
+          <button style="width: 30%; background-color: #49A355" name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
         </form>
 
       <script>
@@ -327,7 +326,7 @@ body{
                             <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
                         {% endfor %}     
                 </select>
-                <button style="width: 30%" name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
+                <button style="width: 30%; background-color:#49A355" name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
               
         </form>    
         {% endif %}
@@ -346,7 +345,7 @@ body{
             </select>
         </td>
         </form>
-      </center>
+ 
         <script>
         $(function() {
           $('#templateview').change(function() {
@@ -356,15 +355,17 @@ body{
         </script>
 
         {% if templateview %}
-        <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="{{ templateview }}">
+        <iframe style="background-color: Lightgrey; height: fit-content; height:fit-content; width:fit-content src="{{ templateview }}">
         </iframe>
         {% endif %}
         {% if templatecustom %}
-        <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
+        <iframe style="background-color: Lightgrey; height:fit-content; width:fit-content" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
         </iframe>
         {% endif %}
     
-      </div>
+      
+    </center>
+  </div>
 
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
