@@ -72,6 +72,7 @@ def apiid():
         timestamp = (datetime.now())
         timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
         timestamp = timestamp.replace(' ', '-')
+        sendtattle = False
         if '@' in email:
             template = request.args.get('template')
             con = sqlite.connect('db/db1.db')
