@@ -154,20 +154,16 @@ def phishschedule():
         return emailsubject
 
     def scheduledb(username, template, mailname, date, bitly, business, subject, dept):
-        print('schedule subject')
-        print(subject)
-        print(type(subject))
-        print('schedule business')
-        print(business)
-        print(type(business))
         print('sched')
         print(username, template, mailname, date, bitly, business, subject, dept)
+        print(type(username), type(template), type(mailname), type(date), type(bitly), type(business), type(subject), type(dept))
         admins = lookupadmin()
+        bitly = int(bitly)
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, str(business), str(subject), admins, dept))
+            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
         con.close()
 
     availtemplates = lookuptemplates()
@@ -230,12 +226,12 @@ def phishschedule():
                     if g7 == "short":
                         #link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                         #link = linkshorten(link)
-                        scheduledb(g4, g5, g6, g8, "1", str(session['business']), subject, g9 )
+                        scheduledb(g4, g5, g6, g8, "1", session['business'], subject, g9 )
                         #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
                     else:
                         #link = 'https://app.nullphish.com/fy?id='+newtoken+'&template='+(str(g5))
                         #link = [link]
-                        scheduledb(g4, g5, g6, g8, "0", str(session['business']), subject, g9 )
+                        scheduledb(g4, g5, g6, g8, "0", session['business'], subject, g9 )
                         #customsendphish(g6, template, g4, g2, g3, subject, link, g6) # instant send
             sentlist = (''.join(str(sentlist)))
             sentlist = sentlist.replace("],", ',')
