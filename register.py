@@ -135,6 +135,9 @@ def registration():
                             cur.execute('update users set validated = 1 where username = (?);', (email,))
                             cur.execute('select business from users where username = (?);', (email,))
                             business = cur.fetchone()[0]
+                            cur.execute('select firstname from users where username = (?);', (email,))
+                            session['fname'] = cur.fetchone()[0]
+                            session['lname'] = cur.fetchone()[0]
                         con.close()
                         session['logged_in'] = True
                         session['business'] = business
