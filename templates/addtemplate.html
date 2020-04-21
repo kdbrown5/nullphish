@@ -154,6 +154,7 @@ nav .presenter:hover{
   right: 90px;  
   width: auto;
   height: auto;
+  padding-bottom: 96%;
   margin: 0px;
   padding-top: 30px;
   overflow: visible;
@@ -345,7 +346,7 @@ body{
             </select>
         </td>
         </form>
- 
+
         <script>
         $(function() {
           $('#templateview').change(function() {
@@ -355,18 +356,16 @@ body{
         </script>
 
         {% if templateview %}
-        <iframe style="background-color: Lightgrey; height: fit-content; height:fit-content; width:fit-content src="{{ templateview }}">
+        <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="{{ templateview }}">
         </iframe>
         {% endif %}
         {% if templatecustom %}
-        <iframe style="background-color: Lightgrey; height:fit-content; width:fit-content" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
+        <iframe style="background-color: Lightgrey" height="1000px" width="1200px" src="https://app.nullphish.com/addtemplate/{{ templatecustom }}">
         </iframe>
         {% endif %}
     
-      
+      </div>
     </center>
-  </div>
-
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
