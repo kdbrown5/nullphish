@@ -342,6 +342,8 @@ select:focus{
 }
 .stats td{
   width: fit-content;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .stats th{
   background-color: #49A355;
