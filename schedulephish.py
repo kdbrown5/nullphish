@@ -89,12 +89,11 @@ def checkschedule():
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
     def businessdict():
-        business = str(session['business']) 
         con = sqlite.connect('db/db1.db')
         con.row_factory = sqlite.Row
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from users where business = (?);', (business,))
+        cur.execute('select * from users where business = ?;', (session['business'],))
         result = cur.fetchall()
         try:
             con.close()
@@ -138,6 +137,7 @@ def phishschedule():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select username from users where notify = 1 and business = (?);', (business,))
             admins = cur.fetchone()
+            admins = admins[0]
         con.close
         return admins
 
@@ -160,7 +160,7 @@ def phishschedule():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, str(session['business']), subject, admins, dept))
+            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
         con.close()
 
     availtemplates = lookuptemplates()
