@@ -380,6 +380,7 @@ select:focus{
   width: calc(200px + 3vh);
   height: calc(200px + 3vh);
   margin: 10px 5vw 10px 5vw;
+  text-decoration: none;
 }
 .tile.todo{
   background-color: #721817;
@@ -406,4 +407,5 @@ select:focus{
   z-index: 1;
   text-align: center;
   top: 50%;
+  text-decoration: none;
 }
