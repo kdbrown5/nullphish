@@ -89,7 +89,6 @@ def checkschedule():
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
     def businessdict():
-        
         business = str(session['business']) 
         con = sqlite.connect('db/db1.db')
         con.row_factory = sqlite.Row
@@ -156,22 +155,13 @@ def phishschedule():
     def scheduledb(username, template, mailname, date, bitly, business, subject, dept):
         print('sched')
         print(username, template, mailname, date, bitly, business, subject, dept)
-        print(type(username), type(template), type(mailname), type(date), type(bitly), type(business), type(subject), type(dept))
         admins = lookupadmin()
-        bitly = int(bitly)
         con = sqlite.connect('db/db1.db')
-        if bitly == 0:
-            with con:
-                cur = con.cursor()
-                cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, "0", ?, ?, ?, ? );', (session['username'], username, template, mailname, date, business, subject, admins, dept))
-            con.close()
-        else:
-            with con:
-                cur = con.cursor()
-                cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
-            con.close()
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, bitly, business, subject, admins, dept))
+        con.close()
 
     availtemplates = lookuptemplates()
     serverlist = lookupmailserver()
