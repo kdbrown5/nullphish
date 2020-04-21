@@ -104,8 +104,8 @@ def apiid():
                     emailrecip = emailrecip.replace("',)", '')
                     print('fysms emailrecip')
                     print(emailrecip)
-
-                    sendtattle = True
+                    if '@' in emailrecip:
+                        sendtattle = True
                 except:
                     print('no update made - no admin received')
                     sendtattle = False
