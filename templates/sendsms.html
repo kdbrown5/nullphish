@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
-    <title>NullPhish: Login to Your Account</title>
+    <title>NullPhish: Send SMS</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
@@ -81,33 +81,26 @@
       tr:hover            { background-color: lightskyblue;}
     </style>
   </head>
-  <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
-    <div id="particles-js"></div>
-    <nav>
-      <div id="dropdown">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
+      <body id="particles-js">
+        <div id="navigation">
+          <a href="/main" class="active">Tools</a>
+          <a href="/schedulephish">Phishing</a>
+          <a href="/phishingstats">Stats</a>
+          <a href="/profile">Profile</a>
+          <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
         </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
-    <div class="contentcontainer" style="height:auto; min-height:100%">
-      <div><h1 style="color: white;">SMS Phishing</h1></div>
-      
-      <h1 style="color: white; font-size: 1.5em;">
+        <div class="contentcontainer">
+          <div id="header">
+            <h1>Send SMS</h1>
+          </div>
+<a style="color:white">
         {% with messages = get_flashed_messages(category_filter=["category2"]) %}
         {% if messages %}
           {% for message in messages %}
         {{ message }}
           {% endfor %}
         {% endif %}
-        {% endwith %}</h1>
+        {% endwith %}</a>
     
 	<table class="table table-hover dataframe">
 		<thead>
