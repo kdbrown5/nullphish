@@ -164,7 +164,7 @@ def phishschedule():
             with con:
                 cur = con.cursor()
                 cur.execute('PRAGMA key = '+dbkey+';')
-                cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, 0, ?, ?, ?, ? );', (session['username'], username, template, mailname, date, business, subject, admins, dept))
+                cur.execute('insert into phishsched ( type, scheduler, username, template, mailname, date, bitly, business, subject, admin, department) values ( "email", ?, ?, ?, ?, ?, "0", ?, ?, ?, ? );', (session['username'], username, template, mailname, date, business, subject, admins, dept))
             con.close()
         else:
             with con:
