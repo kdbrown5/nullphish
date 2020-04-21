@@ -89,11 +89,12 @@ def checkschedule():
 @schedulephish.route('/schedulephish', methods=['GET', 'POST'])
 def phishschedule():
     def businessdict():
+        business = str(session['business']) 
         con = sqlite.connect('db/db1.db')
         con.row_factory = sqlite.Row
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from users')
+        cur.execute('select * from users where business = (?);', (business,))
         result = cur.fetchall()
         try:
             con.close()
