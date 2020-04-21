@@ -82,7 +82,7 @@ def phishingstatsload():
             smsdict = smslookup()
             writer.writerow(('Business', 'Department', 'Method', 'User_Phished', 'Phone_Number', 'Message', 'Scheduler', 'Admin_Notified', 'Date_Sent', 'Date_Read'))
             for item in smsdict:
-                writer.writerow((item.get('business'), item.get('department'), item.get('type'), item.get('username'), item.get('phonedid'), item.get('message'), item.get('scheduler'), item.get('admin'), item.get('sentdate'), item.get('activetime') ))
+                writer.writerow((item.get('business'), item.get('department'), item.get('type'), item.get('username'), item.get('phonedid'), '"'+item.get('message')+'"', item.get('scheduler'), item.get('admin'), item.get('sentdate'), item.get('activetime') ))
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
