@@ -302,11 +302,10 @@ select:focus{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   justify-content: center;
-  align-content: flex-start;
+  align-items: center;
   text-align: center;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-top: 20px;
 }
 .contentcontainer a{
   color: #E0E0E0;
@@ -317,7 +316,6 @@ select:focus{
 .contentcontainer #header{
   width: 100%;
   flex-basis: 100%;
-  float: top;
 }
 .contentcontainer h1{
   font-size: calc(24px + 0.5vw);
