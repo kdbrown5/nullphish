@@ -302,7 +302,7 @@ select:focus{
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   justify-content: center;
-  align-items: flex-start;
+  align-content: flex-start;
   text-align: center;
   overflow-x: hidden;
   overflow-y: auto;
