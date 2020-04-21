@@ -137,7 +137,6 @@ def phishschedule():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select username from users where notify = 1 and business = (?);', (business,))
             admins = cur.fetchone()
-            admins = admins[0]
         con.close
         return admins
 
