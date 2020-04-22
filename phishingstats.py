@@ -74,7 +74,7 @@ def phishingstatsload():
             writer.writerow(('Business','Department', 'Method', 'User_Phished', 'Template_Used', 'Hyperlink', 'Sender_Email', 'Scheduler', 'Admin_Notified', 'Date_Sent', 'Date_Read'))
             emailstats = emaillookup()
             for item in emailstats:
-                writer.writerow((item.get('business'), item.get('department'), item.get('type'), item.get('username'), item.get('template'), item.get('bitly'), item.get('mailname'), item.get('scheduler'), item.get('admin'), '"'+item.get('sentdate')+'"', '"'+item.get('activetime')+'"' ))
+                writer.writerow((item.get('business'), item.get('department'), item.get('type'), item.get('username'), item.get('template'), item.get('bitly'), item.get('mailname'), item.get('scheduler'), item.get('admin'), '"'+(item.get('sentdate').replace(' ','_'))+'"', '"'+item.get('activetime')+'"' ))
 
     def exportsms(newreport):
         with open(newreport, 'w', newline='') as f:
