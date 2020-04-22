@@ -21,18 +21,17 @@
   <body>
     <div id="particles-js"></div>
     <div id="navigation">
-      <a href="https://app.nullphish.com/register">Sign Up</a>
+      <a href="https://app.nullphish.com/register" class="active">Sign Up</a>
       <a href="https://nullphish.com">NullPhish &#169;</a>
       <a href="https://app.nullphish.com/login">Log In</a>
     </div>
-    <div class="contentcontainer">
-      <div>
-        <h1 style="color: white" class="card-title mt-3 text-center">Create Account</h1>
-        <p style="color: white" class="text-center">*Beta* - Completely <b>Free</b> !</p>
-        <p style="color: white" class="text-center">Let's get started!</p>
-        <p style="color: white" class="text-center">Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
+    <div class="contentcontainer" style="flex-direction: column;">
+      <div id="header">
+        <h1>Create Account</h1>
+        <p>*Beta* - Completely <b>Free</b> !</p>
+        <p>Let's get started!</p>
+        <p>Please fill out all information below, and choose a password with a minimum of 10 characters.</p>
         <span>
-          <center>
             {% with messages = get_flashed_messages() %}
               {% if messages %}
                 <ul class=flashes>
@@ -42,7 +41,6 @@
                 </ul>
                 {% endif %}
               {% endwith %}
-          </center>
         </span>
       </div>
       <div>
@@ -51,49 +49,47 @@
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fas fa-key"></i> </span>
             </div>
-            <input name="code" class="form-control" placeholder="Beta registration code:" type="text">
+            <input name="code" class="form-control" placeholder="Beta Registration Code:" type="text">
           </div> <!-- form-group// -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-user"></i></span>
             </div>
-            <input name="firstname" class="form-control" placeholder="First name:" type="text">
+            <input name="firstname" class="form-control" placeholder="First Name:" type="text">
           </div> <!-- form-group// -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-user"></i> </span>
             </div>
-            <input name="lastname" class="form-control" placeholder="Last name:" type="text">
+            <input name="lastname" class="form-control" placeholder="Last Name:" type="text">
           </div> <!-- form-group// -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
             </div>
-              <input name="email" class="form-control" placeholder="Email address:" type="text">
+              <input name="email" class="form-control" placeholder="Email Address:" type="text">
           </div> <!-- form-group// -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-building"></i> </span>
             </div>
-            <input name="business" class="form-control" placeholder="Business:" type="text">
+            <input name="business" class="form-control" placeholder="Company:" type="text">
           </div> <!-- form-group// -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
-            <input name="password" class="form-control" placeholder="Create password:" type="password">
+            <input name="password" class="form-control" placeholder="Create Password:" type="password">
           </div> <!-- form-group// -->
           <div class="form-group input-group">
             <div class="input-group-prepend">
               <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
             </div>
-            <input name="repeat" class="form-control" placeholder="Repeat password:" type="password">
+            <input name="repeat" class="form-control" placeholder="Repeat Password:" type="password">
           </div> <!-- form-group// -->                                      
           <div class="form-group">
             <button type="submit"> Create Account  </button>
-          </div> <!-- form-group// -->      
-          <p> </p>  
-          <p>Forgot Password? -<a href="/resetpass"><strong>Reset Pass</strong></a></p>                                                                
+          </div> <!-- form-group// -->                                                           
         </form>
       </div>
       <div>
