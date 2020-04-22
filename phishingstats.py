@@ -88,7 +88,7 @@ def phishingstatsload():
         con.row_factory = dict_factory
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from phishsched where business = (?) and template = (?);', (session['business'],), template,)
+        cur.execute('select * from phishsched where business = (?) and template = (?);', session['business'], template)
         tempstats = cur.fetchall()
         con.close()
         return tempstats        
