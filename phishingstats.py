@@ -83,15 +83,18 @@ def phishingstatsload():
             for item in smsdict:
                 writer.writerow((item.get('business'), item.get('department'), item.get('type'), item.get('username'), item.get('phonedid'), ((item.get('message').replace(' ','_')).replace(',','')), item.get('scheduler'), item.get('admin'), (item.get('sentdate').replace(' ','_')), (item.get('activetime').replace(' ','_')) ))
 
-    def templatestats(template, business):
+    def templatestats(template):
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
         con = sqlite.connect('db/db1.db')
         con.row_factory = dict_factory
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from phishsched where business = (?) and template = (?);', session['business'], template)
+        cur.execute('select * from phishsched where business = (?) and template = (?);', (business, template))
         tempstats = cur.fetchall()
         con.close()
-        return tempstats        
+        return tempstats
 
 
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
