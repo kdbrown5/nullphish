@@ -53,7 +53,6 @@ def phishingstatsload():
         business = str(session['business'])
         business = business.replace('[', '')
         business = business.replace(']', '')
-        con = sqlite.connect('db/db1.db')
         con.row_factory = dict_factory
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
@@ -84,11 +83,28 @@ def phishingstatsload():
             for item in smsdict:
                 writer.writerow((item.get('business'), item.get('department'), item.get('type'), item.get('username'), item.get('phonedid'), ((item.get('message').replace(' ','_')).replace(',','')), item.get('scheduler'), item.get('admin'), (item.get('sentdate').replace(' ','_')), (item.get('activetime').replace(' ','_')) ))
 
+    def templatestats(template, business):
+        con = sqlite.connect('db/db1.db')
+        con.row_factory = dict_factory
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from phishsched where business = (?) and template = (?);', (session['business'],), template,)
+        tempstats = cur.fetchall()
+        con.close()
+        return tempstats        
+
+
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == "POST":
         if request.form.get('testing') == '1':
-            print('working')
+            templatechoice = 'Lyft'
+            tempstats = templatestats(templatechoice, session['business'])
+            print('tempstats')
+            print(tempstats)
+            print('tempstats - i')
+            for i, k in tempstats:
+                print(i, k)
 
 
 
