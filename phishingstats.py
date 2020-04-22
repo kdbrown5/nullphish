@@ -102,7 +102,7 @@ def phishingstatsload():
     if request.method == "POST":
         if request.form.get('testing') == '1':
             templatechoice = 'Lyft'
-            tempstats = templatestats(templatechoice, session['business'])
+            tempstats = templatestats(templatechoice)
             print('tempstats')
             print(tempstats)
             print('tempstats - i')
