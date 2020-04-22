@@ -87,7 +87,7 @@ def phishingstatsload():
     emailquery, smsquery = phishedlookup()# return userdata list to render on page
 
     if request.method == "POST":
-        if request.form.get('testing') == 1:
+        if request.form.get('testing') == '1':
             print('working')
 
 
