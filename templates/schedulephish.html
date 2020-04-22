@@ -26,7 +26,6 @@
       }
       .input-element{
         font-size: 30px;
-
       }
       input[type="text"] { 
         text-align: center;
@@ -39,30 +38,6 @@
         border: 1px solid rgb(117, 117, 117);
         box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
       }
-
-      
-      .contentcontainer h1{
-        font-size: calc(24px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-      }
-      .table, table.dataframe, .dataframe th, .dataframe td {
-      border: line;
-      border-bottom: 1px solid black;
-      border-top: 1px solid black;
-      border-collapse: collapse;
-      border-left: 1px solid black;
-      border-right: 1px solid black;
-      text-align: center;
-      padding: .8%;
-      margin-bottom: 0px;
-      font-size: 1em;
-      color: black;
-    }
       input.largerCheckbox { 
         transform : scale(2); 
         color: black;
@@ -105,24 +80,13 @@
       .select-css option {
         font-weight:normal;
       }
-      tr:nth-child(odd)		{ background-color: lightgrey; }
-    tr:nth-child(even)	{ background-color:darkgrey; }
-    tr:first-child { background-color: transparent;}
-    tr:last-child { border-radius: 0px .5em 0px .5em}
-    tr:hover:first-child { background-color: transparent; }
-    tr:hover            { background-color: #d5e9f9;}
-    tr.border_bottom td {
-      border-bottom:1pt solid black;
-    }
-      
     </style>
   </head>
-  <body id="particles-js" style="height:auto; min-height:100%">
-
-    <!-- Here's where the navigation bar is declared -->
+  <body id="particles-js">
     <div id="navigation">
-      <!-- Edit the entries below -->
-      <a href="/main">Modules</a>
+      <a href="/main">Tools</a>
+      <a href="/schedulephish" class="active">Phishing</a>
+      <a href="/phishingstats">Stats</a>
       <a href="/profile">Profile</a>
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
@@ -140,90 +104,87 @@
         {% endwith %}
       </div>
       <div>
-        <center>
         <form method="POST">
-          <table class="table table-hover dataframe" style="width: 100%">
-            <thead>
-            <tr style="background-color: #97c8f0; text-align:center;" class="border_bottom" >
-              <td style="width:fit-content; border-radius: .5em 0px 0px 0px;">Select</td>
-              <td style="width: fit-content;">Department</td>
-              <td style="width: fit-content;">First</td>
-              <td style="width: fit-content;">Last</td>
-              <td style="width: fit-content;">Email&nbsp;Address</td>
-              <td style="width: fit-content;">Template</td>
-              <td style="width: fit-content;">Mail&nbsp;Server</td>
-              <td style="width: fit-content;">Hyperlinks</td>
-              <td style="width: fit-content; border-radius: 0px .5em 0px 0px;">Date to Send</td>
+          <table class="stats dataframe">
+            <tr>
+              <th>Select</th>
+              <th>Department</th>
+              <th>First</th>
+              <th>Last</th>
+              <th>Email&nbsp;Address</th>
+              <th>Template</th>
+              <th>Mail&nbsp;Server</th>
+              <th>Hyperlinks</th>
+              <th>Date to Send</th>
             </tr>
             {% for dict in busdict %}
-            <form method="POST">
-            <tr style="text-align:center;" class="border_bottom">
-              <td style="width: fit-content;"><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
-              <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
-              <td style="width: fit-content;" name="dept"><input type="hidden" id="{{ dict.id }}" name="dept" value="{{ dict.department }}">{{ dict.department }}</td>
-              <td style="width: fit-content;" name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
-              <td style="width: fit-content;" name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
-              <td style="width: fit-content;" name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
-              <td style="width: fit-content;"><select name="templates" class="form-control select-css" id="templates">
-      
-              <option value="{{ row }}">Templates</option>
-              {% for row in availtemplates %}
-              <option id="{{ dict.id }}" name="templates" value="{{ row }}">{{ row }}</option>
-              {% endfor %}
-              </select>
-              <td>
-      
-              <select style="width: fit-content" name="smtpserver" class="form-control select-css" id="smtpserver">
-              <option value="{{ row }}">Mail Server</option>
-              {% for row in serverlist %}
-              <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
-              {% endfor %}
-              </select>
-              </td>
-      
-              <td style="width: fit-content;"><select name="bitly" class="form-control select-css" id="bitly">                  
-              <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
-              <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
-              </select>
-              </td>
-              <td style="width: fit-content;">
-              <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly>
-              <script>
-              $(function () {
-              $(".dateTxt").datetimepicker(
-              {
-              hours24: true,
-              format: 'Y-m-d H:i',
-              step:15,
-              }
-              );
-              });
-              </script>
-              </td>
-              {% endfor %}
-            </tr>
+              <form method="POST">
+                <tr>
+                  <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
+                  <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
+                  <td name="dept"><input type="hidden" id="{{ dict.id }}" name="dept" value="{{ dict.department }}">{{ dict.department }}</td>
+                  <td name="firstname"><input type="hidden" id="{{ dict.id }}" name="firstname" value="{{ dict.firstname }}">{{ dict.firstname }}</td>
+                  <td name="lastname"><input type="hidden" id="{{ dict.id }}" name="lastname" value="{{ dict.lastname }}">{{ dict.lastname }}</td>
+                  <td name="email"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.username }}">{{ dict.username }}</td>
+                  <td>
+                    <select name="templates" class="form-control select-css" id="templates">
+                    <option value="{{ row }}">Templates</option>
+                    {% for row in availtemplates %}
+                      <option id="{{ dict.id }}" name="templates" value="{{ row }}">{{ row }}</option>
+                    {% endfor %}
+                  </select>
+                  <td>
+                    <select style="width: fit-content" name="smtpserver" class="form-control select-css" id="smtpserver">
+                      <option value="{{ row }}">Mail Server</option>
+                      {% for row in serverlist %}
+                        <option id="{{ dict.id }}" name="serverlist">{{ row }}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                  <td>
+                    <select name="bitly" class="form-control select-css" id="bitly">                  
+                      <option id="{{ dict.id }}" value="short" name="short">Short URL</option>
+                      <option id="{{ dict.id }}" name="bitly" value="long">Long URL</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input class="dateTxt" id="{{ dict.id }}" name="datetimepicker" type="text" placeholder="click to select a date" readonly>
+                    <script>
+                      $(function () 
+                      {
+                        $(".dateTxt").datetimepicker(
+                          {
+                            hours24: true,
+                            format: 'Y-m-d H:i',
+                            step:15,
+                          }
+                        );
+                      });
+                    </script>
+                  </td>
+                </tr>
+              </form>
+            {% endfor %}
           </table>
-          <button style="width: fit-content;" type="submit" class="btn button btn-primary">Schedule Phishing</button>
+          <button type="submit">Schedule Phishing</button>
         </form>
-      </center>
       </div>
-      <div class="ex2">
-
+      <div>
         <form method="POST">
           <td>
             <select style="width: 15vw; text-align:center" name= "templateview" class="form-control" id="templateview">
-            <option style="text-align: center;">Templates</option>
-            {% for row in availtemplates %}
-              <option style="text-align:center">{{ row }}</option>
-            {% endfor %}
+              <option style="text-align: center;">Templates</option>
+              {% for row in availtemplates %}
+                <option style="text-align:center">{{ row }}</option>
+              {% endfor %}
             </select>
           </td>
         </form>
         <script>
           $(function() {
-          $('#templateview').change(function() {
-          this.form.submit();
-          });
+            $('#templateview').change(function() {
+              this.form.submit();
+            });
           });
         </script>
       </div>
@@ -236,12 +197,11 @@
         </iframe>
       {% endif %}
     </div>
-    
     <!-- Logout confirmation overlay -->
     <div id="confirmoverlay">
-    <span>Are you sure you want to log out?</span><br>
-    <a href="/logout">Yes</a>
-    <a href="#" onclick="hidelogoutconfirmation();">No</a>
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>

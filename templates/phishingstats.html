@@ -24,9 +24,9 @@
   </head>
   <body id="particles-js">
     <div id="navigation">
-      <a href="/main" class="active">Tools</a>
+      <a href="/main">Tools</a>
       <a href="/schedulephish">Phishing</a>
-      <a href="/phishingstats">Stats</a>
+      <a href="/phishingstats" class="active">Stats</a>
       <a href="/profile">Profile</a>
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
@@ -34,22 +34,21 @@
       <div id="header">
         <h1>Phishing Statistics</h1>
       </div>
-      <form method="POST">
-        <select style="font-size:1.1em; text-align: center;" name= 'report' class="form-control" id="report">
-          <option style="text-align: center;">Select to download a report</option>
-          <option style="text-align: center;" id="E-MAIL" name="E-MAIL">E-Mail Report</option>
-          <option id="SMS" name="SMS">SMS Report</option>
-        </select>
-        <br>
-        <button name="submit" type="submit">Download report</button>
-      </form>
-      <hr>
+      <div>
+        <form method="POST">
+          <select style="font-size:1.1em; text-align: center;" name= 'report' class="form-control" id="report">
+            <option style="text-align: center;">Select to download a report</option>
+            <option style="text-align: center;" id="E-MAIL" name="E-MAIL">E-Mail Report</option>
+            <option id="SMS" name="SMS">SMS Report</option>
+          </select>
+          <br>
+          <button name="submit" type="submit">Download report</button>
+        </form>
+      </div>
       <!-- Email Section -->
       {% if emailquery %}
-        <br><br>
-        <div style="width: 100%">
-          <h1>Users Phished via E-Mail</h1>
-          <br>
+        <div>
+          <h2>Users Phished via E-Mail</h2>
           <table class="stats dataframe">
             <tr>
               <th>Business</th>
@@ -84,10 +83,8 @@
       {% endif %}
       <!-- SMS Section -->
       {% if smsquery %}
-        <br><br>
-        <div style="width: 100%">
-          <h1>Users Phished via SMS</h1>
-          <br>
+        <div>
+          <h2>Users Phished via SMS</h2>
           <table class="stats dataframe">
             <tr>
               <th>Business</th>
