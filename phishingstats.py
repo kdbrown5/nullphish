@@ -101,13 +101,13 @@ def phishingstatsload():
 
     if request.method == "POST":
         if request.form.get('testing') == '1':
-            templatechoice = 'Lyft'
+            templatechoice = 'securemail'
             tempstats = templatestats(templatechoice)
             print('tempstats')
             print(tempstats)
             print('tempstats - i')
-            for i, k in tempstats:
-                print(i, k)
+            for i in tempstats:
+                print(i)
 
 
 
