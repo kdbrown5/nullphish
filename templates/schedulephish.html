@@ -118,8 +118,8 @@
               <th>Date to Send</th>
             </tr>
             {% for dict in busdict %}
-              <form method="POST">
-                <tr>
+              <tr>
+                <form method="POST">
                   <td><input type="hidden" name="select" id="{{ dict.id }}" value="0"><input class="largerCheckbox" type="checkbox" onclick="this.previousSibling.value=1-this.previousSibling.value"></td>
                   <!--      <td><input type='hidden' value='0' name='select'><input type="checkbox" id="{{ dict.id }}" name="select" value="1" class="checkbox"><label for="select"></label></td>-->
                   <td name="dept"><input type="hidden" id="{{ dict.id }}" name="dept" value="{{ dict.department }}">{{ dict.department }}</td>
@@ -162,8 +162,8 @@
                       });
                     </script>
                   </td>
-                </tr>
-              </form>
+                </form>
+              </tr>
             {% endfor %}
           </table>
           <button type="submit">Schedule Phishing</button>
