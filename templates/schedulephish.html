@@ -42,7 +42,6 @@
         transform : scale(2); 
         color: black;
       } 
-      
       .checkbox {
         height:2vh;
         width:2vh;
@@ -108,15 +107,15 @@
         <form method="POST">
           <table class="stats dataframe">
             <tr>
-              <td style="background-color:green">Select</td>
-              <td style="background-color:green">Department</td>
-              <td style="background-color:green">First</td>
-              <td style="background-color:green">Last</td>
-              <td style="background-color:green">Email&nbsp;Address</td>
-              <td style="background-color:green">Template</td>
-              <td style="background-color:green">Mail&nbsp;Server</td>
-              <td style="background-color:green">Hyperlinks</td>
-              <td style="background-color:green">Date to Send</td>
+              <th>Select</th>
+              <th>Department</th>
+              <th>First</th>
+              <th>Last</th>
+              <th>Email&nbsp;Address</th>
+              <th>Template</th>
+              <th>Mail&nbsp;Server</th>
+              <th>Hyperlinks</th>
+              <th>Date to Send</th>
             </tr>
             {% for dict in busdict %}
               <form method="POST">
