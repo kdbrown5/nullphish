@@ -18,7 +18,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app = dash.Dash()
 
 def templatestats():
-    business = session['business']
+    business = 'nullphish'
     con = sqlite.connect('db/db1.db')
     con.row_factory = dict_factory
     cur = con.cursor()
