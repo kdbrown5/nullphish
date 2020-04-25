@@ -11,3 +11,12 @@ urllib3 == 1.22
 bs4 == 0.0.1
 twilio == 6.37.0
 APScheduler == 3.6.3
+Werkzeug == 0.16.1
+plotly ==4.6.0
+dash == 1.11.0    
+dash-core-components == 1.9.1     
+dash-html-components == 1.0.3     
+dash-renderer == 1.4.0     
+dash-table == 4.6.2     
+APScheduler == 3.6.3
+pycrypto == 2.6.1

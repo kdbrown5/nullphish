@@ -11,11 +11,11 @@ loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
 loadkey.close()
 
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-
-
-app = dash.Dash()
+app = dash.Dash(
+        __name__,
+        external_stylesheets=external_stylesheets,
+        requests_pathname_prefix='/app1/'
+        )
 
 def templatestats():
     business = 'nullphish'
@@ -155,6 +155,3 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
 
 
 ])
-
-if __name__ == '__main__':
-    app.run_server(debug=True)

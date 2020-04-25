@@ -129,4 +129,4 @@ def phishingstatsload():
             datestamp = datetime.now().strftime('%m-%d-%Y_%I-%M%p')
             return send_file(newreport, as_attachment=True, attachment_filename='smsreport-'+datestamp+'.csv')
 
-    return render_template('phishingstats.html', emailquery=emailquery, smsquery=smsquery)   
+    return render_template('phishingstats.html', business=session['business'], emailquery=emailquery, smsquery=smsquery)   
