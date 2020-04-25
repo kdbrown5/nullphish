@@ -98,6 +98,34 @@ totalsent = totalopened+totalunopened
 #print('totalopened', totalopened)
 #print('totalunopened', totalunopened)
 
+def userstats():
+    business = 'nullphish'
+    con = sqlite.connect('db1.db')
+    con.row_factory = sqlite.Row
+    cur = con.cursor()
+    cur.execute('PRAGMA key = '+dbkey+';')
+    cur.execute('select * from phishsched where business = (?) and type = "email" and sentdate != "none";', (business,))
+    userstat = cur.fetchall()
+    return userstat
+
+
+userstat = userstats()
+
+xid = []
+xtemplate = []
+xmailname = []
+xbitly = []
+xsentdate = []
+xdepartment = []
+xactivetime = []
+for i in userstat:
+    xid.append(i['id'])
+    xtemplate.append(i['template'])
+    xmailname.append(i['mailname'])
+    xbitly.append(i['bitly'])
+    xsentdate.append(i['sentdate'])
+    xdepartment.append(i['department'])
+    xactivetime.append(i['activetime'])
 
 
 
@@ -140,8 +168,8 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         id='Graph2',
         figure={
             'data': [
-                {'x': xa, 'y': xb, 'type': 'bar', 'name': 'Opened'},
-                {'x': xa, 'y': xd, 'type': 'line', 'name': 'Opened'},
+                {'x': sentdate, 'y': xd, 'type': 'bar', 'name': 'Opened'},
+                #{'x': xa, 'y': xd, 'type': 'line', 'name': 'Opened'},
             ],
             'layout': {
                 'plot_bgcolor': colors['background'],
