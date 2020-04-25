@@ -149,9 +149,9 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         id='Graph1',
         figure={
             'data': [
-                {'x': 'Total Sent', 'y': [totalsent], 'type': 'bar', 'name': 'Total Sent'},
-                {'x': 'Total Opened', 'y': [totalopened], 'type': 'bar', 'name': 'Total Opened'},
-                {'x': 'Total Unopened', 'y': [totalunopened], 'type': 'bar', 'name': 'Total Unopened'},
+                #{'x': 'Total Sent', 'y': [totalsent], 'type': 'bar', 'name': 'Total Sent'},
+                #{'x': 'Total Opened', 'y': [totalopened], 'type': 'bar', 'name': 'Total Opened'},
+                #{'x': 'Total Unopened', 'y': [totalunopened], 'type': 'bar', 'name': 'Total Unopened'},
                 {'x': tempx, 'y': tempy, 'type': 'bar', 'name': 'Opened'},
                 {'x': notphishedx, 'y': notphishedy, 'type': 'bar', 'name': u'Not opened'},
             ],
