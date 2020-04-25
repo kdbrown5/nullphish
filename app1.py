@@ -100,7 +100,7 @@ totalsent = totalopened+totalunopened
 
 def userstats():
     business = 'nullphish'
-    con = sqlite.connect('db1.db')
+    con = sqlite.connect('db/db1.db')
     con.row_factory = sqlite.Row
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
