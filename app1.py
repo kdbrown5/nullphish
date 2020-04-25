@@ -168,7 +168,7 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         id='Graph2',
         figure={
             'data': [
-                {'x': sentdate, 'y': xd, 'type': 'bar', 'name': 'Opened'},
+                {'x': xsentdate, 'y': xd, 'type': 'bar', 'name': 'Opened'},
                 #{'x': xa, 'y': xd, 'type': 'line', 'name': 'Opened'},
             ],
             'layout': {
