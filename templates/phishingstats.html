@@ -121,7 +121,13 @@
         </form>
         -->
         {% if business == "nullphish" %}
-        <iframe src="https://app.nullphish.com/app1/" style="width:100%; height:800px"></iframe>
+        <button onclick="displayIframe()">Graph</button>
+        <div id="iframeDisplay"></div>  
+      <script>
+          function displayIframe() {
+              document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"https://app.nullphish.com/app1/\" style=\"width:100%; height:1200px\"></iframe>";
+          }
+        </script>
         {% endif %}
       <!-- Messages Section -->
       <!--
