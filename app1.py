@@ -102,8 +102,11 @@ def makecounters(sentline, notphished):
     xc = 0
     xd = []
     xe = 0
+    xavg = 0
+    xavglist = []
     notphishedx = []
     notphishedy = []
+    xsum = 0
     for i in sentline:
         for k, v in i.items():
             if k == 'sentdate':
@@ -111,42 +114,52 @@ def makecounters(sentline, notphished):
             if k == 'activetime':
                 if v == "none":
                     xe = xe+1
-                    xb.append(-1)
+                    xb.append(0)
                     xc = xc-1
                     xd.append(xc)
+                    xsum = xsum+0
                 if v != "none":
                     xe = xe+1
                     xb.append(1)
                     xc = xc+1
                     xd.append(xc)
+                    xsum = xsum+1
+                xavgprelist = xsum/len(xb)
+                xavglist.append(xavgprelist)
     for i in notphished:
         #totalunopened = totalunopened+1
         for k, v in i.items():
             if k == 'template':
                 notphishedy.append(1)
                 notphishedx.append(v)
-    return xa, xb, xc, xd, xe, notphishedx, notphishedy
+    return xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist
 
 def make_layout():
     userstat = userstats()
     xid, xtemplate, xmailname, xbitly, xsentdate, xdepartment, xactivetime = mutateuserstat()
     tempstats, notphished, sentline = templatestats()
-    xa, xb, xc, xd, xe, notphishedx, notphishedy = makecounters(sentline, notphished)
+    xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist = makecounters(sentline, notphished)
     tempx, tempy = mutatetempstats(tempstats)
-    none = None
+    #print(xd)
+    #xsum = 0
+    #for t in xb:
+    #    xsum = xsum+t
+
+    #xavg = xsum/len(xd)
+    #print('xavg -', xavg)
     colors = {
         'background': '#111111',
         'text': '#7FDBFF'
     }
     return html.Div(style={'backgroundColor': colors['background']}, children=[
     html.H1(
-        children='Templates sent',
+        #children='Templates sent',
         style={
             'textAlign': 'center',
             'color': colors['text']
         }
     ),
-    html.Div(children='---', style={
+    html.Div(children='Opened / Not Opened by Template', style={
         'textAlign': 'center',
         'color': colors['text']
     }),
@@ -166,12 +179,17 @@ def make_layout():
                 }
             }
         ),
+    html.Div(children='(Avg) Click Rate (%) over time (all sent items)', style={
+        'textAlign': 'center',
+        'color': colors['text']
+    }),
         dcc.Graph(
             id='Graph2',
             figure={
                 'data': [
-                    {'x': xsentdate, 'y': xd, 'type': 'line', 'name': 'Sent'},
-                    {'x': xsentdate, 'y': xtemplate, 'type': 'line', 'name': 'Opened'},
+                    {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'Click Rate Average'},
+                    #{'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u''},
+                    #{'x': xsentdate, 'y': xtemplate, 'type': 'line', 'name': 'Opened'},
                     #{'x': xactivetime, 'y': [xtemplate], 'type': 'line', 'name': 'Opened'},
                 ],
                 'layout': {
@@ -179,7 +197,7 @@ def make_layout():
                     'paper_bgcolor': colors['background'],
                     'font': {
                         'color': colors['text']
-                    }
+                    },
                 }
             }
         )]
