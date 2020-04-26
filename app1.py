@@ -19,7 +19,7 @@ app = dash.Dash(
 
 def templatestats():
     business = 'nullphish'
-    con = sqlite.connect('db/db1.db')
+    con = sqlite.connect('db1.db')
     con.row_factory = dict_factory
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
@@ -32,75 +32,9 @@ def templatestats():
     con.close()
     return tempstats, notphished, sentline
 
-def dict_factory(cursor, row):
-    d = {}
-    for idx, col in enumerate(cursor.description):
-        d[col[0]] = row[idx]
-    return d    
-
-tempstats, notphished, sentline = templatestats()
-tempx = []
-tempy = []
-notphishedx = []
-notphishedy = []
-totalopened = 0
-totalunopened = 0
-
-linephish = tempstats
-linenophish = notphished
-
-xa = []
-xb = []
-xc = 0
-xd = []
-#for i in sentline:
-#    for k, v in i.items():
-#        if k == 'date'
-#    print(i)
-
-
-for i in sentline:
-    for k, v in i.items():
-        if k == 'sentdate':
-            xa.append(v)
-        if k == 'activetime':
-            if v == "none":
-                print('activetime-v', v)
-                xb.append(-1)
-                xc = xc-1
-                xd.append(xc)
-            if v != "none":
-                xb.append(1)
-                xc = xc+1
-                xd.append(xc)
-
-print('xa', xa)
-print('xb', xb)
-
-for i in tempstats:
-    totalopened = totalopened+1
-    for k, v in i.items():
-        if k == 'template':
-            tempy.append(1)
-            tempx.append(v)
-            
-for i in notphished:
-    totalunopened = totalunopened+1
-    for k, v in i.items():
-        if k == 'template':
-            notphishedy.append(1)
-            notphishedx.append(v)
-
-totalsent = totalopened+totalunopened
-#print('tempx',tempx)
-#print('tempy',tempy)
-#print('totalsent', totalsent)
-#print('totalopened', totalopened)
-#print('totalunopened', totalunopened)
-
 def userstats():
     business = 'nullphish'
-    con = sqlite.connect('db/db1.db')
+    con = sqlite.connect('db1.db')
     con.row_factory = sqlite.Row
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
@@ -109,31 +43,101 @@ def userstats():
     return userstat
 
 
-userstat = userstats()
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
 
-xid = []
-xtemplate = []
-xmailname = []
-xbitly = []
-xsentdate = []
-xdepartment = []
-xactivetime = []
-for i in userstat:
-    xid.append(i['id'])
-    xtemplate.append(i['template'])
-    xmailname.append(i['mailname'])
-    xbitly.append(i['bitly'])
-    xsentdate.append(i['sentdate'])
-    xdepartment.append(i['department'])
-    xactivetime.append(i['activetime'])
+def mutatetempstats(tempstats):
+    tempx = []
+    tempy = []
+    for i in tempstats:
+        #totalopened = totalopened+1
+        for k, v in i.items():
+            if k == 'template':
+                tempy.append(1)
+                tempx.append(v)
+    return tempx, tempy
 
+def mutateuserstat():
+    business = 'nullphish'
+    con = sqlite.connect('db1.db')
+    con.row_factory = sqlite.Row
+    cur = con.cursor()
+    cur.execute('PRAGMA key = '+dbkey+';')
+    cur.execute('select * from phishsched where business = (?) and type = "email" and sentdate != "none";', (business,))
+    userstat = cur.fetchall()
+    con.close()
+    xid = []
+    xtemplate = []
+    xmailname = []
+    xbitly = []
+    xsentdate = []
+    xdepartment = []
+    xactivetime = []
+    for i in userstat:
+        xid.append(i['id'])
+        xtemplate.append(i['template'])
+        xmailname.append(i['mailname'])
+        xbitly.append(i['bitly'])
+        xsentdate.append(i['sentdate'])
+        xdepartment.append(i['department'])
+        xactivetime.append(i['activetime'])
+    return xid, xtemplate, xmailname, xbitly, xsentdate, xdepartment, xactivetime
 
+def unique(inputlist):
+    unique_list = []
+    #newdatesent = []
+    for x in inputlist:
+        if x not in unique_list:
+            unique_list.append(x)
+    for x in unique_list:
+        x = x.replace(' ','_')
+        print(x)
 
-colors = {
-    'background': '#111111',
-    'text': '#7FDBFF'
-}
-app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
+def makecounters(sentline, notphished):
+    xa = []
+    xb = []
+    xc = 0
+    xd = []
+    xe = 0
+    notphishedx = []
+    notphishedy = []
+    for i in sentline:
+        for k, v in i.items():
+            if k == 'sentdate':
+                xa.append(v)
+            if k == 'activetime':
+                if v == "none":
+                    xe = xe+1
+                    xb.append(-1)
+                    xc = xc-1
+                    xd.append(xc)
+                if v != "none":
+                    xe = xe+1
+                    xb.append(1)
+                    xc = xc+1
+                    xd.append(xc)
+    for i in notphished:
+        #totalunopened = totalunopened+1
+        for k, v in i.items():
+            if k == 'template':
+                notphishedy.append(1)
+                notphishedx.append(v)
+    return xa, xb, xc, xd, xe, notphishedx, notphishedy
+
+def make_layout():
+    userstat = userstats()
+    xid, xtemplate, xmailname, xbitly, xsentdate, xdepartment, xactivetime = mutateuserstat()
+    tempstats, notphished, sentline = templatestats()
+    xa, xb, xc, xd, xe, notphishedx, notphishedy = makecounters(sentline, notphished)
+    tempx, tempy = mutatetempstats(tempstats)
+    colors = {
+        'background': '#111111',
+        'text': '#7FDBFF'
+    }
+    return html.Div(style={'backgroundColor': colors['background']}, children=[
     html.H1(
         children='Templates sent',
         style={
@@ -145,41 +149,39 @@ app.layout = html.Div(style={'backgroundColor': colors['background']}, children=
         'textAlign': 'center',
         'color': colors['text']
     }),
-    dcc.Graph(
-        id='Graph1',
-        figure={
-            'data': [
-                #{'x': 'Total Sent', 'y': [totalsent], 'type': 'bar', 'name': 'Total Sent'},
-                #{'x': 'Total Opened', 'y': [totalopened], 'type': 'bar', 'name': 'Total Opened'},
-                #{'x': 'Total Unopened', 'y': [totalunopened], 'type': 'bar', 'name': 'Total Unopened'},
-                {'x': tempx, 'y': tempy, 'type': 'bar', 'name': 'Opened'},
-                {'x': notphishedx, 'y': notphishedy, 'type': 'bar', 'name': u'Not opened'},
-            ],
-            'layout': {
-                'plot_bgcolor': colors['background'],
-                'paper_bgcolor': colors['background'],
-                'font': {
-                    'color': colors['text']
+        dcc.Graph(
+            id='Graph1',
+            figure={
+                'data': [
+                    {'x': tempx, 'y': tempy, 'type': 'bar', 'name': 'Opened'},
+                    {'x': notphishedx, 'y': notphishedy, 'type': 'bar', 'name': u'Not opened'},
+                ],
+                'layout': {
+                    'plot_bgcolor': colors['background'],
+                    'paper_bgcolor': colors['background'],
+                    'font': {
+                        'color': colors['text']
+                    }
                 }
             }
-        }
-    ),
-    dcc.Graph(
-        id='Graph2',
-        figure={
-            'data': [
-                {'x': xsentdate, 'y': xd, 'type': 'line', 'name': 'Opened'},
-                #{'x': xa, 'y': xd, 'type': 'line', 'name': 'Opened'},
-            ],
-            'layout': {
-                'plot_bgcolor': colors['background'],
-                'paper_bgcolor': colors['background'],
-                'font': {
-                    'color': colors['text']
+        ),
+        dcc.Graph(
+            id='Graph2',
+            figure={
+                'data': [
+                    {'x': xsentdate, 'y': xd, 'type': 'line', 'name': 'Sent'},
+                    {'x': xsentdate, 'y': xtemplate, 'type': 'line', 'name': 'Opened'},
+                    #{'x': xactivetime, 'y': [xtemplate], 'type': 'line', 'name': 'Opened'},
+                ],
+                'layout': {
+                    'plot_bgcolor': colors['background'],
+                    'paper_bgcolor': colors['background'],
+                    'font': {
+                        'color': colors['text']
+                    }
                 }
             }
-        }
+        )]
     )
-
-
-])
+    
+app.layout = make_layout
