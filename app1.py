@@ -133,6 +133,7 @@ def make_layout():
     tempstats, notphished, sentline = templatestats()
     xa, xb, xc, xd, xe, notphishedx, notphishedy = makecounters(sentline, notphished)
     tempx, tempy = mutatetempstats(tempstats)
+    none = None
     colors = {
         'background': '#111111',
         'text': '#7FDBFF'
