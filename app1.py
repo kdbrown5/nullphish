@@ -19,7 +19,7 @@ app = dash.Dash(
 
 def templatestats():
     business = 'nullphish'
-    con = sqlite.connect('db1.db')
+    con = sqlite.connect('db/db1.db')
     con.row_factory = dict_factory
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
@@ -34,7 +34,7 @@ def templatestats():
 
 def userstats():
     business = 'nullphish'
-    con = sqlite.connect('db1.db')
+    con = sqlite.connect('db/db1.db')
     con.row_factory = sqlite.Row
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
@@ -62,7 +62,7 @@ def mutatetempstats(tempstats):
 
 def mutateuserstat():
     business = 'nullphish'
-    con = sqlite.connect('db1.db')
+    con = sqlite.connect('db/db1.db')
     con.row_factory = sqlite.Row
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
