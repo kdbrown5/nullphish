@@ -174,94 +174,97 @@ def listtemplate():
     a8 = []
     a9 = []
     a10 = []
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
-        a0.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
-        if 'none' in row:
-            a0f.append(0)
-        else:
-            a0f.append(1)
-    a0g = converttoavg(a0g, a0f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[1], business,)):
-        a1.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[1], business,)):
-        if 'none' in row:
-            a1f.append(0)
-        else:
-            a1f.append(1)
-    a1g = converttoavg(a1g, a1f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[2], business,)):
-        a2.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[2], business,)):
-        if 'none' in row:
-            a2f.append(0)
-        else:
-            a2f.append(1)
-    a2g = converttoavg(a2g, a2f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[3], business,)):
-        a3.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[3], business,)):
-        if 'none' in row:
-            a3f.append(0)
-        else:
-            a3f.append(1)
-    a3g = converttoavg(a3g, a3f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
-        a3.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
-        if 'none' in row:
-            a4f.append(0)
-        else:
-            a4f.append(1)
-    a4g = converttoavg(a4g, a4f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[5], business,)):
-        a5.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[5], business,)):
-        if 'none' in row:
-            a5f.append(0)
-        else:
-            a5f.append(1)
-    a5g = converttoavg(a5g, a5f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[6], business,)):
-        a6.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[6], business,)):
-        if 'none' in row:
-            a6f.append(0)
-        else:
-            a6f.append(1)
-    a6g = converttoavg(a6g, a6f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[7], business,)):
-        a7.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[7], business,)):
-        if 'none' in row:
-            a7f.append(0)
-        else:
-            a7f.append(1)
-    a7g = converttoavg(a7g, a7f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[8], business,)):
-        a8.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[8], business,)):
-        if 'none' in row:
-            a8f.append(0)
-        else:
-            a8f.append(1)
-    a8g = converttoavg(a8g, a8f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[9], business,)):
-        a9.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[9], business,)):
-        if 'none' in row:
-            a9f.append(0)
-        else:
-            a9f.append(1)
-    a9g = converttoavg(a9g, a9f)
-    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[10], business,)):
-        a10.append(row[0])
-    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[10], business,)):
-        if 'none' in row:
-            a10f.append(0)
-        else:
-            a10f.append(1)
-    a10g = converttoavg(a10g, a10f)
+    try:
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
+            a0.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
+            if 'none' in row:
+                a0f.append(0)
+            else:
+                a0f.append(1)
+        a0g = converttoavg(a0g, a0f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[1], business,)):
+            a1.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[1], business,)):
+            if 'none' in row:
+                a1f.append(0)
+            else:
+                a1f.append(1)
+        a1g = converttoavg(a1g, a1f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[2], business,)):
+            a2.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[2], business,)):
+            if 'none' in row:
+                a2f.append(0)
+            else:
+                a2f.append(1)
+        a2g = converttoavg(a2g, a2f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[3], business,)):
+            a3.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[3], business,)):
+            if 'none' in row:
+                a3f.append(0)
+            else:
+                a3f.append(1)
+        a3g = converttoavg(a3g, a3f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
+            a3.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
+            if 'none' in row:
+                a4f.append(0)
+            else:
+                a4f.append(1)
+        a4g = converttoavg(a4g, a4f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[5], business,)):
+            a5.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[5], business,)):
+            if 'none' in row:
+                a5f.append(0)
+            else:
+                a5f.append(1)
+        a5g = converttoavg(a5g, a5f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[6], business,)):
+            a6.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[6], business,)):
+            if 'none' in row:
+                a6f.append(0)
+            else:
+                a6f.append(1)
+        a6g = converttoavg(a6g, a6f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[7], business,)):
+            a7.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[7], business,)):
+            if 'none' in row:
+                a7f.append(0)
+            else:
+                a7f.append(1)
+        a7g = converttoavg(a7g, a7f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[8], business,)):
+            a8.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[8], business,)):
+            if 'none' in row:
+                a8f.append(0)
+            else:
+                a8f.append(1)
+        a8g = converttoavg(a8g, a8f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[9], business,)):
+            a9.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[9], business,)):
+            if 'none' in row:
+                a9f.append(0)
+            else:
+                a9f.append(1)
+        a9g = converttoavg(a9g, a9f)
+        for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[10], business,)):
+            a10.append(row[0])
+        for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[10], business,)):
+            if 'none' in row:
+                a10f.append(0)
+            else:
+                a10f.append(1)
+        a10g = converttoavg(a10g, a10f)
+    except:
+        pass
     con.close()
     return templatelist, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a0g, a1g, a2g, a3g, a4g, a5g, a6g, a7g, a8g, a9g, a10g
 
