@@ -131,11 +131,11 @@ def makecounters(sentline, notphished):
                 notphishedy.append(1)
                 notphishedx.append(v)
     return xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist
-    
+
 def listtemplate():
     templatelist = []
     business = 'nullphish'
-    con = sqlite.connect('db1.db')
+    con = sqlite.connect('db/db1.db')
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
     cur.execute('select distinct template from phishsched where template != "" and business = (?);', (business,))
