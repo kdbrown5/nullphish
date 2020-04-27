@@ -17,6 +17,7 @@ app = dash.Dash(
         requests_pathname_prefix='/app1/'
         )
 
+
 def templatestats():
     business = 'nullphish'
     con = sqlite.connect('db/db1.db')
@@ -41,7 +42,6 @@ def userstats():
     cur.execute('select * from phishsched where business = (?) and type = "email" and sentdate != "none";', (business,))
     userstat = cur.fetchall()
     return userstat
-
 
 def dict_factory(cursor, row):
     d = {}
@@ -92,9 +92,7 @@ def unique(inputlist):
     for x in inputlist:
         if x not in unique_list:
             unique_list.append(x)
-    for x in unique_list:
-        x = x.replace(' ','_')
-        print(x)
+    return unique_list
 
 def makecounters(sentline, notphished):
     xa = []
@@ -134,19 +132,103 @@ def makecounters(sentline, notphished):
                 notphishedx.append(v)
     return xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist
 
+def listtemplate():
+    templatelist = []
+    business = 'nullphish'
+    con = sqlite.connect('db/db1.db')
+    cur = con.cursor()
+    cur.execute('PRAGMA key = '+dbkey+';')
+    cur.execute('select distinct template from phishsched where template != "" and business = (?);', (business,))
+    for i in cur.fetchall():
+        templatelist.append(i[0])
+    a0 = []
+    a0f = []
+    a0g = []
+    a1 = []
+    a1f = []
+    a1g = []
+    a2f = []
+    a2g = []
+    a3f = []
+    a3g = []
+    a4f = []
+    a4g = []
+    a5f = []
+    a5g = []
+    a2 = []
+    a3 = []
+    a4 = []
+    a5 = []
+    a6 = []
+    a7 = []
+    a8 = []
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
+        a0.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
+        if 'none' in row:
+            a0f.append(0)
+        else:
+            a0f.append(1)
+    a0g = converttoavg(a0g, a0f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[1], business,)):
+        a1.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[1], business,)):
+        if 'none' in row:
+            a1f.append(0)
+        else:
+            a1f.append(1)
+    a1g = converttoavg(a1g, a1f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[2], business,)):
+        a2.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[2], business,)):
+        if 'none' in row:
+            a2f.append(0)
+        else:
+            a2f.append(1)
+    a2g = converttoavg(a2g, a2f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[3], business,)):
+        a3.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[3], business,)):
+        if 'none' in row:
+            a3f.append(0)
+        else:
+            a3f.append(1)
+    a3g = converttoavg(a3g, a3f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
+        a3.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
+        if 'none' in row:
+            a4f.append(0)
+        else:
+            a4f.append(1)
+    a4g = converttoavg(a4g, a4f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[5], business,)):
+        a5.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[5], business,)):
+        if 'none' in row:
+            a5f.append(0)
+        else:
+            a5f.append(1)
+    a5g = converttoavg(a5g, a5f)
+    con.close()
+    return templatelist, a0, a1, a2, a3, a4, a5, a0g, a1g, a2g, a3g, a4g, a5g
+
+def converttoavg(newlist, oldlist):
+    tempsum = 0
+    for i in oldlist:
+        tempsum = tempsum+i
+        domath = tempsum/len(oldlist)
+        newlist.append(domath)
+    return newlist
+
+
 def make_layout():
     userstat = userstats()
     xid, xtemplate, xmailname, xbitly, xsentdate, xdepartment, xactivetime = mutateuserstat()
     tempstats, notphished, sentline = templatestats()
     xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist = makecounters(sentline, notphished)
     tempx, tempy = mutatetempstats(tempstats)
-    #print(xd)
-    #xsum = 0
-    #for t in xb:
-    #    xsum = xsum+t
-
-    #xavg = xsum/len(xd)
-    #print('xavg -', xavg)
+    templatelist, a0, a1, a2, a3, a4, a5, a0g, a1g, a2g, a3g, a4g, a5g = listtemplate()
     colors = {
         'background': '#111111',
         'text': '#7FDBFF'
@@ -188,7 +270,12 @@ def make_layout():
             figure={
                 'data': [
                     {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'Click Rate Average'},
-                    #{'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u''},
+                    {'x': a0, 'y': a0g, 'type': 'line', 'name': templatelist[0]},
+                    {'x': a1, 'y': a1g, 'type': 'line', 'name': templatelist[1]},
+                    {'x': a2, 'y': a2g, 'type': 'line', 'name': templatelist[2]},
+                    {'x': a3, 'y': a3g, 'type': 'line', 'name': templatelist[3]},
+                    {'x': a4, 'y': a4g, 'type': 'line', 'name': templatelist[4]},
+                    {'x': a5, 'y': a5g, 'type': 'line', 'name': templatelist[5]},
                     #{'x': xsentdate, 'y': xtemplate, 'type': 'line', 'name': 'Opened'},
                     #{'x': xactivetime, 'y': [xtemplate], 'type': 'line', 'name': 'Opened'},
                 ],
