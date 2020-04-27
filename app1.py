@@ -261,7 +261,7 @@ def make_layout():
                 }
             }
         ),
-    html.Div(children='(Avg) Click Rate (%) over time (all sent items)', style={
+    html.Div(children='(Avg) Click Rate (%) over time', style={
         'textAlign': 'center',
         'color': colors['text']
     }),
@@ -269,7 +269,7 @@ def make_layout():
             id='Graph2',
             figure={
                 'data': [
-                    {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'Click Rate Average'},
+                    {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'All Templates'},
                     {'x': a0, 'y': a0g, 'type': 'line', 'name': templatelist[0]},
                     {'x': a1, 'y': a1g, 'type': 'line', 'name': templatelist[1]},
                     {'x': a2, 'y': a2g, 'type': 'line', 'name': templatelist[2]},
