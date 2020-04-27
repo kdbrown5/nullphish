@@ -208,7 +208,7 @@ def listtemplate():
                 a3f.append(1)
         a3g = converttoavg(a3g, a3f)
         for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
-            a3.append(row[0])
+            a4.append(row[0])
         for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[4], business,)):
             if 'none' in row:
                 a4f.append(0)
