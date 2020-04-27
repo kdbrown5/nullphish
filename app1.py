@@ -335,7 +335,7 @@ def make_layout():
                     {'x': a5, 'y': a5g, 'type': 'line', 'name': templatelist[5], 'line': {'width':1},},
                     {'x': a6, 'y': a6g, 'type': 'line', 'name': templatelist[6], 'line': {'width':1},},
                     {'x': a7, 'y': a7g, 'type': 'line', 'name': templatelist[7], 'line': {'width':1},},
-                    #{'x': a8, 'y': a8g, 'type': 'line', 'name': templatelist[8], 'line': {'width':1},},
+                    {'x': a8, 'y': a8g, 'type': 'line', 'name': templatelist[8], 'line': {'width':1},},
                     #{'x': a9, 'y': a9g, 'type': 'line', 'name': templatelist[9], 'line': {'width':1},},
                     #{'x': a10, 'y': a10g, 'type': 'line', 'name': templatelist[10], 'line': {'width':1},},
                 ],
