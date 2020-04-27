@@ -131,11 +131,11 @@ def makecounters(sentline, notphished):
                 notphishedy.append(1)
                 notphishedx.append(v)
     return xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist
-
+    
 def listtemplate():
     templatelist = []
     business = 'nullphish'
-    con = sqlite.connect('db/db1.db')
+    con = sqlite.connect('db1.db')
     cur = con.cursor()
     cur.execute('PRAGMA key = '+dbkey+';')
     cur.execute('select distinct template from phishsched where template != "" and business = (?);', (business,))
@@ -155,6 +155,16 @@ def listtemplate():
     a4g = []
     a5f = []
     a5g = []
+    a6f = []
+    a6g = []
+    a7f = []
+    a7g = []
+    a8f = []
+    a8g = []
+    a9f = []
+    a9g = []
+    a10f = []
+    a10g = []
     a2 = []
     a3 = []
     a4 = []
@@ -162,6 +172,8 @@ def listtemplate():
     a6 = []
     a7 = []
     a8 = []
+    a9 = []
+    a10 = []
     for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
         a0.append(row[0])
     for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[0], business,)):
@@ -210,8 +222,48 @@ def listtemplate():
         else:
             a5f.append(1)
     a5g = converttoavg(a5g, a5f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[6], business,)):
+        a6.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[6], business,)):
+        if 'none' in row:
+            a6f.append(0)
+        else:
+            a6f.append(1)
+    a6g = converttoavg(a6g, a6f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[7], business,)):
+        a7.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[7], business,)):
+        if 'none' in row:
+            a7f.append(0)
+        else:
+            a7f.append(1)
+    a7g = converttoavg(a7g, a7f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[8], business,)):
+        a8.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[8], business,)):
+        if 'none' in row:
+            a8f.append(0)
+        else:
+            a8f.append(1)
+    a8g = converttoavg(a8g, a8f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[9], business,)):
+        a9.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[9], business,)):
+        if 'none' in row:
+            a9f.append(0)
+        else:
+            a9f.append(1)
+    a9g = converttoavg(a9g, a9f)
+    for row in cur.execute('select sentdate from phishsched where template = (?) and business = (?);', (templatelist[10], business,)):
+        a10.append(row[0])
+    for row in cur.execute('select activetime from phishsched where template = (?) and business = (?);', (templatelist[10], business,)):
+        if 'none' in row:
+            a10f.append(0)
+        else:
+            a10f.append(1)
+    a10g = converttoavg(a10g, a10f)
     con.close()
-    return templatelist, a0, a1, a2, a3, a4, a5, a0g, a1g, a2g, a3g, a4g, a5g
+    return templatelist, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a0g, a1g, a2g, a3g, a4g, a5g, a6g, a7g, a8g, a9g, a10g
 
 def converttoavg(newlist, oldlist):
     tempsum = 0
@@ -228,7 +280,7 @@ def make_layout():
     tempstats, notphished, sentline = templatestats()
     xa, xb, xc, xd, xe, notphishedx, notphishedy, xavglist = makecounters(sentline, notphished)
     tempx, tempy = mutatetempstats(tempstats)
-    templatelist, a0, a1, a2, a3, a4, a5, a0g, a1g, a2g, a3g, a4g, a5g = listtemplate()
+    templatelist, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a0g, a1g, a2g, a3g, a4g, a5g, a6g, a7g, a8g, a9g, a10g = listtemplate()
     colors = {
         'background': '#111111',
         'text': '#7FDBFF'
@@ -256,15 +308,13 @@ def make_layout():
                     'plot_bgcolor': colors['background'],
                     'paper_bgcolor': colors['background'],
                     'font': {
-                        'color': colors['text'],
+                        'color': colors['text']
                     },
-                    'height': 300,
-                },
-                
+                    'height':300,
+                }
             }
-            
         ),
-    html.Div(children='(Avg) Click Rate (%) over time', style={
+    html.Div(children='(Avg) Click Rate (%) over time (all sent items)', style={
         'textAlign': 'center',
         'color': colors['text']
     }),
@@ -279,8 +329,12 @@ def make_layout():
                     {'x': a3, 'y': a3g, 'type': 'line', 'name': templatelist[3], 'line': {'width':1},},
                     {'x': a4, 'y': a4g, 'type': 'line', 'name': templatelist[4], 'line': {'width':1},},
                     {'x': a5, 'y': a5g, 'type': 'line', 'name': templatelist[5], 'line': {'width':1},},
-                    #{'x': xsentdate, 'y': xtemplate, 'type': 'line', 'name': 'Opened'},
-                    #{'x': xactivetime, 'y': [xtemplate], 'type': 'line', 'name': 'Opened'},
+                    {'x': a6, 'y': a6g, 'type': 'line', 'name': templatelist[6], 'line': {'width':1},},
+                    {'x': a7, 'y': a7g, 'type': 'line', 'name': templatelist[7], 'line': {'width':1},},
+                    {'x': a8, 'y': a8g, 'type': 'line', 'name': templatelist[8], 'line': {'width':1},},
+                    {'x': a9, 'y': a9g, 'type': 'line', 'name': templatelist[9], 'line': {'width':1},},
+                    {'x': a10, 'y': a10g, 'type': 'line', 'name': templatelist[10], 'line': {'width':1},},
+
                 ],
                 'layout': {
                     'plot_bgcolor': colors['background'],
@@ -292,5 +346,6 @@ def make_layout():
             }
         )]
     )
+
     
 app.layout = make_layout
