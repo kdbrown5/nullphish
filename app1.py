@@ -256,10 +256,12 @@ def make_layout():
                     'plot_bgcolor': colors['background'],
                     'paper_bgcolor': colors['background'],
                     'font': {
-                        'color': colors['text']
+                        'color': colors['text'],
                     }
-                }
+                },
+                'height':300,
             }
+            
         ),
     html.Div(children='(Avg) Click Rate (%) over time', style={
         'textAlign': 'center',
