@@ -272,7 +272,7 @@ def make_layout():
             id='Graph2',
             figure={
                 'data': [
-                    {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'Click Rate Average', 'line': {'width':3.5},},
+                    {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'Combined (All)', 'line': {'width':4},},
                     {'x': a0, 'y': a0g, 'type': 'line', 'name': templatelist[0], 'line': {'width':1},},
                     {'x': a1, 'y': a1g, 'type': 'line', 'name': templatelist[1], 'line': {'width':1},},
                     {'x': a2, 'y': a2g, 'type': 'line', 'name': templatelist[2], 'line': {'width':1},},
