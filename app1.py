@@ -257,9 +257,10 @@ def make_layout():
                     'paper_bgcolor': colors['background'],
                     'font': {
                         'color': colors['text'],
-                    }
+                    },
+                    'height': 300,
                 },
-                'height':300,
+                
             }
             
         ),
