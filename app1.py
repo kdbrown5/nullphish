@@ -324,7 +324,8 @@ def make_layout():
         dcc.Graph(
             id='Graph2',
             figure={
-                'data': [
+                'data': 
+                [
                     {'x': xsentdate, 'y': xavglist, 'type': 'line', 'name': u'Combined (All)', 'line': {'width':4},},
                     {'x': a0, 'y': a0g, 'type': 'line', 'name': templatelist[0], 'line': {'width':1},},
                     {'x': a1, 'y': a1g, 'type': 'line', 'name': templatelist[1], 'line': {'width':1},},
@@ -334,10 +335,9 @@ def make_layout():
                     {'x': a5, 'y': a5g, 'type': 'line', 'name': templatelist[5], 'line': {'width':1},},
                     {'x': a6, 'y': a6g, 'type': 'line', 'name': templatelist[6], 'line': {'width':1},},
                     {'x': a7, 'y': a7g, 'type': 'line', 'name': templatelist[7], 'line': {'width':1},},
-                    {'x': a8, 'y': a8g, 'type': 'line', 'name': templatelist[8], 'line': {'width':1},},
-                    {'x': a9, 'y': a9g, 'type': 'line', 'name': templatelist[9], 'line': {'width':1},},
-                    {'x': a10, 'y': a10g, 'type': 'line', 'name': templatelist[10], 'line': {'width':1},},
-
+                    #{'x': a8, 'y': a8g, 'type': 'line', 'name': templatelist[8], 'line': {'width':1},},
+                    #{'x': a9, 'y': a9g, 'type': 'line', 'name': templatelist[9], 'line': {'width':1},},
+                    #{'x': a10, 'y': a10g, 'type': 'line', 'name': templatelist[10], 'line': {'width':1},},
                 ],
                 'layout': {
                     'plot_bgcolor': colors['background'],
