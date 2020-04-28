@@ -269,10 +269,12 @@ def listtemplate():
     return templatelist, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a0g, a1g, a2g, a3g, a4g, a5g, a6g, a7g, a8g, a9g, a10g
 
 def converttoavg(newlist, oldlist):
+    stepping = 0
     tempsum = 0
     for i in oldlist:
+        stepping = stepping+1
         tempsum = tempsum+i
-        domath = tempsum/len(oldlist)
+        domath = tempsum/stepping
         newlist.append(domath)
     return newlist
 
