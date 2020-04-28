@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
-    <title>NullPhish: Login to Your Account</title>
+    <title>NullPhish: User Management</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
@@ -157,8 +157,6 @@ input[type='checkbox'] {
       <hr style="width: 500px;">
       <center>
         <div style="max-width: 50%;">
-        
-          
           <h1>Import users</h1>
           <div class="parentrow">
           <div class="childrow">
@@ -181,10 +179,8 @@ input[type='checkbox'] {
         </div>
       </div>
           <hr>
-
-
         <div>
-          <h2>View Users</h2>
+          <h2>Modify User ( not working )</h2>
           {% with messages = get_flashed_messages(category_filter=["category2"]) %}
           {% if messages %}
           <ul>
@@ -195,22 +191,24 @@ input[type='checkbox'] {
           {% endif %}
           {% endwith %}
         </div>
-        <div>
+        <div style="width: 100%; flex: 50%">
+        <div style="width: 70%; flex: 50%; display:inline-block">
           <select name='searchstudent' class="form-control" id="exampleFormControlSelect1">
             <option>Users</option>
             {% for usernamelookup,firstname,lastname,department,role in lookup %}
-            <option>{{ usernamelookup }} | {{ firstname }} | {{ lastname }} | {{ department }} | {{ role }}</option>
+            <option value="{{ usernamelookup }}">{{ usernamelookup }} | {{ firstname }} | {{ lastname }} | {{ department }} | {{ role }}</option>
             {% endfor %}     
           </select>
+        </div>
+        <div style="width: 10%; flex:50%; display:inline-block; padding-right: 9%;">
+        <button type="submit" name="modify">Modify</button>
+      </div>
         </div>
         <br>
         <hr>
         <br>
         <div>
-  
           <div class="wrap-collabsible">
-  
-            
             <input id="collapsible" class="toggle" type="checkbox">
             <label for="collapsible" class="lbl-toggle">Add User</label>
             <div class="collapsible-content">
@@ -242,7 +240,7 @@ input[type='checkbox'] {
   
   
           </div>
-          
+          <br>
         </div>
         <script>
           var coll = document.getElementsByClassName("collapsible");
