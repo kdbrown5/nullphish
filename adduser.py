@@ -233,8 +233,8 @@ def addnewuser():
             print(request.form)
             if 'modify' in request.form:
                 print('test', request.form.get('selectuser'))
-                usermod = request.form.get('selectuser')
-                usermod = singleuserlookup(usermod)
+                userpick = request.form.get('selectuser')
+                usermod = singleuserlookup(userpick)
                 print(usermod)
                 print(type(usermod))
                 return render_template("adduser-modify.html", usermod=usermod)
