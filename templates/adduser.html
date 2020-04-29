@@ -188,7 +188,7 @@ input[type='checkbox'] {
           <h2>Modify User ( not working )</h2>
           <div style="width: 100%; flex: 50%">
             <div style="width: 70%; flex: 50%; display:inline-block">
-              <form>
+              <form method="POST">
               <select name='selectuser' class="form-control" id="exampleFormControlSelect1">
                 <option>Users</option>
                 {% for usernamelookup,firstname,lastname,department,role in lookup %}

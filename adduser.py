@@ -211,6 +211,7 @@ def addnewuser():
                 flash('Import complete', 'category2')
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
+            print(request.form)
             if 'selectuser' in request.form:
                 usermod = request.form['selectuser']
                 print(usermod)
