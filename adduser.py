@@ -211,6 +211,11 @@ def addnewuser():
                 flash('Import complete', 'category2')
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
+            if 'modify' in request.form:
+                usermod = request.form['selectuser']
+                print(usermod)
+                return render_template("adduser.html", usermod=usermod, lookup=zip(usernamelookup,firstname,lastname,department,role))
+
             if 'Download' in request.form:
                 return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
             if 'emailaddr' in request.form:
