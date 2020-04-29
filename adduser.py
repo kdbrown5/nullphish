@@ -134,7 +134,7 @@ def addnewuser():
         con.row_factory = dict_factory
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
-        cur.execute('select * from users where username = (?) business = (?) and role = "user";', (userpick, (session['business'],)))
+        cur.execute('select * from users where username = (?) and business = (?) and role = "user";', (userpick, session['business'],))
         userdict = cur.fetchall()
         con.close()
         return userdict
@@ -234,7 +234,7 @@ def addnewuser():
             if 'modify' in request.form:
                 usermod = request.form['selectuser']
                 usermod = singleuserlookup(usermod)
-                return render_template("adduser-modify.html", usermod=usermod, lookup=zip(usernamelookup,firstname,lastname,department,role))
+                return render_template("adduser-modify.html", usermod=usermod)
 
             if 'Download' in request.form:
                 return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
