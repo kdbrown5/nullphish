@@ -126,6 +126,25 @@ def addnewuser():
                 sender_email, receiver_email, message.as_string()
             )
 
+    def singleuserlookup(userpick):
+        con = sqlite.connect('db/db1.db')
+        business = str(session['business'])
+        business = business.replace('[', '')
+        business = business.replace(']', '')
+        con.row_factory = dict_factory
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from users where username = (?) business = (?) and role = "user";', (userpick, (session['business'],)))
+        userdict = cur.fetchall()
+        con.close()
+        return userdict
+
+    def dict_factory(cursor, row):
+        d = {}
+        for idx, col in enumerate(cursor.description):
+            d[col[0]] = row[idx]
+        return d    
+
     def registernosend(rfname, rlname, rdpt, emailaddr, rrole):
         if len(str(rfname)) > 0:
             if len(str(rlname)) > 0:
@@ -212,10 +231,10 @@ def addnewuser():
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
             print(request.form)
-            if 'selectuser' in request.form:
+            if 'modify' in request.form:
                 usermod = request.form['selectuser']
-                print(usermod)
-                return render_template("adduser.html", usermod=usermod, lookup=zip(usernamelookup,firstname,lastname,department,role))
+                usermod = singleuserlookup(usermod)
+                return render_template("adduser-modify.html", usermod=usermod, lookup=zip(usernamelookup,firstname,lastname,department,role))
 
             if 'Download' in request.form:
                 return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')

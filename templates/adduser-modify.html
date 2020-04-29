@@ -1,0 +1,238 @@
+<!--   NOTE: This document is here as a template/placeholder for future pages      -->
+<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!--      Please remove all generic/instructional comments before publishing!      -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>NullPhish: User Management</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: visible;
+
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+      .collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+.wrap-collabsible {
+  margin-bottom: 1.2rem 0;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  text-align: center;
+
+  padding: 1rem;
+
+  color: black;
+  background: #5cb85c;
+
+  cursor: pointer;
+
+  border-radius: 7px;
+  transition: all 0.25s ease-out;
+}
+
+.lbl-toggle:hover {
+  color: white;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+
+  transition: transform .2s ease-out;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 100vh;
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.collapsible-content .content-inner {
+  background: rgba(66, 78, 250, 0);
+  border-bottom: 1px solid rgba(250, 225, 66, 0);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: .5rem 1rem;
+}
+.contentcontainer{
+
+  flex-direction: column;
+}
+.parentrow {
+  display: flex;
+  flex-wrap: wrap;
+}
+.childrow {
+  flex: 1 0 21%; /* explanation below */
+  margin: 5px;
+  height: 100px;
+
+}
+.th {
+font-size:1.5em;
+
+}
+    </style>
+  </head>
+  <body id="particles-js"  style="height:auto; min-height:100%">
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
+    <div class="contentcontainer">
+      <div><h1>User Management</h1></div>
+        <form method="POST"><button type="submit" name="back">Go back without modifying</button></form>
+            <div style="padding-top:2%"></div>
+            <div> 
+                <form method="POST">
+                    {{% if usermod %}}
+            <table style="width:30%;">
+                <tr>
+                  <th class="th">First&nbsp;Name&nbsp;</th>
+                  <td><input style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" type="text" placeholder="{{ usermod.username }}" readonly></input></td>
+       
+                </tr>
+                <tr>
+                  <th class="th">Last&nbsp;Name&nbsp;</th>
+                  <td><input style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" type="text" placeholder="{{ usermod.lastname }}" readonly></input></td>
+ 
+                </tr>
+                <tr>
+                  <th class="th">Email Address&nbsp;</th>
+                  <td><input name='username' style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" value="{{ username }}" placeholder="{{ username }}" type="text" readonly></input></td>
+
+                </tr>
+                <tr>
+                    <th class="th">Department&nbsp;</th>
+                    <td><input name='department' style="border-color: #49a355" placeholder="{{ department }}" type="text"></input></td>
+  
+                  </tr>
+                  <tr>
+                    <th class="th">Phone Number&nbsp;</th>
+                    <td><input name='phonedid' style="border-color:#49a355" placeholder="{{ phonedid }}" type="text"></input></td>
+  
+                  </tr>
+                  <tr>
+                    <th class="th">Status&nbsp;</th>
+                    <td>
+                    <select style="width: 95%; border-color:#49a355" name='status' class="form-control" id="status">
+                        <option>{{ status }}</option>
+                        <option value="active">Active</option>
+                        <option value="suspended">Suspended</option>
+                      </select>
+                    </td>
+                  </tr>
+              </table>
+              {% endif %}
+            </div>
+            <input name="id" value="{{ id }}" hidden>
+            <button type="submit" name="modify" value="yes">Modify</button>
+          </div>
+            </div>
+          </form>
+            <br>
+          {% with messages = get_flashed_messages(category_filter=["category2"]) %}
+          {% if messages %}
+          <ul>
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <!-- Put Content Here! -->
+    </div>
+    <!-- Logout confirmation overlay -->
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <!-- Put more Javascript stuff here if you need -->
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
+  </body>
+</html>
