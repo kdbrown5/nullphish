@@ -232,7 +232,8 @@ def addnewuser():
         except:
             print(request.form)
             if 'modify' in request.form:
-                usermod = request.form['selectuser']
+                print('test', request.form.get['selectuser'])
+                usermod = request.form.get['selectuser']
                 usermod = singleuserlookup(usermod)
                 print(usermod)
                 print(type(usermod))
