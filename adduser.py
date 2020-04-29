@@ -58,7 +58,7 @@ def addnewuser():
             lastname = []
             department = []
             role = []
-            for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?);', (session['business'],)):
+            for row in cur.execute('select username, firstname, lastname, department, role from users where business = (?) and role = "user";', (session['business'],)):
                 reguserquery.append(row[:][0])
                 firstname.append(row[:][1])
                 lastname.append(row[:][2])
