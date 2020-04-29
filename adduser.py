@@ -236,6 +236,10 @@ def addnewuser():
                 usermod = singleuserlookup(usermod)
                 return render_template("adduser-modify.html", usermod=usermod)
 
+            if 'submitmod' in request.form:
+                print(request.form)
+                submitmod = request.form['submitmod']
+
             if 'Download' in request.form:
                 return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
             if 'emailaddr' in request.form:

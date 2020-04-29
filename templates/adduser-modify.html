@@ -162,38 +162,38 @@ font-size:1.5em;
             <div style="padding-top:2%"></div>
             <div> 
                 <form method="POST">
-                    {% if usermod %}
+                    {% for item in usermod %}
             <table style="width:30%;">
                 <tr>
                   <th class="th">First&nbsp;Name&nbsp;</th>
-                  <td><input style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" type="text" placeholder="{{ usermod.username }}" readonly></input></td>
+                  <td><input style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" type="text" placeholder="{{ item.username }}" readonly></input></td>
        
                 </tr>
                 <tr>
                   <th class="th">Last&nbsp;Name&nbsp;</th>
-                  <td><input style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" type="text" placeholder="{{ usermod.lastname }}" readonly></input></td>
+                  <td><input style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" type="text" placeholder="{{ item.lastname }}" readonly></input></td>
  
                 </tr>
                 <tr>
                   <th class="th">Email Address&nbsp;</th>
-                  <td><input name='username' style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" value="{{ username }}" placeholder="{{ username }}" type="text" readonly></input></td>
+                  <td><input name='username' style="background-color:rgb(161, 161, 161); border-color: rgba(255, 0, 0, 0.253)" value="{{ item.username }}" placeholder="{{ item.username }}" type="text" readonly></input></td>
 
                 </tr>
                 <tr>
                     <th class="th">Department&nbsp;</th>
-                    <td><input name='department' style="border-color: #49a355" placeholder="{{ department }}" type="text"></input></td>
+                    <td><input name='department' style="border-color: #49a355" placeholder="{{ item.department }}" type="text"></input></td>
   
                   </tr>
                   <tr>
                     <th class="th">Phone Number&nbsp;</th>
-                    <td><input name='phonedid' style="border-color:#49a355" placeholder="{{ phonedid }}" type="text"></input></td>
+                    <td><input name='phonedid' style="border-color:#49a355" placeholder="{{ item.phonedid }}" type="text"></input></td>
   
                   </tr>
                   <tr>
                     <th class="th">Status&nbsp;</th>
                     <td>
                     <select style="width: 95%; border-color:#49a355" name='status' class="form-control" id="status">
-                        <option>{{ status }}</option>
+                        <option>{{ item.status }}</option>
                         <option value="active">Active</option>
                         <option value="suspended">Suspended</option>
                       </select>
@@ -202,8 +202,8 @@ font-size:1.5em;
               </table>
               {% endif %}
             </div>
-            <input name="id" value="{{ id }}" hidden>
-            <button type="submit" name="modify" value="yes">Modify</button>
+            <input name="id" value="{{ item.id }}" hidden>
+            <button type="submit" name="submitmod" value="yes">Modify</button>
           </div>
             </div>
           </form>
