@@ -174,7 +174,7 @@ input[type='checkbox'] {
         <hr>
         <div class="childrow">
           <form method="POST">
-            <button name="Download" type="submit" class="btn btn-primary btn-block">Download Example CSV</button>
+            <button name="Download" type="submit" style="width:fit-content;" class="btn btn-primary btn-block">Example csv</button>
           </form>
         </div>
       </div>
@@ -188,6 +188,7 @@ input[type='checkbox'] {
           <h2>Modify User ( not working )</h2>
           <div style="width: 100%; flex: 50%">
             <div style="width: 70%; flex: 50%; display:inline-block">
+              <form>
               <select name='selectuser' class="form-control" id="exampleFormControlSelect1">
                 <option>Users</option>
                 {% for usernamelookup,firstname,lastname,department,role in lookup %}
@@ -202,6 +203,7 @@ input[type='checkbox'] {
             {% if usermod %}
             {{ usermod }}
             {% endif %}
+          </form>
             <br>
           {% with messages = get_flashed_messages(category_filter=["category2"]) %}
           {% if messages %}
