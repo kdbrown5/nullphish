@@ -96,7 +96,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
 
     # Create secure connection with server and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtpserver, mailport, context=context) as server:
+    with smtplib.SMTP_SSL(smtpserver, mailport, context=context, verify=False) as server:
         server.login(sender_email, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
