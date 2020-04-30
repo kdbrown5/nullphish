@@ -41,7 +41,8 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
     message.attach(part2)
 
     # Create secure connection with server and send email
-    context = ssl.create_default_context()
+    #context = ssl.create_default_context()
+    context = ssl._create_unverified_context(cert_reqs=ssl.CERT_NONE)
     with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(
@@ -96,7 +97,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
 
     # Create secure connection with server and send email
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtpserver, mailport, context=context, verify=False) as server:
+    with smtplib.SMTP_SSL(smtpserver, mailport, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
