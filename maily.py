@@ -5,10 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 import urllib3
-
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+from urllib.request import urlopen
 
 loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
@@ -47,8 +44,7 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
     # Create secure connection with server and send email
     #context = ssl.create_default_context()
-    context = ctx
-    with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=ctx) as server:
+    with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=context) as server:
         server.login(sender_email, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
@@ -101,8 +97,8 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     message.attach(part2)
 
     # Create secure connection with server and send email
-    context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(smtpserver, mailport, context=context) as server:
+    context = ssl._create_unverified_context()
+    with smtplib.SMTP_SSL(smtpserver, mailport, context=ssl._create_unverified_context()) as server:
         server.login(sender_email, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
