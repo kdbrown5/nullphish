@@ -18,6 +18,8 @@ from pathlib import Path
 from datetime import datetime
 import csv
 from werkzeug.utils import secure_filename
+import urllib3
+from urllib.request import urlopen
 
 db = SQLAlchemy()
 
@@ -118,9 +120,9 @@ def addnewuser():
         message.attach(part1)
         message.attach(part2)
         # Create secure connection with server and send email
-        context = ssl.create_default_context()
+        context = ssl._create_unverified_context()
         
-        with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=context) as server:
+        with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=ssl._create_unverified_context()) as server:
             server.login(sender_email, password)
             server.sendmail(
                 sender_email, receiver_email, message.as_string()
