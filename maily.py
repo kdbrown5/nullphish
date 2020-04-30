@@ -4,7 +4,7 @@ from pysqlcipher3 import dbapi2 as sqlite
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
-import urllib2
+import urllib3
 
 ctx = ssl.create_default_context()
 ctx.check_hostname = False
