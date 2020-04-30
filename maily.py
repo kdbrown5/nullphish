@@ -4,6 +4,11 @@ from pysqlcipher3 import dbapi2 as sqlite
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+import urllib2
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
 loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
@@ -42,8 +47,8 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
     # Create secure connection with server and send email
     #context = ssl.create_default_context()
-    context = ssl._create_unverified_context(cert_reqs=ssl.CERT_NONE)
-    with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=context) as server:
+    context = ctx
+    with smtplib.SMTP_SSL("webmail.nullphish.com", 465, context=ctx) as server:
         server.login(sender_email, password)
         server.sendmail(
             sender_email, receiver_email, message.as_string()
