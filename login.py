@@ -102,6 +102,17 @@ def loginpage():
             loadept = 'None'
         return loadept
 
+    def setstatus(username):
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            cur.execute("SELECT status FROM users where username = (?);", (username,))
+        con.close()
+        status = cur.fetchall()
+        status = status[0]
+        return status
+
     error = None
 
     if request.method == 'POST':
@@ -116,20 +127,22 @@ def loginpage():
             elif completion == False:
                 error = 'Invalid Credentials. Please try again.'
             else:
-                session['username'] = (username)
-                session['logged_in'] = True
-                role = setrole(username)
-                session['role'] = role
-                business = setbusiness(username)
-                session['business'] = business
-                department = setdept(username)
-                session['department'] = department
-                session['fname'], session['lname'] = setname(username)
-                if session['role'] == 'superadmin':
-                    return redirect('/')
-                    #return redirect('/emulateuser')
-                else:
-                    return redirect('/')
+                status = setstatus(username)
+                if status == "active":
+                    session['username'] = (username)
+                    session['logged_in'] = True
+                    role = setrole(username)
+                    session['role'] = role
+                    business = setbusiness(username)
+                    session['business'] = business
+                    department = setdept(username)
+                    session['department'] = department
+                    session['fname'], session['lname'] = setname(username)
+                    if session['role'] == 'superadmin':
+                        return redirect('/')
+                        #return redirect('/emulateuser')
+                    else:
+                        return redirect('/')
         except:
             error = 'Invalid Credentials. Please try again.'
 
