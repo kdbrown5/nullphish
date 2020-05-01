@@ -244,6 +244,13 @@ def addnewuser():
             if 'submitmod' in request.form:
                 print(request.form)
                 submitmod = request.form['submitmod']
+                print('submitmod ->', submitmod)
+                newdepartment = request.form['department']
+                newphone = request.form['phonedid']
+                newstatus = request.form['status']
+                print(newstatus)
+                print(newphone)
+                print(newdepartment)
 
             if 'Download' in request.form:
                 return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
