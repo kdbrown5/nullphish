@@ -157,12 +157,13 @@ font-size:1.5em;
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     <div class="contentcontainer">
-      <div><h1>User Management</h1></div>
-        <form method="POST"><button type="submit" name="back">Go back without modifying</button></form>
+      {% for item in usermod %}
+      <div><h1>Modify user {{ item.username }}</h1></div>
+        <form method="POST"><button type="submit" name="back">Return to User Management</button></form>
             <div style="padding-top:2%"></div>
             <div> 
                 <form method="POST">
-                    {% for item in usermod %}
+                    
             <table style="width:30%;">
                 <tr>
                   <th class="th">First&nbsp;Name&nbsp;</th>
@@ -193,7 +194,7 @@ font-size:1.5em;
                     <th class="th">Status&nbsp;</th>
                     <td>
                     <select style="width: 95%; border-color:#49a355" name='status' class="form-control" id="status">
-                        <option>{{ item.status }}</option>
+                        <option>{{ item.status | replace ('active', 'Active') | replace ('suspended', 'Suspended') }}</option>
                         <option value="active">Active</option>
                         <option value="suspended">Suspended</option>
                       </select>
