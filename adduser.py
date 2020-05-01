@@ -251,6 +251,8 @@ def addnewuser():
                     business = business.replace(']', '')
                     newphone = (''.join(x for x in newphone if x.isdigit()))
                     cur = con.cursor()
+                    print('request.form -', request.form)
+                    print('username -', username, '> - newdepartment -', newdepartment, '> newphone -', newphone, '> - status', newstatus, '> - business', business)
                     with con:
                         cur.execute('PRAGMA key = '+dbkey+';')
                         if newstatus != '':
@@ -272,8 +274,6 @@ def addnewuser():
                             print('if newdepartment')
                             cur.execute('update users set department = (?) where id = (?) and business = (?) and role = "user";', (newdepartment, userid, business,))
                     con.close()
-                    print('request.form -', request.form)
-                    print('username -', username, '> - newdepartment -', newdepartment, '> newphone -', newphone, '> - status', newstatus, '> - business', business)
                     usermod = singleuserlookup(username)
                     flash('User modified!', 'category2')
                     return render_template("adduser-modify.html", usermod=usermod)
