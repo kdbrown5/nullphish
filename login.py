@@ -102,24 +102,12 @@ def loginpage():
             loadept = 'None'
         return loadept
 
-    def status(username):
-        con = sqlite.connect('db/db1.db')
-        with con:
-            cur = con.cursor()
-            cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute("SELECT status FROM users where username = (?);", (username,))
-            status = cur.fetchall()
-            status = status[0]
-        con.close()
-        return status
-
     error = None
 
     if request.method == 'POST':
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
         completion = validate(username, password)
-        status = status(username)
         try:
             if session['validated'] == 0:
                 error = 'It looks like your account is not yet activated. Please contact your administrator'
@@ -129,8 +117,6 @@ def loginpage():
                 error = 'Invalid Credentials. Please try again.'
             else:
                 session['username'] = (username)
-                userstatus = status(username)
-                print(userstatus)
                 session['logged_in'] = True
                 role = setrole(username)
                 session['role'] = role
