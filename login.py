@@ -102,16 +102,15 @@ def loginpage():
             loadept = 'None'
         return loadept
 
-    def setstatus(username):
+    def status(username):
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute("SELECT status FROM users where username = (?);", (username,))
+            status = cur.fetchall()
+            status = status[0]
         con.close()
-        status = cur.fetchall()
-        status = status[0]
-        print('function status =', status)
         return status
 
     error = None
@@ -120,6 +119,7 @@ def loginpage():
         username = request.form.to_dict()['username']
         password = request.form.to_dict()['password']
         completion = validate(username, password)
+        status = status(username)
         try:
             if session['validated'] == 0:
                 error = 'It looks like your account is not yet activated. Please contact your administrator'
@@ -128,23 +128,18 @@ def loginpage():
             elif completion == False:
                 error = 'Invalid Credentials. Please try again.'
             else:
-                status = setstatus(username)
-                print('status = ', status)
-                if status == "active":
-                    session['username'] = (username)
-                    session['logged_in'] = True
-                    role = setrole(username)
-                    session['role'] = role
-                    business = setbusiness(username)
-                    session['business'] = business
-                    department = setdept(username)
-                    session['department'] = department
-                    session['fname'], session['lname'] = setname(username)
-                    if session['role'] == 'superadmin':
-                        return redirect('/')
-                        #return redirect('/emulateuser')
-                    else:
-                        return redirect('/')
+                session['username'] = (username)
+                userstatus = status(username)
+                print(userstatus)
+                session['logged_in'] = True
+                role = setrole(username)
+                session['role'] = role
+                business = setbusiness(username)
+                session['business'] = business
+                department = setdept(username)
+                session['department'] = department
+                session['fname'], session['lname'] = setname(username)
+                return redirect('/')
         except:
             error = 'Invalid Credentials. Please try again.'
 
