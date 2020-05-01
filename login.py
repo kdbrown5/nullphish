@@ -128,6 +128,7 @@ def loginpage():
                 error = 'Invalid Credentials. Please try again.'
             else:
                 status = setstatus(username)
+                print(status)
                 if status == "active":
                     session['username'] = (username)
                     session['logged_in'] = True
