@@ -240,6 +240,7 @@ def addnewuser():
             if 'submitmod' in request.form:
                 submitmod = request.form['submitmod']
                 if submitmod == 'yes':
+                    username = request.form['username']
                     newdepartment = request.form['department']
                     newphone = request.form['phonedid']
                     newstatus = request.form['status']
@@ -262,10 +263,12 @@ def addnewuser():
                         else:
                             flash('Phone number is not correct length.  Example: 8059875555', 'category2')
                             con.close()
+                            usermod = singleuserlookup(username)
                             return render_template("adduser-modify.html", usermod=usermod)
                     if newdepartment != '':
                         cur.execute('update users set department = (?) where id = (?) and business = (?) and role = "user";', (newdepartment, userid, session['business'],))
                     con.close()
+                    usermod = singleuserlookup(username)
                     flash('User modified!', 'category2')
                     return render_template("adduser-modify.html", usermod=usermod)
 
