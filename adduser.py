@@ -267,7 +267,6 @@ def addnewuser():
                                 cur.execute('update users set phone = (?) where id = (?) and business = (?) and role = "user";', (newphone, userid, business,))
                             else:
                                 flash('Phone number is not correct length.  Example: 8059875555', 'category2')
-                                con.close()
                                 usermod = singleuserlookup(username)
                                 return render_template("adduser-modify.html", usermod=usermod)
                         if newdepartment != '':
