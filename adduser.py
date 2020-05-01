@@ -251,25 +251,26 @@ def addnewuser():
                     business = business.replace(']', '')
                     newphone = (''.join(x for x in newphone if x.isdigit()))
                     cur = con.cursor()
-                    cur.execute('PRAGMA key = '+dbkey+';')
-                    if newstatus != '':
-                        print('if newstatus')
-                        if newstatus == 'active' or newstatus == 'Active':
-                            cur.execute('update users set status = "active" where id = (?) and business = (?) and role = "user";', (userid, business,))
-                        if newstatus == 'Suspended' or newstatus == 'suspended':
-                            cur.execute('update users set status = "suspended" where id = (?) and business = (?) and role = "user";', (userid, business,))
-                    if newphone != '':
-                        print(' if newphone')
-                        if len(newphone) == 10:
-                            cur.execute('update users set phone = (?) where id = (?) and business = (?) and role = "user";', (newphone, userid, business,))
-                        else:
-                            flash('Phone number is not correct length.  Example: 8059875555', 'category2')
-                            con.close()
-                            usermod = singleuserlookup(username)
-                            return render_template("adduser-modify.html", usermod=usermod)
-                    if newdepartment != '':
-                        print('if newdepartment')
-                        cur.execute('update users set department = (?) where id = (?) and business = (?) and role = "user";', (newdepartment, userid, business,))
+                    with con:
+                        cur.execute('PRAGMA key = '+dbkey+';')
+                        if newstatus != '':
+                            print('if newstatus')
+                            if newstatus == 'active' or newstatus == 'Active':
+                                cur.execute('update users set status = "active" where id = (?) and business = (?) and role = "user";', (userid, business,))
+                            if newstatus == 'Suspended' or newstatus == 'suspended':
+                                cur.execute('update users set status = "suspended" where id = (?) and business = (?) and role = "user";', (userid, business,))
+                        if newphone != '':
+                            print(' if newphone')
+                            if len(newphone) == 10:
+                                cur.execute('update users set phone = (?) where id = (?) and business = (?) and role = "user";', (newphone, userid, business,))
+                            else:
+                                flash('Phone number is not correct length.  Example: 8059875555', 'category2')
+                                con.close()
+                                usermod = singleuserlookup(username)
+                                return render_template("adduser-modify.html", usermod=usermod)
+                        if newdepartment != '':
+                            print('if newdepartment')
+                            cur.execute('update users set department = (?) where id = (?) and business = (?) and role = "user";', (newdepartment, userid, business,))
                     con.close()
                     print('request.form -', request.form)
                     print('username -', username, '> - newdepartment -', newdepartment, '> newphone -', newphone, '> - status', newstatus, '> - business', business)
