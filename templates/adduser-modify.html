@@ -194,7 +194,7 @@ font-size:1.5em;
                     <th class="th">Status&nbsp;</th>
                     <td>
                     <select style="width: 95%; border-color:#49a355" name='status' class="form-control" id="status">
-                        <option>{{ item.status | replace ('active', 'Active') | replace ('suspended', 'Suspended') }}</option>
+                        <option>{{ item.status | replace ('active', 'Current - Active') | replace ('suspended', 'Current - Suspended') }}</option>
                         <option value="active">Active</option>
                         <option value="suspended">Suspended</option>
                       </select>
