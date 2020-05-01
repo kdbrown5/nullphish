@@ -232,25 +232,42 @@ def addnewuser():
                 flash('Import complete', 'category2')
                 return render_template("adduser.html", lookup=zip(usernamelookup,firstname,lastname,department,role))
         except:
-            print(request.form)
             if 'modify' in request.form:
-                print('test', request.form.get('selectuser'))
                 userpick = request.form.get('selectuser')
                 usermod = singleuserlookup(userpick)
-                print(usermod)
-                print(type(usermod))
                 return render_template("adduser-modify.html", usermod=usermod)
 
             if 'submitmod' in request.form:
-                print(request.form)
                 submitmod = request.form['submitmod']
-                print('submitmod ->', submitmod)
-                newdepartment = request.form['department']
-                newphone = request.form['phonedid']
-                newstatus = request.form['status']
-                print(newstatus)
-                print(newphone)
-                print(newdepartment)
+                if submitmod == 'yes':
+                    newdepartment = request.form['department']
+                    newphone = request.form['phonedid']
+                    newstatus = request.form['status']
+                    userid = request.form['id']
+                    con = sqlite.connect('db/db1.db')
+                    business = str(session['business'])
+                    business = business.replace('[', '')
+                    business = business.replace(']', '')
+                    newphone = (''.join(x for x in newphone if x.isdigit()))
+                    cur = con.cursor()
+                    cur.execute('PRAGMA key = '+dbkey+';')
+                    if newstatus != '':
+                        if newstatus == 'active' or newstatus == 'Active':
+                            cur.execute('update users set status = "active" where id = (?) and business = (?) and role = "user";', (userid, session['business'],))
+                        if newstatus == 'Suspended' or newstatus == 'suspended':
+                            cur.execute('update users set status = "suspended" where id = (?) and business = (?) and role = "user";', (userid, session['business'],))
+                    if newphone != '':
+                        if len(newphone) == 10:
+                            cur.execute('update users set phone = (?) where id = (?) and business = (?) and role = "user";', (newphone, userid, session['business'],))
+                        else:
+                            flash('Phone number is not correct length.  Example: 8059875555', 'category2')
+                            con.close()
+                            return render_template("adduser-modify.html", usermod=usermod)
+                    if newdepartment != '':
+                        cur.execute('update users set department = (?) where id = (?) and business = (?) and role = "user";', (newdepartment, userid, session['business'],))
+                    con.close()
+                    flash('User modified!', 'category2')
+                    return render_template("adduser-modify.html", usermod=usermod)
 
             if 'Download' in request.form:
                 return send_file('./reports/importexample.csv', as_attachment=True, attachment_filename='importexample-csv-utf8.csv')
