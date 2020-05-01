@@ -111,6 +111,7 @@ def loginpage():
         con.close()
         status = cur.fetchall()
         status = status[0]
+        print('function status =', status)
         return status
 
     error = None
@@ -128,7 +129,7 @@ def loginpage():
                 error = 'Invalid Credentials. Please try again.'
             else:
                 status = setstatus(username)
-                print(status)
+                print('status = ', status)
                 if status == "active":
                     session['username'] = (username)
                     session['logged_in'] = True
