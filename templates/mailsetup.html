@@ -480,11 +480,12 @@ nav .presenter:hover{
         </form>
       </div>
       <div>
-        Current Setup:
-        <br>
+
         {% if currentsetup %}
+        <strong>Current Setup:</strong>
+        <br>
         {% for item in currentsetup %}
-        <li>{{ item }}</li>
+        <br>{{ item }}
         {% endfor %}
         {% endif %}
       </div>
