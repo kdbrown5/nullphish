@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 from pysqlcipher3 import dbapi2 as sqlite
-
+import base64
 
 ### add table for config to the database - mailconfig
 # - smtp server/host - # ex smtp.office365.com
@@ -48,6 +48,11 @@ def mailconfig():
                 currentsetup.append(Markup('<strong> Port:</strong>&nbsp;'+str(mailport)))
             return currentsetup
 
+    def bencode(mailpass):
+        makeutf=mailpass.encode("utf-8")
+        encoded = base64.b64encode(makeutf)
+        return encoded
+
     currentsetup = lookupcurrentsettings()
                 
     if request.method == 'POST':
@@ -57,7 +62,8 @@ def mailconfig():
                 mailname = mailname.replace(' ', '_')
                 mailhost = request.form['mailhost']
                 mailuser = request.form['mailuser']
-                mailpass = request.form['mailpass']
+                temppass = request.form['mailpass']
+                mailpass = bencode(temppass)
                 mailtype = request.form['mailtype']
                 mailport = request.form['mailport']
                 timestamp = (datetime.now())

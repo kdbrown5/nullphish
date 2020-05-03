@@ -11,6 +11,11 @@ loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
 loadkey.close()
 
+def bdecode(passw):
+    decoded = base64.b64decode(passw)
+    makestr = decoded.decode('utf-8')
+    return makestr
+
 def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link):
     #sender_email = "donotreply@nullphish.com"
     sender_email = "donotreply@couponcheetah.com"
@@ -62,7 +67,8 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     con.close()
     sender_email = mailsettings[0][1]
     receiver_email = receiveremail
-    password = mailsettings[0][2]
+    codedpass = mailsettings[0][2]
+    password = bdecode(codedpass)
     smtpserver = mailsettings[0][0]
     mailport = mailsettings[0][4]
 
