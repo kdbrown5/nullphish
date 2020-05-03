@@ -39,7 +39,7 @@ def mailconfig():
             currentsetup = []
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute('select mailname, mailhost, mailuser, mailtype, mailport from mailconfig where business = (?);', (session['business'],))
+            cur.execute('select name, mailhost, mailuser, mailtype, mailport from mailconfig where business = (?);', (session['business'],))
             for mailname, mailhost, mailuser, mailtype, mailport in cur.fetchall():
                 currentsetup.append(Markup('<strong> Name:</strong>&nbsp;'+mailname))
                 currentsetup.append(Markup('<strong> Mail Server:</strong>&nbsp;'+mailhost))
