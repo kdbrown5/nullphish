@@ -47,7 +47,47 @@
         grid-row-start: 1;
         grid-row-end: 2;
       }
-
+      #navigation{
+  margin: 0;
+  z-index: 998;
+  height: auto;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  color: #E0E0E0;
+  font-family: tuffy;
+  font-size: x-large;
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.33);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  vertical-align: top;
+  border-bottom: 2px solid #E0E0E0;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: nowrap;
+}
+#navigation a{
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  margin: 0px;
+  vertical-align: middle;
+  text-align: center;
+  padding: 8px 10px 8px 10px;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+#navigation a:hover{
+  background-color: rgba(0,0,0,0.33);
+  color: #ECA400;
+}
+#navigation a.active{
+  color: #ECA400;
+}
 nav{
   margin: 0;
   z-index: 998;
@@ -264,20 +304,13 @@ body{
   </head>
   <body id="particles-js" onresize="checkcontentcontainers();checknav()" onload="checkcontentcontainers();checknav()">
     <div id="particles-js"></div>
-    <nav>
-      <div id="dropdown">
-        <div id="dropcontent">
-          <a href="/main">Modules</a>
-          <a href="/logout">Log Out</a>
-        </div>
-      </div>
-      <table id="mainmenu">
-          <tr>
-            <td><a href="/main">Modules</a></td>
-            <td><a href="/logout">Log Out</a></td>
-        </tr>
-      </table>
-    </nav>
+    <div id="navigation">
+      <a href="/main">Tools</a>
+      <a href="/schedulephish">Phishing</a>
+      <a href="/phishingstats">Stats</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
     <div class="contentcontainer" style="min-height:100%; max-height:auto">
       <div><h1 style="color: white">Add E-Mail Templates</h1></div>
 
