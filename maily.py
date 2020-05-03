@@ -12,7 +12,13 @@ loadkey=open('../topseekrit', 'r')
 dbkey=loadkey.read()
 loadkey.close()
 
+def convertTuple(tup): 
+    str =  ''.join(tup) 
+    return str
+
 def bdecode(passw):
+    notuple = convertTuple(str(passw))
+    passw=notuple[3:-3]
     print('type->',type(passw),'passwd->',passw,)
     passw = bytes(str(passw), 'utf-8')
     decoded = base64.b64decode(passw)
