@@ -310,7 +310,7 @@ body{
       <a href="/phishingstats">Stats</a>
       <a href="/profile">Profile</a>
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
-    </div>
+    </div>  
     <div class="contentcontainer" style="min-height:100%; max-height:auto">
       <div><h1 style="color: white">Add E-Mail Templates</h1></div>
 
@@ -327,7 +327,7 @@ body{
           <textarea id="summernote" name="editordata"></textarea>
           <input name='templatename' style="width: 30%;" type="text" class="form-control" placeholder="Template Name:" required></input>
           <input name='templatesubject' style="width: 30%;" type="text" class="form-control" placeholder="Email Subject:" required></input>
-          <button style="width: 30%; color:black; background-color: #49A355" name="submit" type="submit" class="btn btn-primary btn-block">Add Template</button>
+          <button style="width: 30%; color:black; background-color: #49A355; border-color:#49a355" name="submit" type="submit" class="btn btn-primary btn-block"><strong>Add Template</strong></button>
         </form>
 
       <script>
@@ -360,7 +360,7 @@ body{
                             <option id="{{ row }}" name="{{ row }}">{{ row }}</option>
                         {% endfor %}     
                 </select>
-                <button style="width: 30%; color:black; background-color:#49A355" name="submit" type="submit" class="btn btn-primary btn-block">Delete Template</button>
+                <button style="width: 30%; color:black; background-color:#49A355; border-color:#49A355" name="submit" type="submit" class="btn btn-primary btn-block"><strong>Delete Template</strong></button>
               
         </form>    
         {% endif %}
