@@ -57,27 +57,31 @@ def mailconfig():
                 
     if request.method == 'POST':
         if session['logged_in'] == True:
-            if 'mailhost' in request.form:
-                mailname = request.form['mailname']
-                mailname = mailname.replace(' ', '_')
-                mailhost = request.form['mailhost']
-                mailuser = request.form['mailuser']
-                temppass = request.form['mailpass']
-                mailpass = bencode(temppass)
-                mailtype = request.form['mailtype']
-                mailport = request.form['mailport']
-                timestamp = (datetime.now())
-                timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
-                timestamp = timestamp.replace(' ', '-')
-                con = sqlite.connect('db/db1.db')
-                with con:
-                    cur = con.cursor()
-                    cur.execute('PRAGMA key = '+dbkey+';')
-                    cur.execute('update mailconfig set mailhost = (?), mailuser = (?), mailpass = (?), mailtype = (?), mailport = (?), name = (?), date = (?) where business = (?);', (mailhost, mailuser, mailpass, mailtype, mailport, mailname, timestamp, session['business'],))
-                    cur.execute('insert or ignore into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, name, date) values ((?), (?), (?), (?), (?), (?), (?), (?));', (mailhost, mailuser, mailpass, mailtype, mailport, session['business'], mailname, timestamp,))
-                con.close()
-                flash('Mail server added!', 'category2')
-                return render_template('mailsetup.html')
+            if 'submit' in request.form:
+                try:
+                    mailname = request.form['mailname']
+                    mailname = mailname.replace(' ', '_')
+                    mailhost = request.form['mailhost']
+                    mailuser = request.form['mailuser']
+                    temppass = request.form['mailpass']
+                    mailpass = bencode(temppass)
+                    mailtype = request.form['mailtype']
+                    mailport = request.form['mailport']
+                    timestamp = (datetime.now())
+                    timestamp = timestamp.strftime("%m/%d/%Y %I:%M:%S %p")
+                    timestamp = timestamp.replace(' ', '-')
+                    con = sqlite.connect('db/db1.db')
+                    with con:
+                        cur = con.cursor()
+                        cur.execute('PRAGMA key = '+dbkey+';')
+                        cur.execute('update mailconfig set mailhost = (?), mailuser = (?), mailpass = (?), mailtype = (?), mailport = (?), name = (?), date = (?) where business = (?);', (mailhost, mailuser, mailpass, mailtype, mailport, mailname, timestamp, session['business'],))
+                        cur.execute('insert or ignore into mailconfig (mailhost, mailuser, mailpass, mailtype, mailport, business, name, date) values ((?), (?), (?), (?), (?), (?), (?), (?));', (mailhost, mailuser, mailpass, mailtype, mailport, session['business'], mailname, timestamp,))
+                    con.close()
+                    flash('Mail server added!', 'category2')
+                    return render_template('mailsetup.html')
+                except:
+                    flash('Please fill out all fields', 'category2')
+                    return render_template('mailsetup.html')
             else:
                 pass
         else:
