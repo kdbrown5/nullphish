@@ -18,9 +18,9 @@ def convertTuple(tup):
 
 def bdecode(passw):
     notuple = convertTuple(str(passw))
-    passw=notuple[4:-4]
-    print('type->',type(passw),'passwd->',passw,)
-    passw = bytes(str(passw), 'utf-8')
+    passw=notuple[2:-1]
+    print('type->',type(passw),'passwd->',passw)
+    passw = bytes(passw, 'utf-8')
     print('passw->',passw)
     if len(passw) % 4:
         # not a multiple of 4, add padding:
