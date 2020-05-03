@@ -40,6 +40,7 @@ def mailconfig():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select mailhost, mailuser, mailtype, mailport from mailconfig where business = (?);', (session['business'],))
             currentsetup = cur.fetchall()
+            print('currentsetup ->', currentsetup, '- type ->', type(currentsetup))
             return currentsetup
         
     currentsetup = lookupcurrentsettings()
