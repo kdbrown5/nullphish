@@ -83,6 +83,7 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     sender_email = mailsettings[0][1]
     receiver_email = receiveremail
     codedpass = mailsettings[0][2]
+    print('pass from db->',codedpass)
     password = bdecode(codedpass)
     smtpserver = mailsettings[0][0]
     mailport = mailsettings[0][4]
