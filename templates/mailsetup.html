@@ -483,7 +483,9 @@ nav .presenter:hover{
         Current Setup:
         <br>
         {% if currentsetup %}
-        <li>{{ currentsetup }}</li>
+        {% for item in currentsetup %}
+        <li>{{ item }}</li>
+        {% endfor %}
         {% endif %}
       </div>
     </div>

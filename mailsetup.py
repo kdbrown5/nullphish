@@ -41,7 +41,7 @@ def mailconfig():
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select mailhost, mailuser, mailtype, mailport from mailconfig where business = (?);', (session['business'],))
             for mailhost, mailuser, mailtype, mailport in cur.fetchall():
-                currentsetup.append(mailhost)
+                currentsetup.append(Markup('<strong>'+mailhost+'</strong>'))
                 currentsetup.append(mailuser)
                 currentsetup.append(mailtype)
                 currentsetup.append(mailport)
