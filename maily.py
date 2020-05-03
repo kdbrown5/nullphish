@@ -13,7 +13,8 @@ dbkey=loadkey.read()
 loadkey.close()
 
 def bdecode(passw):
-    passw = bytes(passw, 'utf-8')
+    print('type->',type(passw),'passwd->',passw,)
+    passw = bytes(str(passw), 'utf-8')
     decoded = base64.b64decode(passw)
     makestr = decoded.decode('utf-8')
     return makestr
