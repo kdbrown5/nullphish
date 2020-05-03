@@ -17,7 +17,8 @@ def convertTuple(tup):
     return str
 
 def bdecode(passw):
-    passw = convertTuple(str(passw))
+    notuple = convertTuple(str(passw))
+    passw=notuple[4:-4]
     print('type->',type(passw),'passwd->',passw,)
     passw = bytes(str(passw), 'utf-8')
     print('passw->',passw)
@@ -82,7 +83,6 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     sender_email = mailsettings[0][1]
     receiver_email = receiveremail
     codedpass = mailsettings[0][2]
-    codedpass = codedpass[0]
     print('pass from db->',codedpass)
     password = bdecode(codedpass)
     smtpserver = mailsettings[0][0]
