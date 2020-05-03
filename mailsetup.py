@@ -36,13 +36,17 @@ def mailconfig():
     def lookupcurrentsettings():
         con = sqlite.connect('db/db1.db')
         with con:
+            currentsetup = []
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             cur.execute('select mailhost, mailuser, mailtype, mailport from mailconfig where business = (?);', (session['business'],))
-            currentsetup = cur.fetchall()
-            print('currentsetup ->', currentsetup, '- type ->', type(currentsetup))
+            for mailhost, mailuser, mailtype, mailport in cur.fetchall():
+                currentsetup.append(mailhost)
+                currentsetup.append(mailuser)
+                currentsetup.append(mailtype)
+                currentsetup.append(mailport)
             return currentsetup
-        
+
     currentsetup = lookupcurrentsettings()
                 
     if request.method == 'POST':
