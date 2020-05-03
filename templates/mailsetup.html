@@ -373,6 +373,17 @@ nav .presenter:hover{
         border: 1px solid rgb(117, 117, 117);
         box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
         }
+        input[type="password"] { 
+        text-align: center;
+        border-radius: .5em;
+        line-height: 3.0;
+        display: inline-block;
+        font-size: 2em;
+        box-sizing: border-box;
+        color: #444;
+        border: 1px solid rgb(117, 117, 117);
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        }
       .input-element{
         font-size: 2em;
      
@@ -469,14 +480,14 @@ nav .presenter:hover{
           <input name="mailname" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="What would you like to call this mailserver?" required>
           <input name="mailhost" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mail Server Hostname:" required>
           <input name="mailuser" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mailbox Username:" required>
-          <input name="mailpass" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mailbox Password:" required>
+          <input name="mailpass" class="nulltxt input-element" type="password" style="width: 50%; background-color: lightgrey; font-size: 1em" placeholder="Mailbox Password:" required>
           <select name='mailtype' class="select-css input-element" type="text" style="text-align:center; width: 50%; background-color: lightgrey; font-size: 1em;" id="mailtype" required>
             <option style="text-align-last: center;" class=>Select Security Type:</option>
             <option value="none">None</option>
             <option value="ssl">SSL</option>
             <option value="tls">TLS</option>
           </select>
-          <input name="mailport" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; height: 10%; font-size: 1em;" placeholder="Port:" required>
+          <input name="mailport" class="nulltxt input-element" type="text" style="width: 50%; background-color: lightgrey; height:auto; font-size: 1em;" placeholder="Port:" required>
           <button type="submit" name="submit" class="nullbtn" style="width: 50%;">Submit</button>
         </form>
       </div>
