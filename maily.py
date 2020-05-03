@@ -18,11 +18,14 @@ def convertTuple(tup):
 
 def bdecode(passw):
     notuple = convertTuple(str(passw))
-    passw=notuple[3:-3]
+    passw=notuple[4:-4]
     print('type->',type(passw),'passwd->',passw,)
     passw = bytes(str(passw), 'utf-8')
+    print('passw->',passw)
     decoded = base64.b64decode(passw)
+    print('passw-2->',passw)
     makestr = decoded.decode('utf-8')
+    print('makestr->',makestr)
     return makestr
 
 def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link):

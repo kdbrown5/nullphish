@@ -56,15 +56,6 @@ def viewschedule():
 
     busdict = getschedule()
     lastsent = getlastsent()
-    print(lastsent)
-    print(type(lastsent))
-    try:
-        for i in lastsent:
-            print(type(i))
-            print(i)
-    except:
-        print('cant print i in lastsent')
-    
     if request.method == 'POST':
         if 'email' in request.form:
             getemail = request.form.to_dict(flat=False)['email']
