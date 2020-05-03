@@ -19,16 +19,12 @@ def convertTuple(tup):
 def bdecode(passw):
     notuple = convertTuple(str(passw))
     passw=notuple[2:-1]
-    print('type->',type(passw),'passwd->',passw)
     passw = bytes(passw, 'utf-8')
-    print('passw->',passw)
     if len(passw) % 4:
         # not a multiple of 4, add padding:
         passw += '=' * (4 - len(passw) % 4) 
     decoded = base64.b64decode(passw)
-    print('passw-2->',passw)
     makestr = decoded.decode('utf-8')
-    print('makestr->',makestr)
     return makestr
 
 def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link):
@@ -72,7 +68,7 @@ def sendphish(inserttemplate, receiveremail, firstname, lastname, subject, link)
 
 def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, business):
     con = sqlite.connect('db/db1.db')
-    print(smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, business)
+    print('sending ->', smtpserver, inserttemplate, receiveremail, firstname, lastname, subject, link, business)
     with con:
         cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
@@ -83,7 +79,6 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
     sender_email = mailsettings[0][1]
     receiver_email = receiveremail
     codedpass = mailsettings[0][2]
-    print('pass from db->',codedpass)
     password = bdecode(codedpass)
     smtpserver = mailsettings[0][0]
     mailport = mailsettings[0][4]
