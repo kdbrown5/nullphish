@@ -22,6 +22,9 @@ def bdecode(passw):
     print('type->',type(passw),'passwd->',passw,)
     passw = bytes(str(passw), 'utf-8')
     print('passw->',passw)
+    if len(passw) % 4:
+        # not a multiple of 4, add padding:
+        passw += '=' * (4 - len(passw) % 4) 
     decoded = base64.b64decode(passw)
     print('passw-2->',passw)
     makestr = decoded.decode('utf-8')
