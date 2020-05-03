@@ -45,7 +45,7 @@ def mailconfig():
                 currentsetup.append(Markup('<strong> Mail Server:</strong>&nbsp;'+mailhost))
                 currentsetup.append(Markup('<strong> Mail Username:</strong>&nbsp;'+mailuser))
                 currentsetup.append(Markup('<strong> Protocol:</strong>&nbsp;'+mailtype))
-                currentsetup.append(Markup('<strong> Port:</strong>&nbsp;'+mailport))
+                currentsetup.append(Markup('<strong> Port:</strong>&nbsp;'+str(mailport)))
             return currentsetup
 
     currentsetup = lookupcurrentsettings()
