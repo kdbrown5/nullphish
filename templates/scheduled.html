@@ -24,108 +24,65 @@
         margin: 0px;
         position: absolute;
       }
+      .contentcontainer{
+        flex-direction: column;
+      }
       .input-element{
         font-size: 30px;
-        width: 400px;
-      }
-      .contentcontainer{
-        grid-template-columns: auto;
-        grid-template-rows: auto auto auto;
-        row-gap: 30px;
-        z-index: 999;
-        flex-direction: column;
       }
       input[type="text"] { 
         text-align: center;
         border-radius: .5em;
         line-height: 1.0;
         display: block;
-	font-size: 16px;
-  box-sizing: border-box;
-  color: #444;
-	border: 1px solid rgb(117, 117, 117);
-	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-        }
-      .contentcontainer h1{
-        font-size: calc(24px + 0.5vw);
-        max-height: 40px;
-        vertical-align: middle;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
+        font-size: 16px;
+        box-sizing: border-box;
+        color: #444;
+        border: 1px solid rgb(117, 117, 117);
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
       }
-      table.dataframe, .dataframe th, .dataframe td {
-      border: line;
-      border-bottom: 1px solid black;
-      border-top: 1px solid black;
-      border-collapse: collapse;
-      border-left: 1px solid black;
-      border-right: 1px solid black;
-      text-align: center;
-      padding: .8%;
-      margin-bottom: 0px;
-      font-size: 1em;
-      color: black;
-      width: 95%;
-    }
-    input.largerCheckbox { 
-            transform : scale(2.2); 
-            color: black;
-        } 
-    .checkbox {
+      input.largerCheckbox { 
+        transform : scale(1.75); 
+        color: black;
+      } 
+      .checkbox {
+        height:2vh;
+        width:2vh;
+      }
+      .select-css {
+        display: block;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 700;
+        line-height: 1.0;
 
-    height:3vh;
-    width:3vh;
-
-    }
-    .select-css {
-	display: block;
-	font-size: 16px;
-	font-family: sans-serif;
-	font-weight: 700;
-
-	line-height: 1.0;
-	
-	width: 100%;
-	max-width: 100%;
-	box-sizing: border-box;
-	margin: 0;
-  color: #444;
-	border: 1px solid rgb(117, 117, 117);
-	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-	border-radius: .5em;
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	appearance: none;
-  text-align: center;
-
-}
-.select-css::-ms-expand {
-	display: none;
-}
-.select-css:hover {
-	border-color: black;
-}
-.select-css:focus {
-	border-color: #aaa;
-	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-	box-shadow: 0 0 0 3px -moz-mac-focusring;
-	color: #222;
-	outline: none;
-}
-.select-css option {
-	font-weight:normal;
-}
-
-    tr:nth-child(odd)		{ background-color: lightgrey; }
-    tr:nth-child(even)	{ background-color:darkgrey; }
-    tr:first-child { background-color: transparent;}
-    tr:hover:first-child { background-color: transparent; }
-    tr:hover            { background-color: #d5e9f9;}
-    tr.border_bottom td {
-      border-bottom:1pt solid black;
-    }
+        box-sizing: border-box;
+        margin: 0;
+        color: #444;
+        border: 1px solid rgb(117, 117, 117);
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        border-radius: .5em;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        text-align: center;
+      }
+      .select-css::-ms-expand {
+        display: none;
+      }
+      .select-css:hover {
+        border-color: black;
+      }
+      .select-css:focus {
+        border-color: #aaa;
+        box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+        box-shadow: 0 0 0 3px -moz-mac-focusring;
+        color: #222;
+        outline: none;
+      }
+      .select-css option {
+        font-weight:normal;
+      }
 
     </style>
   </head>
@@ -152,18 +109,18 @@
         <br>
       <div><h1>Last 10 sent - Awaiting open</h1></div>
       
-      <table class="table table-hover dataframe">
+      <table class="stats dataframe">
         <thead>
-          <tr style="background-color: #97c8f0; text-align:center;" class="border_bottom">
-          <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Department</td>
-          <td style="width: fit-content;" >Type</td>
-          <td style="width: fit-content;">Username</td>
-          <td style="width: fit-content;">Template</td>
-          <td style="width: fit-content;">Sender</td>
-          <td style="width: fit-content;">Hyperlink</td>
-          <td style="width: fit-content;">Scheduler</td>
-          <td style="width: fit-content;">Notify</td>
-          <td style="width: fit-content; border-radius: 0px 25px 0px 0px;">Date&nbsp;Sent</td>
+          <tr style="text-align:center;" class="border_bottom">
+          <th style="width: fit-content;">Department</th>
+          <th style="width: fit-content;" >Type</th>
+          <th style="width: fit-content;">Username</th>
+          <th style="width: fit-content;">Template</th>
+          <th style="width: fit-content;">Sender</th>
+          <th style="width: fit-content;">Hyperlink</th>
+          <th style="width: fit-content;">Scheduler</th>
+          <th style="width: fit-content;">Notify</th>
+          <th style="width: fit-content;">Date&nbsp;Sent</th>
             
         </tr>
 
@@ -187,19 +144,19 @@
         <hr style="width: 50%"></hr>
       <div><h1>Scheduled Tasks</h1></div>
         <form method="POST">
-          <table class="table table-hover dataframe" style="width: 100%">
+          <table class="stats dataframe" style="width: 100%">
             <thead>
-              <tr style="background-color: #97c8f0; text-align:center; width: 100%; " class="border_bottom" >
-              <td style="width: fit-content; border-radius: 25px 0px 0px 0px;">Select</td>
-              <td style="width: fit-content;" hidden>id</td>
-              <td style="width: fit-content;">Department</td>
-                    <td style="width: fit-content;">Username</td>
-                    <td style="width: fit-content;">Template</td>
-                    <td style="width: fit-content;">Mail Server</td>
-                    <td style="width: fit-content;">Hyperlink</td>
-                    <td style="width: fit-content;">Scheduler</td>
-                    <td style="width: fit-content;">Notify</td>
-                    <td style="width: 20%; border-radius: 0px 25px 0px 0px;">Date Scheduled</td>
+              <tr style="text-align:center; width: 100%; " class="border_bottom" >
+              <th style="width: fit-content">Select</th>
+              <th style="width: fit-content;" hidden>id</th>
+              <th style="width: fit-content;">Department</th>
+                    <th style="width: fit-content;">Username</th>
+                    <th style="width: fit-content;">Template</th>
+                    <th style="width: fit-content;">Mail Server</th>
+                    <th style="width: fit-content;">Hyperlink</th>
+                    <th style="width: fit-content;">Scheduler</th>
+                    <th style="width: fit-content;">Notify</th>
+                    <th style="width: 20%">Date Scheduled</th>
                 
             </tr>
  
