@@ -1,0 +1,52 @@
+{% block head %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #particles-js{
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        position: absolute;
+      }
+	    .contentcontainer{
+        flex-direction: column;
+      }
+    </style>
+    {% endblock %}
+  </head>
+  {% block container %}
+  <body id="particles-js" style="heig">
+    
+    <div id="navigation">
+      <a href="/main">Tools</a>
+      <a href="/schedulephish">Phishing</a>
+      <a href="/phishingstats" class="active">Stats</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
+    <div class="contentcontainer">
+      <div id="header">
+        <h1>{% block header %}{% endblock %}</h1>
+      </div>{% block content %}{% endblock %}
+    </div>
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
+  </body>
+</html>
+{% endblock %}

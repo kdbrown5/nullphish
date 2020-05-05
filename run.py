@@ -170,6 +170,14 @@ def beginfeedback():
     else:
         return redirect('/') # else redirect to login page
 
+@app.route('/inheritance', subdomain="app", methods=['GET', 'POST']) # redirect to feedback if logged in
+def showinheritance():
+    if session.get('logged_in') == True: # 
+        return render_template('inheritance.html')
+    else:
+        return redirect('/') # else redirect to login page
+
+
 @app.route('/login', subdomain="app", methods=['GET', 'POST']) # redirect to main if logged in
 def loggedin():
     if session.get('logged_in') == True: # 
