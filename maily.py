@@ -115,8 +115,21 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
 
     # Create secure connection with server and send email
     context = ssl._create_unverified_context()
-    with smtplib.SMTP_SSL(smtpserver, mailport, context=ssl._create_unverified_context()) as server:
-        server.login(sender_email, password)
-        server.sendmail(
-            sender_email, receiver_email, message.as_string()
-        )
+    if mailport == 465 or mailport == "465":
+        with smtplib.SMTP_SSL(smtpserver, mailport, context=ssl._create_unverified_context()) as server:
+            server.login(sender_email, password)
+            server.sendmail(
+                sender_email, receiver_email, message.as_string()
+            )
+    elif mailport == 587 or mailport == "587":
+        with smtplib.SMTP(smtpserver, mailport) as server:
+            server.starttls(context=ssl._create_unverified_context())
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message.as_string())
+    elif mailport == 25 or mailport == "25":
+        with smtplib.SMTP_SSL(smtpserver, mailport, context=ssl._create_unverified_context()) as server:
+            server.login(sender_email, password)
+            server.sendmail(
+                sender_email, receiver_email, message.as_string()
+            )
+            
