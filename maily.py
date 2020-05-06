@@ -127,9 +127,8 @@ def customsendphish(smtpserver, inserttemplate, receiveremail, firstname, lastna
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
     elif mailport == 25 or mailport == "25":
-        with smtplib.SMTP_SSL(smtpserver, mailport, context=ssl._create_unverified_context()) as server:
+        with smtplib.SMTP(smtpserver, mailport) as server:
             server.login(sender_email, password)
             server.sendmail(
                 sender_email, receiver_email, message.as_string()
             )
-            
