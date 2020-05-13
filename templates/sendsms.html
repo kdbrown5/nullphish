@@ -122,13 +122,12 @@
       <select name='userpick' class="form-control" id="exampleFormControlSelect1">
         <option>Users</option>
         <option value="{{ item.username }}">{{ item.username }}</option>
-             
       </select>
-      
     </td><td><input name="phonenumber" placeholder="{{ item.phone }}" value="{{ item.phone }}" readonly></td>
+    {% endfor %}
     <td style="width: fit-content" name="txtmessage"><input type="text" style="width:95%" name="txtmessage" placeholder="Message here"></td>
     <td style="width: fit-content;"><button type="submit" style="width: fit-content; font-size:1em;" class="button">Phish!</button></form></td>
-    {% endfor %}
+    
     <script>
       $(function() {
         $('#userpick').change(function() {
