@@ -122,7 +122,8 @@
             });
           });
         </script> 
-  
+        <br><br>
+  {% if selecteduser %}
 	<table class="stats dataframe">
 		<tr>
 			<th style="width: fit-content;" width="5%">Department</th>
@@ -134,7 +135,7 @@
             <th>Send</th>
 		</tr>
 
-{% if selecteduser %}
+
 {% for item in selecteduser %}
     <form method="POST">
       <td>{{ item.department }}</td><td>{{ item.firstname }}</td><td>{{ item.lastname }}</td><td>
