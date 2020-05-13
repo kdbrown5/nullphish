@@ -116,14 +116,18 @@
             <th style="width: 40%; max-width: 60%">Message&nbsp;Contents&nbsp;(160 characters&nbsp;per&nbsp;message)</th>
             <th>Send</th>
 		</tr>
-    {% for item in userquery %}
+    
     <form method="POST">
-      <td>{{ item.department }}</td><td>{{ item.firstname }}</td><td>{{ item.lastname }}</td><td>
+      
+      <td>{% for item in userquery %}{{ item.department }}</td><td>{{ item.firstname }}</td><td>{{ item.lastname }}</td><td>
+        {% endfor %}
       <select name='userpick' class="form-control" id="exampleFormControlSelect1">
         <option>Users</option>
+        {% for item in userquery %}
         <option value="{{ item.username }}">{{ item.username }}</option>
+        {% endfor %}
       </select>
-    </td><td><input name="phonenumber" placeholder="{{ item.phone }}" value="{{ item.phone }}" readonly></td>
+    </td><td>{% for item in userquery %}<input name="phonenumber" placeholder="{{ item.phone }}" value="{{ item.phone }}" readonly></td>
     {% endfor %}
     <td style="width: fit-content" name="txtmessage"><input type="text" style="width:95%" name="txtmessage" placeholder="Message here"></td>
     <td style="width: fit-content;"><button type="submit" style="width: fit-content; font-size:1em;" class="button">Phish!</button></form></td>
