@@ -45,6 +45,17 @@ def sendtxt():
         businessdata = businessquery
         return businessdata
 
+    def queryuser():
+        business = str(session['business'])
+        con = sqlite.connect('db/db1.db')
+        con.row_factory = sqlite.Row
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from users where business = (?);', (business,))
+        query = cur.fetchall()
+        con.close()
+        return query
+
     def convertTuple(tup): 
         str =  ''.join(tup) 
         return str
@@ -72,7 +83,8 @@ def sendtxt():
             cur.execute('insert into phishsched ( type, bitly, sentdate, scheduler, phonedid, username, business, message, admin, department, token, smsconfirmation) values ( "sms", 1, datetime("now", "localtime"), ?, ?, ?, ?, ?, ?, ?, ?, ? );', (session['username'], phonedid, username, business, messagecontent, admins, department, token, confirmation))
         con.close()
 
-    businessdata = businesslookup()
+    #businessdata = businesslookup()
+    userquery = queryuser()
 
     if request.method == 'POST':
         phonenumber = request.form.get('phonenumber')
@@ -106,4 +118,4 @@ def sendtxt():
         else:
             flash('Not a valid number - format 8051113333', 'category2')
 
-    return render_template('sendsms.html', businessdata=businessdata)    
+    return render_template('sendsms.html', userquery=userquery)    

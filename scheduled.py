@@ -21,7 +21,6 @@ def viewschedule():
     def getlastsent():
         con = sqlite.connect('db/db1.db')
         cur = con.cursor()
-        cur = con.cursor()
         cur.execute('PRAGMA key = '+dbkey+';')
         cur.execute('select * from (select id, department, username, template, mailname, bitly, admin, sentdate, scheduler, type from phishsched where business = (?) and sentdate != "none" and activetime = "none" ORDER BY ID DESC LIMIT 10) order by id asc;', (session['business'],))
         lastsent = cur.fetchall()
