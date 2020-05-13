@@ -101,7 +101,8 @@ def sendtxt():
         if 'userpick' in request.form:
             userpick = request.form.get('userpick')
             selecteduser = querysingleuser(userpick)
-            return render_template('sendsms.html', selecteduser=selecteduser) 
+            userquery = queryuser()
+            return render_template('sendsms.html', selecteduser=selecteduser, userquery=userquery) 
 
         phonenumber = request.form.get('phonenumber')
         print(phonenumber)
