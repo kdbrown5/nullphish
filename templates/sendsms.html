@@ -141,7 +141,7 @@
     <form method="POST">
       <td>{{ item.department }}</td><td>{{ item.firstname }}</td><td>{{ item.lastname }}</td><td>
         {{ item.username }}</td>
-    </td><td><input type="text" name="phonenumber" placeholder="{{ item.phone | replace ('none', 'Please enter a phone number for this user in User Management')}}" value="{{ item.phone | replace ('none', 'Please enter a phone number for this user in User Management') }}" readonly></td>
+    </td><td><input type="text" name="phonenumber" placeholder="{{ item.phone }}" value="{{ item.phone }}" readonly></td>
     <td style="width: fit-content" name="txtmessage"><input type="text" style="width:95%" name="txtmessage" placeholder="Message here"></td>
     <td style="width: fit-content;"><button type="submit" style="width: fit-content; font-size:1em;" class="button">Phish!</button></form></td>
 {% endfor %}
