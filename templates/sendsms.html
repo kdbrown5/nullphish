@@ -106,6 +106,7 @@
           {% endfor %}
         {% endif %}
         {% endwith %}</a>
+        <br>
 
         <form method="POST">
         <select style="width: 30%" name='userpick' class="form-control" id="userpick">
@@ -131,7 +132,7 @@
 			<th style="width: fit-content;">Last</th>
             <th style="width: 20%">Email&nbsp;Address</td>
             <th style="width: fit-content;">Phone&nbsp;Number&nbsp;(format:&nbsp;8054441111)</th>
-            <th style="width: 40%; max-width: 60%">Message&nbsp;Contents&nbsp;(160 characters&nbsp;per&nbsp;message)</th>
+            <th style="width: 50%; max-width: 60%">Message&nbsp;Contents&nbsp;(160 characters&nbsp;per&nbsp;message)</th>
             <th>Send</th>
 		</tr>
 
@@ -140,7 +141,7 @@
     <form method="POST">
       <td>{{ item.department }}</td><td>{{ item.firstname }}</td><td>{{ item.lastname }}</td><td>
         {{ item.username }}</td>
-    </td><td><input name="phonenumber" placeholder="{{ item.phone | replace ('none', 'Please enter a phone number for this user in User Management')}}" value="{{ item.phone }}" readonly></td>
+    </td><td><input type="text" name="phonenumber" placeholder="{{ item.phone | replace ('none', 'Please enter a phone number for this user in User Management')}}" value="{{ item.phone | replace ('none', 'Please enter a phone number for this user in User Management') }}" readonly></td>
     <td style="width: fit-content" name="txtmessage"><input type="text" style="width:95%" name="txtmessage" placeholder="Message here"></td>
     <td style="width: fit-content;"><button type="submit" style="width: fit-content; font-size:1em;" class="button">Phish!</button></form></td>
 {% endfor %}
