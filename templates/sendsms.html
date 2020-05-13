@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
     <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <title>NullPhish: Send SMS</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -105,7 +106,23 @@
           {% endfor %}
         {% endif %}
         {% endwith %}</a>
-    
+
+        <form method="POST">
+        <select style="width: 30%" name='userpick' class="form-control" id="userpick">
+          <option>Users</option>
+          {% for item in userquery %}
+          <option value="{{ item.username }}">{{ item.username }} | {{ item.firstname }} | {{ item.lastname }} | {{ item.department }} | {{ item.role }}</option>
+          {% endfor %}     
+        </select>
+        </form>
+        <script>
+          $(function() {
+            $('#userpick').change(function() {
+              this.form.submit();
+            });
+          });
+        </script> 
+  
 	<table class="stats dataframe">
 		<tr>
 			<th style="width: fit-content;" width="5%">Department</th>
@@ -117,28 +134,17 @@
             <th>Send</th>
 		</tr>
 
+{% if selecteduser %}
+{% for item in selecteduser %}
     <form method="POST">
-      <td>Department</td><td>Firstname</td><td>Lastname</td><td>
-      <select name='userpick' class="form-control" id="exampleFormControlSelect1">
-        <option>Users</option>
-        {% for item in userquery %}
-        <option value="{{ item.username }}">{{ item.username }}</option>
-        {% endfor %}     
-      </select>
-      <script>
-        $(function() {
-          $('#userpick').change(function() {
-            this.form.submit();
-          });
-        });
-      </script>
-    </td><td><input name="phonenumber" placeholder="phone" value="phone" readonly></td>
+      <td>{{ item.department }}</td><td>{{ item.firstname }}</td><td>{{ item.lastname }}</td><td>
+        <td>{{ item.username }}</td>
+    </td><td><input name="phonenumber" placeholder="{{ item.phone }}" value="{{ item.phone }}" readonly></td>
     <td style="width: fit-content" name="txtmessage"><input type="text" style="width:95%" name="txtmessage" placeholder="Message here"></td>
     <td style="width: fit-content;"><button type="submit" style="width: fit-content; font-size:1em;" class="button">Phish!</button></form></td>
-
-
+{% endfor %}
 	</table>
-
+{% endif %}
 
     </div>
     <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>

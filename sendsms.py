@@ -56,6 +56,17 @@ def sendtxt():
         con.close()
         return query
 
+    def querysingleuser(userpick):
+        business = str(session['business'])
+        con = sqlite.connect('db/db1.db')
+        con.row_factory = sqlite.Row
+        cur = con.cursor()
+        cur.execute('PRAGMA key = '+dbkey+';')
+        cur.execute('select * from users where username = (?) and business = (?);', (userpick, business,))
+        query = cur.fetchall()
+        con.close()
+        return query
+
     def convertTuple(tup): 
         str =  ''.join(tup) 
         return str
@@ -87,6 +98,11 @@ def sendtxt():
     userquery = queryuser()
 
     if request.method == 'POST':
+        if 'userpick' in request.form:
+            userpick = request.form.get('userpick')
+            selecteduser = querysingleuser(userpick)
+            return render_template('sendsms.html', selecteduser=selecteduser) 
+
         phonenumber = request.form.get('phonenumber')
         print(phonenumber)
         if len(phonenumber) == 10:
