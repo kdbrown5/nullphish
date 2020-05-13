@@ -125,18 +125,18 @@
         <option value="{{ item.username }}">{{ item.username }}</option>
         {% endfor %}     
       </select>
-      
+      <script>
+        $(function() {
+          $('#userpick').change(function() {
+            this.form.submit();
+          });
+        });
+      </script>
     </td><td><input name="phonenumber" placeholder="phone" value="phone" readonly></td>
     <td style="width: fit-content" name="txtmessage"><input type="text" style="width:95%" name="txtmessage" placeholder="Message here"></td>
     <td style="width: fit-content;"><button type="submit" style="width: fit-content; font-size:1em;" class="button">Phish!</button></form></td>
 
-    <script>
-      $(function() {
-        $('#userpick').change(function() {
-          this.form.submit();
-        });
-      });
-    </script>
+
 	</table>
 
 
