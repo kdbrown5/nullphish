@@ -1,7 +1,7 @@
 <!--   NOTE: This document is here as a template/placeholder for future pages      -->
 <!-- The goal is to have something to copy/paste to have new pages be easy to make -->
 <!--      Please remove all generic/instructional comments before publishing!      -->
-{% block head %}
+{% block head1 %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,6 +12,8 @@
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% endblock %}
+    {% block style %}
     <style> 
 .modifiedcontentcontainer{
   z-index: 5;
@@ -31,6 +33,7 @@
   -webkit-backdrop-filter: blur(10px);
 /*justify-content: center; */
 }
+{% endblock %}
 {% block addstyle %} {% endblock %}
     </style>
     {% block addscript %}{% endblock %}

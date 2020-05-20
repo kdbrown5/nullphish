@@ -1,8 +1,11 @@
 {% extends "emailbase.html" %}
-{% block title %}Email Education 1{% endblock %}
 {% block head %}
+{% block title %}Email Education 1{% endblock %}
 {{ super() }}
-
+{% endblock %}
+{% block style %}
+{{ super() }}
+{% endblock %}
 {% block addstyle %}
 article{
     width:815px;
@@ -267,6 +270,7 @@ overflow: auto;
 {% endblock %}
 {% block container %}
 {% block header %}Email Education Part 1{% endblock %}
+{{ super() }}
 
 {% block leftpane %}
 <p>Email Refund Example:</p>
