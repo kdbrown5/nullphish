@@ -1,5 +1,8 @@
 {% extends "emailbase.html" %}
 {% block head %}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="http:///ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<link href="/docs/4.0/assets/css/docs.min.css" rel="stylesheet">
 {% block title %}Email Education 1{% endblock %}
 {{ super() }}
 {% endblock %}
@@ -7,6 +10,7 @@
 {{ super() }}
 {% endblock %}
 {% block addstyle %}  
+
   .tooltips {
     position: relative;
     display: inline;
