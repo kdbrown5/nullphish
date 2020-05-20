@@ -20,7 +20,8 @@
   left: 0px;
   right: 0px;
   width: auto;
-  height: 99%;
+  min-height: 99%;
+  max-height: auto;
   margin-bottom: 0px;
   border-radius: 5px;
   border: 2px solid #E0E0E0;
@@ -30,7 +31,9 @@
   -webkit-backdrop-filter: blur(10px);
 /*justify-content: center; */
 }
+{% block addstyle %} {% endblock %}
     </style>
+    {% block addscript %}{% endblock %}
   </head>
   {% endblock %}
   {% block container %}
