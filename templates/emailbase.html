@@ -1,0 +1,70 @@
+<!--   NOTE: This document is here as a template/placeholder for future pages      -->
+<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
+<!--      Please remove all generic/instructional comments before publishing!      -->
+{% block head %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/master.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>{% block title %}{% endblock %</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style> 
+.modifiedcontentcontainer{
+  z-index: 5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: auto;
+  height: auto;
+  margin-bottom: 0px;
+  border-radius: 5px;
+  border: 2px solid #E0E0E0;
+  color: #E0E0E0;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+/*justify-content: center; */
+}
+    </style>
+  </head>
+  {% endblock %}
+  {% block container %}
+    <!-- Here's where the navigation bar is declared -->
+    <div id="navigation">
+      <!-- Edit the entries below -->
+      <a href="/main">Modules</a>
+      <a href="/profile">Profile</a>
+      <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
+    </div>
+    <div class="modifiedcontentcontainer">
+        <center>
+      <div style="padding-top: 03%"><h1>{% block title %}{% endblock %}</h1></div>
+    </center>
+      <div style="float: left; width: 50%;">
+        <!--  Left Pane content    -->
+        {% block leftpane %}{% endblock %}
+    </div>
+        <div style="float: right; width: 50%;">
+        <!--  Right Pane content   -->
+        {% block rightpane %}{% endblock %}
+        </div>
+        <!--  Footer bottom / middle content   -->
+    </div>
+    <!-- Logout confirmation overlay -->
+    <div id="confirmoverlay">
+      <span>Are you sure you want to log out?</span><br>
+      <a href="/logout">Yes</a>
+      <a href="#" onclick="hidelogoutconfirmation();">No</a>
+    </div>
+    <!-- Put more Javascript stuff here if you need -->
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/particles.min.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/particlesjs/app.js"></script>
+    <script type="text/javascript"  src="https://app.nullphish.com/static/js/master.js"></script>
+  </body>
+</html>
+{% endblock %}
