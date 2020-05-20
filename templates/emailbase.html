@@ -1,6 +1,3 @@
-<!--   NOTE: This document is here as a template/placeholder for future pages      -->
-<!-- The goal is to have something to copy/paste to have new pages be easy to make -->
-<!--      Please remove all generic/instructional comments before publishing!      -->
 {% block head %}
 <!DOCTYPE html>
 <html>
@@ -30,8 +27,6 @@
   color: #E0E0E0;
   background-color: rgba(0,0,0,0.5);
   opacity: 1;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 /*justify-content: center; */
 }
 {% endblock %}
@@ -40,9 +35,7 @@
     {% block addscript %}{% endblock %}
   </head>
   {% block container %}
-    <!-- Here's where the navigation bar is declared -->
     <div id="navigation">
-      <!-- Edit the entries below -->
       <a href="/main">Modules</a>
       <a href="/profile">Profile</a>
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
