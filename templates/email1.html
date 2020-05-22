@@ -246,6 +246,7 @@
 {% block leftpane %}
 <center>
     <div dir="auto">
+      <br><br><br>
             <div dir="auto">
             <div>From: "⁠GEICO Ins." &lt;<span class="tooltips" tooltip="Good!<br>This e-mail's domain is not related to Geico." tooltip-position="right"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener">noreply@jellyfishesfond.com</a>&gt;</span></div><br>
             <div>Date: {% if timestamp %}{{ timestamp }}{% endif %}</div><br>
@@ -294,8 +295,7 @@
 {% endblock %}
 
 {% block rightpane %}
-
-<p style="font-size: 2em; color:white;"></style>In the left pane is an e-mail received by NullPhish staff that is impersonating Geico advertisements.<br>
+<p style="font-size: 2em; color:white;">In the left pane is an e-mail received by NullPhish staff that is impersonating Geico advertisements.<br>
 Mouse over key elements to expose tooltips<br>
 Lets spot some differences that raise suspicion!<br>
 </p>
@@ -304,7 +304,9 @@ Lets spot some differences that raise suspicion!<br>
   {{ dontclick }}
 </h1>
   {% endif %}
-
 {% endblock %}
 
+{% block footer %}
+<div style="padding-bottom: 500px;"></div>
+{% endblock %}
 {% endblock %}
