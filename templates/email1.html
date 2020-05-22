@@ -299,7 +299,13 @@
 In the left pane is an e-mail received by NullPhish staff that is impersonating Geico advertisements.<br>
 Mouse over key elements to expose tooltips<br>
 Lets spot some differences that raise suspicion!<br>
-In the left pane is an an e-mail received by Nullphish.<br>
+<h1 style="color: white">{% with messages = get_flashed_messages(category_filter=["category2"]) %}
+  {% if messages %}
+    {% for message in messages %}
+  {{ message }}
+    {% endfor %}
+  {% endif %}
+  {% endwith %}</h1>
 {% endblock %}
 
 {% endblock %}
