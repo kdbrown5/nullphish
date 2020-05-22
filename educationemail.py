@@ -54,7 +54,8 @@ def email1():
         if request.args.get('!'[:]) == None:
             pass
         else:
-            flash('Never click links! You could have been sent to a malicious website!', 'category2')
+            dontclick = Markup('Never click links unless you are confident they are safe.<br>You could have been sent to a malicious website!')
+            flash(dontclick)
             return render_template('email1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
 
     return render_template('email1.html', fname=fname, lname=lname, username=username, timestamp=timestamp)
