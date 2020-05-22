@@ -275,7 +275,7 @@
             </tr>
             <tr>
             <td align="center">
-            <p style="color:white"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl="">Unsubscribe</a>.<br />This is an advertisement to {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %}.<br />Ace Network Inc.<br />Rue de Jargonnant 2 1207 Geneva CH</p>
+            <span class="tooltips" tooltip="In E-Mails with multiple links, you'll often notice they all direct<br>to the same URL.  This would be suspicious because<br>links such as unsubscribe should be unique" tooltip-position="right"><p style="color:white"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl="">Unsubscribe</a>.<br />This is an advertisement to {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %}.<br />Ace Network Inc.<br />Rue de Jargonnant 2 1207 Geneva CH</p></span>
             </td>
             </tr>
             </tbody>
@@ -295,10 +295,11 @@
 {% endblock %}
 
 {% block rightpane %}
-In the left pane is an e-mail received by NullPhish staff that is impersonating Geico advertisements.<br>
+<br>
+<p style="font-size: 2em; color:white;"></style>In the left pane is an e-mail received by NullPhish staff that is impersonating Geico advertisements.<br>
 Mouse over key elements to expose tooltips<br>
 Lets spot some differences that raise suspicion!<br>
-
+</p>
   {% if dontclick %}
   <h1 style="color: white">
   {{ dontclick }}
