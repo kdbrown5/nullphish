@@ -43,24 +43,31 @@
       <a href="#" onclick="showlogoutconfirmation();">Log Out</a>
     </div>
     {% endblock %}
-    {% block container %}
+    {% block containerstart %}
     <div class="modifiedcontentcontainer">  
         <center>
       <div style="padding-top: 03%"><h1>{% block header %}{% endblock %}</h1></div>
     </center>
     <div style="padding-top: 03%"></div>
+    {% endblock %}
+    {% block leftcontainer %}
       <div style="float: left; width: 50%;">
         <!--  Left Pane content    -->
         {% block leftpane %}{% endblock %}
     </div>
+    {% endblock %}
+    {% block rightcontainer %}
         <div style="float: right; width: 50%;">
         <!--  Right Pane content   -->
         {% block rightpane %}{% endblock %}
         </div>
-        {% block footer %}{% endblock %}
+        {% endblock %}
+        {% block footer %}
         <!--  Footer bottom / middle content   -->
     </div>
+    {% endblock %}
     <!-- Logout confirmation overlay -->
+    {% block containerend %}
     <div id="confirmoverlay">
       <span>Are you sure you want to log out?</span><br>
       <a href="/logout">Yes</a>
