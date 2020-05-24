@@ -254,7 +254,7 @@
 {% block leftpane %}
 <center>
     <div dir="auto">
-      <br><br><br>
+      <br><br>
             <div dir="auto">
             <div>From: "⁠GEICO Ins." &lt;<span class="tooltips" tooltip="Good!<br>This e-mail's domain is not related to Geico." tooltip-position="right"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener">noreply@jellyfishesfond.com</a>&gt;</span></div><br>
             <div>Date: {% if timestamp %}{{ timestamp }}{% endif %}</div><br>
@@ -321,6 +321,7 @@ Lets spot some differences that raise suspicion!<br>
 </div>
 {% block footer %}
 {{ super() }}
+<div style="margin-bottom: -200px"></div>
 {% endblock %}
 {% block containerend %}
 {{ super() }}
