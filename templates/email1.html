@@ -239,8 +239,13 @@
   </script>
 {% endblock %}
 </head>
-{% block container %}
+<body>
+  
+{% block navb %}
+{{ super() }}
+{% endblock %}
 {% block header %}Email Education: 1{% endblock %}
+{% block container %}
 {{ super() }}
 <br><br><br>
 {% block leftpane %}
@@ -275,7 +280,7 @@
             </tr>
             <tr>
             <td align="center">
-            <span class="tooltips" tooltip="In E-Mails with multiple links, you'll often notice they all direct<br>to the same URL.  This would be suspicious because<br>links such as unsubscribe should be unique" tooltip-position="right"><p style="color:white"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl="">Unsubscribe</a>.<br />This is an advertisement to {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %}.<br />Ace Network Inc.<br />Rue de Jargonnant 2 1207 Geneva CH</p></span>
+            <span class="tooltips" tooltip="In E-Mails with multiple links, you'll often notice they all direct<br>to the same URL.  This would be suspicious because<br>links such as unsubscribe should be unique" tooltip-position="right"><p style="color:white"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl="">Unsubscribe</a></span>.<br />This is an advertisement to {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %}.<br />Ace Network Inc.<br />Rue de Jargonnant 2 1207 Geneva CH</p>
             </td>
             </tr>
             </tbody>
@@ -307,6 +312,6 @@ Lets spot some differences that raise suspicion!<br>
 {% endblock %}
 
 {% block footer %}
-<div style="padding-bottom: 500px;"></div>
+<div></div>
 {% endblock %}
 {% endblock %}
