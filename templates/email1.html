@@ -249,7 +249,7 @@
 {{ super() }}
 {% endblock %}
 {% block leftcontainer %}
-
+<div style="float: left; width: 50%;">
 <br><br><br>
 {% block leftpane %}
 <center>
@@ -301,7 +301,9 @@
             });
             </script>
 {% endblock %}
+</div>
 {% endblock %}
+<div style="float: right; width: 50%;">
 {% block rightcontainer %}
 
 {% block rightpane %}
@@ -316,7 +318,7 @@ Lets spot some differences that raise suspicion!<br>
   {% endif %}
 {% endblock %}
 {% endblock %}
-
+</div>
 {% block footer %}
 {{ super() }}
 {% endblock %}
