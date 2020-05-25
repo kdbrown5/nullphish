@@ -30,16 +30,20 @@ def loadadminprofile():
         print(';')
 
     def loadmessages(): 
-        precurrentmessages = []
+        messagecol1 = []
+        messagecol2 = []
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             for row in cur.execute("select sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
-                precurrentmessages.append(row[0]+': '+row[1])
-        currentmessages = "<ul>\n"
-        currentmessages += "\n".join(["<li>" + str(s) + "</li>" for s in precurrentmessages])
-        currentmessages += "\n</ul>"
+                messagecol1.append(row[0])
+                messagecol2.append(row[1])
+
+        currentmessages = '<table style="width: fit-content"><tbody><tr>'
+        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</td>" for s in messagecol1])
+        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</td>" for s in messagecol2])
+        currentmessages += "\n</tr></tbody></table>"
         currentmessages = Markup(currentmessages)
         return currentmessages
 
