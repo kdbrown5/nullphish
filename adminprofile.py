@@ -42,9 +42,7 @@ def loadadminprofile():
     
     try:
         currentmessages = loadmessages()
-        print(currentmessages)
-        print('is this being executed?')
-        flash(currentmessages)
+        flash(currentmessages, 'category2')
     except:
         print('no messages-syslog')
         pass
