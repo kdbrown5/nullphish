@@ -64,11 +64,11 @@
         {% endwith %}
         {% with messages = get_flashed_messages(category_filter=["category1"]) %}
           {% if messages %}
-            <ul>
+
               {% for message in messages %}
               {{ message }}
               {% endfor %}
-            </ul>
+
           {% else %}
             No new messages!
           {% endif %}
