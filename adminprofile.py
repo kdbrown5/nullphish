@@ -40,6 +40,8 @@ def loadadminprofile():
         return currentmessages
     
     try:
+        currentmessages = loadmessages()
+        print(currentmessages)
         flash(currentmessages)
     except:
         pass
