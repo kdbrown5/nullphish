@@ -36,8 +36,7 @@ def loadadminprofile():
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             for row in cur.execute("select sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
-                currentmessages.append(row[0])
-                currentmessages.append(row[1])
+                currentmessages.append(row[0]+': '+row[1])
         print(currentmessages)
         return currentmessages
 
