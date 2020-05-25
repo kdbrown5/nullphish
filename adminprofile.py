@@ -35,7 +35,7 @@ def loadadminprofile():
             con.row_factory = sqlite.Row
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            cur.execute("select id, sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],))
+            cur.execute("select id, sender, message, datesent from messages where username = (?) and business = (?);", (session['username'], session['business'],))
             currentmessages = cur.fetchall()
         return currentmessages
 
