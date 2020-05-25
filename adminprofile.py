@@ -37,6 +37,7 @@ def loadadminprofile():
             cur.execute('PRAGMA key = '+dbkey+';')
             for row in cur.execute("select * from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
                 currentmessages.append(row[0])
+        print(currentmessages)
         return currentmessages
     
     try:
@@ -44,6 +45,7 @@ def loadadminprofile():
         print(currentmessages)
         flash(currentmessages)
     except:
+        print('no messages-syslog')
         pass
 
     if request.method == "POST":
