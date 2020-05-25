@@ -37,13 +37,12 @@ def loadadminprofile():
             cur.execute('PRAGMA key = '+dbkey+';')
             for row in cur.execute("select sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
                 precurrentmessages.append(row[0]+': '+row[1])
-                
-        currentmessages = '<table style="width: fit-content"><tbody><tr>'
-        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</li>" for s in precurrentmessages])
+        currentmessages = "<ul>\n"
+        currentmessages += "\n".join(["<li>" + str(s) + "</li>" for s in precurrentmessages])
         currentmessages += "\n</ul>"
         currentmessages = Markup(currentmessages)
         return currentmessages
-
+        
     try:
         currentmessages = loadmessages()
         flash(currentmessages, 'category1')
