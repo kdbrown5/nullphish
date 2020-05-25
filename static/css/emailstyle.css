@@ -50,6 +50,45 @@ body{
 }
 
 /* IDs */
+#contentarea{
+  position: absolute;
+  margin: 0px;
+  left: 0px;
+  right: 0px;
+  top: 100px;
+  bottom: 0px;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#emailsandinboxes{
+  width: 300px;
+  margin: 0px;
+  margin-top: 20px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+#emailcontentcontainer{
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#emailtitle{
+  font-size: x-large;
+  color: black;
+  font-weight: bold;
+}
+#emailsenderinfo{
+  color: black;
+  font-size: large;
+}
+#emailcontent{
+  color: black;
+}
 #topbar{
   height: 100px;
   border-bottom: 1px solid #CCC;
@@ -123,7 +162,25 @@ body{
 
 /*/ Classes */
 .nullemail{
-  font-size:xx-large;
+  font-size: xx-large;
   color: #555;
   font-family: opensans;
+}
+.inbox{
+  color: #555;
+  font-size: large;
+  padding: 10px 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  cursor: pointer;
+}
+.inbox.active{
+  background-color: pink;
+  color: red;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
 }
