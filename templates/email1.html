@@ -1,330 +1,50 @@
-{% extends "emailbase.html" %}
-{% block head %}
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="http:///ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<link href="/docs/4.0/assets/css/docs.min.css" rel="stylesheet">
-{% block title %}Email Education 1{% endblock %}
-{{ super() }}
-{% endblock %}
-{% block style %}
-{{ super() }}
-{% endblock %}
-{% block addstyle %}  
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://app.nullphish.com/static/css/emailstyle.css">
+    <link rel="icon" href="https://app.nullphish.com/static/res/favicon-320.png">
+    <title>NullPhish: Email</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  </head>
+  <body>
+    <div id="topbar">
+        <div id="topbar-lefthalf">
+          <img src="https://app.nullphish.com/static/res/menudd.svg" style="padding-right: 25px; width: 25px;">
+          <p class="nullemail">NullEmail</p>
+          <input id="searchbar">
+        </div>
+        <div id="topbar-righthalf">
+          <p id="initialsbtn">NP</p>
+          <p id="helpbtn">?</p>
+        </div>
+    </div>
+    <div id="contentarea">
+      <div id="emailsandinboxes">
+        <p class="inbox active">Inbox (3)</p>
+        <p class="inbox">Flagged</p>
+        <p class="inbox">Sent</p>
+        <p class="inbox">Drafts</p>
+        <p class="inbox">Spam</p>
+      </div>
+      <div>
+        <p id="emailtitle">Final Notice: Payment Declined</p>
+        <div id="emailsenderinfo">
+          <p style="font-weight: bold;">Geico Insurance</p>
+          <p>to me</p>
+        </div>
+        <div id="emailcontentcontainer">
+          <p>Hello, <br>This is the finance department reaching out to you because your insurance payment option has been declined. To avoid a lapse in coverage,
+          please visit the following link to update your payment information immediately!</p>
 
-  .tooltips {
-    position: relative;
-    display: inline;
-  }
-  
-  .tooltips span {
-    font:300 24px 'Open Sans', sans-serif;
-    position: absolute;
-    color: #FFFFFF;
-    background: #000000;
-    padding:5px 10px;
-    width:600px;
-    text-align: center;
-    visibility: hidden;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    transition: transform .3s, opacity .6s, margin-left .2s, margin-top .2s;
-  }
-  
-  .tooltips > span img{max-width:140px;}
-  
-  .tooltips[tooltip-position="top"] span{
-    margin-left:10px;
-    -ms-transform: rotate(30deg);
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-  }
-  
-  .tooltips[tooltip-position="bottom"] span{
-    -ms-transform: rotate(-30deg);
-    -webkit-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-  }
-  
-  .tooltips[tooltip-position="left"] span{
-    margin-top:30px;
-    -ms-transform: rotate(-30deg);
-    -webkit-transform: rotate(-30deg);
-    transform: rotate(-30deg);
-  }
-  
-  .tooltips[tooltip-position="right"] span{
-    margin-top:30px;
-    -ms-transform: rotate(30deg);
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-  }
-  
-  .tooltips span:after {
-    content: '';
-    position: absolute;
-    width: 0; height: 0;
-  }
-  
-  .tooltips[tooltip-position="top"] span:after{
-    top: 100%;
-    left: 50%;
-    margin-left: -8px;
-    border-top: 8px solid black;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-  }
-  
-  .tooltips[tooltip-position="bottom"] span:after{
-    bottom: 100%;
-    left: 50%;
-    margin-left: -8px;
-    border-bottom: 8px solid black;
-    border-right: 8px solid transparent;
-    border-left: 8px solid transparent;
-  }
-  
-  .tooltips[tooltip-position="left"] span:after{
-    top: 50%;
-    left: 100%;
-    margin-top: -8px;
-    border-left: 8px solid black;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-  }
-  
-  .tooltips[tooltip-position="right"] span:after{
-    top: 50%;
-    right: 100%;
-    margin-top: -8px;
-    border-right: 8px solid black;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-  }
-  
-  .tooltips:hover span {
-    visibility: visible;
-    opacity: 1;
-    z-index: 999;
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    filter: alpha(opacity=100);
-  }
-  
-  .tooltips[tooltip-position="top"]:hover span{
-    bottom: 30px;
-    left: 50%;
-    margin-left: -76px;
-  }
-  
-  .tooltips[tooltip-position="bottom"]:hover span{
-    top: 30px;
-    left: 50%;
-    margin-left: -76px;
-  }
-  
-  .tooltips[tooltip-position="left"]:hover span{
-    right: 100%;
-    top: 50%;
-    margin-top: -15px;
-    margin-right: 15px;
-  }
-  
-  .tooltips[tooltip-position="right"]:hover span{
-    left: 100%;
-    top: 50%;
-    margin-top: -15px;
-    margin-left: 15px;
-  }
-  .tooltips[tooltip-position="gecko"]:hover span{
-    left: 100%;
-    top: 50%;
-    margin-top: -500px;
-    margin-left: 15px;
-  }
-  .tooltips[tooltip-position="gecko2"]:hover span{
-    left: 100%;
-    top: 50%;
-    margin-top: -15px;
-    margin-left: 600px;
-  }
-  .tooltips[tooltip-type="primary"] > span {
-    background-color:#2980b9;
-  }
-  
-  .tooltips[tooltip-type="primary"][tooltip-position="top"] > span:after{
-    border-top: 8px solid #2980b9;
-  }
-  
-  .tooltips[tooltip-type="primary"][tooltip-position="bottom"] > span:after{
-    border-bottom: 8px solid #2980b9;
-  }
-  
-  .tooltips[tooltip-type="primary"][tooltip-position="left"] > span:after{
-    border-left: 8px solid #2980b9;
-  }
-  
-  .tooltips[tooltip-type="primary"][tooltip-position="right"] > span:after{
-    border-right: 8px solid #2980b9;
-  }
-  
-  .tooltips[tooltip-type="success"] > span {
-    background-color:#27ae60;
-  }
-  
-  .tooltips[tooltip-type="success"][tooltip-position="top"] > span:after{
-    border-top: 8px solid #27ae60;
-  }
-  
-  .tooltips[tooltip-type="success"][tooltip-position="bottom"] > span:after{
-    border-bottom: 8px solid #27ae60;
-  }
-  
-  .tooltips[tooltip-type="success"][tooltip-position="left"] > span:after{
-    border-left: 8px solid #27ae60;
-  }
-  
-  .tooltips[tooltip-type="success"][tooltip-position="right"] > span:after{
-    border-right: 8px solid #27ae60;
-  }
-  
-  .tooltips[tooltip-type="warning"] > span {
-    background-color:#f39c12;
-  }
-  
-  .tooltips[tooltip-type="warning"][tooltip-position="top"] > span:after{
-    border-top: 8px solid #f39c12;
-  }
-  
-  .tooltips[tooltip-type="warning"][tooltip-position="bottom"] > span:after{
-    border-bottom: 8px solid #f39c12;
-  }
-  
-  .tooltips[tooltip-type="warning"][tooltip-position="left"] > span:after{
-    border-left: 8px solid #f39c12;
-  }
-  
-  .tooltips[tooltip-type="warning"][tooltip-position="right"] > span:after{
-    border-right: 8px solid #f39c12;
-  }
-  
-  .tooltips[tooltip-type="danger"] > span {
-    background-color:#c0392b;
-  }
-  
-  .tooltips[tooltip-type="danger"][tooltip-position="top"] > span:after{
-    border-top: 8px solid #c0392b;
-  }
-  
-  .tooltips[tooltip-type="danger"][tooltip-position="bottom"] > span:after{
-    border-bottom: 8px solid #c0392b;
-  }
-  
-  .tooltips[tooltip-type="danger"][tooltip-position="left"] > span:after{
-    border-left: 8px solid #c0392b;
-  }
-  
-  .tooltips[tooltip-type="danger"][tooltip-position="right"] > span:after{
-    border-right: 8px solid #c0392b;
-  }
-  
-  
-{% endblock %}
-      </style>
-      {% block addscript %}
-  <script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-  </script>
-{% endblock %}
-</head>
-<body>
-  
-{% block navb %}
-{{ super() }}
-{% endblock %}
-{% block header %}Email Education: 1{% endblock %}
-{% block containerstart %}
-{{ super() }}
-{% endblock %}
-{% block leftcontainer %}
-<div style="float: left; width: 50%;">
-<br>
-{% block leftpane %}
-<center>
-    <div dir="auto">
-      <br><br>
-            <div dir="auto">
-            <div>From: "⁠GEICO Ins." &lt;<span class="tooltips" tooltip="Good!<br>This e-mail's domain is not related to Geico." tooltip-position="right"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener">noreply@jellyfishesfond.com</a>&gt;</span></div><br>
-            <div>Date: {% if timestamp %}{{ timestamp }}{% endif %}</div><br>
-            <div>To: {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %} &lt;<a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener">{% if username %}{{ username }}{% endif %}</a>&gt;</div><br>
-            <div>Subject: ⁠Switch to GEICO Now and You Could Save</div>
-            <div>&nbsp;</div>
-            </div>
-            <br><br>
-            <center>
-            <table border="0" cellspacing="0" cellpadding="0">
-            <tbody>
-            <tr>
-            <td align="center">
-            <p><a target="_self" href="/education/email/1?!" style="color:white" target="_blank" rel="noopener" data-saferedirecturl="/education/email/1?!">View in Browser</a></p>
-            </td>
-            </tr>
-            <tr>
-            <td align="center">
-            <div><span class="tooltips" tooltip="Good.  It's always important to inspect URLS.  Please mouse over the image below this" tooltip-position="gecko"><a target="_self" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl=""><img class="CToWUd" src="https://ci6.googleusercontent.com/proxy/7GESr9KjyIwA-rpubqxu665LbF_24gpjzqjM09ipCL657J11httzZgST9r12pNDIdg5XTkj3lQ3Ca_XyUDz20xdZROeQjtJ2IxZ-a7zDgttjyLZAdJpFvPolRU3uEVZOAPx2juCBNhdkoX-G7xP1rzKUWKLLx7-2SrRK_BIZa25K6Uwc2JhiTve5WRKNlFrkbaR9DlyO0M8qdC3b-K5bFGa7Iktg1j44d2swfe-yu9FvGg=s0-d-e1-ft#https://2b8d1f8aaa9c8083a578d6f840d76f5b.b19a1c6fa4f70e18494098f4fd155415.jellyfishesfond.com/dqanPe-uF_n-qwHgYV72M0y8Y4rxe_OEYXrCkKjTKbXRk4MK8fo8AeI31UmIP3ST" /></a></div></span>
-            </td>
-            </tr>
-            <tr>
-            <td align="center">
-            <div><span class="tooltips" tooltip="This text is not in HTML format(It is a picture of text).<br>It is not selectable (you can't highlight/select any text).<br>There is a link in the image of unsubscribe.<br>All of the above is suspicious - similar to bad syntax or misspelled words." tooltip-position="gecko2"><h5><a target="_self" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl=""><img class="CToWUd" src="https://ci3.googleusercontent.com/proxy/Em0NFlrVfRYI68cNP7Zpfu3kE67eAl8JbVc-MLvObT3zBZvkfj3qgzFjxJdmJ7z3Qrjv9dGFNZ-GbC2ahWzv6KpNwScO7IljBJtzaZfGyWCT6-xywcPF0Zvv0V6KHwMeUwE0djUL0rvtLF_yAjteCoaeU9eG0j_jZ4EIFbhpn8sTQGm724wSa7NF7mX4NZKXXtsqA9dorfKw2PbE_J8sClKkxoreGfUIJ-NJmEMeZgPtCQ=s0-d-e1-ft#https://2b8d1f8aaa9c8083a578d6f840d76f5b.b19a1c6fa4f70e18494098f4fd155415.jellyfishesfond.com/SzHLR6bs_n5MiGTp9_xXNaheBu1h2_4Tu0uSmSFgLppwqYltxVzjeXLkDty-Kv95" /></a></div></h5></span>
-          </td>
-            </tr>
-            <tr>
-            <td align="center">
-            <span class="tooltips" tooltip="In E-Mails with multiple links, you'll often notice they all direct<br>to the same URL.  This would be suspicious because<br>links such as unsubscribe should be unique" tooltip-position="right"><p style="color:white"><a target="_self" style="color:white" href="/education/email/1?!" target="_blank" rel="noopener" data-saferedirecturl="">Unsubscribe</a></span>.<br />This is an advertisement to {% if fname %} {{ fname }} {% endif %} {%if lname %} {{ lname}} {% endif %}.<br />Ace Network Inc.<br />Rue de Jargonnant 2 1207 Geneva CH</p>
-            </td>
-            </tr>
-            </tbody>
-            </table>
-            </center></div>
-            <div>&nbsp;</div>
-        </center>
-        <script>
-            $('.tooltips').append("<span></span>");
-            $('.tooltips:not([tooltip-position])').attr('tooltip-position','bottom');
-            
-            
-            $(".tooltips").mouseenter(function(){
-             $(this).find('span').empty().append($(this).attr('tooltip'));
-            });
-            </script>
-{% endblock %}
-</div>
-{% endblock %}
-<div style="float: right; width: 50%;">
-{% block rightcontainer %}
-
-{% block rightpane %}
-<p style="font-size: 2em; color:white;">In the left pane is an e-mail received by NullPhish staff that is impersonating Geico advertisements.<br>
-Mouse over key elements to expose tooltips<br>
-Lets spot some differences that raise suspicion!<br>
-</p>
-  {% if dontclick %}
-  <h1 style="color: white">
-  {{ dontclick }}
-</h1>
-  {% endif %}
-{% endblock %}
-{% endblock %}
-</div>
-{% block footer %}
-{{ super() }}
-<div style="margin-bottom: -500px"></div>
-{% endblock %}
-{% block containerend %}
-{{ super() }}
-{% block endbody %}
-{% endblock %}
-{% endblock %}
+          <div id="emailtoolbox">
+            <btn class="replyfwdbutton">Reply</btn>
+            <btn class="replyfwdbutton">Forward</btn>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
