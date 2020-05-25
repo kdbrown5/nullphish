@@ -29,6 +29,25 @@ def loadadminprofile():
     def placeholder():
         print(';')
 
+    def loadmessages(): 
+        currentmessages = []
+        con = sqlite.connect('db/db1.db')
+        with con:
+            cur = con.cursor()
+            cur.execute('PRAGMA key = '+dbkey+';')
+            for row in cur.execute("select sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
+                currentmessages.append(row[0])
+                currentmessages.append(row[1])
+        print(currentmessages)
+        return currentmessages
+
+    try:
+        currentmessages = loadmessages()
+        flash(currentmessages, 'category1')
+    except:
+        print('no messages-syslog')
+        pass
+
     if request.method == "POST":
         if 'password' in request.form:
             if len(str(request.form['password'])) > 8:
