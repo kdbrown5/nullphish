@@ -35,14 +35,14 @@ def loadadminprofile():
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            for row in cur.execute("select message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
+            for row in cur.execute("select sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
                 currentmessages.append(row[0])
         print(currentmessages)
         return currentmessages
     
     try:
         currentmessages = loadmessages()
-        flash(currentmessages, 'category2')
+        flash(currentmessages, 'category1')
     except:
         print('no messages-syslog')
         pass
