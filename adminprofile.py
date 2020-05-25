@@ -30,14 +30,17 @@ def loadadminprofile():
         print(';')
 
     def loadmessages(): 
-        currentmessages = []
+        precurrentmessages = []
         con = sqlite.connect('db/db1.db')
         with con:
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
             for row in cur.execute("select sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
-                currentmessages.append(Markup(row[0]+': '+row[1]+'<br>'))
-        print(currentmessages)
+                precurrentmessages.append(row[0]+': '+row[1])
+        currentmessages = "<ul>\n"
+        currentmessages += "\n".join(["<li>" + str(s) + "</li>" for s in precurrentmessages])
+        currentmessages += "\n</ul>"
+        currentmessages = Markup(currentmessages)
         return currentmessages
 
     try:
