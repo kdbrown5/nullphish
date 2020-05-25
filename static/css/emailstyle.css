@@ -1,12 +1,3 @@
-/*
-Color Palette Hex Codes:
-  Blue: #0D1126
-  Gold: #ECA400
-  Green: #49A355
-  Red: #721817
-  Platinum: #E0E0E0
-*/
-
 /* Font Declarations */
 @font-face{
   font-family: 'roboto';
@@ -42,7 +33,6 @@ Color Palette Hex Codes:
 }
 
 /* Global Styles */
-
 body{
   margin: 0;
   background-color: white;
@@ -63,6 +53,14 @@ body{
   flex-direction: row;
   flex-wrap: nowrap;
 }
+#emailcontent{
+  color: black;
+}
+#emailcontentcontainer{
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
 #emailsandinboxes{
   width: 300px;
   margin: 0px;
@@ -72,23 +70,23 @@ body{
   flex-direction: column;
   flex-wrap: nowrap;
 }
-#emailcontentcontainer{
-  width: 100%;
-  padding-left: 25px;
-  padding-right: 25px;
+#emailsenderinfo{
+  color: black;
+  font-size: large;
+  padding-left: 5px;
 }
 #emailtitle{
   font-size: x-large;
   color: black;
   font-weight: bold;
 }
-#emailsenderinfo{
-  color: black;
-  font-size: large;
+#emailtoolbox{
+  width: auto;
+  height: auto;
+  margin: 50px;
+  margin-top: 75px;
 }
-#emailcontent{
-  color: black;
-}
+
 #topbar{
   height: 100px;
   border-bottom: 1px solid #CCC;
@@ -183,4 +181,13 @@ body{
   color: red;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
+}
+.replyfwdbutton{
+  border: 1px solid #555;
+  color: #555;
+  border-radius: 5px;
+  font-size: large;
+  padding: 15px;
+  margin: 10px;
+  cursor: pointer;
 }
