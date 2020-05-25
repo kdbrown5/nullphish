@@ -11,11 +11,190 @@
     <title>NullPhish: Email</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      /* Font Declarations */
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-BoldItalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-BoldItalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face{
+  font-family: 'opensans';
+  src:  url('/static/css/fonts/OpenSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'opensans';
+  src:  url('/static/css/fonts/OpenSans-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+
+/* Global Styles */
+
+body{
+  margin: 0;
+  background-color: white;
+  font-family: roboto;
+}
+
+/* IDs */
+#contentarea{
+  position: absolute;
+  margin: 0px;
+  left: 0px;
+  right: 0px;
+  top: 100px;
+  bottom: 0px;
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#emailsandinboxes{
+  width: 300px;
+  margin: 0px;
+  margin-top: 20px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+#emailcontentcontainer{
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#emailtitle{
+  font-size: x-large;
+  color: black;
+  font-weight: bold;
+}
+#emailsenderinfo{
+  color: black;
+  font-size: large;
+}
+#emailcontent{
+  color: black;
+}
+#topbar{
+  height: 100px;
+  border-bottom: 1px solid #CCC;
+  position: absolute;
+  margin: 0px;
+  padding-left: 25px;
+  padding-right: 25px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+#topbar-lefthalf{
+  justify-self: left;
+  align-items: center;
+  justify-content: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 50%;
+}
+#topbar-righthalf{
+  align-items: center;
+  justify-items: right;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+}
+#initialsbtn{
+  border: none;
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-size: x-large;
+  line-height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#helpbtn{
+  border: 1px solid #555;
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  color: #555;
+  text-align: center;
+  vertical-align: middle;
+  font-size: x-large;
+  line-height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#searchbar{
+  background-color: #EEE;
+  border-radius: 10px;
+  color: #555;
+  font-size: large;
+  border: none;
+  padding: 20px;
+  margin-left: 50px;
+  width: 50%;
+}
+
+/*/ Classes */
+.nullemail{
+  font-size: xx-large;
+  color: #555;
+  font-family: opensans;
+}
+.inbox{
+  color: #555;
+  font-size: large;
+  padding: 10px 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  cursor: pointer;
+}
+.inbox.active{
+  background-color: pink;
+  color: red;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+    </style>
   </head>
   <body>
     <div id="topbar">
         <div id="topbar-lefthalf">
-          <img src="https://app.nullphish.com/static/res/menudd.svg" style="padding-right: 25px;">
+          <img src="https://app.nullphish.com/static/res/menudd.svg" style="padding-right: 25px; width: 25px;">
           <p class="nullemail">NullEmail</p>
           <input id="searchbar">
         </div>
@@ -23,6 +202,25 @@
           <p id="initialsbtn">NP</p>
           <p id="helpbtn">?</p>
         </div>
+    </div>
+    <div id="contentarea">
+      <div id="emailsandinboxes">
+        <p class="inbox active">Inbox (3)</p>
+        <p class="inbox">Flagged</p>
+        <p class="inbox">Sent</p>
+        <p class="inbox">Drafts</p>
+        <p class="inbox">Spam</p>
+      </div>
+      <div>
+        <p id="emailtitle">This is the Email Title</p>
+        <div id="emailsenderinfo">
+          <p style="font-weight: bold;">Sender Name</p>
+          <p>Recipients</p>
+        </div>
+        <div id="emailcontentcontainer">
+          <p>Test</p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
