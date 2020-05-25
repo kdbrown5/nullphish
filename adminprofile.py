@@ -15,6 +15,7 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from pysqlcipher3 import dbapi2 as sqlite
+from itertools import chain 
 
 db = SQLAlchemy()
 
@@ -41,8 +42,7 @@ def loadadminprofile():
                 messagecol2.append(row[1])
 
         currentmessages = '<table style="width: fit-content"><tbody><tr>'
-        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</td>" for s in messagecol1])
-        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</td>" for s in messagecol2])
+        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</td>" for s in chain(messagecol1, messagecol2)])
         currentmessages += "\n</tr></tbody></table>"
         currentmessages = Markup(currentmessages)
         return currentmessages
