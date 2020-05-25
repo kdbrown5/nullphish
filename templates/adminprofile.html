@@ -63,17 +63,15 @@
           {% endif %}
         {% endwith %}
 
-
-
             {% if currentmessages %}
             <form method="POST">
             {% for dict in currentmessages %}
-            <table>
+            <table style="border-color:black;">
           <tr style="text-align:center; width:fit-content;">
                 <td style="width: 1px;" name="id" type="hidden" hidden><input type="hidden" id="{{ dict.id }}" name="id" value="{{ dict.id }}" hidden></td>
                 <td style="width: fit-content;" name="sender"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.sender }}">{{ dict.sender }}</td>
                 <td style="width: fit-content;" name="message"><input type="hidden" id="{{ dict.message }}" name="date" value="{{ dict.message }}">{{ dict.message }}</td>
-                <td style="width: fit-content;" name="date"><input type="hidden" id="{{ dict.datesent }}" name="date" value="{{ dict.date }}">{{ dict.datesent }}</td>
+                <td style="width: fit-content;" name="datesent"><input type="hidden" id="{{ dict.datesent }}" name="date" value="{{ dict.datesent }}">{{ dict.datesent }}</td>
               </tr>
             </table>
                 {% endfor %}
