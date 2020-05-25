@@ -30,26 +30,17 @@ def loadadminprofile():
         print(';')
 
     def loadmessages(): 
-        messagecol1 = []
-        messagecol2 = []
-        messagecol3 = []
         con = sqlite.connect('db/db1.db')
         with con:
+            con.row_factory = sqlite.Row
             cur = con.cursor()
             cur.execute('PRAGMA key = '+dbkey+';')
-            for row in cur.execute("select id, sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],)):
-                messagecol1.append(row[0])
-                messagecol2.append(row[1])
-                messagecol3.append(row[2])
-        currentmessages = '<table style="width: fit-content"><tbody><tr>'
-        currentmessages += "\n".join(["<td style='width: fit-content'>" + str(s) + "</td>" for s in zip(messagecol1, messagecol2, messagecol3)])
-        currentmessages += "\n</tr></tbody></table>"
-        currentmessages = Markup(currentmessages)
+            cur.execute("select id, sender, message from messages where username = (?) and business = (?);", (session['username'], session['business'],))
+            currentmessages = cur.fetchall()
         return currentmessages
 
     try:
         currentmessages = loadmessages()
-        flash(currentmessages, 'category1')
     except:
         print('no messages-syslog')
         pass
@@ -75,4 +66,4 @@ def loadadminprofile():
                 flash('Password must be 8 characters or more.', 'category2')
                 return render_template("adminprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
 
-    return render_template("adminprofile.html", username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
+    return render_template("adminprofile.html", currentmessages=currentmessages, username=session['username'], business=session['business'], department=session['department'], role=session['role'], firstname=session['fname'], lastname=session['lname'])
