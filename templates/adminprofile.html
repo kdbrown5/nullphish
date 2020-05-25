@@ -66,7 +66,7 @@
             {% if currentmessages %}
             <form method="POST">
             {% for dict in currentmessages %}
-            <table style="border-color:white;">
+            <table style="border-color:white;" border="1">
           <tr style="text-align:center; width:fit-content;">
                 <td style="width: 1px;" name="id" type="hidden" hidden><input type="hidden" id="{{ dict.id }}" name="id" value="{{ dict.id }}" hidden></td>
                 <td style="width: fit-content;" name="sender"><input type="hidden" id="{{ dict.id }}" name="email" value="{{ dict.sender }}">{{ dict.sender }}</td>
