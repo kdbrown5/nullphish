@@ -1,0 +1,129 @@
+/*
+Color Palette Hex Codes:
+  Blue: #0D1126
+  Gold: #ECA400
+  Green: #49A355
+  Red: #721817
+  Platinum: #E0E0E0
+*/
+
+/* Font Declarations */
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-BoldItalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face{
+  font-family: 'roboto';
+  src:  url('/static/css/fonts/Roboto-BoldItalic-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face{
+  font-family: 'opensans';
+  src:  url('/static/css/fonts/OpenSans-Regular-webfont.woff') format('woff');
+}
+@font-face{
+  font-family: 'opensans';
+  src:  url('/static/css/fonts/OpenSans-Bold-webfont.woff') format('woff');
+  font-weight: bold;
+}
+
+/* Global Styles */
+
+body{
+  margin: 0;
+  background-color: white;
+  font-family: roboto;
+}
+
+/* IDs */
+#topbar{
+  height: 100px;
+  border-bottom: 1px solid #CCC;
+  position: absolute;
+  margin: 0px;
+  padding-left: 25px;
+  padding-right: 25px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+#topbar-lefthalf{
+  justify-self: left;
+  align-items: center;
+  justify-content: left;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 50%;
+}
+#topbar-righthalf{
+  align-items: center;
+  justify-items: right;
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+}
+#initialsbtn{
+  border: none;
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  background-color: #555;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  font-size: x-large;
+  line-height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#helpbtn{
+  border: 1px solid #555;
+  border-radius: 25px;
+  height: 50px;
+  width: 50px;
+  color: #555;
+  text-align: center;
+  vertical-align: middle;
+  font-size: x-large;
+  line-height: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#searchbar{
+  background-color: #EEE;
+  border-radius: 10px;
+  color: #555;
+  font-size: large;
+  border: none;
+  padding: 20px;
+  margin-left: 50px;
+  width: 50%;
+}
+
+/*/ Classes */
+.nullemail{
+  font-size:xx-large;
+  color: #555;
+  font-family: opensans;
+}
